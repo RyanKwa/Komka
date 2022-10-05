@@ -57,6 +57,7 @@
 		C50B592628E587B7001D42E5 /* KomkaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KomkaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50B592A28E587B7001D42E5 /* KomkaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KomkaUITests.swift; sourceTree = "<group>"; };
 		C50B592C28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KomkaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Komka.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +159,7 @@
 			children = (
 				A993D82B28EFB9820052DC92 /* Themes */,
 				A993D82928EFB8E10052DC92 /* ChooseScenario */,
+				C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */,
 				A993D81B28EB17180052DC92 /* Utilities */,
 				C50B590628E587B6001D42E5 /* AppDelegate.swift */,
 				C50B590828E587B6001D42E5 /* SceneDelegate.swift */,
@@ -491,6 +493,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Komka/Komka.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L2V23RWBGR;
@@ -519,6 +522,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Komka/Komka.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L2V23RWBGR;
