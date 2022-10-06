@@ -18,6 +18,7 @@
 		C50B592128E587B7001D42E5 /* KomkaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B592028E587B7001D42E5 /* KomkaTests.swift */; };
 		C50B592B28E587B7001D42E5 /* KomkaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B592A28E587B7001D42E5 /* KomkaUITests.swift */; };
 		C50B592D28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B592C28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift */; };
+		DC25DFC428EF0B4400828809 /* ChooseGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC25DFC328EF0B4400828809 /* ChooseGenderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		C50B592628E587B7001D42E5 /* KomkaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KomkaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50B592A28E587B7001D42E5 /* KomkaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KomkaUITests.swift; sourceTree = "<group>"; };
 		C50B592C28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KomkaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DC25DFC328EF0B4400828809 /* ChooseGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			children = (
 				A993D81B28EB17180052DC92 /* Utilities */,
 				A993D81628EB16350052DC92 /* Font */,
+				DC25DFC228EF0B2000828809 /* ChooseGender */,
 				C50B590628E587B6001D42E5 /* AppDelegate.swift */,
 				C50B590828E587B6001D42E5 /* SceneDelegate.swift */,
 				C50B590A28E587B6001D42E5 /* ViewController.swift */,
@@ -155,6 +158,14 @@
 				C50B592C28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift */,
 			);
 			path = KomkaUITests;
+			sourceTree = "<group>";
+		};
+		DC25DFC228EF0B2000828809 /* ChooseGender */ = {
+			isa = PBXGroup;
+			children = (
+				DC25DFC328EF0B4400828809 /* ChooseGenderViewController.swift */,
+			);
+			path = ChooseGender;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +301,7 @@
 			files = (
 				A993D81E28EB17300052DC92 /* Extension.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
+				DC25DFC428EF0B4400828809 /* ChooseGenderViewController.swift in Sources */,
 				C50B591128E587B6001D42E5 /* Komka.xcdatamodeld in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
 				C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */,
