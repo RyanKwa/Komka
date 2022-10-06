@@ -53,7 +53,13 @@ class ChooseGenderViewController: UIViewController {
     }
     
     @objc func btnTapped(_ sender: UIButton) {
-        // btnTapped logic
+        guard let gender = sender.titleLabel?.text else { return }
+        
+        if !gender.isEmpty {
+            NSUbiquitousKeyValueStore.default.hasChooseGender = gender
+        }
+        
+        navigationController?.pushViewController(ChooseScenarioViewController(), animated: false)
     }
     
     private func createStackView(arrangedSubviews: [UIView], axis: NSLayoutConstraint.Axis, spacing: CGFloat) -> UIStackView {

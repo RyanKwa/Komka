@@ -20,6 +20,7 @@
 		C50B592D28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B592C28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift */; };
 		DC25DFC428EF0B4400828809 /* ChooseGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC25DFC328EF0B4400828809 /* ChooseGenderViewController.swift */; };
 		DC25DFC828EF13CE00828809 /* NSUbiquitousKeyValueStore+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC25DFC728EF13CE00828809 /* NSUbiquitousKeyValueStore+Ext.swift */; };
+		DC25DFCC28EF174D00828809 /* ChooseScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC25DFCB28EF174D00828809 /* ChooseScenarioViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		DC25DFC328EF0B4400828809 /* ChooseGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewController.swift; sourceTree = "<group>"; };
 		DC25DFC628EF12BF00828809 /* Komka.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Komka.entitlements; sourceTree = "<group>"; };
 		DC25DFC728EF13CE00828809 /* NSUbiquitousKeyValueStore+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUbiquitousKeyValueStore+Ext.swift"; sourceTree = "<group>"; };
+		DC25DFCB28EF174D00828809 /* ChooseScenarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +139,7 @@
 				A993D81B28EB17180052DC92 /* Utilities */,
 				A993D81628EB16350052DC92 /* Font */,
 				DC25DFC228EF0B2000828809 /* ChooseGender */,
-				C50B590628E587B6001D42E5 /* AppDelegate.swift */,
+				DC25DFC928EF172800828809 /* ChooseScenario */,
 				C50B590828E587B6001D42E5 /* SceneDelegate.swift */,
 				C50B590A28E587B6001D42E5 /* ViewController.swift */,
 				C50B591228E587B7001D42E5 /* Assets.xcassets */,
@@ -177,6 +179,23 @@
 			isa = PBXGroup;
 			children = (
 				DC25DFC328EF0B4400828809 /* ChooseGenderViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DC25DFC928EF172800828809 /* ChooseScenario */ = {
+			isa = PBXGroup;
+			children = (
+				DC25DFCA28EF173C00828809 /* View */,
+				C50B590628E587B6001D42E5 /* AppDelegate.swift */,
+			);
+			path = ChooseScenario;
+			sourceTree = "<group>";
+		};
+		DC25DFCA28EF173C00828809 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DC25DFCB28EF174D00828809 /* ChooseScenarioViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -317,6 +336,7 @@
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
 				DC25DFC428EF0B4400828809 /* ChooseGenderViewController.swift in Sources */,
 				C50B591128E587B6001D42E5 /* Komka.xcdatamodeld in Sources */,
+				DC25DFCC28EF174D00828809 /* ChooseScenarioViewController.swift in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
 				C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */,
 			);
