@@ -9,6 +9,8 @@ import UIKit
 
 class ScenarioCell: UICollectionViewCell {
     
+    static let identifier = "scenarioCollectionViewCell"
+    
     private lazy var scenarioImg: UIImageView = {
        let img = UIImageView()
         img.contentMode = .scaleToFill
@@ -21,7 +23,7 @@ class ScenarioCell: UICollectionViewCell {
     
     private lazy var scenarioLbl: UILabel = {
        let lbl = UILabel()
-        lbl.text = "WOI"
+        lbl.text = "Scenario Name"
         lbl.font = UIFont.balooFont(size: 30)
         lbl.textAlignment = .center
 
