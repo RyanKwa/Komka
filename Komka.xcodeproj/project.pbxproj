@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A993D81828EB16640052DC92 /* Baloo2-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */; };
 		A993D81E28EB17300052DC92 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D81D28EB17300052DC92 /* Extension.swift */; };
+		A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D82328EC68990052DC92 /* ChooseScenarioController.swift */; };
+		A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D82728EC7C870052DC92 /* ScenarioCell.swift */; };
 		C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590628E587B6001D42E5 /* AppDelegate.swift */; };
 		C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590828E587B6001D42E5 /* SceneDelegate.swift */; };
 		C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590A28E587B6001D42E5 /* ViewController.swift */; };
@@ -40,6 +42,8 @@
 /* Begin PBXFileReference section */
 		A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Baloo2-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		A993D81D28EB17300052DC92 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		A993D82328EC68990052DC92 /* ChooseScenarioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioController.swift; sourceTree = "<group>"; };
+		A993D82728EC7C870052DC92 /* ScenarioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioCell.swift; sourceTree = "<group>"; };
 		C50B590328E587B6001D42E5 /* Komka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50B590628E587B6001D42E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C50B590828E587B6001D42E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +108,31 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		A993D82928EFB8E10052DC92 /* ChooseScenario */ = {
+			isa = PBXGroup;
+			children = (
+				A993D82A28EFB8ED0052DC92 /* View */,
+			);
+			path = ChooseScenario;
+			sourceTree = "<group>";
+		};
+		A993D82A28EFB8ED0052DC92 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A993D82728EC7C870052DC92 /* ScenarioCell.swift */,
+				A993D82328EC68990052DC92 /* ChooseScenarioController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A993D82B28EFB9820052DC92 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				A993D81628EB16350052DC92 /* Font */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
 		C50B58FA28E587B6001D42E5 = {
 			isa = PBXGroup;
 			children = (
@@ -127,8 +156,9 @@
 		C50B590528E587B6001D42E5 /* Komka */ = {
 			isa = PBXGroup;
 			children = (
+				A993D82B28EFB9820052DC92 /* Themes */,
+				A993D82928EFB8E10052DC92 /* ChooseScenario */,
 				A993D81B28EB17180052DC92 /* Utilities */,
-				A993D81628EB16350052DC92 /* Font */,
 				C50B590628E587B6001D42E5 /* AppDelegate.swift */,
 				C50B590828E587B6001D42E5 /* SceneDelegate.swift */,
 				C50B590A28E587B6001D42E5 /* ViewController.swift */,
@@ -288,6 +318,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */,
+				A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */,
 				A993D81E28EB17300052DC92 /* Extension.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
 				C50B591128E587B6001D42E5 /* Komka.xcdatamodeld in Sources */,
