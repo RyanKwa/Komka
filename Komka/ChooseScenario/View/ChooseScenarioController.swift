@@ -12,11 +12,12 @@ class ChooseScenarioController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(ScenarioCell.self, forCellWithReuseIdentifier: "cell")
         
-        return cv
+        let scenarioViewCell = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        scenarioViewCell.translatesAutoresizingMaskIntoConstraints = false
+        scenarioViewCell.register(ScenarioCell.self, forCellWithReuseIdentifier: ScenarioCell.identifier)
+        
+        return scenarioViewCell
     }()
     
     private func setCollectionView(){
@@ -36,7 +37,7 @@ class ChooseScenarioController: UIViewController {
     private func assignbackground(){
         let imageView = UIImageView(frame: view.bounds)
         
-        imageView.contentMode =  .scaleAspectFill
+        imageView.contentMode =  .scaleToFill
         imageView.image = #imageLiteral(resourceName: "bg")
         view.addSubview(imageView)
     }
@@ -67,14 +68,13 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ScenarioCell
+        guard let scenarioCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScenarioCell.identifier, for: indexPath) as? ScenarioCell else { return UICollectionViewCell() }
         
-        return cell
+        return scenarioCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.navigationController?.pushViewController(ViewController(), animated: true)
-        print("Tapped \(indexPath)")
     }
 
 }
