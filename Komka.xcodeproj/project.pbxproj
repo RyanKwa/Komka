@@ -23,6 +23,7 @@
 		DC25DFCC28EF174D00828809 /* ChooseScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC25DFCB28EF174D00828809 /* ChooseScenarioViewController.swift */; };
 		DCA15CA628F19AE7002C0C78 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA15CA528F19AE7002C0C78 /* UIColor+Ext.swift */; };
 		DCA15CA928F19E5F002C0C78 /* ScreenSizeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA15CA828F19E5F002C0C78 /* ScreenSizeConfiguration.swift */; };
+		DCA15CAB28F19EBF002C0C78 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA15CAA28F19EBF002C0C78 /* UIView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		DC25DFCB28EF174D00828809 /* ChooseScenarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioViewController.swift; sourceTree = "<group>"; };
 		DCA15CA528F19AE7002C0C78 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		DCA15CA828F19E5F002C0C78 /* ScreenSizeConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSizeConfiguration.swift; sourceTree = "<group>"; };
+		DCA15CAA28F19EBF002C0C78 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				A993D81D28EB17300052DC92 /* Extension.swift */,
 				DC25DFC728EF13CE00828809 /* NSUbiquitousKeyValueStore+Ext.swift */,
 				DCA15CA528F19AE7002C0C78 /* UIColor+Ext.swift */,
+				DCA15CAA28F19EBF002C0C78 /* UIView+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC25DFC828EF13CE00828809 /* NSUbiquitousKeyValueStore+Ext.swift in Sources */,
+				DCA15CAB28F19EBF002C0C78 /* UIView+Ext.swift in Sources */,
 				A993D81E28EB17300052DC92 /* Extension.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
 				DC25DFC428EF0B4400828809 /* ChooseGenderViewController.swift in Sources */,

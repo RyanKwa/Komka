@@ -86,23 +86,17 @@ class ChooseGenderViewController: UIViewController {
     }
     
     private func setupConstraint(){
+
+        let genderBtnSize = ScreenSizeConfiguration.SCREEN_WIDTH/8+6
+        
         // constraint for maleBtn
-        NSLayoutConstraint.activate([
-            maleGenderBtn.widthAnchor.constraint(equalToConstant: 155),
-            maleGenderBtn.heightAnchor.constraint(equalTo: maleGenderBtn.widthAnchor)
-        ])
+        maleGenderBtn.setDimensions(width: genderBtnSize, height: genderBtnSize)
         
         // constraint for femaleBtn
-        NSLayoutConstraint.activate([
-            femaleGenderBtn.widthAnchor.constraint(equalToConstant: 155),
-            femaleGenderBtn.heightAnchor.constraint(equalTo: femaleGenderBtn.widthAnchor)
-        ])
+        femaleGenderBtn.setDimensions(width: genderBtnSize, height: genderBtnSize)
         
         // constraint for genderTitleStackView
-        NSLayoutConstraint.activate([
-            genderTitleStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            genderTitleStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        genderTitleStackView.center(inView: view)
     }
 
 }
