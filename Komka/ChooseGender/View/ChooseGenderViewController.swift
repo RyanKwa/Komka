@@ -18,29 +18,19 @@ class ChooseGenderViewController: UIViewController {
         return backgroundImg
     }()
     
-    lazy var titleLbl = createLbl(text: "Pilih Gender Anak", font: 45, textColor: .black)
+    lazy var titleLbl = UIView.createLabel(text: "Pilih Gender Anak", fontSize: 45)
     
     lazy var maleGenderBtn = createGenderBtn(title: "Male", imgTitle: "BtnMale")
-    lazy var maleGenderLbl = createLbl(text: "Laki-Laki", font: 30, textColor: UIColor.bluePastel)
+    lazy var maleGenderLbl = UIView.createLabel(text: "Laki-Laki", fontSize: 30, textColor: UIColor.bluePastel)
     
     lazy var femaleGenderBtn = createGenderBtn(title: "Female", imgTitle: "BtnFemale")
-    lazy var femaleGenderLbl = createLbl(text: "Perempuan", font: 30, textColor: UIColor.redPastel)
+    lazy var femaleGenderLbl = UIView.createLabel(text: "Perempuan", fontSize: 30, textColor: UIColor.redPastel)
     
-    lazy var maleGenderStackView = createStackView(arrangedSubviews: [maleGenderBtn, maleGenderLbl], axis: .vertical, spacing: 30)
-    lazy var femaleGenderStackView = createStackView(arrangedSubviews: [femaleGenderBtn, femaleGenderLbl], axis: .vertical, spacing: 30)
+    lazy var maleGenderStackView = UIView.createStackView(arrangedSubviews: [maleGenderBtn, maleGenderLbl], axis: .vertical, spacing: 35, alignment: .center)
+    lazy var femaleGenderStackView = UIView.createStackView(arrangedSubviews: [femaleGenderBtn, femaleGenderLbl], axis: .vertical, spacing: 35, alignment: .center)
     
-    lazy var genderStackView = createStackView(arrangedSubviews: [maleGenderStackView, femaleGenderStackView], axis: .horizontal, spacing: 100)
-    lazy var genderTitleStackView = createStackView(arrangedSubviews: [titleLbl, genderStackView], axis: .vertical, spacing: 45)
-    
-    private func createLbl(text: String, font: CGFloat, textColor: UIColor) -> UILabel {
-        let label = UILabel()
-        label.text = text
-        label.font = UIFont.balooFont(size: font)
-        label.textColor = textColor
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        return label
-    }
+    lazy var genderStackView = UIView.createStackView(arrangedSubviews: [maleGenderStackView, femaleGenderStackView], axis: .horizontal, spacing: 100, alignment: .center)
+    lazy var genderTitleStackView = UIView.createStackView(arrangedSubviews: [titleLbl, genderStackView], axis: .vertical, spacing: 45, alignment: .center)
     
     private func createGenderBtn(title: String, imgTitle: String) -> UIButton {
         let button = UIButton()
@@ -60,17 +50,6 @@ class ChooseGenderViewController: UIViewController {
         }
         
         navigationController?.pushViewController(ChooseScenarioViewController(), animated: false)
-    }
-    
-    private func createStackView(arrangedSubviews: [UIView], axis: NSLayoutConstraint.Axis, spacing: CGFloat) -> UIStackView {
-        let stack = UIStackView(arrangedSubviews: arrangedSubviews)
-        stack.axis = axis
-        stack.spacing = spacing
-        stack.distribution = .equalSpacing
-        stack.alignment = .center
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        
-        return stack
     }
     
     override func viewDidLoad() {

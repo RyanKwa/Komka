@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         var controller: UIViewController
         
-        if NSUbiquitousKeyValueStore.default.hasChooseGender != "" {
+        if !NSUbiquitousKeyValueStore.default.hasChooseGender.isEmpty {
             controller = ChooseScenarioViewController()
         } else {
             controller = ChooseGenderViewController()
