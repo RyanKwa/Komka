@@ -21,10 +21,10 @@ class ChooseGenderViewController: UIViewController {
     lazy var titleLbl = createLbl(text: "Pilih Gender Anak", font: 45, textColor: .black)
     
     lazy var maleGenderBtn = createGenderBtn(title: "Male", imgTitle: "BtnMale")
-    lazy var maleGenderLbl = createLbl(text: "Laki-Laki", font: 30, textColor: UIColor(named: "bluePastel")!)
+    lazy var maleGenderLbl = createLbl(text: "Laki-Laki", font: 30, textColor: UIColor.bluePastel)
     
     lazy var femaleGenderBtn = createGenderBtn(title: "Female", imgTitle: "BtnFemale")
-    lazy var femaleGenderLbl = createLbl(text: "Perempuan", font: 30, textColor: UIColor(named: "redPastel")!)
+    lazy var femaleGenderLbl = createLbl(text: "Perempuan", font: 30, textColor: UIColor.redPastel)
     
     lazy var maleGenderStackView = createStackView(arrangedSubviews: [maleGenderBtn, maleGenderLbl], axis: .vertical, spacing: 30)
     lazy var femaleGenderStackView = createStackView(arrangedSubviews: [femaleGenderBtn, femaleGenderLbl], axis: .vertical, spacing: 30)
