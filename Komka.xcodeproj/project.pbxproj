@@ -20,6 +20,13 @@
 		C50B592128E587B7001D42E5 /* KomkaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B592028E587B7001D42E5 /* KomkaTests.swift */; };
 		C50B592B28E587B7001D42E5 /* KomkaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B592A28E587B7001D42E5 /* KomkaUITests.swift */; };
 		C50B592D28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B592C28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift */; };
+		DC4B746128F534CF00A9C640 /* ChooseGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746028F534CF00A9C640 /* ChooseGenderViewController.swift */; };
+		DC4B746528F5351D00A9C640 /* ChooseGenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746428F5351D00A9C640 /* ChooseGenderViewModel.swift */; };
+		DC4B746828F5355700A9C640 /* ScreenSizeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746728F5355700A9C640 /* ScreenSizeConfiguration.swift */; };
+		DC4B746B28F5358500A9C640 /* ReusableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746A28F5358500A9C640 /* ReusableComponent.swift */; };
+		DC4B746D28F5359700A9C640 /* AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746C28F5359700A9C640 /* AutoLayout.swift */; };
+		DC4B746F28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746E28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift */; };
+		DC4B747428F53A5200A9C640 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B747228F53A5200A9C640 /* Button.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +65,13 @@
 		C50B592A28E587B7001D42E5 /* KomkaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KomkaUITests.swift; sourceTree = "<group>"; };
 		C50B592C28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KomkaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Komka.entitlements; sourceTree = "<group>"; };
+		DC4B746028F534CF00A9C640 /* ChooseGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewController.swift; sourceTree = "<group>"; };
+		DC4B746428F5351D00A9C640 /* ChooseGenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewModel.swift; sourceTree = "<group>"; };
+		DC4B746728F5355700A9C640 /* ScreenSizeConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSizeConfiguration.swift; sourceTree = "<group>"; };
+		DC4B746A28F5358500A9C640 /* ReusableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableComponent.swift; sourceTree = "<group>"; };
+		DC4B746C28F5359700A9C640 /* AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayout.swift; sourceTree = "<group>"; };
+		DC4B746E28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUbiquitousKeyValueStore+Ext.swift"; sourceTree = "<group>"; };
+		DC4B747228F53A5200A9C640 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +110,7 @@
 		A993D81B28EB17180052DC92 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				DC4B746628F5353F00A9C640 /* Constants */,
 				A993D81C28EB17240052DC92 /* Extension */,
 			);
 			path = Utilities;
@@ -104,7 +119,9 @@
 		A993D81C28EB17240052DC92 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				DC4B746928F5356300A9C640 /* UIView+Ext */,
 				A993D81D28EB17300052DC92 /* Extension.swift */,
+				DC4B746E28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -129,6 +146,7 @@
 		A993D82B28EFB9820052DC92 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
+				DC4B747528F53EAC00A9C640 /* UI */,
 				A993D81628EB16350052DC92 /* Font */,
 			);
 			path = Themes;
@@ -157,10 +175,11 @@
 		C50B590528E587B6001D42E5 /* Komka */ = {
 			isa = PBXGroup;
 			children = (
-				A993D82B28EFB9820052DC92 /* Themes */,
-				A993D82928EFB8E10052DC92 /* ChooseScenario */,
 				C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */,
+				A993D82B28EFB9820052DC92 /* Themes */,
 				A993D81B28EB17180052DC92 /* Utilities */,
+				DC4B745F28F5345700A9C640 /* ChooseGender */,
+				A993D82928EFB8E10052DC92 /* ChooseScenario */,
 				C50B590628E587B6001D42E5 /* AppDelegate.swift */,
 				C50B590828E587B6001D42E5 /* SceneDelegate.swift */,
 				C50B590A28E587B6001D42E5 /* ViewController.swift */,
@@ -187,6 +206,56 @@
 				C50B592C28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift */,
 			);
 			path = KomkaUITests;
+			sourceTree = "<group>";
+		};
+		DC4B745F28F5345700A9C640 /* ChooseGender */ = {
+			isa = PBXGroup;
+			children = (
+				DC4B746228F534FC00A9C640 /* View */,
+				DC4B746328F5350700A9C640 /* ViewModel */,
+			);
+			path = ChooseGender;
+			sourceTree = "<group>";
+		};
+		DC4B746228F534FC00A9C640 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DC4B746028F534CF00A9C640 /* ChooseGenderViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DC4B746328F5350700A9C640 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DC4B746428F5351D00A9C640 /* ChooseGenderViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DC4B746628F5353F00A9C640 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				DC4B746728F5355700A9C640 /* ScreenSizeConfiguration.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		DC4B746928F5356300A9C640 /* UIView+Ext */ = {
+			isa = PBXGroup;
+			children = (
+				DC4B746A28F5358500A9C640 /* ReusableComponent.swift */,
+				DC4B746C28F5359700A9C640 /* AutoLayout.swift */,
+			);
+			path = "UIView+Ext";
+			sourceTree = "<group>";
+		};
+		DC4B747528F53EAC00A9C640 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				DC4B747228F53A5200A9C640 /* Button.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,12 +389,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC4B746B28F5358500A9C640 /* ReusableComponent.swift in Sources */,
+				DC4B746128F534CF00A9C640 /* ChooseGenderViewController.swift in Sources */,
 				A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */,
 				A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */,
 				A993D81E28EB17300052DC92 /* Extension.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
+				DC4B746D28F5359700A9C640 /* AutoLayout.swift in Sources */,
+				DC4B746828F5355700A9C640 /* ScreenSizeConfiguration.swift in Sources */,
+				DC4B746528F5351D00A9C640 /* ChooseGenderViewModel.swift in Sources */,
+				DC4B747428F53A5200A9C640 /* Button.swift in Sources */,
 				C50B591128E587B6001D42E5 /* Komka.xcdatamodeld in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
+				DC4B746F28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift in Sources */,
 				C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,20 +572,21 @@
 				CODE_SIGN_ENTITLEMENTS = Komka/Komka.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L2V23RWBGR;
+				DEVELOPMENT_TEAM = SS9M8F83UR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Komka/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka;
+				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -525,20 +602,21 @@
 				CODE_SIGN_ENTITLEMENTS = Komka/Komka.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L2V23RWBGR;
+				DEVELOPMENT_TEAM = SS9M8F83UR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Komka/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka;
+				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
