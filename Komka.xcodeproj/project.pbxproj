@@ -20,6 +20,14 @@
 		C50B592128E587B7001D42E5 /* KomkaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B592028E587B7001D42E5 /* KomkaTests.swift */; };
 		C50B592B28E587B7001D42E5 /* KomkaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B592A28E587B7001D42E5 /* KomkaUITests.swift */; };
 		C50B592D28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B592C28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift */; };
+		C5D9828728F713D400E89F60 /* MultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9828628F713D400E89F60 /* MultipleChoiceViewController.swift */; };
+		C5D9828B28F7BFDB00E89F60 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9828A28F7BFDB00E89F60 /* Scenario.swift */; };
+		C5D9828D28F7C5FD00E89F60 /* WordImitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9828C28F7C5FD00E89F60 /* WordImitation.swift */; };
+		C5D9828F28F7C7F500E89F60 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9828E28F7C7F500E89F60 /* Level.swift */; };
+		C5D9829128F7C8F200E89F60 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829028F7C8F200E89F60 /* Reward.swift */; };
+		C5D9829328F7C93200E89F60 /* MultipleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829228F7C93200E89F60 /* MultipleChoice.swift */; };
+		C5D9829528F7C97400E89F60 /* Choice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829428F7C97400E89F60 /* Choice.swift */; };
+		C5D9829728F7C98200E89F60 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829628F7C98200E89F60 /* Asset.swift */; };
 		DC4B746128F534CF00A9C640 /* ChooseGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746028F534CF00A9C640 /* ChooseGenderViewController.swift */; };
 		DC4B746528F5351D00A9C640 /* ChooseGenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746428F5351D00A9C640 /* ChooseGenderViewModel.swift */; };
 		DC4B746828F5355700A9C640 /* ScreenSizeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746728F5355700A9C640 /* ScreenSizeConfiguration.swift */; };
@@ -65,6 +73,14 @@
 		C50B592A28E587B7001D42E5 /* KomkaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KomkaUITests.swift; sourceTree = "<group>"; };
 		C50B592C28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KomkaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Komka.entitlements; sourceTree = "<group>"; };
+		C5D9828628F713D400E89F60 /* MultipleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultipleChoiceViewController.swift; path = Komka/MultipleChoice/MultipleChoiceViewController.swift; sourceTree = SOURCE_ROOT; };
+		C5D9828A28F7BFDB00E89F60 /* Scenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
+		C5D9828C28F7C5FD00E89F60 /* WordImitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordImitation.swift; sourceTree = "<group>"; };
+		C5D9828E28F7C7F500E89F60 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		C5D9829028F7C8F200E89F60 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
+		C5D9829228F7C93200E89F60 /* MultipleChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoice.swift; sourceTree = "<group>"; };
+		C5D9829428F7C97400E89F60 /* Choice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Choice.swift; sourceTree = "<group>"; };
+		C5D9829628F7C98200E89F60 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		DC4B746028F534CF00A9C640 /* ChooseGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewController.swift; sourceTree = "<group>"; };
 		DC4B746428F5351D00A9C640 /* ChooseGenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewModel.swift; sourceTree = "<group>"; };
 		DC4B746728F5355700A9C640 /* ScreenSizeConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSizeConfiguration.swift; sourceTree = "<group>"; };
@@ -175,6 +191,8 @@
 		C50B590528E587B6001D42E5 /* Komka */ = {
 			isa = PBXGroup;
 			children = (
+				C5D9828928F7BDAE00E89F60 /* Models */,
+				C5D9828828F713E800E89F60 /* MultipleChoice */,
 				C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */,
 				A993D82B28EFB9820052DC92 /* Themes */,
 				A993D81B28EB17180052DC92 /* Utilities */,
@@ -206,6 +224,28 @@
 				C50B592C28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift */,
 			);
 			path = KomkaUITests;
+			sourceTree = "<group>";
+		};
+		C5D9828828F713E800E89F60 /* MultipleChoice */ = {
+			isa = PBXGroup;
+			children = (
+				C5D9828628F713D400E89F60 /* MultipleChoiceViewController.swift */,
+			);
+			path = MultipleChoice;
+			sourceTree = "<group>";
+		};
+		C5D9828928F7BDAE00E89F60 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C5D9828E28F7C7F500E89F60 /* Level.swift */,
+				C5D9828A28F7BFDB00E89F60 /* Scenario.swift */,
+				C5D9829228F7C93200E89F60 /* MultipleChoice.swift */,
+				C5D9829028F7C8F200E89F60 /* Reward.swift */,
+				C5D9828C28F7C5FD00E89F60 /* WordImitation.swift */,
+				C5D9829428F7C97400E89F60 /* Choice.swift */,
+				C5D9829628F7C98200E89F60 /* Asset.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		DC4B745F28F5345700A9C640 /* ChooseGender */ = {
@@ -394,15 +434,23 @@
 				A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */,
 				A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */,
 				A993D81E28EB17300052DC92 /* Extension.swift in Sources */,
+				C5D9828D28F7C5FD00E89F60 /* WordImitation.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
 				DC4B746D28F5359700A9C640 /* AutoLayout.swift in Sources */,
 				DC4B746828F5355700A9C640 /* ScreenSizeConfiguration.swift in Sources */,
+				C5D9829528F7C97400E89F60 /* Choice.swift in Sources */,
 				DC4B746528F5351D00A9C640 /* ChooseGenderViewModel.swift in Sources */,
 				DC4B747428F53A5200A9C640 /* Button.swift in Sources */,
 				C50B591128E587B6001D42E5 /* Komka.xcdatamodeld in Sources */,
+				C5D9828F28F7C7F500E89F60 /* Level.swift in Sources */,
+				C5D9829728F7C98200E89F60 /* Asset.swift in Sources */,
+				C5D9829128F7C8F200E89F60 /* Reward.swift in Sources */,
+				C5D9829328F7C93200E89F60 /* MultipleChoice.swift in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
 				DC4B746F28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift in Sources */,
+				C5D9828B28F7BFDB00E89F60 /* Scenario.swift in Sources */,
 				C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */,
+				C5D9828728F713D400E89F60 /* MultipleChoiceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,7 +620,7 @@
 				CODE_SIGN_ENTITLEMENTS = Komka/Komka.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = SS9M8F83UR;
+				DEVELOPMENT_TEAM = L2V23RWBGR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Komka/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -586,7 +634,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -602,7 +650,7 @@
 				CODE_SIGN_ENTITLEMENTS = Komka/Komka.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = SS9M8F83UR;
+				DEVELOPMENT_TEAM = L2V23RWBGR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Komka/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -616,7 +664,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
