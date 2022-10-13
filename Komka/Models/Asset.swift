@@ -17,5 +17,3 @@ struct Asset {
     let image: CKAsset?
     
 }
-
-
