@@ -14,5 +14,8 @@ struct Asset {
     let gender: String?
     let scenario: CKRecord.Reference?
     let step: String?
-    let image: [CKAsset]?
+    let image: CKAsset?
+    
 }
+
+
