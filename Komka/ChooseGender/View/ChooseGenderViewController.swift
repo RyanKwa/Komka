@@ -11,14 +11,24 @@ class ChooseGenderViewController: UIViewController {
 
     lazy var chooseGenderVM: ChooseGenderViewModel = ChooseGenderViewModel()
     
-    lazy var backgroundImg = UIView.setBackgroundImage()
+    lazy var backgroundImg = UIView.setImageView(imageName: "bg")
     
     lazy var titleLbl = UIView.createLabel(text: "Pilih Gender Anak", fontSize: 45)
     
-    lazy var maleGenderBtn = createGenderBtn(title: "Male", imgTitle: "BtnMale")
+    lazy var maleGenderBtn: UIButton = {
+        let button = UIView.createImageIconBtn(title: "Male", imgTitle: "BtnMale")
+        button.addTarget(self, action: #selector(btnTapped), for: .touchUpInside)
+        
+        return button
+    }()
     lazy var maleGenderLbl = UIView.createLabel(text: "Laki-Laki", fontSize: 30, textColor: UIColor(named: "bluePastel"))
     
-    lazy var femaleGenderBtn = createGenderBtn(title: "Female", imgTitle: "BtnFemale")
+    lazy var femaleGenderBtn: UIButton = {
+        let button = UIView.createImageIconBtn(title: "Female", imgTitle: "BtnFemale")
+        button.addTarget(self, action: #selector(btnTapped), for: .touchUpInside)
+        
+        return button
+    }()
     lazy var femaleGenderLbl = UIView.createLabel(text: "Perempuan", fontSize: 30, textColor: UIColor(named: "redPastel"))
     
     lazy var maleGenderStackView = UIView.createStackView(arrangedSubviews: [maleGenderBtn, maleGenderLbl], axis: .vertical, spacing: 35, alignment: .center)
@@ -26,16 +36,6 @@ class ChooseGenderViewController: UIViewController {
     
     lazy var genderStackView = UIView.createStackView(arrangedSubviews: [maleGenderStackView, femaleGenderStackView], axis: .horizontal, spacing: 100, alignment: .center)
     lazy var genderTitleStackView = UIView.createStackView(arrangedSubviews: [titleLbl, genderStackView], axis: .vertical, spacing: 45, alignment: .center)
-    
-    private func createGenderBtn(title: String, imgTitle: String) -> UIButton {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(title, for: .normal)
-        button.setImage(UIImage(named: imgTitle), for: .normal)
-        button.addTarget(self, action: #selector(btnTapped), for: .touchUpInside)
-        
-        return button
-    }
     
     @objc func btnTapped(_ sender: UIButton) {
         guard let gender = sender.titleLabel?.text else { return }
