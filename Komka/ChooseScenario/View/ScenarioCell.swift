@@ -6,56 +6,31 @@
 //
 
 import UIKit
+import CloudKit
 
 class ScenarioCell: UICollectionViewCell {
     
     static let identifier = "scenarioCollectionViewCell"
     
-    private lazy var scenarioImg: UIImageView = {
+    lazy var scenarioImg: UIImageView = {
        let img = UIImageView()
         img.contentMode = .scaleToFill
-        img.image = #imageLiteral(resourceName: "RuangMakanCover")
-        
         img.translatesAutoresizingMaskIntoConstraints = false
 
         return img
     }()
     
-    private lazy var scenarioLbl: UILabel = {
-       let lbl = UILabel()
-        lbl.text = "Scenario Name"
-        lbl.font = UIFont.balooFont(size: 30)
-        lbl.textAlignment = .center
-
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        
-        return lbl
-    }()
+    lazy var scenarioLabel = UIView.createLabel(text: "Scenario Name", fontSize: 30)
     
-    private lazy var stackViewScenario: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [scenarioImg, scenarioLbl])
-        stackView.axis = .vertical
-        stackView.spacing = 5
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
+    private lazy var stackViewScenario = UIView.createStackView(arrangedSubviews: [scenarioImg, scenarioLabel], axis: .vertical, spacing: 5)
     
     private func setConstraint(){
-        NSLayoutConstraint.activate([
-            scenarioImg.bottomAnchor.constraint(equalTo: stackViewScenario.bottomAnchor, constant: -50),
-
-            stackViewScenario.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackViewScenario.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            stackViewScenario.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            stackViewScenario.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-
-        ])
-    }
-    
-    private func addViews(){
-        contentView.addSubview(stackViewScenario)
-        setConstraint()
+        stackViewScenario.anchor(top: contentView.topAnchor)
+        stackViewScenario.anchor(left: contentView.leftAnchor)
+        stackViewScenario.anchor(right: contentView.rightAnchor)
+        stackViewScenario.anchor(bottom: contentView.bottomAnchor)
+        
+        scenarioImg.anchor(bottom: stackViewScenario.bottomAnchor, paddingBottom: 50)
     }
     
     private func ovalShadow() {
@@ -72,6 +47,8 @@ class ScenarioCell: UICollectionViewCell {
     }
     
     private func cellStyle(){
+        scenarioLabel.textAlignment = .center
+
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 20
         contentView.layer.masksToBounds = true
@@ -86,7 +63,8 @@ class ScenarioCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addViews()
+        contentView.addSubview(stackViewScenario)
+        setConstraint()
         cellStyle()
     }
     
