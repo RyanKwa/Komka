@@ -73,7 +73,7 @@ class ScenarioCell: UICollectionViewCell {
     
     private func cellStyle(){
         contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 20
+        contentView.layer.cornerRadius = 50
         contentView.layer.masksToBounds = true
         
         layer.shadowColor = UIColor.black.cgColor

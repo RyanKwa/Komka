@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0675A1C228F80AA90070967C /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0675A1C128F80AA90070967C /* TitleLabel.swift */; };
+		06761B7028F7BED500471C36 /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06761B6F28F7BED500471C36 /* LevelButton.swift */; };
+		06B2F74E28F6DC300017C184 /* RewardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2F74D28F6DC300017C184 /* RewardViewController.swift */; };
 		A993D81828EB16640052DC92 /* Baloo2-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */; };
 		A993D81E28EB17300052DC92 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D81D28EB17300052DC92 /* Extension.swift */; };
 		A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D82328EC68990052DC92 /* ChooseScenarioController.swift */; };
@@ -40,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0675A1C128F80AA90070967C /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		06761B6F28F7BED500471C36 /* LevelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelButton.swift; sourceTree = "<group>"; };
+		06B2F74D28F6DC300017C184 /* RewardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardViewController.swift; sourceTree = "<group>"; };
 		A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Baloo2-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		A993D81D28EB17300052DC92 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		A993D82328EC68990052DC92 /* ChooseScenarioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioController.swift; sourceTree = "<group>"; };
@@ -85,6 +91,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06B2F74A28F6DA490017C184 /* ChooseReward */ = {
+			isa = PBXGroup;
+			children = (
+				06B2F74D28F6DC300017C184 /* RewardViewController.swift */,
+			);
+			path = ChooseReward;
+			sourceTree = "<group>";
+		};
 		A993D81628EB16350052DC92 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +175,7 @@
 				A993D82928EFB8E10052DC92 /* ChooseScenario */,
 				C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */,
 				A993D81B28EB17180052DC92 /* Utilities */,
+				06B2F74A28F6DA490017C184 /* ChooseReward */,
 				C50B590628E587B6001D42E5 /* AppDelegate.swift */,
 				C50B590828E587B6001D42E5 /* SceneDelegate.swift */,
 				C50B590A28E587B6001D42E5 /* ViewController.swift */,
@@ -187,6 +202,58 @@
 				C50B592C28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift */,
 			);
 			path = KomkaUITests;
+			sourceTree = "<group>";
+		};
+		DC4B745F28F5345700A9C640 /* ChooseGender */ = {
+			isa = PBXGroup;
+			children = (
+				DC4B746228F534FC00A9C640 /* View */,
+				DC4B746328F5350700A9C640 /* ViewModel */,
+			);
+			path = ChooseGender;
+			sourceTree = "<group>";
+		};
+		DC4B746228F534FC00A9C640 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DC4B746028F534CF00A9C640 /* ChooseGenderViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DC4B746328F5350700A9C640 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DC4B746428F5351D00A9C640 /* ChooseGenderViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DC4B746628F5353F00A9C640 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				DC4B746728F5355700A9C640 /* ScreenSizeConfiguration.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		DC4B746928F5356300A9C640 /* UIView+Ext */ = {
+			isa = PBXGroup;
+			children = (
+				DC4B746A28F5358500A9C640 /* ReusableComponent.swift */,
+				DC4B746C28F5359700A9C640 /* AutoLayout.swift */,
+			);
+			path = "UIView+Ext";
+			sourceTree = "<group>";
+		};
+		DC4B747528F53EAC00A9C640 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				DC4B747228F53A5200A9C640 /* Button.swift */,
+				06761B6F28F7BED500471C36 /* LevelButton.swift */,
+				0675A1C128F80AA90070967C /* TitleLabel.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,13 +387,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06761B7028F7BED500471C36 /* LevelButton.swift in Sources */,
+				DC4B746B28F5358500A9C640 /* ReusableComponent.swift in Sources */,
+				DC4B746128F534CF00A9C640 /* ChooseGenderViewController.swift in Sources */,
 				A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */,
 				A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */,
 				A993D81E28EB17300052DC92 /* Extension.swift in Sources */,
+				06B2F74E28F6DC300017C184 /* RewardViewController.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
 				C50B591128E587B6001D42E5 /* Komka.xcdatamodeld in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
 				C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */,
+				0675A1C228F80AA90070967C /* TitleLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

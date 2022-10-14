@@ -9,6 +9,51 @@ import UIKit
 
 class ChooseScenarioController: UIViewController {
     
+    private lazy var titleLabel = TitleLabel(title: "Pilih Skenario", fontSize: 45)
+    
+    private lazy var btnMudah: UIButton = {
+        let button = LevelButton()
+        button.configure(with: LevelButtonVM(title: "Mudah", image: "ChooseScenario_LevelIdle", size: 30))
+        button.addTarget(self, action:#selector(levelBtnTapped), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var btnSedang: UIButton = {
+        let button = LevelButton()
+        button.configure(with: LevelButtonVM(title: "Sedang", image: "ChooseScenario_LevelIdle", size: 30))
+        button.addTarget(self, action:#selector(levelBtnTapped), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var btnSusah: UIButton = {
+        let button = LevelButton()
+        button.configure(with: LevelButtonVM(title: "Susah", image: "ChooseScenario_LevelIdle", size: 30))
+        button.addTarget(self, action:#selector(levelBtnTapped), for: .touchUpInside)
+        return button
+    }()
+    
+
+    
+    private lazy var stackView : UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [btnMudah, btnSedang, btnSusah])
+        stackView.axis = .horizontal
+        stackView.distribution = .equalCentering
+        stackView.spacing = 18
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private lazy var rewardButton : UIButton = {
+        let rewardBtn = UIButton()
+        rewardBtn.setBackgroundImage(UIImage(named: "RewardBtn.png"), for: .normal)
+        rewardBtn.translatesAutoresizingMaskIntoConstraints = false
+        rewardBtn.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        rewardBtn.heightAnchor.constraint(equalToConstant: 89).isActive = true
+        rewardBtn.addTarget(self, action: #selector(rewardBtnTapped), for: .touchUpInside)
+        
+        return rewardBtn
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -30,7 +75,7 @@ class ChooseScenarioController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
-            collectionView.heightAnchor.constraint(equalToConstant: view.frame.height/1.5)
+            collectionView.heightAnchor.constraint(equalToConstant: view.frame.height/1.6)
         ])
     }
 
@@ -49,6 +94,40 @@ class ChooseScenarioController: UIViewController {
         assignbackground()
         view.addSubview(collectionView)
         setCollectionView()
+        view.addSubview(titleLabel)
+        view.addSubview(stackView)
+        view.addSubview(rewardButton)
+        setupAutoLayout()
+    }
+    
+   private func setupAutoLayout() {
+        NSLayoutConstraint.activate([
+
+            
+            rewardButton.topAnchor.constraint(equalTo:view.topAnchor, constant: 59),
+            rewardButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 64),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            stackView.topAnchor.constraint(equalTo:titleLabel.bottomAnchor, constant: 29),
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
+    
+    @objc func levelBtnTapped(_ sender: UIButton){
+        for subView in view.subviews{
+            if let button = subView as? UIButton {
+                button.isSelected = false
+            }
+        }
+        sender.isSelected = true
+        sender.setBackgroundImage(UIImage(named: "ChooseScenario_LevelActive"), for: .normal)
+
+    }
+    
+    @objc func rewardBtnTapped(_ sender: UIButton){
+        navigationController?.pushViewController(RewardViewController(), animated: false)
     }
 }
 
@@ -78,3 +157,5 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     }
 
 }
+
+
