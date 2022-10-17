@@ -9,6 +9,6 @@ import CloudKit
 import Foundation
 
 struct Choice {
-    let id: CKRecord.ID?
-    let title: String?
+    let id: CKRecord.ID
+    let title: String
 }

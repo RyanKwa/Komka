@@ -10,7 +10,7 @@ import UIKit
 
 class CloudKitHelper {
     var scenarios: [Scenario] = []
-    var assets: [Asset] = []
+    var assets: [ContentAsset] = []
     
     let db = CKContainer.default().publicCloudDatabase
     
@@ -43,7 +43,7 @@ class CloudKitHelper {
                     let scenarioImage = record["image"] as? CKAsset
                 else { return }
                 
-                self.assets.append(Asset(id: returnedRecordID, title: imageTitle, gender: imageGender, scenario: scenarioReference, step: imageStep, image: scenarioImage))
+                self.assets.append(ContentAsset(id: returnedRecordID, title: imageTitle, gender: imageGender, scenario: scenarioReference, step: imageStep, image: scenarioImage))
                 
                 if let reference = record.value(forKey: "scenario") as? CKRecord.Reference {
                     let predicate = NSPredicate(format: "recordID == %@", reference)

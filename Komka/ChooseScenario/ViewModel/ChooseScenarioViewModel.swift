@@ -13,7 +13,7 @@ class ChooseScenarioViewModel {
     var ckHelper = CloudKitHelper()
     
     @Published var scenarios: [Scenario] = []
-    @Published var assets: [Asset] = []
+    @Published var assets: [ContentAsset] = []
     
     init(){
         DispatchQueue.main.asyncAfter(deadline: .now()+2){

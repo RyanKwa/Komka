@@ -38,7 +38,7 @@
 		C5D9829128F7C8F200E89F60 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829028F7C8F200E89F60 /* Reward.swift */; };
 		C5D9829328F7C93200E89F60 /* MultipleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829228F7C93200E89F60 /* MultipleChoice.swift */; };
 		C5D9829528F7C97400E89F60 /* Choice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829428F7C97400E89F60 /* Choice.swift */; };
-		C5D9829728F7C98200E89F60 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829628F7C98200E89F60 /* Asset.swift */; };
+		C5D9829728F7C98200E89F60 /* ContentAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829628F7C98200E89F60 /* ContentAsset.swift */; };
 		DC4B746128F534CF00A9C640 /* ChooseGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746028F534CF00A9C640 /* ChooseGenderViewController.swift */; };
 		DC4B746528F5351D00A9C640 /* ChooseGenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746428F5351D00A9C640 /* ChooseGenderViewModel.swift */; };
 		DC4B746828F5355700A9C640 /* ScreenSizeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746728F5355700A9C640 /* ScreenSizeConfiguration.swift */; };
@@ -107,7 +107,7 @@
 		C5D9829028F7C8F200E89F60 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
 		C5D9829228F7C93200E89F60 /* MultipleChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoice.swift; sourceTree = "<group>"; };
 		C5D9829428F7C97400E89F60 /* Choice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Choice.swift; sourceTree = "<group>"; };
-		C5D9829628F7C98200E89F60 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		C5D9829628F7C98200E89F60 /* ContentAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAsset.swift; sourceTree = "<group>"; };
 		DC4B746028F534CF00A9C640 /* ChooseGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewController.swift; sourceTree = "<group>"; };
 		DC4B746428F5351D00A9C640 /* ChooseGenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewModel.swift; sourceTree = "<group>"; };
 		DC4B746728F5355700A9C640 /* ScreenSizeConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSizeConfiguration.swift; sourceTree = "<group>"; };
@@ -306,7 +306,7 @@
 				C5D9829028F7C8F200E89F60 /* Reward.swift */,
 				C5D9828C28F7C5FD00E89F60 /* WordImitation.swift */,
 				C5D9829428F7C97400E89F60 /* Choice.swift */,
-				C5D9829628F7C98200E89F60 /* Asset.swift */,
+				C5D9829628F7C98200E89F60 /* ContentAsset.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -540,7 +540,7 @@
 				A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */,
 				DCED8F3F28F80C91009F31E3 /* LevelButton.swift in Sources */,
 				C5336BD628F8665000AC24A9 /* UIImageView+Ext.swift in Sources */,
-				A993D81E28EB17300052DC92 /* Extension.swift in Sources */,
+				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
 				DC85A19428F73E2B00E457F0 /* TextToSpeechService.swift in Sources */,
 				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
@@ -563,7 +563,7 @@
 				A96B644428F7D14400E23BB2 /* Reward.swift in Sources */,
 				A96B644828F7D14400E23BB2 /* Level.swift in Sources */,
 				C5D9828F28F7C7F500E89F60 /* Level.swift in Sources */,
-				C5D9829728F7C98200E89F60 /* Asset.swift in Sources */,
+				C5D9829728F7C98200E89F60 /* ContentAsset.swift in Sources */,
 				C5D9829128F7C8F200E89F60 /* Reward.swift in Sources */,
 				C5D9829328F7C93200E89F60 /* MultipleChoice.swift in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
