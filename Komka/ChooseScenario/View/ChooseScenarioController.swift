@@ -13,6 +13,10 @@ class ChooseScenarioController: UIViewController {
     private lazy var btnSedang = Button(style: .idle, title: "Sedang")
     private lazy var btnSusah = Button(style: .idle, title: "Susah")
     
+    lazy var backgroundImg = UIView.setBackgroundImage()
+    
+    private var vm = ChooseScenarioViewModel()
+        
     private lazy var stackView : UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [btnMudah, btnSedang, btnSusah])
         stackView.axis = .horizontal
@@ -48,27 +52,21 @@ class ChooseScenarioController: UIViewController {
         collectionView.backgroundColor = UIColor.clear
         collectionView.clipsToBounds = false
         
-        NSLayoutConstraint.activate([
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
-            collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
-            collectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
-            collectionView.heightAnchor.constraint(equalToConstant: view.frame.height/1.5)
-        ])
-    }
-
-    private func assignbackground(){
-        let imageView = UIImageView(frame: view.bounds)
-        
-        imageView.contentMode =  .scaleToFill
-        imageView.image = #imageLiteral(resourceName: "bg")
-        view.addSubview(imageView)
+        collectionView.anchor(bottom: view.bottomAnchor, paddingBottom: 40)
+        collectionView.anchor(left: view.leftAnchor, paddingLeft: 40)
+        collectionView.anchor(right: view.rightAnchor, paddingLeft: 40)
+        collectionView.anchor(height: ScreenSizeConfiguration.SCREEN_HEIGHT/1.6)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         
-        assignbackground()
+        DispatchQueue.main.asyncAfter(deadline: .now()+2){
+            self.collectionView.reloadData()
+        }
+        
+        view.addSubview(backgroundImg)
         view.addSubview(stackView)
         view.addSubview(rewardButton)
         setupAutoLayout()
@@ -99,17 +97,25 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return vm.scenarios.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let scenarioCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScenarioCell.identifier, for: indexPath) as? ScenarioCell else { return UICollectionViewCell() }
+        guard
+            let scenarioCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScenarioCell.identifier, for: indexPath) as? ScenarioCell,
+            let scenarioTitle = vm.scenarios[indexPath.row].title,
+            let scenarioImage = vm.assets[indexPath.row].image
+        else { return UICollectionViewCell() }
+        
+        scenarioCell.scenarioLabel.text = scenarioTitle
+        scenarioCell.scenarioImg.image = UIImage.changeImageFromURL(baseImage: scenarioImage)
         
         return scenarioCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(ViewController(), animated: true)
+        let viewController = ViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
 }

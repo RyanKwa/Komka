@@ -7,10 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */; };
+		A96B644328F7D14400E23BB2 /* MultipleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643C28F7D14400E23BB2 /* MultipleChoice.swift */; };
+		A96B644428F7D14400E23BB2 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643D28F7D14400E23BB2 /* Reward.swift */; };
+		A96B644528F7D14400E23BB2 /* WordImitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643E28F7D14400E23BB2 /* WordImitation.swift */; };
+		A96B644628F7D14400E23BB2 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643F28F7D14400E23BB2 /* Asset.swift */; };
+		A96B644728F7D14400E23BB2 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B644028F7D14400E23BB2 /* Scenario.swift */; };
+		A96B644828F7D14400E23BB2 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B644128F7D14400E23BB2 /* Level.swift */; };
+		A96B644928F7D14400E23BB2 /* Choice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B644228F7D14400E23BB2 /* Choice.swift */; };
 		A993D81828EB16640052DC92 /* Baloo2-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */; };
-		A993D81E28EB17300052DC92 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D81D28EB17300052DC92 /* Extension.swift */; };
+		A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D81D28EB17300052DC92 /* UIFont+Ext.swift */; };
 		A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D82328EC68990052DC92 /* ChooseScenarioController.swift */; };
 		A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D82728EC7C870052DC92 /* ScenarioCell.swift */; };
+		A9B1761C28FD2408005F2FC1 /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */; };
+		A9B1761E28FD3667005F2FC1 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */; };
 		C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590628E587B6001D42E5 /* AppDelegate.swift */; };
 		C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590828E587B6001D42E5 /* SceneDelegate.swift */; };
 		C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590A28E587B6001D42E5 /* ViewController.swift */; };
@@ -52,10 +62,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioViewModel.swift; sourceTree = "<group>"; };
+		A96B643C28F7D14400E23BB2 /* MultipleChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleChoice.swift; sourceTree = "<group>"; };
+		A96B643D28F7D14400E23BB2 /* Reward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
+		A96B643E28F7D14400E23BB2 /* WordImitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordImitation.swift; sourceTree = "<group>"; };
+		A96B643F28F7D14400E23BB2 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		A96B644028F7D14400E23BB2 /* Scenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
+		A96B644128F7D14400E23BB2 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		A96B644228F7D14400E23BB2 /* Choice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Choice.swift; sourceTree = "<group>"; };
 		A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Baloo2-VariableFont_wght.ttf"; sourceTree = "<group>"; };
-		A993D81D28EB17300052DC92 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		A993D81D28EB17300052DC92 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		A993D82328EC68990052DC92 /* ChooseScenarioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioController.swift; sourceTree = "<group>"; };
 		A993D82728EC7C870052DC92 /* ScenarioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioCell.swift; sourceTree = "<group>"; };
+		A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
+		A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		C50B590328E587B6001D42E5 /* Komka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50B590628E587B6001D42E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C50B590828E587B6001D42E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +129,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A96B643528F5BC1B00E23BB2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A96B643B28F7D14400E23BB2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A96B643C28F7D14400E23BB2 /* MultipleChoice.swift */,
+				A96B643D28F7D14400E23BB2 /* Reward.swift */,
+				A96B643E28F7D14400E23BB2 /* WordImitation.swift */,
+				A96B643F28F7D14400E23BB2 /* Asset.swift */,
+				A96B644028F7D14400E23BB2 /* Scenario.swift */,
+				A96B644128F7D14400E23BB2 /* Level.swift */,
+				A96B644228F7D14400E23BB2 /* Choice.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		A993D81628EB16350052DC92 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,9 +172,10 @@
 			isa = PBXGroup;
 			children = (
 				DC4B746928F5356300A9C640 /* UIView+Ext */,
-				A993D81D28EB17300052DC92 /* Extension.swift */,
+				A993D81D28EB17300052DC92 /* UIFont+Ext.swift */,
 				DC4B746E28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift */,
 				DCED8F4028F85BF8009F31E3 /* UIImageView+Ext.swift */,
+				A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -140,7 +183,9 @@
 		A993D82928EFB8E10052DC92 /* ChooseScenario */ = {
 			isa = PBXGroup;
 			children = (
+				A96B643528F5BC1B00E23BB2 /* ViewModel */,
 				A993D82A28EFB8ED0052DC92 /* View */,
+				A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */,
 			);
 			path = ChooseScenario;
 			sourceTree = "<group>";
@@ -188,6 +233,7 @@
 			children = (
 				C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */,
 				DCED8F4628F87B33009F31E3 /* Services */,
+				A96B643B28F7D14400E23BB2 /* Models */,
 				A993D82B28EFB9820052DC92 /* Themes */,
 				A993D81B28EB17180052DC92 /* Utilities */,
 				DC4B745F28F5345700A9C640 /* ChooseGender */,
@@ -446,22 +492,35 @@
 			files = (
 				DC4B746B28F5358500A9C640 /* ReusableComponent.swift in Sources */,
 				DC4B746128F534CF00A9C640 /* ChooseGenderViewController.swift in Sources */,
+				A96B644928F7D14400E23BB2 /* Choice.swift in Sources */,
 				A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */,
 				A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */,
 				DCED8F3F28F80C91009F31E3 /* LevelButton.swift in Sources */,
 				A993D81E28EB17300052DC92 /* Extension.swift in Sources */,
 				DC85A19428F73E2B00E457F0 /* TextToSpeechService.swift in Sources */,
+				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
 				DC85A19228F73DEF00E457F0 /* FullSentencesViewController.swift in Sources */,
+				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
+				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
+				A96B644328F7D14400E23BB2 /* MultipleChoice.swift in Sources */,
 				DC4B746D28F5359700A9C640 /* AutoLayout.swift in Sources */,
+				A9B1761E28FD3667005F2FC1 /* UIImage+Ext.swift in Sources */,
 				DC4B746828F5355700A9C640 /* ScreenSizeConfiguration.swift in Sources */,
+				A96B644628F7D14400E23BB2 /* Asset.swift in Sources */,
 				DC4B746528F5351D00A9C640 /* ChooseGenderViewModel.swift in Sources */,
 				DCED8F4128F85BF8009F31E3 /* UIImageView+Ext.swift in Sources */,
 				DC4B747428F53A5200A9C640 /* Button.swift in Sources */,
 				C50B591128E587B6001D42E5 /* Komka.xcdatamodeld in Sources */,
 				DCED8F4528F865C2009F31E3 /* SoundPracticeViewController.swift in Sources */,
+				A96B644728F7D14400E23BB2 /* Scenario.swift in Sources */,
+				A96B644428F7D14400E23BB2 /* Reward.swift in Sources */,
+				A96B644828F7D14400E23BB2 /* Level.swift in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
+				A9B1761C28FD2408005F2FC1 /* CloudKitHelper.swift in Sources */,
+				A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */,
 				DC4B746F28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift in Sources */,
+				A96B644528F7D14400E23BB2 /* WordImitation.swift in Sources */,
 				C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -646,7 +705,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -660,9 +719,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Komka/Komka.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = SS9M8F83UR;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = L2V23RWBGR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Komka/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -676,8 +737,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = KomkaProfile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -14,7 +14,7 @@ class FullSentencesViewController: UIViewController {
     lazy private var backgroundImg = UIView.setImageView(imageName: "bg")
     lazy private var scenarioCoverImg: UIImageView = {
         let image = UIView.setImageView(imageName: "KamarMandiCover", contentMode: .scaleAspectFill, clipsToBound: true)
-        image.addOverlay()
+        image.addWhiteOverlay()
         
         return image
     }()
