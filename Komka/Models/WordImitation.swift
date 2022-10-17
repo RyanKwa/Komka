@@ -9,6 +9,6 @@ import CloudKit
 import Foundation
 
 struct WordImitation {
-    let id: CKRecord.ID?
-    let title: String?
+    let id: CKRecord.ID
+    let title: String
 }

@@ -9,10 +9,10 @@ import CloudKit
 import Foundation
 
 struct Asset {
-    let id: CKRecord.ID?
-    let title: String?
+    let id: CKRecord.ID
+    let title: String
     let gender: String?
     let scenario: CKRecord.Reference?
-    let step: String?
-    let image: [CKAsset]?
+    let step: String
+    let image: [CKAsset]
 }

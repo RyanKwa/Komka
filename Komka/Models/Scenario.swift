@@ -9,12 +9,13 @@ import CloudKit
 import Foundation
 
 struct Scenario {
-    let id: CKRecord.ID?
-    let title: String?
-    let isCompleted: Bool?
-    let sentence: String?
-    let level: CKRecord.Reference?
+    //liat real case pengunaannya gmn, mana wajib mana ga
+    let id: CKRecord.ID
+    let title: String
+    let isCompleted: Bool
+    let sentence: String
+    let level: CKRecord.Reference
     let reward: Reward?
-    let multipleChoice: MultipleChoice?
-    let imitating: [WordImitation]?
+    let multipleChoice: MultipleChoice
+    let imitating: [WordImitation]
 }
