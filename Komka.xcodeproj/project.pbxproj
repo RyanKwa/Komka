@@ -501,6 +501,8 @@
 				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
 				DC85A19228F73DEF00E457F0 /* FullSentencesViewController.swift in Sources */,
+				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
+				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
 				A96B644328F7D14400E23BB2 /* MultipleChoice.swift in Sources */,
 				DC4B746D28F5359700A9C640 /* AutoLayout.swift in Sources */,
 				A9B1761E28FD3667005F2FC1 /* UIImage+Ext.swift in Sources */,
