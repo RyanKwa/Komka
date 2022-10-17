@@ -62,8 +62,6 @@ class ChooseScenarioController: UIViewController {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         
-        self.vm.fetchScenarioData()
-
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
             self.collectionView.reloadData()
         }
@@ -103,13 +101,14 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let scenarioCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScenarioCell.identifier, for: indexPath) as? ScenarioCell else { return UICollectionViewCell() }
+        guard
+            let scenarioCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScenarioCell.identifier, for: indexPath) as? ScenarioCell,
+            let scenarioTitle = vm.scenarios[indexPath.row].title,
+            let scenarioImage = vm.assets[indexPath.row].image
+        else { return UICollectionViewCell() }
         
-        guard let scenarioTitle = vm.scenarios[indexPath.row].title else { return UICollectionViewCell() }
         scenarioCell.scenarioLabel.text = scenarioTitle
-        
-        guard let scenarioImage = vm.assets[indexPath.row].image else { return UICollectionViewCell() }
-        scenarioCell.scenarioImg.image = vm.loadImage(baseImage: scenarioImage)
+        scenarioCell.scenarioImg.image = UIImage.changeImageFromURL(baseImage: scenarioImage)
         
         return scenarioCell
     }
