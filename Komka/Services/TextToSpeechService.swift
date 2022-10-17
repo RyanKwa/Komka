@@ -22,8 +22,8 @@ class TextToSpeechService {
             utterance = AVSpeechUtterance(string: text)
             utterance.rate = 0.4
             utterance.volume = 1
-            utterance.preUtteranceDelay = 0.1
-            utterance.postUtteranceDelay = 0.6
+            utterance.preUtteranceDelay = 0.2
+            utterance.postUtteranceDelay = 0.4
             utterance.voice = AVSpeechSynthesisVoice(language: "id-ID")
             speechSynthesizer.speak(utterance)
         }
