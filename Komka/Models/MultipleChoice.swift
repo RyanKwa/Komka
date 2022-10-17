@@ -9,9 +9,9 @@ import CloudKit
 import Foundation
 
 struct MultipleChoice {
-    let id: CKRecord.ID?
-    let imageCaption: String?
-    let question: String?
-    let choices: [Choice]?
-    let answer: String?
+    let id: CKRecord.ID
+    let imageCaption: String
+    let question: String
+    let choices: [Choice]
+    let answer: String
 }

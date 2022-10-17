@@ -9,23 +9,12 @@ import Foundation
 import UIKit
 
 extension UIView {
-    
-    static func setBackgroundImage() -> UIImageView {
-        let backgroundImg = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImg.contentMode = .scaleToFill
-        backgroundImg.image = #imageLiteral(resourceName: "bg")
-        
-        return backgroundImg
-    }
-    
-    static func setImageView(imageName: String,
-                             contentMode: UIView.ContentMode? = .scaleToFill,
-                             clipsToBound: Bool? = false) -> UIImageView {
+
+    static func setImageView(imageName: String, contentMode: UIView.ContentMode? = .scaleToFill , clipsToBound: Bool? = false) -> UIImageView {
         let imageView = UIImageView(frame: UIScreen.main.bounds)
         imageView.image = UIImage(named: imageName)
         imageView.contentMode = contentMode ?? .scaleToFill
         imageView.clipsToBounds = clipsToBound ?? false
-        
         return imageView
     }
     
@@ -34,7 +23,6 @@ extension UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(title, for: .normal)
         button.setImage(UIImage(named: imgTitle), for: .normal)
-        
         return button
     }
     
