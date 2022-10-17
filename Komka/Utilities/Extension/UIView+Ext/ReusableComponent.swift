@@ -35,26 +35,6 @@ extension UIView {
         return button
     }
     
-    static func setImageView(imageName: String,
-                             contentMode: UIView.ContentMode? = .scaleToFill,
-                             clipsToBound: Bool? = false) -> UIImageView {
-        let imageView = UIImageView(frame: UIScreen.main.bounds)
-        imageView.image = UIImage(named: imageName)
-        imageView.contentMode = contentMode ?? .scaleToFill
-        imageView.clipsToBounds = clipsToBound ?? false
-        
-        return imageView
-    }
-    
-    static func createImageIconBtn(title: String, imgTitle: String) -> UIButton {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(title, for: .normal)
-        button.setImage(UIImage(named: imgTitle), for: .normal)
-        
-        return button
-    }
-    
     static func createLabel(text: String,
                             fontSize: CGFloat,
                             textColor: UIColor? = .black) -> UILabel {
