@@ -27,6 +27,11 @@
 		DC4B746D28F5359700A9C640 /* AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746C28F5359700A9C640 /* AutoLayout.swift */; };
 		DC4B746F28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746E28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift */; };
 		DC4B747428F53A5200A9C640 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B747228F53A5200A9C640 /* Button.swift */; };
+		DC85A19228F73DEF00E457F0 /* FullSentencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC85A19128F73DEF00E457F0 /* FullSentencesViewController.swift */; };
+		DC85A19428F73E2B00E457F0 /* TextToSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC85A19328F73E2B00E457F0 /* TextToSpeechService.swift */; };
+		DCED8F3F28F80C91009F31E3 /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCED8F3E28F80C91009F31E3 /* LevelButton.swift */; };
+		DCED8F4128F85BF8009F31E3 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCED8F4028F85BF8009F31E3 /* UIImageView+Ext.swift */; };
+		DCED8F4528F865C2009F31E3 /* SoundPracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCED8F4428F865C2009F31E3 /* SoundPracticeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +77,11 @@
 		DC4B746C28F5359700A9C640 /* AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayout.swift; sourceTree = "<group>"; };
 		DC4B746E28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUbiquitousKeyValueStore+Ext.swift"; sourceTree = "<group>"; };
 		DC4B747228F53A5200A9C640 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		DC85A19128F73DEF00E457F0 /* FullSentencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullSentencesViewController.swift; sourceTree = "<group>"; };
+		DC85A19328F73E2B00E457F0 /* TextToSpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechService.swift; sourceTree = "<group>"; };
+		DCED8F3E28F80C91009F31E3 /* LevelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelButton.swift; sourceTree = "<group>"; };
+		DCED8F4028F85BF8009F31E3 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		DCED8F4428F865C2009F31E3 /* SoundPracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPracticeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +132,7 @@
 				DC4B746928F5356300A9C640 /* UIView+Ext */,
 				A993D81D28EB17300052DC92 /* Extension.swift */,
 				DC4B746E28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift */,
+				DCED8F4028F85BF8009F31E3 /* UIImageView+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -176,10 +187,13 @@
 			isa = PBXGroup;
 			children = (
 				C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */,
+				DCED8F4628F87B33009F31E3 /* Services */,
 				A993D82B28EFB9820052DC92 /* Themes */,
 				A993D81B28EB17180052DC92 /* Utilities */,
 				DC4B745F28F5345700A9C640 /* ChooseGender */,
 				A993D82928EFB8E10052DC92 /* ChooseScenario */,
+				DC85A19028F73DC900E457F0 /* FullSentences */,
+				DCED8F4228F86598009F31E3 /* SoundPractice */,
 				C50B590628E587B6001D42E5 /* AppDelegate.swift */,
 				C50B590828E587B6001D42E5 /* SceneDelegate.swift */,
 				C50B590A28E587B6001D42E5 /* ViewController.swift */,
@@ -254,8 +268,49 @@
 			isa = PBXGroup;
 			children = (
 				DC4B747228F53A5200A9C640 /* Button.swift */,
+				DCED8F3E28F80C91009F31E3 /* LevelButton.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		DC85A19028F73DC900E457F0 /* FullSentences */ = {
+			isa = PBXGroup;
+			children = (
+				DC85A19528F73E9600E457F0 /* View */,
+			);
+			path = FullSentences;
+			sourceTree = "<group>";
+		};
+		DC85A19528F73E9600E457F0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DC85A19128F73DEF00E457F0 /* FullSentencesViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DCED8F4228F86598009F31E3 /* SoundPractice */ = {
+			isa = PBXGroup;
+			children = (
+				DCED8F4328F865A7009F31E3 /* View */,
+			);
+			path = SoundPractice;
+			sourceTree = "<group>";
+		};
+		DCED8F4328F865A7009F31E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DCED8F4428F865C2009F31E3 /* SoundPracticeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DCED8F4628F87B33009F31E3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DC85A19328F73E2B00E457F0 /* TextToSpeechService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,13 +448,18 @@
 				DC4B746128F534CF00A9C640 /* ChooseGenderViewController.swift in Sources */,
 				A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */,
 				A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */,
+				DCED8F3F28F80C91009F31E3 /* LevelButton.swift in Sources */,
 				A993D81E28EB17300052DC92 /* Extension.swift in Sources */,
+				DC85A19428F73E2B00E457F0 /* TextToSpeechService.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
+				DC85A19228F73DEF00E457F0 /* FullSentencesViewController.swift in Sources */,
 				DC4B746D28F5359700A9C640 /* AutoLayout.swift in Sources */,
 				DC4B746828F5355700A9C640 /* ScreenSizeConfiguration.swift in Sources */,
 				DC4B746528F5351D00A9C640 /* ChooseGenderViewModel.swift in Sources */,
+				DCED8F4128F85BF8009F31E3 /* UIImageView+Ext.swift in Sources */,
 				DC4B747428F53A5200A9C640 /* Button.swift in Sources */,
 				C50B591128E587B6001D42E5 /* Komka.xcdatamodeld in Sources */,
+				DCED8F4528F865C2009F31E3 /* SoundPracticeViewController.swift in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
 				DC4B746F28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift in Sources */,
 				C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */,
