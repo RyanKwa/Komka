@@ -22,7 +22,7 @@ class MultipleChoiceViewController: UIViewController {
     private lazy var backgroundImage = UIView.setImageView(imageName: "bg")
     private lazy var scenarioCoverImg: UIImageView = {
         let image = UIView.setImageView(imageName: currentScenario ?? "RuangMakanCover", contentMode: .scaleAspectFill, clipsToBound: true)
-        image.addOverlay()
+        image.addWhiteOverlay()
         return image
     }()
     private lazy var imageScenario = UIView.setImageView(imageName: "BadanSayaKotor", contentMode: .scaleAspectFit,clipsToBound: true)

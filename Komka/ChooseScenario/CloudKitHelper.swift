@@ -59,8 +59,7 @@ class CloudKitHelper {
                                 let scenarioSentence = record["sentence"] as? String,
                                 let scenarioLevel = record["level"] as? CKRecord.Reference
                             else { return }
-                            
-                            self.scenarios.append(Scenario(id: returnedRecordID, title: scenarioTitle, isCompleted: scenarioStatus, sentence: scenarioSentence, level: scenarioLevel, reward: nil, multipleChoice: nil, imitating: nil))
+                            self.scenarios.append(Scenario(id: returnedRecordID, title: scenarioTitle, isCompleted: scenarioStatus, sentence: scenarioSentence, level: scenarioLevel, reward: nil, multipleChoice: nil, wordImitations: []))
                             
                         case .failure(let error):
                             print("Error recordMatchedBlock: \(error)")

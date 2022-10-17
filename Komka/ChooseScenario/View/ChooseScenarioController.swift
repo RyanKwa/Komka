@@ -13,7 +13,7 @@ class ChooseScenarioController: UIViewController {
     private lazy var btnSedang = Button(style: .idle, title: "Sedang")
     private lazy var btnSusah = Button(style: .idle, title: "Susah")
     
-    lazy var backgroundImg = UIView.setBackgroundImage()
+    lazy var backgroundImg = UIView.setImageView(imageName: "bg")
     
     private var vm = ChooseScenarioViewModel()
         
@@ -103,10 +103,9 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard
             let scenarioCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScenarioCell.identifier, for: indexPath) as? ScenarioCell,
-            let scenarioTitle = vm.scenarios[indexPath.row].title,
             let scenarioImage = vm.assets[indexPath.row].image
         else { return UICollectionViewCell() }
-        
+        let scenarioTitle = vm.scenarios[indexPath.row].title
         scenarioCell.scenarioLabel.text = scenarioTitle
         scenarioCell.scenarioImg.image = UIImage.changeImageFromURL(baseImage: scenarioImage)
         

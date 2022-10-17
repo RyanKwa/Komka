@@ -8,13 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */; };
-		A96B644328F7D14400E23BB2 /* MultipleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643C28F7D14400E23BB2 /* MultipleChoice.swift */; };
-		A96B644428F7D14400E23BB2 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643D28F7D14400E23BB2 /* Reward.swift */; };
-		A96B644528F7D14400E23BB2 /* WordImitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643E28F7D14400E23BB2 /* WordImitation.swift */; };
-		A96B644628F7D14400E23BB2 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643F28F7D14400E23BB2 /* Asset.swift */; };
-		A96B644728F7D14400E23BB2 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B644028F7D14400E23BB2 /* Scenario.swift */; };
-		A96B644828F7D14400E23BB2 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B644128F7D14400E23BB2 /* Level.swift */; };
-		A96B644928F7D14400E23BB2 /* Choice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B644228F7D14400E23BB2 /* Choice.swift */; };
 		A993D81828EB16640052DC92 /* Baloo2-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */; };
 		A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D81D28EB17300052DC92 /* UIFont+Ext.swift */; };
 		A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D82328EC68990052DC92 /* ChooseScenarioController.swift */; };
@@ -72,13 +65,6 @@
 
 /* Begin PBXFileReference section */
 		A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioViewModel.swift; sourceTree = "<group>"; };
-		A96B643C28F7D14400E23BB2 /* MultipleChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleChoice.swift; sourceTree = "<group>"; };
-		A96B643D28F7D14400E23BB2 /* Reward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
-		A96B643E28F7D14400E23BB2 /* WordImitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordImitation.swift; sourceTree = "<group>"; };
-		A96B643F28F7D14400E23BB2 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
-		A96B644028F7D14400E23BB2 /* Scenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
-		A96B644128F7D14400E23BB2 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
-		A96B644228F7D14400E23BB2 /* Choice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Choice.swift; sourceTree = "<group>"; };
 		A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Baloo2-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		A993D81D28EB17300052DC92 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		A993D82328EC68990052DC92 /* ChooseScenarioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioController.swift; sourceTree = "<group>"; };
@@ -153,20 +139,6 @@
 				A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		A96B643B28F7D14400E23BB2 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				A96B643C28F7D14400E23BB2 /* MultipleChoice.swift */,
-				A96B643D28F7D14400E23BB2 /* Reward.swift */,
-				A96B643E28F7D14400E23BB2 /* WordImitation.swift */,
-				A96B643F28F7D14400E23BB2 /* Asset.swift */,
-				A96B644028F7D14400E23BB2 /* Scenario.swift */,
-				A96B644128F7D14400E23BB2 /* Level.swift */,
-				A96B644228F7D14400E23BB2 /* Choice.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		A993D81628EB16350052DC92 /* Font */ = {
@@ -254,7 +226,6 @@
 				C5D9828828F713E800E89F60 /* MultipleChoice */,
 				C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */,
 				DCED8F4628F87B33009F31E3 /* Services */,
-				A96B643B28F7D14400E23BB2 /* Models */,
 				A993D82B28EFB9820052DC92 /* Themes */,
 				A993D81B28EB17180052DC92 /* Utilities */,
 				DC4B745F28F5345700A9C640 /* ChooseGender */,
@@ -535,7 +506,6 @@
 			files = (
 				DC4B746B28F5358500A9C640 /* ReusableComponent.swift in Sources */,
 				DC4B746128F534CF00A9C640 /* ChooseGenderViewController.swift in Sources */,
-				A96B644928F7D14400E23BB2 /* Choice.swift in Sources */,
 				A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */,
 				A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */,
 				DCED8F3F28F80C91009F31E3 /* LevelButton.swift in Sources */,
@@ -544,14 +514,13 @@
 				DC85A19428F73E2B00E457F0 /* TextToSpeechService.swift in Sources */,
 				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
 				C5336BD628F8665000AC24A9 /* UIImageView+Ext.swift in Sources */,
-				A993D81E28EB17300052DC92 /* Extension.swift in Sources */,
+				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
 				C5D9828D28F7C5FD00E89F60 /* WordImitation.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
 				DC85A19228F73DEF00E457F0 /* FullSentencesViewController.swift in Sources */,
 				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
 				C5D9828D28F7C5FD00E89F60 /* WordImitation.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
-				A96B644328F7D14400E23BB2 /* MultipleChoice.swift in Sources */,
 				DC4B746D28F5359700A9C640 /* AutoLayout.swift in Sources */,
 				A9B1761E28FD3667005F2FC1 /* UIImage+Ext.swift in Sources */,
 				DC4B746828F5355700A9C640 /* ScreenSizeConfiguration.swift in Sources */,
@@ -561,9 +530,6 @@
 				DC4B747428F53A5200A9C640 /* Button.swift in Sources */,
 				C50B591128E587B6001D42E5 /* Komka.xcdatamodeld in Sources */,
 				DCED8F4528F865C2009F31E3 /* SoundPracticeViewController.swift in Sources */,
-				A96B644728F7D14400E23BB2 /* Scenario.swift in Sources */,
-				A96B644428F7D14400E23BB2 /* Reward.swift in Sources */,
-				A96B644828F7D14400E23BB2 /* Level.swift in Sources */,
 				C5D9828F28F7C7F500E89F60 /* Level.swift in Sources */,
 				C5D9829728F7C98200E89F60 /* ContentAsset.swift in Sources */,
 				C5D9829128F7C8F200E89F60 /* Reward.swift in Sources */,
@@ -572,7 +538,6 @@
 				A9B1761C28FD2408005F2FC1 /* CloudKitHelper.swift in Sources */,
 				A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */,
 				DC4B746F28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift in Sources */,
-				A96B644528F7D14400E23BB2 /* WordImitation.swift in Sources */,
 				C5D9828B28F7BFDB00E89F60 /* Scenario.swift in Sources */,
 				C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */,
 				C5D9828728F713D400E89F60 /* MultipleChoiceViewController.swift in Sources */,

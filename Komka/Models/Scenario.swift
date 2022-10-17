@@ -15,6 +15,6 @@ struct Scenario {
     let sentence: String
     let level: CKRecord.Reference
     let reward: Reward?
-    let multipleChoice: MultipleChoice
+    let multipleChoice: MultipleChoice?
     let wordImitations: [WordImitation]
 }
