@@ -14,6 +14,7 @@
 		A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D82728EC7C870052DC92 /* ScenarioCell.swift */; };
 		A9B1761C28FD2408005F2FC1 /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */; };
 		A9B1761E28FD3667005F2FC1 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */; };
+		A9B1762328FDA25C005F2FC1 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */; };
 		C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590628E587B6001D42E5 /* AppDelegate.swift */; };
 		C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590828E587B6001D42E5 /* SceneDelegate.swift */; };
 		C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590A28E587B6001D42E5 /* ViewController.swift */; };
@@ -71,6 +72,7 @@
 		A993D82728EC7C870052DC92 /* ScenarioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioCell.swift; sourceTree = "<group>"; };
 		A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
 		A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
+		A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
 		C50B590328E587B6001D42E5 /* Komka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50B590628E587B6001D42E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C50B590828E587B6001D42E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				DCED8F4328F865A7009F31E3 /* View */,
+				A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */,
 			);
 			path = SoundPractice;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				DC4B746B28F5358500A9C640 /* ReusableComponent.swift in Sources */,
 				DC4B746128F534CF00A9C640 /* ChooseGenderViewController.swift in Sources */,
 				A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */,
+				A9B1762328FDA25C005F2FC1 /* CircularProgressBarView.swift in Sources */,
 				A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */,
 				DCED8F3F28F80C91009F31E3 /* LevelButton.swift in Sources */,
 				C5336BD628F8665000AC24A9 /* UIImageView+Ext.swift in Sources */,
@@ -715,6 +719,7 @@
 				INFOPLIST_FILE = Komka/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -747,6 +752,7 @@
 				INFOPLIST_FILE = Komka/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
