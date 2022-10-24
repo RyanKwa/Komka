@@ -111,12 +111,12 @@ class ArrangeWordViewController: UIViewController {
     }
     @objc
     private func audioBtnTapped(_ sender: UIButton) {
-        print("doSomething")
+        print("doSomethingAudio")
     }
     
     @objc
     private func backBtnTapped(_ sender: UIButton) {
-        print("doSomethingAudio")
+        print("doSomething")
     }
 }
 
@@ -130,10 +130,8 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
             guard let wordSlotCell = collectionView.dequeueReusableCell(withReuseIdentifier: WordSlotCollectionViewCell.identifier, for: indexPath) as? WordSlotCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            wordSlotCell.wordTitle.text = "Word \(indexPath.row)"
             wordSlotCell.showAnswer = false
             wordSlotCell.answerImage.alpha = 0
-//            wordSlotCell.answerImage.isHidden = true
             wordSlotCell.isCorrect = false
             wordSlotCell.slotImage.image = UIImage(named: "WordSlot")
             return wordSlotCell
@@ -151,7 +149,7 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.wordSlotCollectionView {
             let cell = collectionView.cellForItem(at: indexPath) as? WordSlotCollectionViewCell
-            print("Selected slot index: \(indexPath.row)")
+            //MARK: checker, replace with a logic
             let correct = false
             guard let currentWord = selectedCell as? WordCollectionViewCell, let currentSlot = cell else {
                 return
@@ -177,7 +175,7 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
                 }
             })
             //if wrong
-            if correct == false {
+            if !correct {
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                     UIView.transition(with: currentSlot ?? UICollectionViewCell(), duration: 0.5, options: .transitionCrossDissolve, animations: {
@@ -197,7 +195,6 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
         }
         else if collectionView == self.wordCollectionView {
             let cell = collectionView.cellForItem(at: indexPath) as? WordCollectionViewCell
-            print("Selected word index: \(indexPath.row)")
             if cell?.wordState == .idle{
                 UIView.transition(with: cell ?? UICollectionViewCell(), duration: 0.5, options: .transitionCrossDissolve, animations: {
                     cell?.wordImage.image = UIImage(named: "ArrangeWord_Active")
@@ -210,7 +207,6 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
                         previousActiveCell?.wordState = .idle
                     })
                 }
-                print("INDEX: \(indexPath.row): \(cell?.wordState)")
                 selectedCell = cell
             }
             else if cell?.wordState == .active{
@@ -218,16 +214,14 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
                     cell?.wordImage.image = UIImage(named: "ArrangeWord_Idle")
                     cell?.wordState = .idle
                 })
-                print("INDEX: \(indexPath.row): \(cell?.wordState)")
                 selectedCell = nil
             }
         
         }
         
     }
-    
+    //MARK: Align Center collection view cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
         
         let totalWords = CGFloat(numberOfWord)
         if totalWords == 0{
