@@ -12,8 +12,6 @@ class WordSlotCollectionViewCell: UICollectionViewCell {
     var wordTitle: UILabel = UIView.createLabel(text: "Text", fontSize: 20)
     var slotImage: UIImageView = UIView.setImageView(imageName: "WordSlot")
     var answerImage: UIImageView = UIView.setImageView(imageName: "ArrangeWord_Active")
-    var showAnswer = false
-    var isCorrect = false
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(slotImage)

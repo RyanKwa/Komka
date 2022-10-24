@@ -8,14 +8,14 @@
 import UIKit
 
 class WordCollectionViewCell: UICollectionViewCell {
-    enum WordState{
+    enum State{
         case active
         case idle
     }
     static let identifier = "wordCollectionViewCell"
     var wordTitle: UILabel = UIView.createLabel(text: "Text", fontSize: 20)
     var wordImage: UIImageView = UIView.setImageView(imageName: "ArrangeWord_Idle")
-    var wordState: WordState = .idle
+    var state: State = .idle
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(wordImage)

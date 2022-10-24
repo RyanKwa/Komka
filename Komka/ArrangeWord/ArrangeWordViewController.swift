@@ -11,7 +11,8 @@ class ArrangeWordViewController: UIViewController {
 
     var numberOfWord = 0
     
-    private var selectedCell: UICollectionViewCell?
+    // To store current selected word cell
+    private var selectedWord: UICollectionViewCell?
     
     lazy private var backgroundImg = UIView.setImageView(imageName: "bg")
     lazy private var scenarioCoverImg: UIImageView = {
@@ -37,27 +38,9 @@ class ArrangeWordViewController: UIViewController {
         
         return button
     }()
-
-    private lazy var wordCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: ScreenSizeConfiguration.SCREEN_WIDTH/6, height: ScreenSizeConfiguration.SCREEN_HEIGHT/14)
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.isScrollEnabled = false
-        collectionView.register(WordCollectionViewCell.self, forCellWithReuseIdentifier: WordCollectionViewCell.identifier)
-        return collectionView
-    }()
-    private lazy var wordSlotCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: ScreenSizeConfiguration.SCREEN_WIDTH/6, height: ScreenSizeConfiguration.SCREEN_HEIGHT/14)
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.isScrollEnabled = false
-        collectionView.register(WordSlotCollectionViewCell.self, forCellWithReuseIdentifier: WordSlotCollectionViewCell.identifier)
-        return collectionView
-    }()
+    
+    private lazy var wordCollectionView: UICollectionView = createCollectionView(name: "wordCollectionView")
+    private lazy var wordSlotCollectionView: UICollectionView = createCollectionView(name: "wordSlotCollectionView")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +49,7 @@ class ArrangeWordViewController: UIViewController {
         setConstraint()
         
     }
+    
     func subViewConfiguration() {
         view.backgroundColor = .white
         view.addSubview(backgroundImg)
@@ -77,8 +61,8 @@ class ArrangeWordViewController: UIViewController {
         
         view.addSubview(wordSlotCollectionView)
         view.addSubview(wordCollectionView)
-        
     }
+    
     func collectionViewConfiguration(){
         wordSlotCollectionView.backgroundColor = .clear
         wordCollectionView.backgroundColor = .clear
@@ -107,7 +91,7 @@ class ArrangeWordViewController: UIViewController {
         wordSlotCollectionView.anchor(top: scenarioCoverImg.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_WIDTH/30, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/20, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/3, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/20)
         
         wordCollectionView.anchor(top: wordSlotCollectionView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/20, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/20, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/5, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/20)
-
+        
     }
     @objc
     private func audioBtnTapped(_ sender: UIButton) {
@@ -117,6 +101,22 @@ class ArrangeWordViewController: UIViewController {
     @objc
     private func backBtnTapped(_ sender: UIButton) {
         print("doSomething")
+    }
+    
+    private func createCollectionView(name: String) -> UICollectionView {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: ScreenSizeConfiguration.SCREEN_WIDTH/6, height: ScreenSizeConfiguration.SCREEN_HEIGHT/14)
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.isScrollEnabled = false
+        if name == "wordSlotCollectionView" {
+            collectionView.register(WordSlotCollectionViewCell.self, forCellWithReuseIdentifier: WordSlotCollectionViewCell.identifier)
+        }
+        else if name == "wordCollectionView" {
+            collectionView.register(WordCollectionViewCell.self, forCellWithReuseIdentifier: WordCollectionViewCell.identifier)
+        }
+        return collectionView
     }
 }
 
@@ -130,9 +130,7 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
             guard let wordSlotCell = collectionView.dequeueReusableCell(withReuseIdentifier: WordSlotCollectionViewCell.identifier, for: indexPath) as? WordSlotCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            wordSlotCell.showAnswer = false
             wordSlotCell.answerImage.alpha = 0
-            wordSlotCell.isCorrect = false
             wordSlotCell.slotImage.image = UIImage(named: "WordSlot")
             return wordSlotCell
         }
@@ -145,81 +143,93 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
             return wordCell
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.wordSlotCollectionView {
             let cell = collectionView.cellForItem(at: indexPath) as? WordSlotCollectionViewCell
             //MARK: checker, replace with a logic
             let correct = false
-            guard let currentWord = selectedCell as? WordCollectionViewCell, let currentSlot = cell else {
+            guard let currentSelectedWordCell = selectedWord as? WordCollectionViewCell, let selectedSlot = cell else {
                 return
             }
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) { [weak self] in
-                currentWord.alpha = 0
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) {
+                currentSelectedWordCell.alpha = 0
             }
-            
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-                currentSlot.answerImage.alpha = 1
-                currentSlot.showAnswer = true
-                currentSlot.wordTitle.text = currentWord.wordTitle.text
-                if correct {
-                    //green
-                    currentSlot.answerImage.layer.borderColor = CGColor(red: 0.56, green: 0.66, blue: 0.34, alpha: 1.00)
-                    currentSlot.answerImage.layer.borderWidth = 2
-                    currentSlot.isUserInteractionEnabled = false
-                }
-                else{
-                    //red
-                    currentSlot.answerImage.layer.borderColor = CGColor(red: 0.62, green: 0.02, blue: 0.02, alpha: 1.00)
-                    currentSlot.answerImage.layer.borderWidth = 2
-                }
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: { [weak self] in
+                selectedSlot.answerImage.alpha = 1
+                selectedSlot.wordTitle.text = currentSelectedWordCell.wordTitle.text
+                self?.showResultBorder(slotCell: selectedSlot, wordCell: currentSelectedWordCell, withResult: correct)
             })
-            //if wrong
-            if !correct {
-
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-                    UIView.transition(with: currentSlot ?? UICollectionViewCell(), duration: 0.5, options: .transitionCrossDissolve, animations: {
-                        currentSlot.answerImage.alpha = 0
-                        currentSlot.answerImage.layer.borderColor = CGColor(red: 0.62, green: 0.02, blue: 0.02, alpha: 0.00)
-                        currentSlot.answerImage.layer.borderWidth = 0
-                        currentWord.wordState = .idle
-                        currentWord.wordImage.image = UIImage(named: "ArrangeWord_Idle")
-                    })
-                    UIView.animate(withDuration: 0.5, delay: 0.5) {
-                        currentWord.alpha = 1
-                        currentSlot.showAnswer = false
-                    }
-                }
-                selectedCell = nil
-            }
         }
         else if collectionView == self.wordCollectionView {
-            let cell = collectionView.cellForItem(at: indexPath) as? WordCollectionViewCell
-            if cell?.wordState == .idle{
-                UIView.transition(with: cell ?? UICollectionViewCell(), duration: 0.5, options: .transitionCrossDissolve, animations: {
-                    cell?.wordImage.image = UIImage(named: "ArrangeWord_Active")
-                    cell?.wordState = .active
-                })
-                if self.selectedCell != nil {
-                    UIView.transition(with: cell ?? UICollectionViewCell(), duration: 1, options: .transitionCrossDissolve, animations: { [weak self] in
-                        let previousActiveCell = self?.selectedCell as? WordCollectionViewCell
-                        previousActiveCell?.wordImage.image = UIImage(named: "ArrangeWord_Idle")
-                        previousActiveCell?.wordState = .idle
-                    })
+            let currentSelectedWordCell = collectionView.cellForItem(at: indexPath) as? WordCollectionViewCell
+            
+            if currentSelectedWordCell?.state == .idle{
+                self.setCellState(cell: currentSelectedWordCell ?? WordCollectionViewCell(), state: .active)
+                
+                //Check wether there is selected word or not
+                if self.selectedWord != nil {
+                    let previousActiveCell = self.selectedWord as? WordCollectionViewCell
+                    self.setCellState(cell: previousActiveCell ?? WordCollectionViewCell(), state: .idle)
                 }
-                selectedCell = cell
+                
+                self.selectedWord = currentSelectedWordCell
             }
-            else if cell?.wordState == .active{
-                UIView.transition(with: cell ?? UICollectionViewCell(), duration: 0.5, options: .transitionCrossDissolve, animations: {
-                    cell?.wordImage.image = UIImage(named: "ArrangeWord_Idle")
-                    cell?.wordState = .idle
-                })
-                selectedCell = nil
+            
+            else if currentSelectedWordCell?.state == .active{
+                setCellState(cell: currentSelectedWordCell ?? WordCollectionViewCell(), state: .idle)
+                self.selectedWord = nil
             }
-        
         }
-        
     }
+    
+    private func setCellState(cell: WordCollectionViewCell, state: WordCollectionViewCell.State) {
+        UIView.transition(with: cell, duration: 0.2, options: .transitionCrossDissolve, animations: {
+            if state == .idle {
+                cell.wordImage.image = UIImage(named: "ArrangeWord_Idle")
+            }
+            else{
+                cell.wordImage.image = UIImage(named: "ArrangeWord_Active")
+            }
+            cell.state = state
+        })
+    }
+
+    private func showResultBorder(slotCell: WordSlotCollectionViewCell, wordCell: WordCollectionViewCell, withResult correct: Bool) {
+        if correct {
+            //greenBorder
+            setCellBorderColor(cell: slotCell, color: "green")
+            slotCell.slotImage.alpha = 0
+            slotCell.isUserInteractionEnabled = false
+        }
+        else{
+            //redBorder
+            setCellBorderColor(cell: slotCell, color: "red")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                UIView.transition(with: slotCell, duration: 0.5, options: .transitionCrossDissolve, animations: { [weak self] in
+                    slotCell.answerImage.alpha = 0
+                    slotCell.answerImage.layer.borderColor = CGColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 0.00)
+                    slotCell.answerImage.layer.borderWidth = 0
+                    
+                    self?.setCellState(cell: wordCell, state: .idle)
+                })
+                UIView.animate(withDuration: 0.5, delay: 0.5) {
+                    wordCell.alpha = 1
+                }
+            }
+            selectedWord = nil
+        }
+    }
+    
+    private func setCellBorderColor(cell: WordSlotCollectionViewCell, color: String) {
+
+        cell.answerImage.layer.borderColor  = color == "green" ?
+        CGColor(red: 0.56, green: 0.66, blue: 0.34, alpha: 1.00) :
+        CGColor(red: 0.62, green: 0.02, blue: 0.02, alpha: 1.00)
+        cell.answerImage.layer.borderWidth = 2
+        cell.answerImage.layer.cornerRadius = 33
+    }
+    
     //MARK: Align Center collection view cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
