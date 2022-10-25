@@ -10,15 +10,16 @@ import CloudKit
 import UIKit
 
 class ChooseScenarioViewModel {
-    var ckHelper = CloudKitHelper()
+    var scenarioDAO = ScenarioDAO.instance
     
     @Published var scenarios: [Scenario] = []
     @Published var assets: [ContentAsset] = []
     
-    init(){
+    func fetchScenario(){
+        scenarioDAO.fetchScenarioData()
         DispatchQueue.main.asyncAfter(deadline: .now()+2){
-            self.scenarios = self.ckHelper.scenarios
-            self.assets = self.ckHelper.assets
+            self.scenarios = self.scenarioDAO.scenarios
+            self.assets = self.scenarioDAO.assets
         }
     }
 }

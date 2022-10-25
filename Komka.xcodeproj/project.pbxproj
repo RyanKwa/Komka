@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */; };
+		A979929629066E5C00CDD27C /* ScenarioDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979929529066E5C00CDD27C /* ScenarioDAO.swift */; };
+		A97992992906B8A400CDD27C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A97992982906B8A400CDD27C /* RxCocoa */; };
+		A979929B2906B8A400CDD27C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A979929A2906B8A400CDD27C /* RxSwift */; };
 		A993D81828EB16640052DC92 /* Baloo2-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */; };
 		A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D81D28EB17300052DC92 /* UIFont+Ext.swift */; };
 		A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D82328EC68990052DC92 /* ChooseScenarioController.swift */; };
@@ -65,6 +68,7 @@
 
 /* Begin PBXFileReference section */
 		A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioViewModel.swift; sourceTree = "<group>"; };
+		A979929529066E5C00CDD27C /* ScenarioDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioDAO.swift; sourceTree = "<group>"; };
 		A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Baloo2-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		A993D81D28EB17300052DC92 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		A993D82328EC68990052DC92 /* ChooseScenarioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioController.swift; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A979929B2906B8A400CDD27C /* RxSwift in Frameworks */,
+				A97992992906B8A400CDD27C /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,7 +182,6 @@
 			children = (
 				A96B643528F5BC1B00E23BB2 /* ViewModel */,
 				A993D82A28EFB8ED0052DC92 /* View */,
-				A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */,
 			);
 			path = ChooseScenario;
 			sourceTree = "<group>";
@@ -368,7 +373,9 @@
 		DCED8F4628F87B33009F31E3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */,
 				DC85A19328F73E2B00E457F0 /* TextToSpeechService.swift */,
+				A979929529066E5C00CDD27C /* ScenarioDAO.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -389,6 +396,10 @@
 			dependencies = (
 			);
 			name = Komka;
+			packageProductDependencies = (
+				A97992982906B8A400CDD27C /* RxCocoa */,
+				A979929A2906B8A400CDD27C /* RxSwift */,
+			);
 			productName = Komka;
 			productReference = C50B590328E587B6001D42E5 /* Komka.app */;
 			productType = "com.apple.product-type.application";
@@ -461,6 +472,9 @@
 				Base,
 			);
 			mainGroup = C50B58FA28E587B6001D42E5;
+			packageReferences = (
+				A97992972906B8A400CDD27C /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = C50B590428E587B6001D42E5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -518,6 +532,7 @@
 				C5D9828D28F7C5FD00E89F60 /* WordImitation.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
 				DC85A19228F73DEF00E457F0 /* FullSentencesViewController.swift in Sources */,
+				A979929629066E5C00CDD27C /* ScenarioDAO.swift in Sources */,
 				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
 				C5D9828D28F7C5FD00E89F60 /* WordImitation.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
@@ -759,7 +774,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = KomkaProfile;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ProvisioningProfileEvel;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -882,6 +897,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A97992972906B8A400CDD27C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A97992982906B8A400CDD27C /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A97992972906B8A400CDD27C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		A979929A2906B8A400CDD27C /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A97992972906B8A400CDD27C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C50B590F28E587B6001D42E5 /* Komka.xcdatamodeld */ = {
