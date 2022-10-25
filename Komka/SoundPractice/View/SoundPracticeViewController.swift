@@ -48,7 +48,7 @@ class SoundPracticeViewController: UIViewController {
     func setUpCircularProgressBarView() {
         circularProgressBarView.duration = 10
         circularProgressBarView.progressAnimation(progressFrom: progressFrom, progressTo: progressTo)
-        circularProgressBarView.currentWordBg = "Tes"
+        circularProgressBarView.currentWordBg = "CurrentWordBgPlaceholder"
     }
     
     private func setUpConstraint(){
