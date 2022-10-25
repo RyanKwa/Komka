@@ -24,7 +24,7 @@ class ScenarioCell: UICollectionViewCell {
         stackViewScenario.anchor(right: contentView.rightAnchor)
         stackViewScenario.anchor(bottom: contentView.bottomAnchor)
         
-        scenarioImg.anchor(bottom: stackViewScenario.bottomAnchor, paddingBottom: 50)
+        scenarioLabel.anchor(bottom: stackViewScenario.bottomAnchor)
     }
     
     private func ovalShadow() {
