@@ -1,22 +1,24 @@
 //
-//  CloudKitHelper.swift
+//  ScenarioDAO.swift
 //  Komka
 //
-//  Created by Evelin Evelin on 17/10/22.
+//  Created by Evelin Evelin on 24/10/22.
 //
 
-import CloudKit
+import Foundation
 import UIKit
+import CloudKit
+import RxSwift
 
-class CloudKitHelper {
+class ScenarioDAO{
+    static let instance = ScenarioDAO()
+
+    var ckHelper = CloudKitHelper.shared
     var scenarios: [Scenario] = []
     var assets: [ContentAsset] = []
     
-    let db = CKContainer.default().publicCloudDatabase
-    
-    init(){
-        fetchScenarioData()
-    }
+    var scenariosPublisher = PublishSubject<[Scenario]>()
+    var assetsPublisher = PublishSubject<[ContentAsset]>()
     
     func fetchScenarioData(){
         let assetQuery = CKRecord(recordType: "Asset")
@@ -24,14 +26,14 @@ class CloudKitHelper {
         let reference = CKRecord.Reference(recordID: scenarioQuery.recordID, action: .deleteSelf)
         assetQuery["scenario"] = reference as CKRecordValue
         
-        let step = "cover"
+        let step = "Cover"
         let assetPredicate = NSPredicate(format: "step == %@", step)
         
         let queryAsset = CKQuery(recordType: "Asset", predicate: assetPredicate)
         queryAsset.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         let queryOperationAsset = CKQueryOperation(query: queryAsset)
         
-        //Fetching Asset
+        //MARK: Fetching Asset
         queryOperationAsset.recordMatchedBlock = { (returnedRecordID, returnedScenario) in
             switch returnedScenario{
             case .success(let record):
@@ -45,6 +47,7 @@ class CloudKitHelper {
                 
                 self.assets.append(ContentAsset(id: returnedRecordID, title: imageTitle, gender: imageGender, scenario: scenarioReference, step: imageStep, image: scenarioImage))
                 
+                //MARK: Fetching Scenario
                 if let reference = record.value(forKey: "scenario") as? CKRecord.Reference {
                     let predicate = NSPredicate(format: "recordID == %@", reference)
                     let query = CKQuery(recordType: "Scenario", predicate: predicate)
@@ -65,14 +68,20 @@ class CloudKitHelper {
                             print("Error recordMatchedBlock: \(error)")
                         }
                     }
-                    
-                    self.db.add(queryOperationScenario)
+                    queryOperationScenario.queryResultBlock = { returnedResult in
+                        self.scenariosPublisher.onNext(self.scenarios)
+                    }
+                    self.ckHelper.db.add(queryOperationScenario)
                 }
                 
             case .failure(let error):
                 print("Error recordMatchedBlock: \(error)")
             }
         }
-        self.db.add(queryOperationAsset)
+        
+        queryOperationAsset.queryResultBlock = { returnedResult in
+            self.assetsPublisher.onNext(self.assets)
+        }
+        self.ckHelper.db.add(queryOperationAsset)
     }
 }
