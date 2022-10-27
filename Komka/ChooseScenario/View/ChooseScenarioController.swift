@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class ChooseScenarioController: UIViewController {
     private lazy var backgroundImg = UIView.setImageView(imageName: "bg")
@@ -43,9 +44,11 @@ class ChooseScenarioController: UIViewController {
         navigationItem.hidesBackButton = true
         
         vm.fetchScenario()
-        DispatchQueue.main.asyncAfter(deadline: .now()+2){
-            self.collectionView.reloadData()
-        }
+        vm.assetsPublisher.subscribe(onCompleted: {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }).disposed(by: vm.bag)
         
         addSubView()
         setCollectionView()
@@ -89,7 +92,6 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("CLICKED")
         let stepViewController = MultipleChoiceViewController(nibName: nil, bundle: nil)
         stepViewController.currentScenario = "RuangMakanCover"
         self.navigationController?.pushViewController(stepViewController, animated: true)
