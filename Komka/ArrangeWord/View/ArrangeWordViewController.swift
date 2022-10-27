@@ -108,7 +108,8 @@ class ArrangeWordViewController: UIViewController {
     }
     @objc
     private func audioBtnTapped(_ sender: UIButton) {
-        print("doSomethingAudio")
+        TextToSpeechService.shared.stopSpeech()
+        TextToSpeechService.shared.startSpeech(correctSentences)
     }
     
     @objc
