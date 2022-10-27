@@ -204,6 +204,14 @@
 			path = Themes;
 			sourceTree = "<group>";
 		};
+		A9E9D4B0290A3FB000378FA7 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				A979929529066E5C00CDD27C /* ScenarioDAO.swift */,
+			);
+			path = DAO;
+			sourceTree = "<group>";
+		};
 		C50B58FA28E587B6001D42E5 = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +235,7 @@
 		C50B590528E587B6001D42E5 /* Komka */ = {
 			isa = PBXGroup;
 			children = (
+				A9E9D4B0290A3FB000378FA7 /* DAO */,
 				C5D9828928F7BDAE00E89F60 /* Models */,
 				C5D9828828F713E800E89F60 /* MultipleChoice */,
 				C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */,
@@ -375,7 +384,6 @@
 			children = (
 				A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */,
 				DC85A19328F73E2B00E457F0 /* TextToSpeechService.swift */,
-				A979929529066E5C00CDD27C /* ScenarioDAO.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
