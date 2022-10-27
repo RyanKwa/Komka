@@ -286,10 +286,8 @@
 		C51C4C722900253300CD2184 /* ArrangeWord */ = {
 			isa = PBXGroup;
 			children = (
-				C51C4C732900255200CD2184 /* ArrangeWordViewController.swift */,
-				C5962216290051F700B98B1B /* WordSlotCollectionViewCell.swift */,
-				C51C4C752900256F00CD2184 /* WordCollectionViewCell.swift */,
-				C542E7C029080A250001ADD5 /* ArrangeWordViewModel.swift */,
+				C52AC784290A4103007EB788 /* View */,
+				C52AC783290A40EF007EB788 /* ViewModel */,
 				C542E7C229080A3E0001ADD5 /* ArrangeWordDAO.swift */,
 			);
 			path = ArrangeWord;
@@ -300,6 +298,24 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C52AC783290A40EF007EB788 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C542E7C029080A250001ADD5 /* ArrangeWordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C52AC784290A4103007EB788 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C51C4C732900255200CD2184 /* ArrangeWordViewController.swift */,
+				C5962216290051F700B98B1B /* WordSlotCollectionViewCell.swift */,
+				C51C4C752900256F00CD2184 /* WordCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C5D9828828F713E800E89F60 /* MultipleChoice */ = {
