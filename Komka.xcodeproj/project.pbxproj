@@ -447,7 +447,6 @@
 			children = (
 				A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */,
 				DC85A19328F73E2B00E457F0 /* TextToSpeechService.swift */,
-				A979929529066E5C00CDD27C /* ScenarioDAO.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
