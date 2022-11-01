@@ -14,8 +14,8 @@ extension UIColor {
     static let mainTextColor = UIColor(red: 70/256, green: 43/256, blue: 2/256, alpha: 1.00)
     
     // Arrange Word border color
-    static let correctBorderColor = UIColor(red: 92/256, green: 208/256, blue: 118/256, alpha:1.00)
-    static let wrongBorderColor = UIColor(red: 159/256, green: 6/256, blue: 6/256, alpha: 1.00)
+    static let correctWordPlacementBorderColor = UIColor(red: 92/256, green: 208/256, blue: 118/256, alpha:1.00)
+    static let wrongWordPlacementBorderColor = UIColor(red: 159/256, green: 6/256, blue: 6/256, alpha: 1.00)
     
     // Choose Gender text color
     static let maleTextColor = UIColor(red: 77/256, green: 114/256, blue: 166/256, alpha: 1.00)

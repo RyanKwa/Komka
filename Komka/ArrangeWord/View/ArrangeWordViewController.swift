@@ -9,12 +9,16 @@ import UIKit
 import RxCocoa
 import RxSwift
 class ArrangeWordViewController: UIViewController {
-
+    private enum CollectionViewIdentifier {
+        case wordSlotCollectionView
+        case wordCollectionView
+    }
     var arrangeWordVM = ArrangeWordViewModel()
     private let disposeBag = DisposeBag()
     private var correctSentences = [String]()
     private var wordChoices = [String]()
-    let scenarioID: String? = "D77FA9FF-B313-69D0-2997-2EBB63A22A93"
+    //TODO: replace string with passed scenarioID from fetched records
+    var scenarioID: String? = "D77FA9FF-B313-69D0-2997-2EBB63A22A93"
     // To store current selected word cell
     private var selectedWord: UICollectionViewCell?
     
@@ -43,21 +47,27 @@ class ArrangeWordViewController: UIViewController {
         return button
     }()
     
-    private lazy var wordCollectionView: UICollectionView = createCollectionView(name: "wordCollectionView")
-    private lazy var wordSlotCollectionView: UICollectionView = createCollectionView(name: "wordSlotCollectionView")
+    private lazy var wordCollectionView: UICollectionView = createCollectionView(name: CollectionViewIdentifier.wordCollectionView)
+    private lazy var wordSlotCollectionView: UICollectionView = createCollectionView(name: CollectionViewIdentifier.wordSlotCollectionView)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         arrangeWordVM.getSentencesFromScenario(scenarioID: scenarioID ?? "")
-        arrangeWordVM.sentences.subscribe { sentence in
+        arrangeWordVM.sentences.subscribe(onNext: { [weak self] sentence in
             DispatchQueue.main.async {
-                self.correctSentences = sentence
-                self.wordChoices = self.correctSentences.shuffled()
-                self.wordCollectionView.reloadData()
-                self.wordSlotCollectionView.reloadData()
+                self?.correctSentences = sentence
+                self?.wordChoices = self?.correctSentences.shuffled() ?? []
+                self?.wordCollectionView.reloadData()
+                self?.wordSlotCollectionView.reloadData()
             }
-        }
+        }, onError: { error in
+            let errorMessage = error as? FetchError
+            print("Error: \(errorMessage?.localizedDescription)")
+        }, onCompleted: {
+            
+        })
+        .disposed(by: disposeBag)
         subViewConfiguration()
         collectionViewConfiguration()
         setConstraint()
@@ -117,17 +127,16 @@ class ArrangeWordViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    private func createCollectionView(name: String) -> UICollectionView {
+    private func createCollectionView(name: CollectionViewIdentifier) -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: ScreenSizeConfiguration.SCREEN_WIDTH/6, height: ScreenSizeConfiguration.SCREEN_HEIGHT/14)
-//        layout.minimumLineSpacing = 50.0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isScrollEnabled = false
-        if name == "wordSlotCollectionView" {
+        if name == .wordSlotCollectionView {
             collectionView.register(WordSlotCollectionViewCell.self, forCellWithReuseIdentifier: WordSlotCollectionViewCell.identifier)
         }
-        else if name == "wordCollectionView" {
+        else if name == .wordCollectionView {
             collectionView.register(WordCollectionViewCell.self, forCellWithReuseIdentifier: WordCollectionViewCell.identifier)
         }
         return collectionView
@@ -167,16 +176,13 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
                 return
             }
             
-            let correctPlacement = arrangeWordVM.evaluateWordPlacement(selectedWord: currentSelectedWordCell.wordTitle.text ?? "", placementIndex: indexPath.row, sentences: correctSentences)
-            
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) {
-                currentSelectedWordCell.alpha = 0
-            }
+            let isWordPlacementCorrect = arrangeWordVM.evaluateWordPlacement(selectedWord: currentSelectedWordCell.wordTitle.text ?? "", placementIndex: indexPath.row, sentences: correctSentences)
             
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: { [weak self] in
+                currentSelectedWordCell.alpha = 0
                 selectedSlot.answerImage.alpha = 1
                 selectedSlot.wordTitle.text = currentSelectedWordCell.wordTitle.text
-                self?.showResultBorder(slotCell: selectedSlot, wordCell: currentSelectedWordCell, withResult: correctPlacement)
+                self?.showResultBorder(slotCell: selectedSlot, wordCell: currentSelectedWordCell, withResult: isWordPlacementCorrect)
             })
         }
         else if collectionView == self.wordCollectionView {
@@ -214,18 +220,16 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
         })
     }
 
-    private func showResultBorder(slotCell: WordSlotCollectionViewCell, wordCell: WordCollectionViewCell, withResult correct: Bool) {
-        if correct {
-            //greenBorder
-            setCellBorderColor(cell: slotCell, color: "green")
+    private func showResultBorder(slotCell: WordSlotCollectionViewCell, wordCell: WordCollectionViewCell, withResult isCorrect: Bool) {
+        if isCorrect {
+            setCellBorderColor(cell: slotCell, color: UIColor.correctWordPlacementBorderColor)
             slotCell.answerImage.layer.borderWidth = 6
             slotCell.slotImage.alpha = 0
             slotCell.slotImage.isHidden = true
             slotCell.isUserInteractionEnabled = false
         }
         else{
-            //redBorder
-            setCellBorderColor(cell: slotCell, color: "red")
+            setCellBorderColor(cell: slotCell, color: UIColor.wrongWordPlacementBorderColor)
             slotCell.answerImage.layer.borderWidth = 4
             DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                 UIView.transition(with: slotCell, duration: 0.5, options: .transitionCrossDissolve, animations: { [weak self] in
@@ -243,11 +247,8 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
         }
     }
     
-    private func setCellBorderColor(cell: WordSlotCollectionViewCell, color: String) {
-
-        cell.answerImage.layer.borderColor  = color == "green" ?
-        CGColor(red: 0.36, green: 0.82, blue: 0.46, alpha: 1.00) :
-        CGColor(red: 0.62, green: 0.02, blue: 0.02, alpha: 1.00)
+    private func setCellBorderColor(cell: WordSlotCollectionViewCell, color: UIColor) {
+        cell.answerImage.layer.borderColor  = color.cgColor
         cell.answerImage.layer.cornerRadius = 26
     }
     
