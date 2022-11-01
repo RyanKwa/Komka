@@ -50,7 +50,7 @@ class FullSentencesViewController: UIViewController {
     }
     
     @objc func backBtnTapped(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: false)
     }
     
     @objc func startBtnTapped(_ sender: UIButton) {
