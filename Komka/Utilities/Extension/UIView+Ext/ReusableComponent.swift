@@ -28,7 +28,7 @@ extension UIView {
     
     static func createLabel(text: String? = "",
                             fontSize: CGFloat,
-                            textColor: UIColor? = .black) -> UILabel {
+                            textColor: UIColor? = UIColor.mainTextColor) -> UILabel {
         let label = UILabel()
         label.text = text
         label.font = UIFont.balooFont(size: fontSize)
