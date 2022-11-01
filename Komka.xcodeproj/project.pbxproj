@@ -15,6 +15,8 @@
 		A9B1761C28FD2408005F2FC1 /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */; };
 		A9B1761E28FD3667005F2FC1 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */; };
 		A9B1762328FDA25C005F2FC1 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */; };
+		C5082142290FCEAA009A645B /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5082141290FCEAA009A645B /* UIColor+Ext.swift */; };
+		C50821442910036D009A645B /* FetchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50821432910036D009A645B /* FetchError.swift */; };
 		C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590628E587B6001D42E5 /* AppDelegate.swift */; };
 		C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590828E587B6001D42E5 /* SceneDelegate.swift */; };
 		C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590A28E587B6001D42E5 /* ViewController.swift */; };
@@ -82,6 +84,8 @@
 		A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
 		A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
+		C5082141290FCEAA009A645B /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		C50821432910036D009A645B /* FetchError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchError.swift; sourceTree = "<group>"; };
 		C50B590328E587B6001D42E5 /* Komka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50B590628E587B6001D42E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C50B590828E587B6001D42E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 				DC4B746E28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift */,
 				DCED8F4028F85BF8009F31E3 /* UIImageView+Ext.swift */,
 				A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */,
+				C5082141290FCEAA009A645B /* UIColor+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 		C50B58FA28E587B6001D42E5 = {
 			isa = PBXGroup;
 			children = (
+				C50821432910036D009A645B /* FetchError.swift */,
 				C50B590528E587B6001D42E5 /* Komka */,
 				C50B591F28E587B7001D42E5 /* KomkaTests */,
 				C50B592928E587B7001D42E5 /* KomkaUITests */,
@@ -614,6 +620,8 @@
 				C5D9828B28F7BFDB00E89F60 /* Scenario.swift in Sources */,
 				C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */,
 				C51C4C762900256F00CD2184 /* WordCollectionViewCell.swift in Sources */,
+				C5082142290FCEAA009A645B /* UIColor+Ext.swift in Sources */,
+				C50821442910036D009A645B /* FetchError.swift in Sources */,
 				C5D9828728F713D400E89F60 /* MultipleChoiceViewController.swift in Sources */,
 				C51C4C742900255200CD2184 /* ArrangeWordViewController.swift in Sources */,
 			);

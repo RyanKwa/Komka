@@ -16,17 +16,29 @@ class ArrangeWordViewModel {
         fetchAllScenario()
     }
     func fetchAllScenario() {
-        arrangeWordDAO.fetchScenario { [weak self] fetchedScenarios in
-            self?.scenarios.onNext(fetchedScenarios)
-            self?.scenarios.onCompleted()
+        arrangeWordDAO.fetchScenario { [weak self] fetchedScenarios, error  in
+            if let error = error {
+                self?.scenarios.onError(error)
+                return
+            }
+            else if let fetchedScenarios = fetchedScenarios {
+                self?.scenarios.onNext(fetchedScenarios)
+                self?.scenarios.onCompleted()
+            }
         }
     }
     func getSentencesFromScenario(scenarioID: String){
 
-        arrangeWordDAO.fetchScenarioByID(scenarioID: scenarioID) { [weak self] scenario in
-            let sentences = scenario.sentence.split(separator: " ").compactMap({String($0)})
-            self?.sentences.onNext(sentences)
-            self?.sentences.onCompleted()
+        arrangeWordDAO.fetchScenarioByID(scenarioID: scenarioID) { [weak self] scenario, error in
+            if let error = error {
+                self?.sentences.onError(error)
+                return
+            }
+            else if let scenario = scenario {
+                let sentences = scenario.sentence.split(separator: " ").compactMap({String($0)})
+                self?.sentences.onNext(sentences)
+                self?.sentences.onCompleted()
+            }
         }
     }
 

@@ -16,55 +16,66 @@ class ArrangeWordDAO {
     init(){
         
     }
-    func fetchScenarioByID(scenarioID: String, completion: @escaping (Scenario) -> Void) {
+    func fetchScenarioByID(scenarioID: String, completion: @escaping (Scenario?, FetchError?) -> Void) {
         let recordID = CKRecord.ID(recordName: scenarioID)
         let predicate = NSPredicate(format: "recordID = %@", recordID)
         let query = CKQuery(recordType: "Scenario", predicate: predicate)
         let queryOperation = CKQueryOperation(query: query)
         var fetchedScenario: Scenario? = nil
         
-        queryOperation.recordMatchedBlock = { returnedRecord, returnedResult in
+        queryOperation.recordMatchedBlock = { returnedRecordID, returnedResult in
             switch returnedResult {
             case .success(let record):
-                guard let title = record["title"] as? String else {
+                guard let title = record["title"] as? String,
+                      let isCompleted = record["isCompleted"] as? Bool,
+                      let sentence = record["sentence"] as? String,
+                      let level = record["level"] as? CKRecord.Reference
+                else {
+                    completion(nil, FetchError.missingData(recordType: "Scenario"))
                     return
                 }
-                if let isCompleted = record["isCompleted"] as? Bool, let sentence = record["sentence"] as? String, let level = record["level"] as? CKRecord.Reference {
-                    fetchedScenario = Scenario(id: record.recordID, title: title, isCompleted: isCompleted, sentence: sentence, level: level, reward: nil, multipleChoice: nil, wordImitations: [])
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
+                fetchedScenario = Scenario(id: record.recordID, title: title, isCompleted: isCompleted, sentence: sentence, level: level, reward: nil, multipleChoice: nil, wordImitations: [])
+            case .failure(_):
+                completion(nil, FetchError.failedQuery(recordType: "Scenario"))
             }
         }
         queryOperation.queryResultBlock = { result in
-            let recordID = CKRecord.ID(recordName: "Scenario")
-            let dummyScenario = Scenario(id: recordID, title: "Dummy", isCompleted: false, sentence: "Dummy sentence", level: CKRecord.Reference(recordID: recordID, action: .deleteSelf), reward: nil, multipleChoice: nil, wordImitations: [])
-            completion(fetchedScenario ?? dummyScenario)
+            switch result {
+            case .success(_):
+                completion(fetchedScenario, nil)
+            case.failure(_):
+                completion(nil, FetchError.failedQuery(recordType: "Scenario"))
+            }
         }
         publicDB.add(queryOperation)
-
+        
     }
     
-    func fetchScenario(completion: @escaping ([Scenario]) -> Void) {
+    func fetchScenario(completion: @escaping ([Scenario]?, FetchError?) -> Void) {
         let query = CKQuery(recordType: "Scenario", predicate: NSPredicate(value: true))
         let queryOperation = CKQueryOperation(query: query)
         var fetchedScenarios = [Scenario]()
         queryOperation.recordMatchedBlock = {returnedRecord, returnedResult in
             switch returnedResult {
             case .success(let record):
-                guard let title = record["title"] as? String else {
+                guard let title = record["title"] as? String,
+                      let isCompleted = record["isCompleted"] as? Bool, let sentence = record["sentence"] as? String, let level = record["level"] as? CKRecord.Reference
+                else {
+                    completion(nil, FetchError.missingData(recordType: "Scenario"))
                     return
                 }
-                if let isCompleted = record["isCompleted"] as? Bool, let sentence = record["sentence"] as? String, let level = record["level"] as? CKRecord.Reference {
-                    fetchedScenarios.append(Scenario(id: record.recordID, title: title, isCompleted: isCompleted, sentence: sentence, level: level, reward: nil, multipleChoice: nil, wordImitations: []))
-                }
-            case .failure (let error):
-                print(error.localizedDescription)
-                
+                fetchedScenarios.append(Scenario(id: record.recordID, title: title, isCompleted: isCompleted, sentence: sentence, level: level, reward: nil, multipleChoice: nil, wordImitations: []))
+            case .failure (_):
+                completion(nil, FetchError.failedQuery(recordType: "Scenario"))
             }
         }
         queryOperation.queryResultBlock = { result in
-            completion(fetchedScenarios)
+            switch result {
+            case .success(_):
+                completion(fetchedScenarios, nil)
+            case.failure(_):
+                completion(nil, FetchError.failedQuery(recordType: "Scenario"))
+            }
         }
         publicDB.add(queryOperation)
     }
