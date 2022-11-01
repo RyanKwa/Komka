@@ -15,4 +15,5 @@ struct ContentAsset {
     let scenario: CKRecord.Reference
     let step: String?
     let image: CKAsset?
+    let part: String?
 }
