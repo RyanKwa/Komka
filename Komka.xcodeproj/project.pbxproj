@@ -30,8 +30,10 @@
 		C5D9828F28F7C7F500E89F60 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9828E28F7C7F500E89F60 /* Level.swift */; };
 		C5D9829128F7C8F200E89F60 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829028F7C8F200E89F60 /* Reward.swift */; };
 		C5D9829328F7C93200E89F60 /* MultipleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829228F7C93200E89F60 /* MultipleChoice.swift */; };
-		C5D9829528F7C97400E89F60 /* Choice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829428F7C97400E89F60 /* Choice.swift */; };
 		C5D9829728F7C98200E89F60 /* ContentAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829628F7C98200E89F60 /* ContentAsset.swift */; };
+		DC3F64F62911332E00D5152E /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F64F52911332E00D5152E /* UILabel+Ext.swift */; };
+		DC3F64F829113B2B00D5152E /* MultipleChoicePart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F64F729113B2B00D5152E /* MultipleChoicePart.swift */; };
+		DC3F64FA29113B7200D5152E /* Choices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F64F929113B7200D5152E /* Choices.swift */; };
 		DC4B746128F534CF00A9C640 /* ChooseGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746028F534CF00A9C640 /* ChooseGenderViewController.swift */; };
 		DC4B746528F5351D00A9C640 /* ChooseGenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746428F5351D00A9C640 /* ChooseGenderViewModel.swift */; };
 		DC4B746828F5355700A9C640 /* ScreenSizeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746728F5355700A9C640 /* ScreenSizeConfiguration.swift */; };
@@ -41,6 +43,17 @@
 		DC4B747428F53A5200A9C640 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B747228F53A5200A9C640 /* Button.swift */; };
 		DC85A19228F73DEF00E457F0 /* FullSentencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC85A19128F73DEF00E457F0 /* FullSentencesViewController.swift */; };
 		DC85A19428F73E2B00E457F0 /* TextToSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC85A19328F73E2B00E457F0 /* TextToSpeechService.swift */; };
+		DC8DFD97290574A100EEEB64 /* Bubble.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC8DFD96290574A100EEEB64 /* Bubble.mp3 */; };
+		DC8DFD9B290574AE00EEEB64 /* Correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC8DFD9A290574AE00EEEB64 /* Correct.mp3 */; };
+		DC8DFD9D290574B300EEEB64 /* Incorrect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC8DFD9C290574B300EEEB64 /* Incorrect.mp3 */; };
+		DC8DFD9F2905755A00EEEB64 /* SoundEffectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFD9E2905755A00EEEB64 /* SoundEffectService.swift */; };
+		DC8DFDA12905921900EEEB64 /* CompletionPage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC8DFDA02905921900EEEB64 /* CompletionPage.mp3 */; };
+		DC8DFDA62906A6E000EEEB64 /* ContentAssetDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFDA52906A6E000EEEB64 /* ContentAssetDAO.swift */; };
+		DC8DFDA82906A9E900EEEB64 /* MultipleChoiceDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFDA72906A9E900EEEB64 /* MultipleChoiceDAO.swift */; };
+		DC8DFDAB2906B46600EEEB64 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DC8DFDAA2906B46600EEEB64 /* RxCocoa */; };
+		DC8DFDAD2906B46600EEEB64 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DC8DFDAC2906B46600EEEB64 /* RxSwift */; };
+		DCA64B2928FFE8CD004D9D69 /* MultipleChoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA64B2828FFE8CD004D9D69 /* MultipleChoiceViewModel.swift */; };
+		DCA64B2B28FFED91004D9D69 /* CKHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA64B2A28FFED91004D9D69 /* CKHelper.swift */; };
 		DCED8F3F28F80C91009F31E3 /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCED8F3E28F80C91009F31E3 /* LevelButton.swift */; };
 		DCED8F4128F85BF8009F31E3 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCED8F4028F85BF8009F31E3 /* UIImageView+Ext.swift */; };
 		DCED8F4528F865C2009F31E3 /* SoundPracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCED8F4428F865C2009F31E3 /* SoundPracticeViewController.swift */; };
@@ -86,14 +99,16 @@
 		C50B592C28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KomkaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C5336BD528F8665000AC24A9 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Komka.entitlements; sourceTree = "<group>"; };
-		C5D9828628F713D400E89F60 /* MultipleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultipleChoiceViewController.swift; path = Komka/MultipleChoice/MultipleChoiceViewController.swift; sourceTree = SOURCE_ROOT; };
+		C5D9828628F713D400E89F60 /* MultipleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultipleChoiceViewController.swift; path = Komka/MultipleChoice/View/MultipleChoiceViewController.swift; sourceTree = SOURCE_ROOT; };
 		C5D9828A28F7BFDB00E89F60 /* Scenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
 		C5D9828C28F7C5FD00E89F60 /* WordImitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordImitation.swift; sourceTree = "<group>"; };
 		C5D9828E28F7C7F500E89F60 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		C5D9829028F7C8F200E89F60 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
 		C5D9829228F7C93200E89F60 /* MultipleChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoice.swift; sourceTree = "<group>"; };
-		C5D9829428F7C97400E89F60 /* Choice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Choice.swift; sourceTree = "<group>"; };
 		C5D9829628F7C98200E89F60 /* ContentAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAsset.swift; sourceTree = "<group>"; };
+		DC3F64F52911332E00D5152E /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
+		DC3F64F729113B2B00D5152E /* MultipleChoicePart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoicePart.swift; sourceTree = "<group>"; };
+		DC3F64F929113B7200D5152E /* Choices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Choices.swift; sourceTree = "<group>"; };
 		DC4B746028F534CF00A9C640 /* ChooseGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewController.swift; sourceTree = "<group>"; };
 		DC4B746428F5351D00A9C640 /* ChooseGenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewModel.swift; sourceTree = "<group>"; };
 		DC4B746728F5355700A9C640 /* ScreenSizeConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSizeConfiguration.swift; sourceTree = "<group>"; };
@@ -103,6 +118,15 @@
 		DC4B747228F53A5200A9C640 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		DC85A19128F73DEF00E457F0 /* FullSentencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullSentencesViewController.swift; sourceTree = "<group>"; };
 		DC85A19328F73E2B00E457F0 /* TextToSpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechService.swift; sourceTree = "<group>"; };
+		DC8DFD96290574A100EEEB64 /* Bubble.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Bubble.mp3; sourceTree = "<group>"; };
+		DC8DFD9A290574AE00EEEB64 /* Correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Correct.mp3; sourceTree = "<group>"; };
+		DC8DFD9C290574B300EEEB64 /* Incorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Incorrect.mp3; sourceTree = "<group>"; };
+		DC8DFD9E2905755A00EEEB64 /* SoundEffectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffectService.swift; sourceTree = "<group>"; };
+		DC8DFDA02905921900EEEB64 /* CompletionPage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CompletionPage.mp3; sourceTree = "<group>"; };
+		DC8DFDA52906A6E000EEEB64 /* ContentAssetDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAssetDAO.swift; sourceTree = "<group>"; };
+		DC8DFDA72906A9E900EEEB64 /* MultipleChoiceDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceDAO.swift; sourceTree = "<group>"; };
+		DCA64B2828FFE8CD004D9D69 /* MultipleChoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewModel.swift; sourceTree = "<group>"; };
+		DCA64B2A28FFED91004D9D69 /* CKHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKHelper.swift; sourceTree = "<group>"; };
 		DCED8F3E28F80C91009F31E3 /* LevelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelButton.swift; sourceTree = "<group>"; };
 		DCED8F4028F85BF8009F31E3 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		DCED8F4428F865C2009F31E3 /* SoundPracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPracticeViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +137,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC8DFDAD2906B46600EEEB64 /* RxSwift in Frameworks */,
+				DC8DFDAB2906B46600EEEB64 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,12 +187,13 @@
 		A993D81C28EB17240052DC92 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C5336BD528F8665000AC24A9 /* UIImageView+Ext.swift */,
 				DC4B746928F5356300A9C640 /* UIView+Ext */,
+				C5336BD528F8665000AC24A9 /* UIImageView+Ext.swift */,
 				A993D81D28EB17300052DC92 /* UIFont+Ext.swift */,
 				DC4B746E28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift */,
 				DCED8F4028F85BF8009F31E3 /* UIImageView+Ext.swift */,
 				A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */,
+				DC3F64F52911332E00D5152E /* UILabel+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -176,7 +203,6 @@
 			children = (
 				A96B643528F5BC1B00E23BB2 /* ViewModel */,
 				A993D82A28EFB8ED0052DC92 /* View */,
-				A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */,
 			);
 			path = ChooseScenario;
 			sourceTree = "<group>";
@@ -222,8 +248,9 @@
 		C50B590528E587B6001D42E5 /* Komka */ = {
 			isa = PBXGroup;
 			children = (
+				DC8DFDA229064D0E00EEEB64 /* DAO */,
+				DC8DFD952905749000EEEB64 /* SoundEffects */,
 				C5D9828928F7BDAE00E89F60 /* Models */,
-				C5D9828828F713E800E89F60 /* MultipleChoice */,
 				C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */,
 				DCED8F4628F87B33009F31E3 /* Services */,
 				A993D82B28EFB9820052DC92 /* Themes */,
@@ -232,6 +259,7 @@
 				A993D82928EFB8E10052DC92 /* ChooseScenario */,
 				DC85A19028F73DC900E457F0 /* FullSentences */,
 				DCED8F4228F86598009F31E3 /* SoundPractice */,
+				C5D9828828F713E800E89F60 /* MultipleChoice */,
 				C50B590628E587B6001D42E5 /* AppDelegate.swift */,
 				C50B590828E587B6001D42E5 /* SceneDelegate.swift */,
 				C50B590A28E587B6001D42E5 /* ViewController.swift */,
@@ -263,7 +291,8 @@
 		C5D9828828F713E800E89F60 /* MultipleChoice */ = {
 			isa = PBXGroup;
 			children = (
-				C5D9828628F713D400E89F60 /* MultipleChoiceViewController.swift */,
+				DCA64B2628FFC7EC004D9D69 /* View */,
+				DCA64B2728FFC7FC004D9D69 /* ViewModel */,
 			);
 			path = MultipleChoice;
 			sourceTree = "<group>";
@@ -276,7 +305,6 @@
 				C5D9829228F7C93200E89F60 /* MultipleChoice.swift */,
 				C5D9829028F7C8F200E89F60 /* Reward.swift */,
 				C5D9828C28F7C5FD00E89F60 /* WordImitation.swift */,
-				C5D9829428F7C97400E89F60 /* Choice.swift */,
 				C5D9829628F7C98200E89F60 /* ContentAsset.swift */,
 			);
 			path = Models;
@@ -349,6 +377,44 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DC8DFD952905749000EEEB64 /* SoundEffects */ = {
+			isa = PBXGroup;
+			children = (
+				DC8DFD96290574A100EEEB64 /* Bubble.mp3 */,
+				DC8DFDA02905921900EEEB64 /* CompletionPage.mp3 */,
+				DC8DFD9A290574AE00EEEB64 /* Correct.mp3 */,
+				DC8DFD9C290574B300EEEB64 /* Incorrect.mp3 */,
+			);
+			path = SoundEffects;
+			sourceTree = "<group>";
+		};
+		DC8DFDA229064D0E00EEEB64 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				DC8DFDA52906A6E000EEEB64 /* ContentAssetDAO.swift */,
+				DC8DFDA72906A9E900EEEB64 /* MultipleChoiceDAO.swift */,
+			);
+			path = DAO;
+			sourceTree = "<group>";
+		};
+		DCA64B2628FFC7EC004D9D69 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5D9828628F713D400E89F60 /* MultipleChoiceViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DCA64B2728FFC7FC004D9D69 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DCA64B2828FFE8CD004D9D69 /* MultipleChoiceViewModel.swift */,
+				DC3F64F729113B2B00D5152E /* MultipleChoicePart.swift */,
+				DC3F64F929113B7200D5152E /* Choices.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		DCED8F4228F86598009F31E3 /* SoundPractice */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +435,9 @@
 			isa = PBXGroup;
 			children = (
 				DC85A19328F73E2B00E457F0 /* TextToSpeechService.swift */,
+				A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */,
+				DCA64B2A28FFED91004D9D69 /* CKHelper.swift */,
+				DC8DFD9E2905755A00EEEB64 /* SoundEffectService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -389,6 +458,10 @@
 			dependencies = (
 			);
 			name = Komka;
+			packageProductDependencies = (
+				DC8DFDAA2906B46600EEEB64 /* RxCocoa */,
+				DC8DFDAC2906B46600EEEB64 /* RxSwift */,
+			);
 			productName = Komka;
 			productReference = C50B590328E587B6001D42E5 /* Komka.app */;
 			productType = "com.apple.product-type.application";
@@ -461,6 +534,9 @@
 				Base,
 			);
 			mainGroup = C50B58FA28E587B6001D42E5;
+			packageReferences = (
+				DC8DFDA92906B46600EEEB64 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = C50B590428E587B6001D42E5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -477,8 +553,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC8DFD97290574A100EEEB64 /* Bubble.mp3 in Resources */,
+				DC8DFD9B290574AE00EEEB64 /* Correct.mp3 in Resources */,
 				A993D81828EB16640052DC92 /* Baloo2-VariableFont_wght.ttf in Resources */,
 				C50B591628E587B7001D42E5 /* LaunchScreen.storyboard in Resources */,
+				DC8DFDA12905921900EEEB64 /* CompletionPage.mp3 in Resources */,
+				DC8DFD9D290574B300EEEB64 /* Incorrect.mp3 in Resources */,
 				C50B591328E587B7001D42E5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,18 +593,23 @@
 				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
 				DC85A19428F73E2B00E457F0 /* TextToSpeechService.swift in Sources */,
 				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
+				DC3F64F829113B2B00D5152E /* MultipleChoicePart.swift in Sources */,
 				C5336BD628F8665000AC24A9 /* UIImageView+Ext.swift in Sources */,
 				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
 				C5D9828D28F7C5FD00E89F60 /* WordImitation.swift in Sources */,
+				DCA64B2B28FFED91004D9D69 /* CKHelper.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
+				DCA64B2928FFE8CD004D9D69 /* MultipleChoiceViewModel.swift in Sources */,
 				DC85A19228F73DEF00E457F0 /* FullSentencesViewController.swift in Sources */,
 				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
+				DC3F64FA29113B7200D5152E /* Choices.swift in Sources */,
+				DC8DFD9F2905755A00EEEB64 /* SoundEffectService.swift in Sources */,
 				C5D9828D28F7C5FD00E89F60 /* WordImitation.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
 				DC4B746D28F5359700A9C640 /* AutoLayout.swift in Sources */,
 				A9B1761E28FD3667005F2FC1 /* UIImage+Ext.swift in Sources */,
 				DC4B746828F5355700A9C640 /* ScreenSizeConfiguration.swift in Sources */,
-				C5D9829528F7C97400E89F60 /* Choice.swift in Sources */,
+				DC8DFDA62906A6E000EEEB64 /* ContentAssetDAO.swift in Sources */,
 				DC4B746528F5351D00A9C640 /* ChooseGenderViewModel.swift in Sources */,
 				DCED8F4128F85BF8009F31E3 /* UIImageView+Ext.swift in Sources */,
 				DC4B747428F53A5200A9C640 /* Button.swift in Sources */,
@@ -533,7 +618,9 @@
 				C5D9828F28F7C7F500E89F60 /* Level.swift in Sources */,
 				C5D9829728F7C98200E89F60 /* ContentAsset.swift in Sources */,
 				C5D9829128F7C8F200E89F60 /* Reward.swift in Sources */,
+				DC8DFDA82906A9E900EEEB64 /* MultipleChoiceDAO.swift in Sources */,
 				C5D9829328F7C93200E89F60 /* MultipleChoice.swift in Sources */,
+				DC3F64F62911332E00D5152E /* UILabel+Ext.swift in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
 				A9B1761C28FD2408005F2FC1 /* CloudKitHelper.swift in Sources */,
 				A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */,
@@ -708,9 +795,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Komka/Komka.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L2V23RWBGR;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = L2V23RWBGR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Komka/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -726,6 +815,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ProvisioningProfileMina;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -759,7 +850,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = KomkaProfile;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ProvisioningProfileMina;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -882,6 +973,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DC8DFDA92906B46600EEEB64 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DC8DFDAA2906B46600EEEB64 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC8DFDA92906B46600EEEB64 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		DC8DFDAC2906B46600EEEB64 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC8DFDA92906B46600EEEB64 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C50B590F28E587B6001D42E5 /* Komka.xcdatamodeld */ = {

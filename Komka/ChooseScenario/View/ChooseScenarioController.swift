@@ -113,8 +113,7 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let stepViewController = MultipleChoiceViewController(nibName: nil, bundle: nil)
-        stepViewController.currentScenario = "RuangMakanCover"
+        let stepViewController = MultipleChoiceViewController(scenarioRecordId: vm.scenarios[indexPath.row].id)
         self.navigationController?.pushViewController(stepViewController, animated: true)
     }
 
