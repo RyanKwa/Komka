@@ -11,8 +11,8 @@ import UIKit
 import RxSwift
 
 class ChooseScenarioViewModel {
-    var scenarioDAO = ScenarioDAO.instance
-    
+    var scenarioDAO = ScenarioDAO()
+
     var scenarios: [Scenario] = []
     var assets: [ContentAsset] = []
         

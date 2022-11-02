@@ -44,12 +44,11 @@ class ChooseScenarioController: UIViewController {
         navigationItem.hidesBackButton = true
         
         vm.fetchScenario()
-        vm.assetsPublisher.subscribe(onCompleted: {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
+    
+        vm.assetsPublisher.observe(on: MainScheduler.instance).subscribe(onCompleted: {
+            self.collectionView.reloadData()
         }).disposed(by: vm.bag)
-        
+
         addSubView()
         setCollectionView()
         setupAutoLayout()

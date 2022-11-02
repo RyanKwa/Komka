@@ -11,8 +11,6 @@ import CloudKit
 import RxSwift
 
 class ScenarioDAO{
-    static let instance = ScenarioDAO()
-
     var ckHelper = CloudKitHelper.shared
     var scenarios: [Scenario] = []
     var assets: [ContentAsset] = []
@@ -21,10 +19,10 @@ class ScenarioDAO{
     var assetsPublisher = PublishSubject<[ContentAsset]>()
     
     func fetchAssetData(){
-        let step = "Cover"
+        let step = AssetStepType.Cover.rawValue
         let assetPredicate = NSPredicate(format: "step == %@", step)
         
-        let queryAsset = CKQuery(recordType: "Asset", predicate: assetPredicate)
+        let queryAsset = CKQuery(recordType: RecordType.Asset.rawValue, predicate: assetPredicate)
         queryAsset.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         let queryOperationAsset = CKQueryOperation(query: queryAsset)
         
@@ -56,7 +54,7 @@ class ScenarioDAO{
     
     
     func fetchScenarioData(){
-        let queryScenario = CKQuery(recordType: "Scenario", predicate: NSPredicate(value: true))
+        let queryScenario = CKQuery(recordType: RecordType.Scenario.rawValue, predicate: NSPredicate(value: true))
         queryScenario.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         let queryOperationScenario = CKQueryOperation(query: queryScenario)
         
