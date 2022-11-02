@@ -11,14 +11,14 @@ class FullSentencesViewController: UIViewController {
     
     lazy private var queue = ["Saya mandi"]
     
-    lazy private var backgroundImg = UIView.setImageView(imageName: "bg")
+    lazy private var backgroundImg = UIView.createImageView(imageName: "bg")
     lazy private var scenarioCoverImg: UIImageView = {
-        let image = UIView.setImageView(imageName: "KamarMandiCover", contentMode: .scaleAspectFill, clipsToBound: true)
+        let image = UIView.createImageView(imageName: "KamarMandiCover", contentMode: .scaleAspectFill, clipsToBound: true)
         image.addWhiteOverlay()
         
         return image
     }()
-    lazy private var scenarioImg = UIView.setImageView(imageName: "Mandi", contentMode: .scaleAspectFit,clipsToBound: true)
+    lazy private var scenarioImg = UIView.createImageView(imageName: "Mandi", contentMode: .scaleAspectFit,clipsToBound: true)
     
     private lazy var fullSentenceLbl = UIView.createLabel(text: "Saya mandi", fontSize: 40)
     

@@ -10,8 +10,6 @@ import CloudKit
 import RxSwift
 
 class ContentAssetDAO {
-    static let shared = ContentAssetDAO()
-    
     private let cloudKitHelper: CKHelper
     private var assets: [ContentAsset] = []
     

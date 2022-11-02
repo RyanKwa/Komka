@@ -11,7 +11,7 @@ class ChooseGenderViewController: UIViewController {
 
     lazy var chooseGenderVM: ChooseGenderViewModel = ChooseGenderViewModel()
     
-    lazy var backgroundImg = UIView.setImageView(imageName: "bg")
+    lazy var backgroundImg = UIView.createImageView(imageName: "bg")
     
     lazy var titleLbl = UIView.createLabel(text: "Pilih Gender Anak", fontSize: 45)
     

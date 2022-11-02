@@ -13,7 +13,7 @@ class ScenarioCell: UICollectionViewCell {
     static let identifier = "scenarioCollectionViewCell"
     
     
-    lazy var scenarioImg = UIView.setImageView(imageName: "Scenario Img")
+    lazy var scenarioImg = UIView.createImageView(imageName: "Scenario Img")
     lazy var scenarioLabel = UIView.createLabel(text: "Scenario Name", fontSize: 30)
     
     private lazy var stackViewScenario = UIView.createStackView(arrangedSubviews: [scenarioImg, scenarioLabel], axis: .vertical, spacing: 5)

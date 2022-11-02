@@ -13,7 +13,7 @@ class ChooseScenarioController: UIViewController {
     private lazy var btnSedang = Button(style: .idle, title: "Sedang")
     private lazy var btnSusah = Button(style: .idle, title: "Susah")
     
-    lazy var backgroundImg = UIView.setImageView(imageName: "bg")
+    lazy var backgroundImg = UIView.createImageView(imageName: "bg")
     
     private var vm = ChooseScenarioViewModel()
         

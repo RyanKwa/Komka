@@ -9,9 +9,7 @@ import Foundation
 import CloudKit
 import RxSwift
 
-class MultipleChoiceDAO {
-    static let shared = MultipleChoiceDAO()
-    
+class MultipleChoiceDAO {    
     private let cloudKitHelper: CKHelper
     private var scenario: Scenario?
     private var multipleChoice: MultipleChoice?
