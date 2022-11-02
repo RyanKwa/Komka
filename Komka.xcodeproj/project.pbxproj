@@ -15,6 +15,8 @@
 		A9B1761C28FD2408005F2FC1 /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */; };
 		A9B1761E28FD3667005F2FC1 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */; };
 		A9B1762328FDA25C005F2FC1 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */; };
+		C5082142290FCEAA009A645B /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5082141290FCEAA009A645B /* UIColor+Ext.swift */; };
+		C50821442910036D009A645B /* FetchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50821432910036D009A645B /* FetchError.swift */; };
 		C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590628E587B6001D42E5 /* AppDelegate.swift */; };
 		C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590828E587B6001D42E5 /* SceneDelegate.swift */; };
 		C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590A28E587B6001D42E5 /* ViewController.swift */; };
@@ -26,7 +28,13 @@
 		C50B592D28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B592C28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift */; };
 		C51C4C742900255200CD2184 /* ArrangeWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51C4C732900255200CD2184 /* ArrangeWordViewController.swift */; };
 		C51C4C762900256F00CD2184 /* WordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51C4C752900256F00CD2184 /* WordCollectionViewCell.swift */; };
+		C52AC77F29097B2D007EB788 /* ArrangeWordTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52AC77E29097B2D007EB788 /* ArrangeWordTestCase.swift */; };
+		C52AC78229098079007EB788 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C52AC78129098079007EB788 /* RxCocoa */; };
 		C5336BD628F8665000AC24A9 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5336BD528F8665000AC24A9 /* UIImageView+Ext.swift */; };
+		C542E7BD29080A130001ADD5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C542E7BC29080A130001ADD5 /* RxCocoa */; };
+		C542E7BF29080A130001ADD5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C542E7BE29080A130001ADD5 /* RxSwift */; };
+		C542E7C129080A250001ADD5 /* ArrangeWordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542E7C029080A250001ADD5 /* ArrangeWordViewModel.swift */; };
+		C542E7C329080A3E0001ADD5 /* ArrangeWordDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542E7C229080A3E0001ADD5 /* ArrangeWordDAO.swift */; };
 		C5962217290051F700B98B1B /* WordSlotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5962216290051F700B98B1B /* WordSlotCollectionViewCell.swift */; };
 		C5D9828728F713D400E89F60 /* MultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9828628F713D400E89F60 /* MultipleChoiceViewController.swift */; };
 		C5D9828B28F7BFDB00E89F60 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9828A28F7BFDB00E89F60 /* Scenario.swift */; };
@@ -76,6 +84,8 @@
 		A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
 		A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
+		C5082141290FCEAA009A645B /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		C50821432910036D009A645B /* FetchError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchError.swift; sourceTree = "<group>"; };
 		C50B590328E587B6001D42E5 /* Komka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50B590628E587B6001D42E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C50B590828E587B6001D42E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,7 +101,10 @@
 		C50B592C28E587B7001D42E5 /* KomkaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KomkaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C51C4C732900255200CD2184 /* ArrangeWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangeWordViewController.swift; sourceTree = "<group>"; };
 		C51C4C752900256F00CD2184 /* WordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCollectionViewCell.swift; sourceTree = "<group>"; };
+		C52AC77E29097B2D007EB788 /* ArrangeWordTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangeWordTestCase.swift; sourceTree = "<group>"; };
 		C5336BD528F8665000AC24A9 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		C542E7C029080A250001ADD5 /* ArrangeWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangeWordViewModel.swift; sourceTree = "<group>"; };
+		C542E7C229080A3E0001ADD5 /* ArrangeWordDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangeWordDAO.swift; sourceTree = "<group>"; };
 		C5962216290051F700B98B1B /* WordSlotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSlotCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Komka.entitlements; sourceTree = "<group>"; };
 		C5D9828628F713D400E89F60 /* MultipleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultipleChoiceViewController.swift; path = Komka/MultipleChoice/MultipleChoiceViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -121,6 +134,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C542E7BF29080A130001ADD5 /* RxSwift in Frameworks */,
+				C542E7BD29080A130001ADD5 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C52AC78229098079007EB788 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +191,7 @@
 				DC4B746E28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift */,
 				DCED8F4028F85BF8009F31E3 /* UIImageView+Ext.swift */,
 				A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */,
+				C5082141290FCEAA009A645B /* UIColor+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -210,10 +227,12 @@
 		C50B58FA28E587B6001D42E5 = {
 			isa = PBXGroup;
 			children = (
+				C50821432910036D009A645B /* FetchError.swift */,
 				C50B590528E587B6001D42E5 /* Komka */,
 				C50B591F28E587B7001D42E5 /* KomkaTests */,
 				C50B592928E587B7001D42E5 /* KomkaUITests */,
 				C50B590428E587B6001D42E5 /* Products */,
+				C52AC78029098079007EB788 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -256,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				C50B592028E587B7001D42E5 /* KomkaTests.swift */,
+				C52AC77E29097B2D007EB788 /* ArrangeWordTestCase.swift */,
 			);
 			path = KomkaTests;
 			sourceTree = "<group>";
@@ -272,11 +292,36 @@
 		C51C4C722900253300CD2184 /* ArrangeWord */ = {
 			isa = PBXGroup;
 			children = (
+				C52AC784290A4103007EB788 /* View */,
+				C52AC783290A40EF007EB788 /* ViewModel */,
+				C542E7C229080A3E0001ADD5 /* ArrangeWordDAO.swift */,
+			);
+			path = ArrangeWord;
+			sourceTree = "<group>";
+		};
+		C52AC78029098079007EB788 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C52AC783290A40EF007EB788 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C542E7C029080A250001ADD5 /* ArrangeWordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C52AC784290A4103007EB788 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				C51C4C732900255200CD2184 /* ArrangeWordViewController.swift */,
 				C5962216290051F700B98B1B /* WordSlotCollectionViewCell.swift */,
 				C51C4C752900256F00CD2184 /* WordCollectionViewCell.swift */,
 			);
-			path = ArrangeWord;
+			path = View;
 			sourceTree = "<group>";
 		};
 		C5D9828828F713E800E89F60 /* MultipleChoice */ = {
@@ -409,6 +454,10 @@
 			dependencies = (
 			);
 			name = Komka;
+			packageProductDependencies = (
+				C542E7BC29080A130001ADD5 /* RxCocoa */,
+				C542E7BE29080A130001ADD5 /* RxSwift */,
+			);
 			productName = Komka;
 			productReference = C50B590328E587B6001D42E5 /* Komka.app */;
 			productType = "com.apple.product-type.application";
@@ -427,6 +476,9 @@
 				C50B591E28E587B7001D42E5 /* PBXTargetDependency */,
 			);
 			name = KomkaTests;
+			packageProductDependencies = (
+				C52AC78129098079007EB788 /* RxCocoa */,
+			);
 			productName = KomkaTests;
 			productReference = C50B591C28E587B7001D42E5 /* KomkaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -481,6 +533,9 @@
 				Base,
 			);
 			mainGroup = C50B58FA28E587B6001D42E5;
+			packageReferences = (
+				C542E7BB29080A130001ADD5 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = C50B590428E587B6001D42E5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -535,6 +590,7 @@
 				DC85A19428F73E2B00E457F0 /* TextToSpeechService.swift in Sources */,
 				C5962217290051F700B98B1B /* WordSlotCollectionViewCell.swift in Sources */,
 				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
+				C542E7C129080A250001ADD5 /* ArrangeWordViewModel.swift in Sources */,
 				C5336BD628F8665000AC24A9 /* UIImageView+Ext.swift in Sources */,
 				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
 				C5D9828D28F7C5FD00E89F60 /* WordImitation.swift in Sources */,
@@ -556,6 +612,7 @@
 				C5D9829728F7C98200E89F60 /* ContentAsset.swift in Sources */,
 				C5D9829128F7C8F200E89F60 /* Reward.swift in Sources */,
 				C5D9829328F7C93200E89F60 /* MultipleChoice.swift in Sources */,
+				C542E7C329080A3E0001ADD5 /* ArrangeWordDAO.swift in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
 				A9B1761C28FD2408005F2FC1 /* CloudKitHelper.swift in Sources */,
 				A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */,
@@ -563,6 +620,8 @@
 				C5D9828B28F7BFDB00E89F60 /* Scenario.swift in Sources */,
 				C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */,
 				C51C4C762900256F00CD2184 /* WordCollectionViewCell.swift in Sources */,
+				C5082142290FCEAA009A645B /* UIColor+Ext.swift in Sources */,
+				C50821442910036D009A645B /* FetchError.swift in Sources */,
 				C5D9828728F713D400E89F60 /* MultipleChoiceViewController.swift in Sources */,
 				C51C4C742900255200CD2184 /* ArrangeWordViewController.swift in Sources */,
 			);
@@ -572,6 +631,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C52AC77F29097B2D007EB788 /* ArrangeWordTestCase.swift in Sources */,
 				C50B592128E587B7001D42E5 /* KomkaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -908,6 +968,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C542E7BB29080A130001ADD5 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C52AC78129098079007EB788 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C542E7BB29080A130001ADD5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		C542E7BC29080A130001ADD5 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C542E7BB29080A130001ADD5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		C542E7BE29080A130001ADD5 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C542E7BB29080A130001ADD5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C50B590F28E587B6001D42E5 /* Komka.xcdatamodeld */ = {
