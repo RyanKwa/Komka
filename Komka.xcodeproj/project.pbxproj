@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */; };
 		A979929629066E5C00CDD27C /* ScenarioDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979929529066E5C00CDD27C /* ScenarioDAO.swift */; };
-		A97992992906B8A400CDD27C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A97992982906B8A400CDD27C /* RxCocoa */; };
-		A979929B2906B8A400CDD27C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A979929A2906B8A400CDD27C /* RxSwift */; };
 		A993D81828EB16640052DC92 /* Baloo2-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */; };
 		A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D81D28EB17300052DC92 /* UIFont+Ext.swift */; };
 		A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D82328EC68990052DC92 /* ChooseScenarioController.swift */; };
@@ -18,6 +16,10 @@
 		A9B1761C28FD2408005F2FC1 /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */; };
 		A9B1761E28FD3667005F2FC1 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */; };
 		A9B1762328FDA25C005F2FC1 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */; };
+		A9E9D4B829125FDB00378FA7 /* AssetStepType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */; };
+		A9E9D4B929125FDB00378FA7 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E9D4B729125FDB00378FA7 /* RecordType.swift */; };
+		A9E9D4BD291260C700378FA7 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A9E9D4BC291260C700378FA7 /* RxCocoa */; };
+		A9E9D4BF291260C700378FA7 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A9E9D4BE291260C700378FA7 /* RxSwift */; };
 		C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590628E587B6001D42E5 /* AppDelegate.swift */; };
 		C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590828E587B6001D42E5 /* SceneDelegate.swift */; };
 		C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590A28E587B6001D42E5 /* ViewController.swift */; };
@@ -80,6 +82,8 @@
 		A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
 		A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
+		A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetStepType.swift; sourceTree = "<group>"; };
+		A9E9D4B729125FDB00378FA7 /* RecordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
 		C50B590328E587B6001D42E5 /* Komka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50B590628E587B6001D42E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C50B590828E587B6001D42E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,8 +129,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A979929B2906B8A400CDD27C /* RxSwift in Frameworks */,
-				A97992992906B8A400CDD27C /* RxCocoa in Frameworks */,
+				A9E9D4BF291260C700378FA7 /* RxSwift in Frameworks */,
+				A9E9D4BD291260C700378FA7 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +222,16 @@
 				A979929529066E5C00CDD27C /* ScenarioDAO.swift */,
 			);
 			path = DAO;
+			sourceTree = "<group>";
+		};
+		A9E9D4BA29125FE300378FA7 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */,
+				A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */,
+				A9E9D4B729125FDB00378FA7 /* RecordType.swift */,
+			);
+			path = CloudKit;
 			sourceTree = "<group>";
 		};
 		C50B58FA28E587B6001D42E5 = {
@@ -402,7 +416,7 @@
 		DCED8F4628F87B33009F31E3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */,
+				A9E9D4BA29125FE300378FA7 /* CloudKit */,
 				DC85A19328F73E2B00E457F0 /* TextToSpeechService.swift */,
 			);
 			path = Services;
@@ -425,8 +439,8 @@
 			);
 			name = Komka;
 			packageProductDependencies = (
-				A97992982906B8A400CDD27C /* RxCocoa */,
-				A979929A2906B8A400CDD27C /* RxSwift */,
+				A9E9D4BC291260C700378FA7 /* RxCocoa */,
+				A9E9D4BE291260C700378FA7 /* RxSwift */,
 			);
 			productName = Komka;
 			productReference = C50B590328E587B6001D42E5 /* Komka.app */;
@@ -501,7 +515,7 @@
 			);
 			mainGroup = C50B58FA28E587B6001D42E5;
 			packageReferences = (
-				A97992972906B8A400CDD27C /* XCRemoteSwiftPackageReference "RxSwift" */,
+				A9E9D4BB291260C700378FA7 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = C50B590428E587B6001D42E5 /* Products */;
 			projectDirPath = "";
@@ -550,6 +564,7 @@
 				DC4B746128F534CF00A9C640 /* ChooseGenderViewController.swift in Sources */,
 				A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */,
 				A9B1762328FDA25C005F2FC1 /* CircularProgressBarView.swift in Sources */,
+				A9E9D4B829125FDB00378FA7 /* AssetStepType.swift in Sources */,
 				A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */,
 				DCED8F3F28F80C91009F31E3 /* LevelButton.swift in Sources */,
 				C5336BD628F8665000AC24A9 /* UIImageView+Ext.swift in Sources */,
@@ -577,6 +592,7 @@
 				DCED8F4528F865C2009F31E3 /* SoundPracticeViewController.swift in Sources */,
 				C5D9828F28F7C7F500E89F60 /* Level.swift in Sources */,
 				C5D9829728F7C98200E89F60 /* ContentAsset.swift in Sources */,
+				A9E9D4B929125FDB00378FA7 /* RecordType.swift in Sources */,
 				C5D9829128F7C8F200E89F60 /* Reward.swift in Sources */,
 				C5D9829328F7C93200E89F60 /* MultipleChoice.swift in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
@@ -933,25 +949,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A97992972906B8A400CDD27C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		A9E9D4BB291260C700378FA7 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
+				minimumVersion = 6.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A97992982906B8A400CDD27C /* RxCocoa */ = {
+		A9E9D4BC291260C700378FA7 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A97992972906B8A400CDD27C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = A9E9D4BB291260C700378FA7 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		A979929A2906B8A400CDD27C /* RxSwift */ = {
+		A9E9D4BE291260C700378FA7 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A97992972906B8A400CDD27C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = A9E9D4BB291260C700378FA7 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
