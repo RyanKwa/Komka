@@ -11,7 +11,7 @@ import UIKit
 extension UILabel {
     func addCharacterSpacing(text: String) {
         let string = NSMutableAttributedString(string: text)
-        string.addAttribute(NSAttributedString.Key.kern, value: 2.0, range: NSRange(location: 0, length: string.length - 1))
+        string.addAttribute(NSAttributedString.Key.kern, value: 1.5, range: NSRange(location: 0, length: string.length - 1))
         attributedText = string
     }
 }
