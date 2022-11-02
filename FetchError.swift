@@ -9,8 +9,8 @@ import Foundation
 
 enum FetchError: Error, CustomStringConvertible {
     
-    case failedQuery(recordType: String)
-    case missingData(recordType: String)
+    case failedQuery(recordType: RecordType)
+    case missingData(recordType: RecordType)
 
     /// Retrieve error for user feedback
     var localizedDescription: String {
@@ -27,10 +27,10 @@ enum FetchError: Error, CustomStringConvertible {
     var description: String {
         switch self {
         case .failedQuery(let recordType):
-            return "Query for \(recordType) record has failed"
+            return "Query for \(recordType.rawValue) record has failed"
         
         case .missingData(let recordType):
-            return "One or more data of \(recordType) record is missing"
+            return "One or more data of \(recordType.rawValue) record is missing"
         }
         
     }

@@ -31,12 +31,12 @@ class ArrangeWordDAO {
                       let sentence = record["sentence"] as? String,
                       let level = record["level"] as? CKRecord.Reference
                 else {
-                    completion(nil, FetchError.missingData(recordType: "Scenario"))
+                    completion(nil, FetchError.missingData(recordType: RecordType.Scenario))
                     return
                 }
                 fetchedScenario = Scenario(id: record.recordID, title: title, isCompleted: isCompleted, sentence: sentence, level: level, reward: nil, multipleChoice: nil, wordImitations: [])
             case .failure(_):
-                completion(nil, FetchError.failedQuery(recordType: "Scenario"))
+                completion(nil, FetchError.failedQuery(recordType: RecordType.Scenario))
             }
         }
         queryOperation.queryResultBlock = { result in
@@ -44,7 +44,7 @@ class ArrangeWordDAO {
             case .success(_):
                 completion(fetchedScenario, nil)
             case.failure(_):
-                completion(nil, FetchError.failedQuery(recordType: "Scenario"))
+                completion(nil, FetchError.failedQuery(recordType: RecordType.Scenario))
             }
         }
         publicDB.add(queryOperation)
@@ -61,12 +61,12 @@ class ArrangeWordDAO {
                 guard let title = record["title"] as? String,
                       let isCompleted = record["isCompleted"] as? Bool, let sentence = record["sentence"] as? String, let level = record["level"] as? CKRecord.Reference
                 else {
-                    completion(nil, FetchError.missingData(recordType: "Scenario"))
+                    completion(nil, FetchError.missingData(recordType: RecordType.Scenario))
                     return
                 }
                 fetchedScenarios.append(Scenario(id: record.recordID, title: title, isCompleted: isCompleted, sentence: sentence, level: level, reward: nil, multipleChoice: nil, wordImitations: []))
             case .failure (_):
-                completion(nil, FetchError.failedQuery(recordType: "Scenario"))
+                completion(nil, FetchError.failedQuery(recordType: RecordType.Scenario))
             }
         }
         queryOperation.queryResultBlock = { result in
@@ -74,7 +74,7 @@ class ArrangeWordDAO {
             case .success(_):
                 completion(fetchedScenarios, nil)
             case.failure(_):
-                completion(nil, FetchError.failedQuery(recordType: "Scenario"))
+                completion(nil, FetchError.failedQuery(recordType: RecordType.Scenario))
             }
         }
         publicDB.add(queryOperation)

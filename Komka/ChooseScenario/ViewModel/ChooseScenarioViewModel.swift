@@ -8,17 +8,31 @@
 import Foundation
 import CloudKit
 import UIKit
+import RxSwift
 
 class ChooseScenarioViewModel {
-    var ckHelper = CloudKitHelper()
+    var scenarioDAO = ScenarioDAO()
+
+    var scenarios: [Scenario] = []
+    var assets: [ContentAsset] = []
+        
+    var scenariosPublisher = PublishSubject<[Scenario]>()
+    var assetsPublisher = PublishSubject<[ContentAsset]>()
     
-    @Published var scenarios: [Scenario] = []
-    @Published var assets: [ContentAsset] = []
+    var bag = DisposeBag()
+
     
-    init(){
-        DispatchQueue.main.asyncAfter(deadline: .now()+2){
-            self.scenarios = self.ckHelper.scenarios
-            self.assets = self.ckHelper.assets
-        }
+    func fetchScenario(){
+        scenarioDAO.fetchScenarioData()
+        scenarioDAO.fetchAssetData()
+
+        scenarioDAO.assetsPublisher.subscribe(onCompleted: {
+            self.assets = self.scenarioDAO.assets
+            self.scenarios = self.scenarioDAO.scenarios
+
+            self.assetsPublisher.onNext(self.assets)
+            self.assetsPublisher.onCompleted()
+        }).disposed(by: bag)
+        
     }
 }

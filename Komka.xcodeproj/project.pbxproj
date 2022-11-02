@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */; };
+		A979929629066E5C00CDD27C /* ScenarioDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979929529066E5C00CDD27C /* ScenarioDAO.swift */; };
 		A993D81828EB16640052DC92 /* Baloo2-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */; };
 		A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D81D28EB17300052DC92 /* UIFont+Ext.swift */; };
 		A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D82328EC68990052DC92 /* ChooseScenarioController.swift */; };
@@ -17,6 +18,10 @@
 		A9B1762328FDA25C005F2FC1 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */; };
 		C5082142290FCEAA009A645B /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5082141290FCEAA009A645B /* UIColor+Ext.swift */; };
 		C50821442910036D009A645B /* FetchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50821432910036D009A645B /* FetchError.swift */; };
+		A9E9D4B829125FDB00378FA7 /* AssetStepType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */; };
+		A9E9D4B929125FDB00378FA7 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E9D4B729125FDB00378FA7 /* RecordType.swift */; };
+		A9E9D4BD291260C700378FA7 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A9E9D4BC291260C700378FA7 /* RxCocoa */; };
+		A9E9D4BF291260C700378FA7 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A9E9D4BE291260C700378FA7 /* RxSwift */; };
 		C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590628E587B6001D42E5 /* AppDelegate.swift */; };
 		C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590828E587B6001D42E5 /* SceneDelegate.swift */; };
 		C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B590A28E587B6001D42E5 /* ViewController.swift */; };
@@ -77,6 +82,7 @@
 
 /* Begin PBXFileReference section */
 		A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioViewModel.swift; sourceTree = "<group>"; };
+		A979929529066E5C00CDD27C /* ScenarioDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioDAO.swift; sourceTree = "<group>"; };
 		A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Baloo2-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		A993D81D28EB17300052DC92 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		A993D82328EC68990052DC92 /* ChooseScenarioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioController.swift; sourceTree = "<group>"; };
@@ -86,6 +92,8 @@
 		A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
 		C5082141290FCEAA009A645B /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		C50821432910036D009A645B /* FetchError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchError.swift; sourceTree = "<group>"; };
+		A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetStepType.swift; sourceTree = "<group>"; };
+		A9E9D4B729125FDB00378FA7 /* RecordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
 		C50B590328E587B6001D42E5 /* Komka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50B590628E587B6001D42E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C50B590828E587B6001D42E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -201,7 +209,6 @@
 			children = (
 				A96B643528F5BC1B00E23BB2 /* ViewModel */,
 				A993D82A28EFB8ED0052DC92 /* View */,
-				A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */,
 			);
 			path = ChooseScenario;
 			sourceTree = "<group>";
@@ -222,6 +229,24 @@
 				A993D81628EB16350052DC92 /* Font */,
 			);
 			path = Themes;
+			sourceTree = "<group>";
+		};
+		A9E9D4B0290A3FB000378FA7 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				A979929529066E5C00CDD27C /* ScenarioDAO.swift */,
+			);
+			path = DAO;
+			sourceTree = "<group>";
+		};
+		A9E9D4BA29125FE300378FA7 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */,
+				A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */,
+				A9E9D4B729125FDB00378FA7 /* RecordType.swift */,
+			);
+			path = CloudKit;
 			sourceTree = "<group>";
 		};
 		C50B58FA28E587B6001D42E5 = {
@@ -250,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				C51C4C722900253300CD2184 /* ArrangeWord */,
+				A9E9D4B0290A3FB000378FA7 /* DAO */,
 				C5D9828928F7BDAE00E89F60 /* Models */,
 				C5D9828828F713E800E89F60 /* MultipleChoice */,
 				C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */,
@@ -433,6 +459,7 @@
 		DCED8F4628F87B33009F31E3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A9E9D4BA29125FE300378FA7 /* CloudKit */,
 				DC85A19328F73E2B00E457F0 /* TextToSpeechService.swift */,
 			);
 			path = Services;
@@ -583,6 +610,7 @@
 				DC4B746128F534CF00A9C640 /* ChooseGenderViewController.swift in Sources */,
 				A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */,
 				A9B1762328FDA25C005F2FC1 /* CircularProgressBarView.swift in Sources */,
+				A9E9D4B829125FDB00378FA7 /* AssetStepType.swift in Sources */,
 				A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */,
 				DCED8F3F28F80C91009F31E3 /* LevelButton.swift in Sources */,
 				C5336BD628F8665000AC24A9 /* UIImageView+Ext.swift in Sources */,
@@ -596,6 +624,7 @@
 				C5D9828D28F7C5FD00E89F60 /* WordImitation.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
 				DC85A19228F73DEF00E457F0 /* FullSentencesViewController.swift in Sources */,
+				A979929629066E5C00CDD27C /* ScenarioDAO.swift in Sources */,
 				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
 				C5D9828D28F7C5FD00E89F60 /* WordImitation.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
@@ -610,6 +639,7 @@
 				DCED8F4528F865C2009F31E3 /* SoundPracticeViewController.swift in Sources */,
 				C5D9828F28F7C7F500E89F60 /* Level.swift in Sources */,
 				C5D9829728F7C98200E89F60 /* ContentAsset.swift in Sources */,
+				A9E9D4B929125FDB00378FA7 /* RecordType.swift in Sources */,
 				C5D9829128F7C8F200E89F60 /* Reward.swift in Sources */,
 				C5D9829328F7C93200E89F60 /* MultipleChoice.swift in Sources */,
 				C542E7C329080A3E0001ADD5 /* ArrangeWordDAO.swift in Sources */,
@@ -845,7 +875,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = KomkaProfile;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ProvisioningProfileEvel;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
