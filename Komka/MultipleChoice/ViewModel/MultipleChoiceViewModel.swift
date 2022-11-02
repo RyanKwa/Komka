@@ -11,8 +11,8 @@ import UIKit
 import RxSwift
 
 class MultipleChoiceViewModel {
-    private var contentAssetDAO: ContentAssetDAO
-    private var multipleChoiceDAO: MultipleChoiceDAO
+    private let contentAssetDAO: ContentAssetDAO = ContentAssetDAO()
+    private let multipleChoiceDAO: MultipleChoiceDAO = MultipleChoiceDAO()
     
     private var scenarioRecordId: CKRecord.ID
     private let userGender: String
@@ -26,9 +26,6 @@ class MultipleChoiceViewModel {
     let disposeBag = DisposeBag()
     
     init(scenarioRecordId: CKRecord.ID){
-        contentAssetDAO = ContentAssetDAO.shared
-        multipleChoiceDAO = MultipleChoiceDAO.shared
-        
         self.scenarioRecordId = scenarioRecordId
         self.userGender = NSUbiquitousKeyValueStore.default.hasChooseGender
         
@@ -85,15 +82,10 @@ class MultipleChoiceViewModel {
     }
     
     func isCorrectAnswer(choice: Choices) -> Bool {
-        
-        if choice == .leftChoice {
-            if leftChoiceText == correctAnswer {
-                return true
-            }
-        } else if choice == .rightChoice {
-            if rightChoiceText == correctAnswer {
-                return true
-            }
+        if choice == .leftChoice && leftChoiceText == correctAnswer{
+            return true
+        } else if choice == .rightChoice && rightChoiceText == correctAnswer {
+            return true
         }
         
         return false

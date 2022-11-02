@@ -40,15 +40,15 @@ class MultipleChoiceViewController: UIViewController {
         return button
     }()
     
-    private lazy var backgroundImage = UIView.setImageView(imageName: "bg")
+    private lazy var backgroundImage = UIView.createImageView(imageName: "bg")
     
     private lazy var scenarioCoverImg: UIImageView = {
-        let image = UIView.setImageView(image: scenarioCoverImage ?? UIImage(), contentMode: .scaleAspectFill, clipsToBound: true)
+        let image = UIView.createImageView(image: scenarioCoverImage ?? UIImage(), contentMode: .scaleAspectFill, clipsToBound: true)
         image.addWhiteOverlay()
         return image
     }()
 
-    private lazy var imageScenario = UIView.setImageView(image: multipleChoiceCharacterImage ?? UIImage(), contentMode: .scaleAspectFit, clipsToBound: true)
+    private lazy var imageScenario = UIView.createImageView(image: multipleChoiceCharacterImage ?? UIImage(), contentMode: .scaleAspectFit, clipsToBound: true)
     
     private lazy var promptLabel: UILabel = {
         let label = UIView.createLabel(text: "Apa yang harus saya lakukan?", fontSize: 40)
@@ -57,7 +57,7 @@ class MultipleChoiceViewController: UIViewController {
     }()
     
     private lazy var leftChoice: UIImageView = {
-        let imageView = UIView.setImageView(image: leftChoiceImage ?? UIImage(), contentMode: .scaleAspectFit, clipsToBound: true)
+        let imageView = UIView.createImageView(image: leftChoiceImage ?? UIImage(), contentMode: .scaleAspectFit, clipsToBound: true)
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(choiceTapped))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizer)
@@ -67,7 +67,7 @@ class MultipleChoiceViewController: UIViewController {
     }()
     
     private lazy var rightChoice: UIImageView = {
-        let imageView = UIView.setImageView(image: rightChoiceImage ?? UIImage(), contentMode: .scaleAspectFit, clipsToBound: true)
+        let imageView = UIView.createImageView(image: rightChoiceImage ?? UIImage(), contentMode: .scaleAspectFit, clipsToBound: true)
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(choiceTapped))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizer)
@@ -136,20 +136,20 @@ class MultipleChoiceViewController: UIViewController {
     
     @objc
     private func choiceTapped(_ sender: UITapGestureRecognizer){
-        let isCorrectAns: Bool
+        let isCorrectAnswer: Bool
         
         if sender.view?.tag == 0 {
-            isCorrectAns = multipleChoiceVM.isCorrectAnswer(choice: Choices.leftChoice)
-            updateChoiceState(choice: leftChoice, isCorrectAns: isCorrectAns)
+            isCorrectAnswer = multipleChoiceVM.isCorrectAnswer(choice: Choices.leftChoice)
+            updateChoiceState(choice: leftChoice, isCorrectAnswer: isCorrectAnswer)
             
         } else if sender.view?.tag == 1 {
-            isCorrectAns = multipleChoiceVM.isCorrectAnswer(choice: Choices.rightChoice)
-            updateChoiceState(choice: rightChoice, isCorrectAns: isCorrectAns)
+            isCorrectAnswer = multipleChoiceVM.isCorrectAnswer(choice: Choices.rightChoice)
+            updateChoiceState(choice: rightChoice, isCorrectAnswer: isCorrectAnswer)
         }
     }
     
-    private func updateChoiceState(choice: UIImageView, isCorrectAns: Bool) {
-        if isCorrectAns {
+    private func updateChoiceState(choice: UIImageView, isCorrectAnswer: Bool) {
+        if isCorrectAnswer {
             SoundEffectService.shared.playSoundEffect(.Correct)
             choice.image = self.multipleChoiceVM.getMultipleChoiceAssetPart(.correctChoice)
         } else {
@@ -160,7 +160,7 @@ class MultipleChoiceViewController: UIViewController {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
             timerCounter -= 1
             if timerCounter <= 0 {
-                if isCorrectAns {
+                if isCorrectAnswer {
                     navigationController?.pushViewController(FullSentencesViewController(), animated: false)
                 }
                 

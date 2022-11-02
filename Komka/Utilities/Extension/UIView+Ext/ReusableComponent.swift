@@ -10,7 +10,7 @@ import UIKit
 
 extension UIView {
 
-    static func setImageView(imageName: String, contentMode: UIView.ContentMode? = .scaleToFill, clipsToBound: Bool? = false) -> UIImageView {
+    static func createImageView(imageName: String, contentMode: UIView.ContentMode? = .scaleToFill, clipsToBound: Bool? = false) -> UIImageView {
         let imageView = UIImageView(frame: UIScreen.main.bounds)
         imageView.image = UIImage(named: imageName)
         imageView.contentMode = contentMode ?? .scaleToFill
@@ -18,7 +18,7 @@ extension UIView {
         return imageView
     }
     
-    static func setImageView(image: UIImage, contentMode: UIView.ContentMode? = .scaleToFill, clipsToBound: Bool? = false) -> UIImageView {
+    static func createImageView(image: UIImage, contentMode: UIView.ContentMode? = .scaleToFill, clipsToBound: Bool? = false) -> UIImageView {
         let imageView = UIImageView(frame: UIScreen.main.bounds)
         imageView.image = image
         imageView.contentMode = contentMode ?? .scaleToFill
