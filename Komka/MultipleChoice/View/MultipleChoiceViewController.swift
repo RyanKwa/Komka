@@ -43,7 +43,7 @@ class MultipleChoiceViewController: UIViewController {
     private lazy var backgroundImage = UIView.createImageView(imageName: "bg")
     
     private lazy var scenarioCoverImg: UIImageView = {
-        let image = UIView.createImageView(image: scenarioCoverImage ?? UIImage(), contentMode: .scaleAspectFill, clipsToBound: true)
+        let image = UIView.createImageView(image: nil ?? UIImage(), contentMode: .scaleAspectFill, clipsToBound: true)
         image.addWhiteOverlay()
         return image
     }()
@@ -61,7 +61,7 @@ class MultipleChoiceViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(choiceTapped))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizer)
-        imageView.tag = 0
+        imageView.tag = Choices.leftChoice.rawValue
         
         return imageView
     }()
@@ -71,7 +71,7 @@ class MultipleChoiceViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(choiceTapped))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizer)
-        imageView.tag = 1
+        imageView.tag = Choices.rightChoice.rawValue
         
         return imageView
     }()
@@ -103,7 +103,7 @@ class MultipleChoiceViewController: UIViewController {
                 
                 view.addSubview(audioBtn)
                 backgroundImage.addSubview(scenarioCoverImg)
-                scenarioCoverImg.addSubview(self.imageScenario)
+                scenarioCoverImg.addSubview(imageScenario)
                 backgroundImage.addSubview(promptLabel)
                 view.addSubview(leftChoice)
                 view.addSubview(rightChoice)
@@ -138,13 +138,17 @@ class MultipleChoiceViewController: UIViewController {
     private func choiceTapped(_ sender: UITapGestureRecognizer){
         let isCorrectAnswer: Bool
         
-        if sender.view?.tag == 0 {
-            isCorrectAnswer = multipleChoiceVM.isCorrectAnswer(choice: Choices.leftChoice)
+        switch sender.view?.tag {
+        case Choices.leftChoice.rawValue:
+            isCorrectAnswer = multipleChoiceVM.isCorrectAnswer(choice: .leftChoice)
             updateChoiceState(choice: leftChoice, isCorrectAnswer: isCorrectAnswer)
             
-        } else if sender.view?.tag == 1 {
-            isCorrectAnswer = multipleChoiceVM.isCorrectAnswer(choice: Choices.rightChoice)
+        case Choices.rightChoice.rawValue:
+            isCorrectAnswer = multipleChoiceVM.isCorrectAnswer(choice: .rightChoice)
             updateChoiceState(choice: rightChoice, isCorrectAnswer: isCorrectAnswer)
+            
+        default:
+            print("Error: Default")
         }
     }
     

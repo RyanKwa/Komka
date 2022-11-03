@@ -29,12 +29,13 @@ class ArrangeWordDAO {
                 guard let title = record["title"] as? String,
                       let isCompleted = record["isCompleted"] as? Bool,
                       let sentence = record["sentence"] as? String,
-                      let level = record["level"] as? CKRecord.Reference
+                      let level = record["level"] as? CKRecord.Reference,
+                      let multipleChoice = record["multipleChoice"] as? CKRecord.Reference
                 else {
                     completion(nil, FetchError.missingData(recordType: RecordType.Scenario))
                     return
                 }
-                fetchedScenario = Scenario(id: record.recordID, title: title, isCompleted: isCompleted, sentence: sentence, level: level, reward: nil, multipleChoice: nil, wordImitations: [])
+                fetchedScenario = Scenario(id: record.recordID, title: title, isCompleted: isCompleted, sentence: sentence, level: level, reward: nil, multipleChoice: multipleChoice, wordImitations: [])
             case .failure(_):
                 completion(nil, FetchError.failedQuery(recordType: RecordType.Scenario))
             }
@@ -58,13 +59,17 @@ class ArrangeWordDAO {
         queryOperation.recordMatchedBlock = {returnedRecord, returnedResult in
             switch returnedResult {
             case .success(let record):
-                guard let title = record["title"] as? String,
-                      let isCompleted = record["isCompleted"] as? Bool, let sentence = record["sentence"] as? String, let level = record["level"] as? CKRecord.Reference
+                guard
+                    let title = record["title"] as? String,
+                    let isCompleted = record["isCompleted"] as? Bool,
+                    let sentence = record["sentence"] as? String,
+                    let level = record["level"] as? CKRecord.Reference,
+                    let multipleChoice = record["multipleChoice"] as? CKRecord.Reference
                 else {
                     completion(nil, FetchError.missingData(recordType: RecordType.Scenario))
                     return
                 }
-                fetchedScenarios.append(Scenario(id: record.recordID, title: title, isCompleted: isCompleted, sentence: sentence, level: level, reward: nil, multipleChoice: nil, wordImitations: []))
+                fetchedScenarios.append(Scenario(id: record.recordID, title: title, isCompleted: isCompleted, sentence: sentence, level: level, reward: nil, multipleChoice: multipleChoice, wordImitations: []))
             case .failure (_):
                 completion(nil, FetchError.failedQuery(recordType: RecordType.Scenario))
             }

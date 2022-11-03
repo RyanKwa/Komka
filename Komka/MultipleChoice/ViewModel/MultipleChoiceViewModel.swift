@@ -31,7 +31,9 @@ class MultipleChoiceViewModel {
         
         contentAssetDAO.fetchScenarioCoverAsset(scenarioRecordId: scenarioRecordId)
         contentAssetDAO.fetchAllScenarioAssets(scenarioRecordId: scenarioRecordId, userGender: userGender)
-        multipleChoiceDAO.fetchMultipleChoiceData(scenarioRecordId: scenarioRecordId)
+        multipleChoiceDAO.fetchMultipleChoiceData(scenarioRecordId: scenarioRecordId) { [weak self] multipleChoice, error in
+            // logic error
+        }
         
         subscription()
     }
@@ -54,7 +56,7 @@ class MultipleChoiceViewModel {
     
     private func filterMultipleChoiceAssets() {
         for asset in assets {
-            if asset.step == "MultipleChoice" || asset.step == "Cover" {
+            if asset.step == AssetStepType.MultipleChoice.rawValue || asset.step == AssetStepType.Cover.rawValue {
                 multipleChoiceAssets.append(asset)
             }
         }

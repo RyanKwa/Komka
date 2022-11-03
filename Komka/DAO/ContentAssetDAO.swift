@@ -20,13 +20,13 @@ class ContentAssetDAO {
     }
     
     func fetchScenarioCoverAsset(scenarioRecordId: CKRecord.ID) {
-        let step = "Cover"
+        let step = AssetStepType.Cover.rawValue
         let genderPredicate = NSPredicate(format: "step == %@", step)
         let scenarioPredicate = NSPredicate(format: "scenario == %@", scenarioRecordId)
         
         let assetPredicate = NSCompoundPredicate(type: .and, subpredicates: [genderPredicate, scenarioPredicate])
         
-        let queryAsset = CKQuery(recordType: "Asset", predicate: assetPredicate)
+        let queryAsset = CKQuery(recordType: RecordType.Asset.rawValue, predicate: assetPredicate)
         let queryOperationAsset = CKQueryOperation(query: queryAsset)
 
         queryOperationAsset.recordMatchedBlock = { (returnedRecordID, returnedAsset) in
@@ -63,7 +63,7 @@ class ContentAssetDAO {
         
         let assetPredicate = NSCompoundPredicate(type: .and, subpredicates: [userGenderPredicate, scenarioPredicate])
         
-        let queryAsset = CKQuery(recordType: "Asset", predicate: assetPredicate)
+        let queryAsset = CKQuery(recordType: RecordType.Asset.rawValue, predicate: assetPredicate)
         let queryOperationAsset = CKQueryOperation(query: queryAsset)
 
         queryOperationAsset.recordMatchedBlock = { (returnedRecordID, returnedAsset) in

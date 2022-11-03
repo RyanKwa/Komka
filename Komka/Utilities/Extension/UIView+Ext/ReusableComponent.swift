@@ -34,7 +34,7 @@ extension UIView {
         return button
     }
     
-    static func createLabel(text: String? = "",
+    static func createLabel(text: String,
                             fontSize: CGFloat,
                             textColor: UIColor? = UIColor.mainTextColor) -> UILabel {
         let label = UILabel()

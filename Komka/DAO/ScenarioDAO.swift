@@ -11,7 +11,7 @@ import CloudKit
 import RxSwift
 
 class ScenarioDAO{
-    var ckHelper = CloudKitHelper.shared
+    var ckHelper = CKHelper.shared
     var scenarios: [Scenario] = []
     var assets: [ContentAsset] = []
     
@@ -34,13 +34,14 @@ class ScenarioDAO{
                     let imageGender = record["gender"] as? String,
                     let scenarioReference = record["scenario"] as? CKRecord.Reference,
                     let imageStep = record["step"] as? String,
-                    let scenarioImage = record["image"] as? CKAsset
+                    let scenarioImage = record["image"] as? CKAsset,
+                    let imagePart = record["part"] as? String
                 else {
                     self.assetsPublisher.onError(FetchError.missingData(recordType: RecordType.Asset))
                     return
                 }
                 
-                self.assets.append(ContentAsset(id: returnedRecordID, title: imageTitle, gender: imageGender, scenario: scenarioReference, step: imageStep, image: scenarioImage))
+                self.assets.append(ContentAsset(id: returnedRecordID, title: imageTitle, gender: imageGender, scenario: scenarioReference, step: imageStep, image: scenarioImage, part: imagePart))
                 
                 
             case .failure(_):
@@ -73,13 +74,14 @@ class ScenarioDAO{
                     let scenarioTitle = record["title"] as? String,
                     let scenarioStatus = record["isCompleted"] as? Bool,
                     let scenarioSentence = record["sentence"] as? String,
-                    let scenarioLevel = record["level"] as? CKRecord.Reference
+                    let scenarioLevel = record["level"] as? CKRecord.Reference,
+                    let multipleChoice = record["multipleChoice"] as? CKRecord.Reference
                 else {
                     self.scenariosPublisher.onError(FetchError.missingData(recordType: RecordType.Scenario))
                     return
                 }
                 
-                self.scenarios.append(Scenario(id: returnedRecordID, title: scenarioTitle, isCompleted: scenarioStatus, sentence: scenarioSentence, level: scenarioLevel, reward: nil, multipleChoice: nil, wordImitations: []))
+                self.scenarios.append(Scenario(id: returnedRecordID, title: scenarioTitle, isCompleted: scenarioStatus, sentence: scenarioSentence, level: scenarioLevel, reward: nil, multipleChoice: multipleChoice, wordImitations: []))
                 
             case .failure(_):
                 self.scenariosPublisher.onError(FetchError.failedQuery(recordType: RecordType.Scenario))

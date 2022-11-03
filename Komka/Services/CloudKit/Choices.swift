@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Choices: String, CaseIterable {
-    case leftChoice
-    case rightChoice
+enum Choices: Int {
+    case leftChoice = 0
+    case rightChoice = 1
 }

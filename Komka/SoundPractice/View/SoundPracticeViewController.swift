@@ -18,7 +18,7 @@ class SoundPracticeViewController: UIViewController {
     
     private lazy var circularProgressBarView = CircularProgressBarView(frame: .zero)
 
-    private lazy var backgroundImg = UIView.setImageView(imageName: "bg")
+    private lazy var backgroundImg = UIView.createImageView(imageName: "bg")
     private lazy var instructionLbl = UIView.createLabel(text: "Coba ikuti cara baca di bawah ini", fontSize: 40)
     
     private lazy var backBtn: UIButton = {

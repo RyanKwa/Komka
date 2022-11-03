@@ -18,14 +18,14 @@ class SoundEffectService {
     
     static let shared = SoundEffectService()
     
-    var player: AVAudioPlayer?
+    var player: AVAudioPlayer = AVAudioPlayer()
     
     func playSoundEffect(_ soundEffect: SoundEffect){
         guard let url = Bundle.main.url(forResource: soundEffect.rawValue, withExtension: "mp3") else { return }
         
         do {
             player = try AVAudioPlayer(contentsOf: url)
-            player?.play()
+            player.play()
         } catch {
             print(error.localizedDescription)
         }
