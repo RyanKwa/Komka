@@ -22,14 +22,14 @@ class ArrangeWordViewController: UIViewController {
     // To store current selected word cell
     private var selectedWord: UICollectionViewCell?
     
-    lazy private var backgroundImg = UIView.setImageView(imageName: "bg")
+    lazy private var backgroundImg = UIView.createImageView(imageName: "bg")
     lazy private var scenarioCoverImg: UIImageView = {
-        let image = UIView.setImageView(imageName: "KamarMandiCover", contentMode: .scaleAspectFill, clipsToBound: true)
+        let image = UIView.createImageView(imageName: "KamarMandiCover", contentMode: .scaleAspectFill, clipsToBound: true)
         image.addWhiteOverlay()
         
         return image
     }()
-    lazy private var scenarioImg = UIView.setImageView(imageName: "Mandi", contentMode: .scaleAspectFit,clipsToBound: true)
+    lazy private var scenarioImg = UIView.createImageView(imageName: "Mandi", contentMode: .scaleAspectFit,clipsToBound: true)
     
     private lazy var promptLabel = UIView.createLabel(text: "Susunlah kata dengan urutan yang benar", fontSize: 40)
         

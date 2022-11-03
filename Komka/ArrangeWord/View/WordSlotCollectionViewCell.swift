@@ -9,9 +9,9 @@ import UIKit
 
 class WordSlotCollectionViewCell: UICollectionViewCell {
     static let identifier = "wordSlotCollectionViewCell"
-    var wordTitle: UILabel = UIView.createLabel(text: "Text", fontSize: 20)
-    var slotImage: UIImageView = UIView.setImageView(imageName: "WordSlot")
-    var answerImage: UIImageView = UIView.setImageView(imageName: "ArrangeWord_Active")
+    var wordTitle: UILabel = UIView.createLabel(text: "Text", fontSize: 30, textColor: .white)
+    var slotImage: UIImageView = UIView.createImageView(imageName: "WordSlot")
+    var answerImage: UIImageView = UIView.createImageView(imageName: "ArrangeWord_Active")
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(slotImage)

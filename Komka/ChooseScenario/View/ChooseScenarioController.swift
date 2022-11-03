@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 
 class ChooseScenarioController: UIViewController {
-    private lazy var backgroundImg = UIView.setImageView(imageName: "bg")
+    private lazy var backgroundImg = UIView.createImageView(imageName: "bg")
     private lazy var scenarioLabel = UIView.createLabel(text: "Pilih Skenario", fontSize: 40)
     
     private var vm = ChooseScenarioViewModel()
@@ -91,9 +91,8 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let stepViewController = MultipleChoiceViewController(nibName: nil, bundle: nil)
-        stepViewController.currentScenario = "RuangMakanCover"
-        self.navigationController?.pushViewController(stepViewController, animated: true)
+        let stepViewController = MultipleChoiceViewController(scenarioRecordId: vm.scenarios[indexPath.row].id)
+        self.navigationController?.pushViewController(stepViewController, animated: false)
     }
 
 }

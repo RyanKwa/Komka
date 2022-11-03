@@ -32,7 +32,7 @@ class CircularProgressBarView: UIView {
     private lazy var endPoint = CGFloat(3 * Double.pi/2)
     
     private lazy var scenarioBG: UIImageView = {
-        let image = UIView.setImageView(imageName: currentWordBg ?? "KamarMandiCover", clipsToBound: true)
+        let image = UIView.createImageView(imageName: currentWordBg ?? "KamarMandiCover", clipsToBound: true)
 
         image.addWhiteOverlay()
         
@@ -40,7 +40,7 @@ class CircularProgressBarView: UIView {
     }()
     
     private lazy var scenarioImg: UIImageView = {
-        let wordActImage = UIView.setImageView(imageName: (currentWordImg ?? "BadanSayaKotor"), contentMode: .scaleAspectFit, clipsToBound: true)
+        let wordActImage = UIView.createImageView(imageName: (currentWordImg ?? "BadanSayaKotor"), contentMode: .scaleAspectFit, clipsToBound: true)
         
         return wordActImage
     }()

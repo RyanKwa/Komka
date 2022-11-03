@@ -10,7 +10,7 @@ import UIKit
 
 extension UIView {
 
-    static func setImageView(imageName: String, contentMode: UIView.ContentMode? = .scaleToFill , clipsToBound: Bool? = false) -> UIImageView {
+    static func createImageView(imageName: String, contentMode: UIView.ContentMode? = .scaleToFill, clipsToBound: Bool? = false) -> UIImageView {
         let imageView = UIImageView(frame: UIScreen.main.bounds)
         imageView.image = UIImage(named: imageName)
         imageView.contentMode = contentMode ?? .scaleToFill
@@ -18,7 +18,15 @@ extension UIView {
         return imageView
     }
     
-    static func createImageIconBtn(title: String, imgTitle: String) -> UIButton {
+    static func createImageView(image: UIImage, contentMode: UIView.ContentMode? = .scaleToFill, clipsToBound: Bool? = false) -> UIImageView {
+        let imageView = UIImageView(frame: UIScreen.main.bounds)
+        imageView.image = image
+        imageView.contentMode = contentMode ?? .scaleToFill
+        imageView.clipsToBounds = clipsToBound ?? false
+        return imageView
+    }
+    
+    static func createImageIconBtn(title: String? = "", imgTitle: String) -> UIButton {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(title, for: .normal)
@@ -26,11 +34,12 @@ extension UIView {
         return button
     }
     
-    static func createLabel(text: String? = "",
+    static func createLabel(text: String,
                             fontSize: CGFloat,
                             textColor: UIColor? = UIColor.mainTextColor) -> UILabel {
         let label = UILabel()
         label.text = text
+        label.addCharacterSpacing(text: text)
         label.font = UIFont.balooFont(size: fontSize)
         label.textColor = textColor
 
