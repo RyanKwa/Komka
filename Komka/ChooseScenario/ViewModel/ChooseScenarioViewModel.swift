@@ -28,10 +28,16 @@ class ChooseScenarioViewModel {
 
         scenarioDAO.assetsPublisher.subscribe(onCompleted: {
             self.assets = self.scenarioDAO.assets
-            self.scenarios = self.scenarioDAO.scenarios
 
             self.assetsPublisher.onNext(self.assets)
             self.assetsPublisher.onCompleted()
+        }).disposed(by: bag)
+        
+        scenarioDAO.scenariosPublisher.subscribe(onCompleted: {
+            self.scenarios = self.scenarioDAO.scenarios
+            
+            self.scenariosPublisher.onNext(self.scenarios)
+            self.scenariosPublisher.onCompleted()
         }).disposed(by: bag)
         
     }
