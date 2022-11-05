@@ -10,14 +10,12 @@ import CloudKit
 import RxSwift
 
 class MultipleChoiceDAO {    
-    private let cloudKitHelper: CKHelper
+    private let ckHelper: CKHelper
     private var scenario: Scenario?
     private var multipleChoice: MultipleChoice?
     
-    var publishMultipleChoice = PublishSubject<MultipleChoice>()
-    
     init() {
-        self.cloudKitHelper = CKHelper.shared
+        self.ckHelper = CKHelper.shared
     }
     
     func fetchMultipleChoiceData(scenarioRecordId: CKRecord.ID, completion: @escaping (MultipleChoice?, FetchError?) -> Void){
@@ -68,8 +66,8 @@ class MultipleChoiceDAO {
                             
                             self.multipleChoice = MultipleChoice(id: returnedRecordID, imageCaption: multipleChoiceImageCaption, question: multipleChoiceQuestion, choices: multipleChoiceChoices, answer: multipleChoiceAnswer)
                             
-                        case .failure(let error):
-                            print("Error recordMatchedBlock: \(error)")
+                        case .failure(_):
+                            completion(nil, FetchError.failedQuery(recordType: RecordType.MultipleChoice))
                         }
                     }
                     
@@ -77,20 +75,19 @@ class MultipleChoiceDAO {
                         switch result {
                         case .success(_):
                             completion(self.multipleChoice, nil)
-                            self.publishMultipleChoice.onNext(self.multipleChoice ?? MultipleChoice(id: returnedRecordID, imageCaption: "", question: "", choices: [], answer: ""))
                         case.failure(_):
                             completion(nil, FetchError.failedQuery(recordType: RecordType.MultipleChoice))
                         }
                     }
                     
-                    self.cloudKitHelper.db.add(queryOperationMultipleChoice)
+                    self.ckHelper.publicDB.add(queryOperationMultipleChoice)
                 }
                 
-            case .failure(let error):
-                print("Error recordMatchedBlock: \(error)")
+            case .failure(_):
+                completion(nil, FetchError.failedQuery(recordType: RecordType.Scenario))
             }
         }
         
-        cloudKitHelper.db.add(queryOperationScenario)
+        ckHelper.publicDB.add(queryOperationScenario)
     }
 }
