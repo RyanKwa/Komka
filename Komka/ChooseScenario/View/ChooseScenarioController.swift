@@ -44,7 +44,7 @@ class ChooseScenarioController: UIViewController {
         navigationItem.hidesBackButton = true
         
         vm.fetchScenario()
-        
+
         Observable.combineLatest(vm.scenariosPublisher, vm.assetsPublisher)
             .observe(on: MainScheduler.instance)
             .subscribe(onCompleted: {
