@@ -10,5 +10,5 @@ import CloudKit
 
 class CKHelper {
     static let shared = CKHelper()
-    let db = CKContainer.default().publicCloudDatabase
+    let publicDB = CKContainer.default().publicCloudDatabase
 }

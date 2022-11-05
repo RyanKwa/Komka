@@ -48,6 +48,10 @@ class ChooseScenarioController: UIViewController {
         vm.assetsPublisher.observe(on: MainScheduler.instance).subscribe(onCompleted: {
             self.collectionView.reloadData()
         }).disposed(by: vm.bag)
+        
+        vm.scenariosPublisher.observe(on: MainScheduler.instance).subscribe(onCompleted: {
+            self.collectionView.reloadData()
+        }).disposed(by: vm.bag)
 
         addSubView()
         setCollectionView()
