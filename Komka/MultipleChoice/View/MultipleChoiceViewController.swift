@@ -11,9 +11,12 @@ import RxSwift
 
 class MultipleChoiceViewController: UIViewController {
     
+
     var selectedScenarioId: CKRecord.ID?
     
     lazy private var multipleChoiceVM: MultipleChoiceViewModel = MultipleChoiceViewModel(scenarioRecordId: selectedScenarioId ?? CKRecord.ID(recordName: RecordType.Scenario.rawValue))
+    private var arrangeWordVM = ArrangeWordViewModel()
+    private var multipleChoiceVM: MultipleChoiceViewModel
     private var multipleChoice: MultipleChoice?
     
     private var scenarioCoverImage, multipleChoiceCharacterImage: UIImage?
@@ -77,8 +80,18 @@ class MultipleChoiceViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         configureSubView()
+        showLoadingScreen()
     }
-    
+    private func showLoadingScreen(){
+        arrangeWordVM.isLoading.subscribe(onNext: { [weak self] isLoading in
+            if isLoading {
+                let loadingScreenVC = LoadingScreenViewController()
+                loadingScreenVC.scenarioRecordId = self?.selectedScenarioId
+                self?.navigationController?.pushViewController(loadingScreenVC, animated: false)
+            }
+        })
+        
+    }
     private func configureSubView(){
         view.addSubview(backgroundImage)
         view.addSubview(backBtn)
