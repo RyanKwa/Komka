@@ -29,29 +29,39 @@ class MultipleChoiceViewModel {
         self.scenarioRecordId = scenarioRecordId
         self.userGender = NSUbiquitousKeyValueStore.default.hasChooseGender
         
-        contentAssetDAO.fetchScenarioCoverAsset(scenarioRecordId: scenarioRecordId)
-        contentAssetDAO.fetchAllScenarioAssets(scenarioRecordId: scenarioRecordId, userGender: userGender)
-        multipleChoiceDAO.fetchMultipleChoiceData(scenarioRecordId: scenarioRecordId) { [weak self] multipleChoice, error in
-            // logic error
+        contentAssetDAO.fetchScenarioCoverAsset(scenarioRecordId: scenarioRecordId) { [weak self] scenarioAsset, error in
+            if let error = error {
+                print(error)
+                return
+            }
+            else if let scenarioAsset = scenarioAsset {
+                self?.assets.append(scenarioAsset)
+            }
         }
         
-        subscription()
-    }
-    
-    private func subscription() {
-        contentAssetDAO.publishAssets.subscribe(onNext: { publishAssets in
-            self.assets = publishAssets
-            self.filterMultipleChoiceAssets()
-        })
-        .disposed(by: disposeBag)
-    
-        multipleChoiceDAO.publishMultipleChoice.subscribe(onNext: { publishMultipleChoice in
-            self.multipleChoice = publishMultipleChoice
-            self.leftChoiceText = publishMultipleChoice.choices[0]
-            self.rightChoiceText = publishMultipleChoice.choices[1]
-            self.correctAnswer = publishMultipleChoice.answer
-        })
-        .disposed(by: disposeBag)
+        contentAssetDAO.fetchAllScenarioAssets(scenarioRecordId: scenarioRecordId, userGender: userGender) { [weak self] assets, error in
+            if let error = error {
+                self?.publishMultipleChoiceAssets.onError(error)
+                return
+            }
+            else if let assets = assets {
+                self?.assets.append(contentsOf: assets)
+                self?.filterMultipleChoiceAssets()
+            }
+        }
+        
+        multipleChoiceDAO.fetchMultipleChoiceData(scenarioRecordId: scenarioRecordId) { [weak self] multipleChoice, error in
+            if let error = error {
+                print(error)
+                return
+            }
+            else if let multipleChoice = multipleChoice {
+                self?.multipleChoice = multipleChoice
+                self?.leftChoiceText = multipleChoice.choices[0]
+                self?.rightChoiceText = multipleChoice.choices[1]
+                self?.correctAnswer = multipleChoice.answer
+            }
+        }
     }
     
     private func filterMultipleChoiceAssets() {
@@ -65,9 +75,11 @@ class MultipleChoiceViewModel {
         self.publishMultipleChoiceAssets.onCompleted()
     }
     
+    // TODO: ubah return type dari function ini (jangan UIImageMi)
     func getMultipleChoiceAssetPart(_ multipleChoicePart: MultipleChoicePart) -> UIImage? {
         var asset = UIImage()
         
+        // TODO: coba pake filter
         for multipleChoiceAsset in multipleChoiceAssets {
             let part = multipleChoiceAsset.part
 
