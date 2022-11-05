@@ -31,4 +31,7 @@ extension UIColor {
     static let progreeBarProgress = UIColor(red: 237/256, green: 149/256, blue: 13/256, alpha: 1.00)
     static let ProgressBarTrack = UIColor(red: 255/256, green: 247/256, blue: 224/256, alpha: 1.00)
     
+    // Completion Page rounded rectangle
+    static let yellowRectangleFill = UIColor(red: 255/256, green: 246/256, blue: 198/256, alpha: 1.00)
+    static let yellowRectangleStroke = UIColor(red: 255/256, green: 232/256, blue: 143/256, alpha: 1.00)
 }
