@@ -22,14 +22,14 @@ class SoundPracticeViewController: UIViewController {
     private lazy var instructionLbl = UIView.createLabel(text: "Coba ikuti cara baca di bawah ini", fontSize: 40)
     
     private lazy var backBtn: UIButton = {
-        let button = UIView.createImageIconBtn(title: "", imgTitle: "BackBtn")
+        let button = UIView.createImageIconBtn(imgTitle: "BackBtn")
         button.addTarget(self, action: #selector(backBtnTapped), for: .touchUpInside)
         
         return button
     }()
     
     private lazy var audioBtn: UIButton = {
-        let button = UIView.createImageIconBtn(title: "", imgTitle: "audioBtn")
+        let button = UIView.createImageIconBtn(imgTitle: "audioBtn")
         button.addTarget(self, action: #selector(audioBtnTapped), for: .touchUpInside)
         
         return button

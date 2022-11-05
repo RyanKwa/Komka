@@ -11,7 +11,8 @@ import UIKit
 import RxSwift
 
 class ChooseScenarioViewModel {
-    var scenarioDAO = ScenarioDAO()
+    private let scenarioDAO = ScenarioDAO()
+    private let contentAssetDAO = ContentAssetDAO()
 
     var scenarios: [Scenario] = []
     var assets: [ContentAsset] = []
@@ -24,21 +25,20 @@ class ChooseScenarioViewModel {
     
     func fetchScenario(){
         scenarioDAO.fetchScenarioData()
-        scenarioDAO.fetchAssetData()
+        contentAssetDAO.fetchCoverAsset()
+        
+        scenarioDAO.scenariosPublisher.subscribe(onCompleted: {
+            self.scenarios = self.scenarioDAO.scenarios
 
-        scenarioDAO.assetsPublisher.subscribe(onCompleted: {
+            self.scenariosPublisher.onNext(self.scenarios)
+            self.scenariosPublisher.onCompleted()
+        }).disposed(by: bag)
+        
+        contentAssetDAO.publishAssets.subscribe(onCompleted: {
             self.assets = self.scenarioDAO.assets
 
             self.assetsPublisher.onNext(self.assets)
             self.assetsPublisher.onCompleted()
         }).disposed(by: bag)
-        
-        scenarioDAO.scenariosPublisher.subscribe(onCompleted: {
-            self.scenarios = self.scenarioDAO.scenarios
-            
-            self.scenariosPublisher.onNext(self.scenarios)
-            self.scenariosPublisher.onCompleted()
-        }).disposed(by: bag)
-        
     }
 }

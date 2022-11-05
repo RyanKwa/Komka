@@ -16,49 +16,42 @@ class ScenarioDAO{
     var assets: [ContentAsset] = []
     
     var scenariosPublisher = PublishSubject<[Scenario]>()
-    var assetsPublisher = PublishSubject<[ContentAsset]>()
+
     
-    func fetchAssetData(){
-        let step = AssetStepType.Cover.rawValue
-        let assetPredicate = NSPredicate(format: "step == %@", step)
+    func fetchScenarioByID(scenarioID: String, completion: @escaping (Scenario?, FetchError?) -> Void) {
+        let recordID = CKRecord.ID(recordName: scenarioID)
+        let predicate = NSPredicate(format: "recordID = %@", recordID)
+        let query = CKQuery(recordType: RecordType.Scenario.rawValue, predicate: predicate)
+        let queryOperation = CKQueryOperation(query: query)
+        var fetchedScenario: Scenario? = nil
         
-        let queryAsset = CKQuery(recordType: RecordType.Asset.rawValue, predicate: assetPredicate)
-        queryAsset.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        let queryOperationAsset = CKQueryOperation(query: queryAsset)
-        
-        queryOperationAsset.recordMatchedBlock = { (returnedRecordID, returnedScenario) in
-            switch returnedScenario{
+        queryOperation.recordMatchedBlock = { returnedRecordID, returnedResult in
+            switch returnedResult {
             case .success(let record):
-                guard
-                    let imageTitle = record["title"] as? String,
-                    let imageGender = record["gender"] as? String,
-                    let scenarioReference = record["scenario"] as? CKRecord.Reference,
-                    let imageStep = record["step"] as? String,
-                    let scenarioImage = record["image"] as? CKAsset,
-                    let imagePart = record["part"] as? String
+                guard let title = record["title"] as? String,
+                      let isCompleted = record["isCompleted"] as? Bool,
+                      let sentence = record["sentence"] as? String,
+                      let level = record["level"] as? CKRecord.Reference,
+                      let multipleChoice = record["multipleChoice"] as? CKRecord.Reference
                 else {
-                    self.assetsPublisher.onError(FetchError.missingData(recordType: RecordType.Asset))
+                    completion(nil, FetchError.missingData(recordType: RecordType.Scenario))
                     return
                 }
-                
-                self.assets.append(ContentAsset(id: returnedRecordID, title: imageTitle, gender: imageGender, scenario: scenarioReference, step: imageStep, image: scenarioImage, part: imagePart))
-                
-                
+                fetchedScenario = Scenario(id: record.recordID, title: title, isCompleted: isCompleted, sentence: sentence, level: level, reward: nil, multipleChoice: multipleChoice, wordImitations: [])
             case .failure(_):
-                self.assetsPublisher.onError(FetchError.failedQuery(recordType: RecordType.Asset))
+                completion(nil, FetchError.failedQuery(recordType: RecordType.Scenario))
             }
         }
-        
-        queryOperationAsset.queryResultBlock = { result in
+        queryOperation.queryResultBlock = { result in
             switch result {
             case .success(_):
-                self.assetsPublisher.onNext(self.assets)
-                self.assetsPublisher.onCompleted()
+                completion(fetchedScenario, nil)
             case.failure(_):
-                self.assetsPublisher.onError(FetchError.failedQuery(recordType: RecordType.Asset))
+                completion(nil, FetchError.failedQuery(recordType: RecordType.Scenario))
             }
         }
-        self.ckHelper.db.add(queryOperationAsset)
+        self.ckHelper.publicDB.add(queryOperation)
+        
     }
     
     
@@ -97,7 +90,7 @@ class ScenarioDAO{
                 self.scenariosPublisher.onError(FetchError.failedQuery(recordType: RecordType.Scenario))
             }
         }
-        self.ckHelper.db.add(queryOperationScenario)
+        self.ckHelper.publicDB.add(queryOperationScenario)
         
     }
     

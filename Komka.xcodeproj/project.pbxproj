@@ -13,7 +13,6 @@
 		A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D81D28EB17300052DC92 /* UIFont+Ext.swift */; };
 		A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D82328EC68990052DC92 /* ChooseScenarioController.swift */; };
 		A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D82728EC7C870052DC92 /* ScenarioCell.swift */; };
-		A9B1761C28FD2408005F2FC1 /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */; };
 		A9B1761E28FD3667005F2FC1 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */; };
 		A9B1762328FDA25C005F2FC1 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */; };
 		A9E9D4B829125FDB00378FA7 /* AssetStepType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */; };
@@ -37,7 +36,6 @@
 		C542E7BD29080A130001ADD5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C542E7BC29080A130001ADD5 /* RxCocoa */; };
 		C542E7BF29080A130001ADD5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C542E7BE29080A130001ADD5 /* RxSwift */; };
 		C542E7C129080A250001ADD5 /* ArrangeWordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542E7C029080A250001ADD5 /* ArrangeWordViewModel.swift */; };
-		C542E7C329080A3E0001ADD5 /* ArrangeWordDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542E7C229080A3E0001ADD5 /* ArrangeWordDAO.swift */; };
 		C5962217290051F700B98B1B /* WordSlotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5962216290051F700B98B1B /* WordSlotCollectionViewCell.swift */; };
 		C5D9828728F713D400E89F60 /* MultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9828628F713D400E89F60 /* MultipleChoiceViewController.swift */; };
 		C5D9828B28F7BFDB00E89F60 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9828A28F7BFDB00E89F60 /* Scenario.swift */; };
@@ -96,7 +94,6 @@
 		A993D81D28EB17300052DC92 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		A993D82328EC68990052DC92 /* ChooseScenarioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioController.swift; sourceTree = "<group>"; };
 		A993D82728EC7C870052DC92 /* ScenarioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioCell.swift; sourceTree = "<group>"; };
-		A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
 		A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
 		A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetStepType.swift; sourceTree = "<group>"; };
@@ -121,7 +118,6 @@
 		C52AC77E29097B2D007EB788 /* ArrangeWordTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangeWordTestCase.swift; sourceTree = "<group>"; };
 		C5336BD528F8665000AC24A9 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		C542E7C029080A250001ADD5 /* ArrangeWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangeWordViewModel.swift; sourceTree = "<group>"; };
-		C542E7C229080A3E0001ADD5 /* ArrangeWordDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangeWordDAO.swift; sourceTree = "<group>"; };
 		C5962216290051F700B98B1B /* WordSlotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSlotCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Komka.entitlements; sourceTree = "<group>"; };
 		C5D9828628F713D400E89F60 /* MultipleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultipleChoiceViewController.swift; path = Komka/MultipleChoice/View/MultipleChoiceViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -255,6 +251,7 @@
 		A9E9D4BA29125FE300378FA7 /* CloudKit */ = {
 			isa = PBXGroup;
 			children = (
+				C50821432910036D009A645B /* FetchError.swift */,
 				A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */,
 				DC3F64F929113B7200D5152E /* Choices.swift */,
 				DC3F64F729113B2B00D5152E /* MultipleChoicePart.swift */,
@@ -266,7 +263,6 @@
 		C50B58FA28E587B6001D42E5 = {
 			isa = PBXGroup;
 			children = (
-				C50821432910036D009A645B /* FetchError.swift */,
 				C50B590528E587B6001D42E5 /* Komka */,
 				C50B591F28E587B7001D42E5 /* KomkaTests */,
 				C50B592928E587B7001D42E5 /* KomkaUITests */,
@@ -467,7 +463,6 @@
 		DC8DFDA229064D0E00EEEB64 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
-				C542E7C229080A3E0001ADD5 /* ArrangeWordDAO.swift */,
 				A979929529066E5C00CDD27C /* ScenarioDAO.swift */,
 				DC8DFDA52906A6E000EEEB64 /* ContentAssetDAO.swift */,
 				DC8DFDA72906A9E900EEEB64 /* MultipleChoiceDAO.swift */,
@@ -513,7 +508,6 @@
 			children = (
 				A9E9D4BA29125FE300378FA7 /* CloudKit */,
 				DC85A19328F73E2B00E457F0 /* TextToSpeechService.swift */,
-				A9B1761B28FD2408005F2FC1 /* CloudKitHelper.swift */,
 				DCA64B2A28FFED91004D9D69 /* CKHelper.swift */,
 				DC8DFD9E2905755A00EEEB64 /* SoundEffectService.swift */,
 			);
@@ -707,10 +701,8 @@
 				C5D9829128F7C8F200E89F60 /* Reward.swift in Sources */,
 				DC8DFDA82906A9E900EEEB64 /* MultipleChoiceDAO.swift in Sources */,
 				C5D9829328F7C93200E89F60 /* MultipleChoice.swift in Sources */,
-				C542E7C329080A3E0001ADD5 /* ArrangeWordDAO.swift in Sources */,
 				DC3F64F62911332E00D5152E /* UILabel+Ext.swift in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
-				A9B1761C28FD2408005F2FC1 /* CloudKitHelper.swift in Sources */,
 				A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */,
 				DC4B746F28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift in Sources */,
 				C5D9828B28F7BFDB00E89F60 /* Scenario.swift in Sources */,

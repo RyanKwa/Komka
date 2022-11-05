@@ -34,14 +34,14 @@ class ArrangeWordViewController: UIViewController {
     private lazy var promptLabel = UIView.createLabel(text: "Susunlah kata dengan urutan yang benar", fontSize: 40)
         
     lazy private var audioBtn: UIButton = {
-        let button = UIView.createImageIconBtn(title: "", imgTitle: "audioBtn")
+        let button = UIView.createImageIconBtn(imgTitle: "audioBtn")
         button.addTarget(self, action: #selector(audioBtnTapped), for: .touchUpInside)
         
         return button
     }()
     
     lazy private var backBtn: UIButton = {
-        let button = UIView.createImageIconBtn(title: "", imgTitle: "BackBtn")
+        let button = UIView.createImageIconBtn(imgTitle: "BackBtn")
         button.addTarget(self, action: #selector(backBtnTapped), for: .touchUpInside)
         
         return button

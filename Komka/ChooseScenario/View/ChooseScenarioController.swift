@@ -52,7 +52,6 @@ class ChooseScenarioController: UIViewController {
             })
             .disposed(by: vm.bag)
 
-
         addSubView()
         setCollectionView()
         setupAutoLayout()
