@@ -70,6 +70,9 @@
 		DCED8F3F28F80C91009F31E3 /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCED8F3E28F80C91009F31E3 /* LevelButton.swift */; };
 		DCED8F4128F85BF8009F31E3 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCED8F4028F85BF8009F31E3 /* UIImageView+Ext.swift */; };
 		DCED8F4528F865C2009F31E3 /* SoundPracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCED8F4428F865C2009F31E3 /* SoundPracticeViewController.swift */; };
+		DCF95E5429165E1900EC9FA8 /* CompletionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF95E5329165E1900EC9FA8 /* CompletionPageViewController.swift */; };
+		DCF95E562916660000EC9FA8 /* UINavigationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF95E552916660000EC9FA8 /* UINavigationController+Ext.swift */; };
+		DCF95E5929166B5A00EC9FA8 /* SwiftConfettiView in Frameworks */ = {isa = PBXBuildFile; productRef = DCF95E5829166B5A00EC9FA8 /* SwiftConfettiView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +158,8 @@
 		DCED8F3E28F80C91009F31E3 /* LevelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelButton.swift; sourceTree = "<group>"; };
 		DCED8F4028F85BF8009F31E3 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		DCED8F4428F865C2009F31E3 /* SoundPracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPracticeViewController.swift; sourceTree = "<group>"; };
+		DCF95E5329165E1900EC9FA8 /* CompletionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionPageViewController.swift; sourceTree = "<group>"; };
+		DCF95E552916660000EC9FA8 /* UINavigationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCF95E5929166B5A00EC9FA8 /* SwiftConfettiView in Frameworks */,
 				C542E7BF29080A130001ADD5 /* RxSwift in Frameworks */,
 				C542E7BD29080A130001ADD5 /* RxCocoa in Frameworks */,
 			);
@@ -221,6 +227,7 @@
 				A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */,
 				C5082141290FCEAA009A645B /* UIColor+Ext.swift */,
 				DC3F64F52911332E00D5152E /* UILabel+Ext.swift */,
+				DCF95E552916660000EC9FA8 /* UINavigationController+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -298,9 +305,10 @@
 				A993D81B28EB17180052DC92 /* Utilities */,
 				DC4B745F28F5345700A9C640 /* ChooseGender */,
 				A993D82928EFB8E10052DC92 /* ChooseScenario */,
+				C5D9828828F713E800E89F60 /* MultipleChoice */,
 				DC85A19028F73DC900E457F0 /* FullSentences */,
 				DCED8F4228F86598009F31E3 /* SoundPractice */,
-				C5D9828828F713E800E89F60 /* MultipleChoice */,
+				DCF95E5229165DC400EC9FA8 /* CompletionPage */,
 				C50B590628E587B6001D42E5 /* AppDelegate.swift */,
 				C50B590828E587B6001D42E5 /* SceneDelegate.swift */,
 				C50B590A28E587B6001D42E5 /* ViewController.swift */,
@@ -520,6 +528,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		DCF95E5229165DC400EC9FA8 /* CompletionPage */ = {
+			isa = PBXGroup;
+			children = (
+				DCF95E5329165E1900EC9FA8 /* CompletionPageViewController.swift */,
+			);
+			path = CompletionPage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -539,6 +555,7 @@
 			packageProductDependencies = (
 				C542E7BC29080A130001ADD5 /* RxCocoa */,
 				C542E7BE29080A130001ADD5 /* RxSwift */,
+				DCF95E5829166B5A00EC9FA8 /* SwiftConfettiView */,
 			);
 			productName = Komka;
 			productReference = C50B590328E587B6001D42E5 /* Komka.app */;
@@ -617,6 +634,7 @@
 			mainGroup = C50B58FA28E587B6001D42E5;
 			packageReferences = (
 				C542E7BB29080A130001ADD5 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				DCF95E5729166B5A00EC9FA8 /* XCRemoteSwiftPackageReference "SwiftConfettiView" */,
 			);
 			productRefGroup = C50B590428E587B6001D42E5 /* Products */;
 			projectDirPath = "";
@@ -672,6 +690,7 @@
 				A9E9D4B829125FDB00378FA7 /* AssetStepType.swift in Sources */,
 				A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */,
 				DCED8F3F28F80C91009F31E3 /* LevelButton.swift in Sources */,
+				DCF95E5429165E1900EC9FA8 /* CompletionPageViewController.swift in Sources */,
 				C5336BD628F8665000AC24A9 /* UIImageView+Ext.swift in Sources */,
 				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
 				DC85A19428F73E2B00E457F0 /* TextToSpeechService.swift in Sources */,
@@ -711,6 +730,7 @@
 				DC3F64F62911332E00D5152E /* UILabel+Ext.swift in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
 				A9B1761C28FD2408005F2FC1 /* CloudKitHelper.swift in Sources */,
+				DCF95E562916660000EC9FA8 /* UINavigationController+Ext.swift in Sources */,
 				A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */,
 				DC4B746F28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift in Sources */,
 				C5D9828B28F7BFDB00E89F60 /* Scenario.swift in Sources */,
@@ -1078,6 +1098,14 @@
 				minimumVersion = 6.5.0;
 			};
 		};
+		DCF95E5729166B5A00EC9FA8 /* XCRemoteSwiftPackageReference "SwiftConfettiView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/theoriginalbit/SwiftConfettiView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1095,6 +1123,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C542E7BB29080A130001ADD5 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		DCF95E5829166B5A00EC9FA8 /* SwiftConfettiView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DCF95E5729166B5A00EC9FA8 /* XCRemoteSwiftPackageReference "SwiftConfettiView" */;
+			productName = SwiftConfettiView;
 		};
 /* End XCSwiftPackageProductDependency section */
 
