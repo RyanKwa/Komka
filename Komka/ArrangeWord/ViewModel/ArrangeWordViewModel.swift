@@ -35,7 +35,7 @@ class ArrangeWordViewModel {
                 return
             }
             else if let scenario = scenario {
-                let sentences = scenario.sentence.split(separator: " ").compactMap({String($0)})
+                let sentences = scenario.sentence.split(separator: " ").compactMap({String($0).capitalized})
                 self?.sentences.onNext(sentences)
                 self?.sentences.onCompleted()
             }
