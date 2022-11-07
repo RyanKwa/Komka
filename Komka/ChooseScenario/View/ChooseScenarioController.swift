@@ -94,7 +94,8 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let stepViewController = MultipleChoiceViewController(scenarioRecordId: vm.scenarios[indexPath.row].id)
+        let stepViewController = MultipleChoiceViewController()
+        stepViewController.selectedScenarioId = vm.scenarios[indexPath.row].id
         self.navigationController?.pushViewController(stepViewController, animated: false)
     }
 

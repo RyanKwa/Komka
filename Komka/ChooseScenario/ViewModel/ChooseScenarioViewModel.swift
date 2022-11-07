@@ -25,7 +25,7 @@ class ChooseScenarioViewModel {
     
     func fetchScenario(){
         scenarioDAO.fetchScenarioData()
-        contentAssetDAO.fetchCoverAsset()
+        contentAssetDAO.fetchCoverAssets()
         
         scenarioDAO.scenariosPublisher.subscribe(onCompleted: {
             self.scenarios = self.scenarioDAO.scenarios
@@ -35,7 +35,7 @@ class ChooseScenarioViewModel {
         }).disposed(by: bag)
         
         contentAssetDAO.publishAssets.subscribe(onCompleted: {
-            self.assets = self.scenarioDAO.assets
+            self.assets = self.contentAssetDAO.assets
 
             self.assetsPublisher.onNext(self.assets)
             self.assetsPublisher.onCompleted()

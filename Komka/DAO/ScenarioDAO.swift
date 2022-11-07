@@ -13,11 +13,9 @@ import RxSwift
 class ScenarioDAO{
     var ckHelper = CKHelper.shared
     var scenarios: [Scenario] = []
-    var assets: [ContentAsset] = []
     
     var scenariosPublisher = PublishSubject<[Scenario]>()
 
-    
     func fetchScenarioByID(scenarioID: String, completion: @escaping (Scenario?, FetchError?) -> Void) {
         let recordID = CKRecord.ID(recordName: scenarioID)
         let predicate = NSPredicate(format: "recordID = %@", recordID)
