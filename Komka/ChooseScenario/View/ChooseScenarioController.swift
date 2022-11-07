@@ -44,14 +44,13 @@ class ChooseScenarioController: UIViewController {
         navigationItem.hidesBackButton = true
         
         vm.fetchScenario()
-        
+
         Observable.combineLatest(vm.scenariosPublisher, vm.assetsPublisher)
             .observe(on: MainScheduler.instance)
             .subscribe(onCompleted: {
                 self.collectionView.reloadData()
             })
             .disposed(by: vm.bag)
-
 
         addSubView()
         setCollectionView()
@@ -95,7 +94,8 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let stepViewController = MultipleChoiceViewController(scenarioRecordId: vm.scenarios[indexPath.row].id)
+        let stepViewController = MultipleChoiceViewController()
+        stepViewController.selectedScenarioId = vm.scenarios[indexPath.row].id
         self.navigationController?.pushViewController(stepViewController, animated: false)
     }
 

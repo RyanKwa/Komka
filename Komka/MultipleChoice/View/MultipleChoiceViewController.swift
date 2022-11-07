@@ -11,9 +11,9 @@ import RxSwift
 
 class MultipleChoiceViewController: UIViewController {
     
-    private var scenarioRecordId: CKRecord.ID
+    var selectedScenarioId: CKRecord.ID?
     
-    private var multipleChoiceVM: MultipleChoiceViewModel
+    lazy private var multipleChoiceVM: MultipleChoiceViewModel = MultipleChoiceViewModel(scenarioRecordId: selectedScenarioId ?? CKRecord.ID(recordName: RecordType.Scenario.rawValue))
     private var multipleChoice: MultipleChoice?
     
     private var scenarioCoverImage, multipleChoiceCharacterImage: UIImage?
@@ -22,16 +22,6 @@ class MultipleChoiceViewController: UIViewController {
     
     private var timer: Timer?
     private var timerCounter = 2
-    
-    init(scenarioRecordId: CKRecord.ID) {
-        self.scenarioRecordId = scenarioRecordId
-        self.multipleChoiceVM = MultipleChoiceViewModel(scenarioRecordId: scenarioRecordId)
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     private lazy var backBtn: UIButton = {
         let button = UIView.createImageIconBtn(imgTitle: "BackBtn")
@@ -43,7 +33,7 @@ class MultipleChoiceViewController: UIViewController {
     private lazy var backgroundImage = UIView.createImageView(imageName: "bg")
     
     private lazy var scenarioCoverImg: UIImageView = {
-        let image = UIView.createImageView(image: nil ?? UIImage(), contentMode: .scaleAspectFill, clipsToBound: true)
+        let image = UIView.createImageView(image: scenarioCoverImage ?? UIImage(), contentMode: .scaleAspectFill, clipsToBound: true)
         image.addWhiteOverlay()
         return image
     }()
@@ -96,10 +86,10 @@ class MultipleChoiceViewController: UIViewController {
         
         multipleChoiceVM.publishMultipleChoiceAssets.subscribe(onNext: { _ in
             DispatchQueue.main.async { [self] in
-                scenarioCoverImage = multipleChoiceVM.getMultipleChoiceAssetPart(.scenarioCover)
-                multipleChoiceCharacterImage = multipleChoiceVM.getMultipleChoiceAssetPart(.multipleChoiceCharacter)
-                leftChoiceImage = multipleChoiceVM.getMultipleChoiceAssetPart(.leftChoice)
-                rightChoiceImage = multipleChoiceVM.getMultipleChoiceAssetPart(.rightChoice)
+                scenarioCoverImage = UIImage.changeImageFromURL(baseImage: multipleChoiceVM.getMultipleChoiceAssetPart(.scenarioCover))
+                multipleChoiceCharacterImage = UIImage.changeImageFromURL(baseImage: multipleChoiceVM.getMultipleChoiceAssetPart(.multipleChoiceCharacter))
+                leftChoiceImage = UIImage.changeImageFromURL(baseImage: multipleChoiceVM.getMultipleChoiceAssetPart(.leftChoice))
+                rightChoiceImage = UIImage.changeImageFromURL(baseImage: multipleChoiceVM.getMultipleChoiceAssetPart(.rightChoice))
                 
                 view.addSubview(audioBtn)
                 backgroundImage.addSubview(scenarioCoverImg)
@@ -155,10 +145,10 @@ class MultipleChoiceViewController: UIViewController {
     private func updateChoiceState(choice: UIImageView, isCorrectAnswer: Bool) {
         if isCorrectAnswer {
             SoundEffectService.shared.playSoundEffect(.Correct)
-            choice.image = self.multipleChoiceVM.getMultipleChoiceAssetPart(.correctChoice)
+            choice.image = UIImage.changeImageFromURL(baseImage: multipleChoiceVM.getMultipleChoiceAssetPart(.correctChoice))
         } else {
             SoundEffectService.shared.playSoundEffect(.Incorrect)
-            choice.image = self.multipleChoiceVM.getMultipleChoiceAssetPart(.wrongChoice)
+            choice.image = UIImage.changeImageFromURL(baseImage: multipleChoiceVM.getMultipleChoiceAssetPart(.wrongChoice))
         }
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in

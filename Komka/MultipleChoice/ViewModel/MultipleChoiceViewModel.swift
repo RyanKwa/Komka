@@ -7,7 +7,6 @@
 
 import Foundation
 import CloudKit
-import UIKit
 import RxSwift
 
 class MultipleChoiceViewModel {
@@ -18,6 +17,7 @@ class MultipleChoiceViewModel {
     private let userGender: String
     
     private var assets: [ContentAsset] = []
+    private var coverAssets: [ContentAsset] = []
     private var multipleChoice: MultipleChoice?
     private var multipleChoiceAssets: [ContentAsset] = []
     private var leftChoiceText, rightChoiceText, correctAnswer: String?
@@ -28,35 +28,51 @@ class MultipleChoiceViewModel {
     init(scenarioRecordId: CKRecord.ID){
         self.scenarioRecordId = scenarioRecordId
         self.userGender = NSUbiquitousKeyValueStore.default.hasChooseGender
+
+        contentAssetDAO.fetchCoverAssets()
         
-        contentAssetDAO.fetchScenarioCoverAsset(scenarioRecordId: scenarioRecordId)
-        contentAssetDAO.fetchAllScenarioAssets(scenarioRecordId: scenarioRecordId, userGender: userGender)
-        multipleChoiceDAO.fetchMultipleChoiceData(scenarioRecordId: scenarioRecordId) { [weak self] multipleChoice, error in
-            // logic error
+        contentAssetDAO.publishAssets.subscribe(onNext: { coverAssets in
+            self.coverAssets = coverAssets
+            self.filterScenarioCoverAssetById(scenarioRecordId: scenarioRecordId)
+        })
+        .disposed(by: disposeBag)
+        
+        contentAssetDAO.fetchAllScenarioAssets(scenarioRecordId: scenarioRecordId, userGender: userGender) { [weak self] assets, error in
+            if let error = error {
+                self?.publishMultipleChoiceAssets.onError(error)
+                return
+            }
+            else if let assets = assets {
+                self?.assets.append(contentsOf: assets)
+                self?.filterMultipleChoiceAssets()
+            }
         }
         
-        subscription()
+        multipleChoiceDAO.fetchMultipleChoiceData(scenarioRecordId: scenarioRecordId) { [weak self] multipleChoice, error in
+            if let error = error {
+                print(error)
+                return
+            }
+            else if let multipleChoice = multipleChoice {
+                self?.multipleChoice = multipleChoice
+                self?.leftChoiceText = multipleChoice.choices[0]
+                self?.rightChoiceText = multipleChoice.choices[1]
+                self?.correctAnswer = multipleChoice.answer
+            }
+        }
     }
     
-    private func subscription() {
-        contentAssetDAO.publishAssets.subscribe(onNext: { publishAssets in
-            self.assets = publishAssets
-            self.filterMultipleChoiceAssets()
-        })
-        .disposed(by: disposeBag)
-    
-        multipleChoiceDAO.publishMultipleChoice.subscribe(onNext: { publishMultipleChoice in
-            self.multipleChoice = publishMultipleChoice
-            self.leftChoiceText = publishMultipleChoice.choices[0]
-            self.rightChoiceText = publishMultipleChoice.choices[1]
-            self.correctAnswer = publishMultipleChoice.answer
-        })
-        .disposed(by: disposeBag)
+    private func filterScenarioCoverAssetById(scenarioRecordId: CKRecord.ID) {
+        for coverAsset in coverAssets {
+            if coverAsset.scenario.recordID == scenarioRecordId && coverAsset.step == AssetStepType.Cover.rawValue {
+                multipleChoiceAssets.append(coverAsset)
+            }
+        }
     }
     
     private func filterMultipleChoiceAssets() {
         for asset in assets {
-            if asset.step == AssetStepType.MultipleChoice.rawValue || asset.step == AssetStepType.Cover.rawValue {
+            if asset.step == AssetStepType.MultipleChoice.rawValue {
                 multipleChoiceAssets.append(asset)
             }
         }
@@ -65,22 +81,11 @@ class MultipleChoiceViewModel {
         self.publishMultipleChoiceAssets.onCompleted()
     }
     
-    func getMultipleChoiceAssetPart(_ multipleChoicePart: MultipleChoicePart) -> UIImage? {
-        var asset = UIImage()
+    func getMultipleChoiceAssetPart(_ multipleChoicePart: MultipleChoicePart) -> CKAsset? {
+        let filteredAsset = multipleChoiceAssets.filter { $0.part == multipleChoicePart.rawValue }
+        let image: CKAsset? = filteredAsset.first?.image
         
-        for multipleChoiceAsset in multipleChoiceAssets {
-            let part = multipleChoiceAsset.part
-
-            if part == multipleChoicePart.rawValue {
-                let image = multipleChoiceAsset.image
-                
-                asset = UIImage.changeImageFromURL(baseImage: image ?? nil)
-                
-                return asset
-            }
-        }
-        
-        return asset
+        return image
     }
     
     func isCorrectAnswer(choice: Choices) -> Bool {

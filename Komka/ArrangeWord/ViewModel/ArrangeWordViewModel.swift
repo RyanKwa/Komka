@@ -8,28 +8,14 @@
 import Foundation
 import RxSwift
 class ArrangeWordViewModel {
-    private let arrangeWordDAO = ArrangeWordDAO.instance
+    private let scenarioDAO = ScenarioDAO()
     var scenarios = PublishSubject<[Scenario]>()
     var scenario = PublishSubject<Scenario>()
     var sentences = PublishSubject<[String]>()
-    init() {
-        fetchAllScenario()
-    }
-    func fetchAllScenario() {
-        arrangeWordDAO.fetchScenario { [weak self] fetchedScenarios, error  in
-            if let error = error {
-                self?.scenarios.onError(error)
-                return
-            }
-            else if let fetchedScenarios = fetchedScenarios {
-                self?.scenarios.onNext(fetchedScenarios)
-                self?.scenarios.onCompleted()
-            }
-        }
-    }
+
     func getSentencesFromScenario(scenarioID: String){
 
-        arrangeWordDAO.fetchScenarioByID(scenarioID: scenarioID) { [weak self] scenario, error in
+        scenarioDAO.fetchScenarioByID(scenarioID: scenarioID) { [weak self] scenario, error in
             if let error = error {
                 self?.sentences.onError(error)
                 return
