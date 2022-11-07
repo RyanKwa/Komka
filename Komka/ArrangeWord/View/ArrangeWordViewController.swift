@@ -15,7 +15,8 @@ class ArrangeWordViewController: UIViewController {
     }
     var arrangeWordVM = ArrangeWordViewModel()
     private let disposeBag = DisposeBag()
-    private var correctSentences = [String]()
+    private var correctSentencesInOrder = [String]()
+    private var totalCorrectWord = 0
     private var wordChoices = [String]()
     //TODO: replace string with passed scenarioID from fetched records
     var scenarioID: String? = "D77FA9FF-B313-69D0-2997-2EBB63A22A93"
@@ -56,8 +57,8 @@ class ArrangeWordViewController: UIViewController {
         arrangeWordVM.getSentencesFromScenario(scenarioID: scenarioID ?? "")
         arrangeWordVM.sentences.subscribe(onNext: { [weak self] sentence in
             DispatchQueue.main.async {
-                self?.correctSentences = sentence
-                self?.wordChoices = self?.correctSentences.shuffled() ?? []
+                self?.correctSentencesInOrder = sentence
+                self?.wordChoices = self?.correctSentencesInOrder.shuffled() ?? []
                 self?.wordCollectionView.reloadData()
                 self?.wordSlotCollectionView.reloadData()
             }
@@ -119,11 +120,12 @@ class ArrangeWordViewController: UIViewController {
     @objc
     private func audioBtnTapped(_ sender: UIButton) {
         TextToSpeechService.shared.stopSpeech()
-        TextToSpeechService.shared.startSpeech(correctSentences)
+        TextToSpeechService.shared.startSpeech(correctSentencesInOrder)
     }
     
     @objc
     private func backBtnTapped(_ sender: UIButton) {
+        SoundEffectService.shared.playSoundEffect(.Bubble)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -169,6 +171,7 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
     
     //MARK: Word Arrangement Logic
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        SoundEffectService.shared.playSoundEffect(.Bubble)
         if collectionView == self.wordSlotCollectionView {
             let cell = collectionView.cellForItem(at: indexPath) as? WordSlotCollectionViewCell
             
@@ -176,7 +179,7 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
                 return
             }
             
-            let isWordPlacementCorrect = arrangeWordVM.evaluateWordPlacement(selectedWord: currentSelectedWordCell.wordTitle.text ?? "", placementIndex: indexPath.row, sentences: correctSentences)
+            let isWordPlacementCorrect = arrangeWordVM.evaluateWordPlacement(selectedWord: currentSelectedWordCell.wordTitle.text ?? "", placementIndex: indexPath.row, sentences: correctSentencesInOrder)
             
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: { [weak self] in
                 currentSelectedWordCell.alpha = 0
@@ -184,6 +187,14 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
                 selectedSlot.wordTitle.text = currentSelectedWordCell.wordTitle.text
                 self?.showResultBorder(slotCell: selectedSlot, wordCell: currentSelectedWordCell, withResult: isWordPlacementCorrect)
             })
+            if totalCorrectWord == correctSentencesInOrder.count {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    SoundEffectService.shared.playSoundEffect(.CompletionPage)
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    self.navigationController?.pushViewController(CompletionPageViewController(), animated: true)
+                }
+            }
         }
         else if collectionView == self.wordCollectionView {
             
@@ -227,6 +238,7 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
             slotCell.slotImage.alpha = 0
             slotCell.slotImage.isHidden = true
             slotCell.isUserInteractionEnabled = false
+            totalCorrectWord += 1
         }
         else{
             setCellBorderColor(cell: slotCell, color: UIColor.wrongWordPlacementBorderColor)
