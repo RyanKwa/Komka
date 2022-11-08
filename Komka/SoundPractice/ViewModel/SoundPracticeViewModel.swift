@@ -7,6 +7,7 @@
 
 import UIKit
 import CloudKit
+import RxSwift
 
 class SoundPracticeViewModel {
     private let scenarioData = ScenarioData.instance
@@ -14,6 +15,19 @@ class SoundPracticeViewModel {
     
     private var soundPracticeAssets: [ContentAsset] = []
     private var words: [String] = []
+    
+    lazy var queueWordCounter: Int = 1
+    lazy var progressFrom = setProgressFrom()
+    lazy var progressTo = setProgressTo()
+    
+    var audioStreamManager = AudioStreamManager()
+    
+    var progressPublisher = BehaviorSubject(value: 0.0)
+    var audioPublisher = PublishSubject<Double>()
+        
+    lazy var result = Double()
+    
+    var disposeBag = DisposeBag()
     
     func getScenario() {
         words = scenarioData.getScenarioData()?.sentence ?? []
@@ -64,5 +78,43 @@ class SoundPracticeViewModel {
     
     func stopTextToSpeech(){
         textToSpeechService.stopSpeech()
+    }
+    
+    func setProgressTo() -> Double{
+        lazy var tempVar = 0.1
+//        audioPublisher.subscribe(onNext: { [self] confidence in
+            result = (tempVar * 35.0)/100.0
+            
+            if result <= 0.0 {
+                result = 0.0
+            }
+            else if result < 0.15 {
+                result = 0.15
+            }
+//        }).disposed(by: disposeBag)
+
+        progressPublisher.onNext(result)
+        return result
+    }
+    
+    func setProgressFrom() -> Double{
+        progressPublisher.subscribe(onNext: { [self] result in
+            progressFrom = result
+            print(progressFrom)
+            
+        }).disposed(by: disposeBag)
+        
+        return progressFrom
+    }
+    
+    func startSoundPractice(){
+        audioStreamManager.startLiveAudio()
+        
+        var confidence = 0.2
+        audioPublisher.onNext(confidence)
+    }
+    
+    func stopSoundPractice(){
+        audioStreamManager.stopLiveAudio()
     }
 }

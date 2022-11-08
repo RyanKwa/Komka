@@ -15,6 +15,9 @@
 		A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A993D82728EC7C870052DC92 /* ScenarioCell.swift */; };
 		A9B1761E28FD3667005F2FC1 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */; };
 		A9B1762328FDA25C005F2FC1 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */; };
+		A9E89F11291911A1008F37CD /* SoundPracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E89F10291911A1008F37CD /* SoundPracticeViewModel.swift */; };
+		A9E89F132919509E008F37CD /* AudioStreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E89F122919509E008F37CD /* AudioStreamManager.swift */; };
+		A9E89F15291A239D008F37CD /* AudioPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E89F14291A239D008F37CD /* AudioPermission.swift */; };
 		A9E9D4B829125FDB00378FA7 /* AssetStepType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */; };
 		A9E9D4B929125FDB00378FA7 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E9D4B729125FDB00378FA7 /* RecordType.swift */; };
 		C5082142290FCEAA009A645B /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5082141290FCEAA009A645B /* UIColor+Ext.swift */; };
@@ -107,6 +110,9 @@
 		A993D82728EC7C870052DC92 /* ScenarioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioCell.swift; sourceTree = "<group>"; };
 		A9B1761D28FD3667005F2FC1 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
+		A9E89F10291911A1008F37CD /* SoundPracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPracticeViewModel.swift; sourceTree = "<group>"; };
+		A9E89F122919509E008F37CD /* AudioStreamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioStreamManager.swift; sourceTree = "<group>"; };
+		A9E89F14291A239D008F37CD /* AudioPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPermission.swift; sourceTree = "<group>"; };
 		A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetStepType.swift; sourceTree = "<group>"; };
 		A9E9D4B729125FDB00378FA7 /* RecordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
 		C5082141290FCEAA009A645B /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
@@ -270,6 +276,14 @@
 				A993D81628EB16350052DC92 /* Font */,
 			);
 			path = Themes;
+			sourceTree = "<group>";
+		};
+		A9E89F0F29191160008F37CD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A9E89F10291911A1008F37CD /* SoundPracticeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A9E9D4BA29125FE300378FA7 /* CloudKit */ = {
@@ -543,6 +557,7 @@
 		DCED8F4228F86598009F31E3 /* SoundPractice */ = {
 			isa = PBXGroup;
 			children = (
+				A9E89F0F29191160008F37CD /* ViewModel */,
 				DCED8F4328F865A7009F31E3 /* View */,
 				DCF95E73291A8C8100EC9FA8 /* ViewModel */,
 			);
@@ -566,6 +581,8 @@
 				DCA64B2A28FFED91004D9D69 /* CKHelper.swift */,
 				DC8DFD9E2905755A00EEEB64 /* SoundEffectService.swift */,
 				C53583B5291A0671001727FC /* ScenarioData.swift */,
+				A9E89F122919509E008F37CD /* AudioStreamManager.swift */,
+				A9E89F14291A239D008F37CD /* AudioPermission.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -776,6 +793,7 @@
 				DC4B746828F5355700A9C640 /* ScreenSizeConfiguration.swift in Sources */,
 				DC8DFDA62906A6E000EEEB64 /* ContentAssetDAO.swift in Sources */,
 				DC4B746528F5351D00A9C640 /* ChooseGenderViewModel.swift in Sources */,
+				A9E89F132919509E008F37CD /* AudioStreamManager.swift in Sources */,
 				DCED8F4128F85BF8009F31E3 /* UIImageView+Ext.swift in Sources */,
 				DC4B747428F53A5200A9C640 /* Button.swift in Sources */,
 				C50B591128E587B6001D42E5 /* Komka.xcdatamodeld in Sources */,
@@ -799,10 +817,12 @@
 				C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */,
 				C51C4C762900256F00CD2184 /* WordCollectionViewCell.swift in Sources */,
 				C5082142290FCEAA009A645B /* UIColor+Ext.swift in Sources */,
+				A9E89F15291A239D008F37CD /* AudioPermission.swift in Sources */,
 				C50821442910036D009A645B /* FetchError.swift in Sources */,
 				C5D9828728F713D400E89F60 /* MultipleChoiceViewController.swift in Sources */,
 				C53583B6291A0671001727FC /* ScenarioData.swift in Sources */,
 				C51C4C742900255200CD2184 /* ArrangeWordViewController.swift in Sources */,
+				A9E89F11291911A1008F37CD /* SoundPracticeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -978,6 +998,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = L2V23RWBGR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Komka/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Berikan akses mikrofon untuk menggunakan fitur ini";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
@@ -1013,6 +1034,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = L2V23RWBGR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Komka/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Berikan akses mikrofon untuk menggunakan fitur ini";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
