@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "rxswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveX/RxSwift.git",
+      "state" : {
+        "revision" : "b4307ba0b6425c0ba4178e138799946c3da594f8",
+        "version" : "6.5.0"
+      }
+    },
+    {
+      "identity" : "swiftconfettiview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/theoriginalbit/SwiftConfettiView.git",
+      "state" : {
+        "revision" : "70801fc20faf34d136da4985c2b47f4eb4725bdf",
+        "version" : "0.2.0"
+      }
+    }
+  ],
+  "version" : 2
+}
