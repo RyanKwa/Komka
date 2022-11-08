@@ -15,7 +15,6 @@ class LoadingScreenViewController: UIViewController {
     let promptLabel = UIView.createLabel(text: "Tunggu Sebentar . . .", fontSize: 45.0)
     let backgroundImage = UIView.createImageView(imageName: "bg")
     var horizontalProgressBar = HorizontalProgressBarView(frame: CGRect(x: 0, y: 0, width: ScreenSizeConfiguration.SCREEN_WIDTH/1.45, height: ScreenSizeConfiguration.SCREEN_HEIGHT/15))
-    private var currentProgress = 0.0
     
     let loadingScreenVM = LoadingScreenViewModel()
 
@@ -45,20 +44,19 @@ class LoadingScreenViewController: UIViewController {
         let progressBarWidth = horizontalProgressBar.layer.bounds.size.width
         
         loadingScreenVM.fetchRecordScenario(scenarioID: scenarioID)
-        
         loadingScreenVM.totalFetchCompleted.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] totalFetchCompleted in
-            // MARK: Kalau udah ke fetched semua
+            
             if totalFetchCompleted > 0 {
                 self?.loadingScreenVM.incrementProgress(by: progressBarWidth/3)
             }
             if totalFetchCompleted == self?.loadingScreenVM.totalFetchTask {
-                self?.loadingScreenVM.stopPublishing()
+                self?.loadingScreenVM.finishLoadingProgress()
                 self?.horizontalProgressBar.progressAnimation(initialValue: self?.loadingScreenVM.currentProgress ?? 0.0, finalValue: progressBarWidth, duration: 2)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self?.navigationController?.popViewController(animated: false)
                 }
             }
-            // MARK: Lagi ngefetch, sambil jalanin progressnya
+
             else {
                 self?.horizontalProgressBar.progressAnimation(initialValue: self?.loadingScreenVM.currentProgress ?? 0.0, finalValue: self?.loadingScreenVM.currentProgress ?? 0.0 + progressBarWidth/3, duration: 2)
             }

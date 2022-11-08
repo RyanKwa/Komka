@@ -54,7 +54,6 @@ class ArrangeWordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        arrangeWordVM.getSentencesFromScenario(scenarioID: scenarioID ?? "")
         arrangeWordVM.sentences.subscribe(onNext: { [weak self] sentence in
             DispatchQueue.main.async {
                 self?.correctSentencesInOrder = sentence
@@ -192,7 +191,7 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
                     SoundEffectService.shared.playSoundEffect(.CompletionPage)
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//                    self.navigationController?.pushViewController(CompletionPageViewController(), animated: true)
+                    self.navigationController?.pushViewController(CompletionPageViewController(), animated: true)
                 }
             }
         }

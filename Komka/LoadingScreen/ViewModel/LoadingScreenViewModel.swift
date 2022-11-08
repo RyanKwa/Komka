@@ -50,10 +50,10 @@ class LoadingScreenViewModel {
         fetchAssets(scenarioID: scenarioID)
     }
     
-    func stopPublishing () {
+    func finishLoadingProgress () {
         self.isLoading.onNext(false)
-        self.totalFetchCompleted.onCompleted()
         self.isLoading.onCompleted()
+        self.totalFetchCompleted.onCompleted()
     }
     
     private func fetchMultipleChoiceRecord(scenarioID: CKRecord.ID) {

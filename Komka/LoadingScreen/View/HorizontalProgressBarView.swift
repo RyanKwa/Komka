@@ -11,7 +11,7 @@ class HorizontalProgressBarView: UIView {
 
     let roundedRectangleLayer = CAShapeLayer()
     let progressLayer = CALayer()
-    var roundedRect: UIBezierPath?
+    
     var width = 0.0
     var height = 0.0
     override init(frame: CGRect){
@@ -19,10 +19,6 @@ class HorizontalProgressBarView: UIView {
         
         width = self.frame.size.width
         height = self.frame.size.height
-
-        self.backgroundColor = UIColor.black
-        let rect = CGRect(x: 10, y: 0, width: width, height: height)
-        roundedRect = UIBezierPath(roundedRect: rect, cornerRadius: 30)
         
         createRoundedRectangle()
         createProgressTrackLayer()
@@ -31,11 +27,8 @@ class HorizontalProgressBarView: UIView {
         super.init(coder: aDecoder)
     }
     func createRoundedRectangle() {
-        guard let roundedRect = roundedRect else {
-            print("Rounded Rectangle path is not available")
-            return
-        }
-
+        let rect = CGRect(x: 10, y: 0, width: width, height: height)
+        let roundedRect = UIBezierPath(roundedRect: rect, cornerRadius: 30)
         roundedRectangleLayer.path = roundedRect.cgPath
         roundedRectangleLayer.fillColor = UIColor.ProgressBarTrack.cgColor
         roundedRectangleLayer.strokeColor = UIColor.progressBarBorder.cgColor

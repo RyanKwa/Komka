@@ -25,6 +25,8 @@ class MultipleChoiceViewController: UIViewController {
     private var timer: Timer?
     private var timerCounter = 2
     
+    private let disposeBag = DisposeBag()
+    
     private lazy var backBtn: UIButton = {
         let button = UIView.createImageIconBtn(imgTitle: "BackBtn")
         button.addTarget(self, action: #selector(backBtnTapped), for: .touchUpInside)
@@ -82,14 +84,14 @@ class MultipleChoiceViewController: UIViewController {
         showLoadingScreen()
     }
     private func showLoadingScreen(){
-        //TODO: Change this with some other VM that manages fetch
+        
         loadingScreenVM.isLoading.subscribe(onNext: { [weak self] isLoading in
             if isLoading {
                 let loadingScreenVC = LoadingScreenViewController()
                 loadingScreenVC.scenarioRecordId = self?.selectedScenarioId
                 self?.navigationController?.pushViewController(loadingScreenVC, animated: false)
             }
-        })
+        }).disposed(by: disposeBag)
         
     }
     private func configureSubView(){
