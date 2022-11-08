@@ -14,7 +14,6 @@ class MultipleChoiceViewController: UIViewController {
     var selectedScenarioId: CKRecord.ID?
     
     lazy private var multipleChoiceVM: MultipleChoiceViewModel = MultipleChoiceViewModel(scenarioRecordId: selectedScenarioId ?? CKRecord.ID(recordName: RecordType.Scenario.rawValue))
-    private var arrangeWordVM = ArrangeWordViewModel()
     private var loadingScreenVM = LoadingScreenViewModel()
     private var multipleChoice: MultipleChoice?
     
@@ -170,7 +169,9 @@ class MultipleChoiceViewController: UIViewController {
             timerCounter -= 1
             if timerCounter <= 0 {
                 if isCorrectAnswer {
-                    navigationController?.pushViewController(FullSentencesViewController(), animated: false)
+                    let stepViewController = FullSentencesViewController()
+                    stepViewController.selectedScenarioId = selectedScenarioId
+                    self.navigationController?.pushViewController(stepViewController, animated: false)
                 }
                 
                 if choice == leftChoice {

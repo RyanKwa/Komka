@@ -11,9 +11,6 @@ import RxSwift
 class LoadingScreenViewModel {
     private let scenarioDataInstance = ScenarioData.instance
     
-    private var multipleChoiceVM: MultipleChoiceViewModel?
-    private let arrangeWordVM: ArrangeWordViewModel
-    
     private let scenarioDAO: ScenarioDAO
     private let multipleChoicDAO: MultipleChoiceDAO
     private let contentAssetDAO: ContentAssetDAO
@@ -28,7 +25,6 @@ class LoadingScreenViewModel {
     init() {
         currentProgress = 0.0
         totalFetchTask = 3
-        arrangeWordVM = ArrangeWordViewModel()
         scenarioDAO = ScenarioDAO()
         multipleChoicDAO = MultipleChoiceDAO()
         contentAssetDAO = ContentAssetDAO()
@@ -57,7 +53,6 @@ class LoadingScreenViewModel {
     }
     
     private func fetchMultipleChoiceRecord(scenarioID: CKRecord.ID) {
-        //fetch dari DAO, completion
         multipleChoicDAO.fetchMultipleChoiceData(scenarioRecordId: scenarioID) { [weak self] multipleChoice, error in
             if let error = error{
                 self?.totalFetchCompleted.onError(error)
@@ -79,7 +74,7 @@ class LoadingScreenViewModel {
     
     /// Fetch a specific scenario from CloudKit
     private func fetchScenario(scenarioID: CKRecord.ID) {
-        scenarioDAO.fetchScenarioByID(scenarioID: scenarioID) { [weak self] scenario, error in
+        scenarioDAO.fetchScenarioByID(scenarioRecordId: scenarioID) { [weak self] scenario, error in
             if let error = error {
                 self?.totalFetchCompleted.onError(error)
                 print(error.description)

@@ -9,13 +9,16 @@ import UIKit
 
 class CircularProgressBarView: UIView {
     
-    var currentWordBg: String?
-    var currentWordImg: String?
+    private var scenarioCoverImage, soundPracticeCharacterImage: UIImage?
+    private var wordText: String = ""
     
     var duration: TimeInterval?
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, wordText: String, scenarioCoverImage: UIImage, soundPracticeCharacterImage: UIImage) {
         super.init(frame: frame)
+        self.scenarioCoverImage = scenarioCoverImage
+        self.soundPracticeCharacterImage = soundPracticeCharacterImage
+        self.wordText = wordText
         createCircleProgressBar()
         setConstraintImage()
     }
@@ -32,18 +35,19 @@ class CircularProgressBarView: UIView {
     private lazy var endPoint = CGFloat(3 * Double.pi/2)
     
     private lazy var scenarioBG: UIImageView = {
-        let image = UIView.createImageView(imageName: currentWordBg ?? "KamarMandiCover", clipsToBound: true)
-
+        let image = UIView.createImageView(image: scenarioCoverImage ?? UIImage(), clipsToBound: true)
         image.addWhiteOverlay()
         
         return image
     }()
     
     private lazy var scenarioImg: UIImageView = {
-        let wordActImage = UIView.createImageView(imageName: (currentWordImg ?? "BadanSayaKotor"), contentMode: .scaleAspectFit, clipsToBound: true)
+        let wordActImage = UIView.createImageView(image: soundPracticeCharacterImage ?? UIImage(), contentMode: .scaleAspectFit, clipsToBound: true)
         
         return wordActImage
     }()
+    
+    private lazy var wordLbl = UIView.createLabel(text: wordText, fontSize: 40)
     
     func createCircleShape(circlePath: UIBezierPath){
         circleShape.path = circlePath.cgPath
@@ -84,6 +88,7 @@ class CircularProgressBarView: UIView {
         scenarioBG.layer.addSublayer(circleShape)
         scenarioBG.layer.addSublayer(progressLayer)
         scenarioBG.addSubview(scenarioImg)
+        scenarioBG.addSubview(wordLbl)
         addSubview(scenarioBG)
     }
     
@@ -95,8 +100,12 @@ class CircularProgressBarView: UIView {
         scenarioBG.setDimensions(width: ScreenSizeConfiguration.SCREEN_WIDTH/2, height: ScreenSizeConfiguration.SCREEN_HEIGHT/1.5)
         scenarioBG.center(inView: self)
         
-        scenarioImg.setDimensions(width: scenarioBG.frame.width/2.5, height: scenarioBG.frame.height/2.5)
-        scenarioImg.center(inView: scenarioBG)
+        scenarioImg.setDimensions(width: scenarioBG.frame.width/3, height: scenarioBG.frame.height/3)
+        scenarioImg.anchor(top: scenarioBG.topAnchor, paddingTop: scenarioBG.frame.width/10.7)
+        scenarioImg.centerX(inView: scenarioBG)
+        
+        wordLbl.anchor(top: scenarioImg.bottomAnchor, paddingTop: scenarioBG.frame.width/74)
+        wordLbl.centerX(inView: scenarioBG)
     }
     
     //Animation for the progress
