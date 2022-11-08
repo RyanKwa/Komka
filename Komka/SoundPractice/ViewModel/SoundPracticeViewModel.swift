@@ -13,7 +13,7 @@ class SoundPracticeViewModel {
     private let scenarioData = ScenarioData.instance
     
     private var soundPracticeAssets: [ContentAsset] = []
-    private var words: [String] = []
+    private(set) var words: [String] = []
     
     func getScenario() {
         words = scenarioData.getScenarioData()?.sentence ?? []
