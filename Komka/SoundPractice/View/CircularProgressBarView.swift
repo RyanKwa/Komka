@@ -8,7 +8,6 @@
 import UIKit
 
 class CircularProgressBarView: UIView {
-    
     private var scenarioCoverImage, soundPracticeCharacterImage: UIImage?
     private var wordText: String = ""
     
@@ -107,7 +106,6 @@ class CircularProgressBarView: UIView {
         wordLbl.centerX(inView: scenarioBG)
     }
     
-    //Animation for the progress
     func progressAnimation(progressFrom: CGFloat, progressTo: CGFloat) {
         let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
         circularProgressAnimation.fromValue = progressFrom

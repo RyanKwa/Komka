@@ -14,7 +14,7 @@ class SoundPracticeViewModel {
     private let textToSpeechService = TextToSpeechService()
     
     private var soundPracticeAssets: [ContentAsset] = []
-    private var words: [String] = []
+    private(set) var words: [String] = []
     
     lazy var queueWordCounter: Int = 1
     lazy var progressFrom = setProgressFrom()
