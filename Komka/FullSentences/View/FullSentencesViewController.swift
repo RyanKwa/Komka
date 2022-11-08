@@ -54,7 +54,8 @@ class FullSentencesViewController: UIViewController {
     }
     
     @objc func startBtnTapped(_ sender: UIButton) {
-        navigationController?.pushViewController(SoundPracticeViewController(), animated: true)
+        // TODO: ubah view controller ke SoundPracticeViewController
+        navigationController?.pushViewController(CompletionPageViewController(), animated: false)
     }
     
     override func viewDidLoad() {
@@ -71,7 +72,7 @@ class FullSentencesViewController: UIViewController {
         view.addSubview(backBtn)
         
         backgroundImg.addSubview(fullSentenceLbl)
-        backgroundImg.addSubview(startBtn)
+        view.addSubview(startBtn)
     }
     
     private func setupConstraint(){

@@ -35,7 +35,7 @@ class MultipleChoiceDAO {
                 guard
                     let scenarioTitle = record["title"] as? String,
                     let scenarioStatus = record["isCompleted"] as? Bool,
-                    let scenarioSentence = record["sentence"] as? String,
+                    let scenarioSentence = record["sentence"] as? [String],
                     let scenarioLevel = record["level"] as? CKRecord.Reference,
                     let multipleChoice = record["multipleChoice"] as? CKRecord.Reference
                 else {
@@ -43,7 +43,7 @@ class MultipleChoiceDAO {
                     return
                 }
                 
-                self.scenario = Scenario(id: returnedRecordID, title: scenarioTitle, isCompleted: scenarioStatus, sentence: scenarioSentence, level: scenarioLevel, reward: nil, multipleChoice: multipleChoice, wordImitations: [])
+                self.scenario = Scenario(id: returnedRecordID, title: scenarioTitle, isCompleted: scenarioStatus, sentence: scenarioSentence, level: scenarioLevel, reward: nil, multipleChoice: multipleChoice)
                 
                 if let reference = record.value(forKey: "multipleChoice") as? CKRecord.Reference {
                     let predicate = NSPredicate(format: "recordID == %@", reference)
