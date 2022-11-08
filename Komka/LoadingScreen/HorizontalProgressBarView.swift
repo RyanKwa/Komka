@@ -40,9 +40,7 @@ class HorizontalProgressBarView: UIView {
         roundedRectangleLayer.fillColor = UIColor.ProgressBarTrack.cgColor
         roundedRectangleLayer.strokeColor = UIColor.progressBarBorder.cgColor
         roundedRectangleLayer.lineWidth = 10.0
-//        roundedRectangleLayer.masksToBounds = true
         roundedRectangleLayer.position = CGPoint(x: 0, y: 5)
-        
         roundedRectangleLayer.anchorPoint = CGPoint(x: 0, y: 0)
         layer.addSublayer(roundedRectangleLayer)
     }
@@ -53,25 +51,10 @@ class HorizontalProgressBarView: UIView {
         progressLayer.position = CGPoint(x: 10, y: 10)
         progressLayer.anchorPoint = CGPoint(x: 0, y: 0)
         progressLayer.cornerRadius = 20
-//        progressLayer.frame = CGRect(x: 0, y: 0, width: 0, height: height)
-//        progressLayer.path = roundedRect2?.cgPath
-//        progressLayer.fillColor = UIColor.progreeBarProgress.cgColor
-//        progressLayer.position = CGPoint(x: 1, y: 5)
-//        progressLayer.anchorPoint = CGPoint(x: 0, y: 0)
-//        roundedRectangleLayer.mask = progressLayer
-//        progressLayer.masksToBounds = true
-//        layer.masksToBounds = false
-//        layer.mask = progressLayer
         layer.addSublayer(progressLayer)
     }
     func progressAnimation(initialValue: CGFloat, finalValue: CGFloat, duration: TimeInterval) {
-//        let progressAnimation = CABasicAnimation(keyPath: "path")
         let progressAnimation = CABasicAnimation(keyPath: "bounds.size.width")
-//        let progressAnimation = CABasicAnimation(keyPath: "positions.x")
-//        progressAnimation.fromValue = CGRect(x: 0, y: 0, width: 0, height: 30)
-//        progressAnimation.toValue = CGRect(x: 0, y: 0, width: 100, height: 30)
-//        progressAnimation.fromValue = roundedRect2?.cgPath
-//        progressAnimation.toValue = roundedRect?.cgPath
         progressAnimation.fromValue = initialValue
         progressAnimation.toValue = finalValue
         progressAnimation.duration = duration

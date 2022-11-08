@@ -5,6 +5,7 @@
 //  Created by Ryan Vieri Kwa on 25/10/22.
 //
 
+import CloudKit
 import Foundation
 import RxSwift
 class ArrangeWordViewModel {
@@ -13,7 +14,7 @@ class ArrangeWordViewModel {
     var scenario = PublishSubject<Scenario>()
     var sentences = PublishSubject<[String]>()
 
-    func getSentencesFromScenario(scenarioID: String){
+    func getSentencesFromScenario(scenarioID: CKRecord.ID){
 
         scenarioDAO.fetchScenarioByID(scenarioID: scenarioID) { [weak self] scenario, error in
             if let error = error {

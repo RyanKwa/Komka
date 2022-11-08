@@ -54,7 +54,7 @@ class ArrangeWordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        arrangeWordVM.getSentencesFromScenario(scenarioID: scenarioID ?? "")
+//        arrangeWordVM.getSentencesFromScenario(scenarioID: scenarioID ?? "")
         arrangeWordVM.sentences.subscribe(onNext: { [weak self] sentence in
             DispatchQueue.main.async {
                 self?.correctSentencesInOrder = sentence

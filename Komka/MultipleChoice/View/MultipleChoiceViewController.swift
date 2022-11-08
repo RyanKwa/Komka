@@ -16,6 +16,7 @@ class MultipleChoiceViewController: UIViewController {
     
     lazy private var multipleChoiceVM: MultipleChoiceViewModel = MultipleChoiceViewModel(scenarioRecordId: selectedScenarioId ?? CKRecord.ID(recordName: RecordType.Scenario.rawValue))
     private var arrangeWordVM = ArrangeWordViewModel()
+    private var loadingScreenVM = LoadingScreenViewModel()
     private var multipleChoiceVM: MultipleChoiceViewModel
     private var multipleChoice: MultipleChoice?
     
@@ -83,7 +84,8 @@ class MultipleChoiceViewController: UIViewController {
         showLoadingScreen()
     }
     private func showLoadingScreen(){
-        arrangeWordVM.isLoading.subscribe(onNext: { [weak self] isLoading in
+        //TODO: Change this with some other VM that manages fetch
+        loadingScreenVM.isLoading.subscribe(onNext: { [weak self] isLoading in
             if isLoading {
                 let loadingScreenVC = LoadingScreenViewController()
                 loadingScreenVC.scenarioRecordId = self?.selectedScenarioId
