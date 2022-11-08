@@ -28,14 +28,14 @@ class ScenarioDAO{
             case .success(let record):
                 guard let title = record["title"] as? String,
                       let isCompleted = record["isCompleted"] as? Bool,
-                      let sentence = record["sentence"] as? String,
+                      let sentence = record["sentence"] as? [String],
                       let level = record["level"] as? CKRecord.Reference,
                       let multipleChoice = record["multipleChoice"] as? CKRecord.Reference
                 else {
                     completion(nil, FetchError.missingData(recordType: RecordType.Scenario))
                     return
                 }
-                fetchedScenario = Scenario(id: record.recordID, title: title, isCompleted: isCompleted, sentence: sentence, level: level, reward: nil, multipleChoice: multipleChoice, wordImitations: [])
+                fetchedScenario = Scenario(id: record.recordID, title: title, isCompleted: isCompleted, sentence: sentence, level: level, reward: nil, multipleChoice: multipleChoice)
             case .failure(_):
                 completion(nil, FetchError.failedQuery(recordType: RecordType.Scenario))
             }
@@ -64,7 +64,7 @@ class ScenarioDAO{
                 guard
                     let scenarioTitle = record["title"] as? String,
                     let scenarioStatus = record["isCompleted"] as? Bool,
-                    let scenarioSentence = record["sentence"] as? String,
+                    let scenarioSentence = record["sentence"] as? [String],
                     let scenarioLevel = record["level"] as? CKRecord.Reference,
                     let multipleChoice = record["multipleChoice"] as? CKRecord.Reference
                 else {
@@ -72,7 +72,7 @@ class ScenarioDAO{
                     return
                 }
                 
-                self.scenarios.append(Scenario(id: returnedRecordID, title: scenarioTitle, isCompleted: scenarioStatus, sentence: scenarioSentence, level: scenarioLevel, reward: nil, multipleChoice: multipleChoice, wordImitations: []))
+                self.scenarios.append(Scenario(id: returnedRecordID, title: scenarioTitle, isCompleted: scenarioStatus, sentence: scenarioSentence, level: scenarioLevel, reward: nil, multipleChoice: multipleChoice))
                 
             case .failure(_):
                 self.scenariosPublisher.onError(FetchError.failedQuery(recordType: RecordType.Scenario))
