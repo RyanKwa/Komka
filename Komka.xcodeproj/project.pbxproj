@@ -45,7 +45,6 @@
 		C5D9829328F7C93200E89F60 /* MultipleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829228F7C93200E89F60 /* MultipleChoice.swift */; };
 		C5D9829728F7C98200E89F60 /* ContentAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829628F7C98200E89F60 /* ContentAsset.swift */; };
 		DC3F64F62911332E00D5152E /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F64F52911332E00D5152E /* UILabel+Ext.swift */; };
-		DC3F64F829113B2B00D5152E /* MultipleChoicePart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F64F729113B2B00D5152E /* MultipleChoicePart.swift */; };
 		DC3F64FA29113B7200D5152E /* Choices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F64F929113B7200D5152E /* Choices.swift */; };
 		DC4B746128F534CF00A9C640 /* ChooseGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746028F534CF00A9C640 /* ChooseGenderViewController.swift */; };
 		DC4B746528F5351D00A9C640 /* ChooseGenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746428F5351D00A9C640 /* ChooseGenderViewModel.swift */; };
@@ -71,6 +70,9 @@
 		DCF95E5429165E1900EC9FA8 /* CompletionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF95E5329165E1900EC9FA8 /* CompletionPageViewController.swift */; };
 		DCF95E562916660000EC9FA8 /* UINavigationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF95E552916660000EC9FA8 /* UINavigationController+Ext.swift */; };
 		DCF95E5929166B5A00EC9FA8 /* SwiftConfettiView in Frameworks */ = {isa = PBXBuildFile; productRef = DCF95E5829166B5A00EC9FA8 /* SwiftConfettiView */; };
+		DCF95E70291A80A200EC9FA8 /* FullSentencesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF95E6F291A80A200EC9FA8 /* FullSentencesViewModel.swift */; };
+		DCF95E72291A80C800EC9FA8 /* AssetPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF95E71291A80C800EC9FA8 /* AssetPart.swift */; };
+		DCF95E75291A8C9F00EC9FA8 /* SoundPracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF95E74291A8C9F00EC9FA8 /* SoundPracticeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,7 +133,6 @@
 		C5D9829228F7C93200E89F60 /* MultipleChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoice.swift; sourceTree = "<group>"; };
 		C5D9829628F7C98200E89F60 /* ContentAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAsset.swift; sourceTree = "<group>"; };
 		DC3F64F52911332E00D5152E /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
-		DC3F64F729113B2B00D5152E /* MultipleChoicePart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoicePart.swift; sourceTree = "<group>"; };
 		DC3F64F929113B7200D5152E /* Choices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Choices.swift; sourceTree = "<group>"; };
 		DC4B746028F534CF00A9C640 /* ChooseGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewController.swift; sourceTree = "<group>"; };
 		DC4B746428F5351D00A9C640 /* ChooseGenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewModel.swift; sourceTree = "<group>"; };
@@ -156,6 +157,9 @@
 		DCED8F4428F865C2009F31E3 /* SoundPracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPracticeViewController.swift; sourceTree = "<group>"; };
 		DCF95E5329165E1900EC9FA8 /* CompletionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionPageViewController.swift; sourceTree = "<group>"; };
 		DCF95E552916660000EC9FA8 /* UINavigationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Ext.swift"; sourceTree = "<group>"; };
+		DCF95E6F291A80A200EC9FA8 /* FullSentencesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullSentencesViewModel.swift; sourceTree = "<group>"; };
+		DCF95E71291A80C800EC9FA8 /* AssetPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPart.swift; sourceTree = "<group>"; };
+		DCF95E74291A8C9F00EC9FA8 /* SoundPracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPracticeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,8 +265,8 @@
 				C50821432910036D009A645B /* FetchError.swift */,
 				A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */,
 				DC3F64F929113B7200D5152E /* Choices.swift */,
-				DC3F64F729113B2B00D5152E /* MultipleChoicePart.swift */,
 				A9E9D4B729125FDB00378FA7 /* RecordType.swift */,
+				DCF95E71291A80C800EC9FA8 /* AssetPart.swift */,
 			);
 			path = CloudKit;
 			sourceTree = "<group>";
@@ -445,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				DC85A19528F73E9600E457F0 /* View */,
+				DCF95E6E291A808900EC9FA8 /* ViewModel */,
 			);
 			path = FullSentences;
 			sourceTree = "<group>";
@@ -498,7 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				DCED8F4328F865A7009F31E3 /* View */,
-				A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */,
+				DCF95E73291A8C8100EC9FA8 /* ViewModel */,
 			);
 			path = SoundPractice;
 			sourceTree = "<group>";
@@ -506,6 +511,7 @@
 		DCED8F4328F865A7009F31E3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */,
 				DCED8F4428F865C2009F31E3 /* SoundPracticeViewController.swift */,
 			);
 			path = View;
@@ -528,6 +534,22 @@
 				DCF95E5329165E1900EC9FA8 /* CompletionPageViewController.swift */,
 			);
 			path = CompletionPage;
+			sourceTree = "<group>";
+		};
+		DCF95E6E291A808900EC9FA8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DCF95E6F291A80A200EC9FA8 /* FullSentencesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DCF95E73291A8C8100EC9FA8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DCF95E74291A8C9F00EC9FA8 /* SoundPracticeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -683,15 +705,16 @@
 				A9B1762328FDA25C005F2FC1 /* CircularProgressBarView.swift in Sources */,
 				A9E9D4B829125FDB00378FA7 /* AssetStepType.swift in Sources */,
 				A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */,
+				DCF95E70291A80A200EC9FA8 /* FullSentencesViewModel.swift in Sources */,
 				DCED8F3F28F80C91009F31E3 /* LevelButton.swift in Sources */,
 				DCF95E5429165E1900EC9FA8 /* CompletionPageViewController.swift in Sources */,
+				DCF95E75291A8C9F00EC9FA8 /* SoundPracticeViewModel.swift in Sources */,
 				C5336BD628F8665000AC24A9 /* UIImageView+Ext.swift in Sources */,
 				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
 				DC85A19428F73E2B00E457F0 /* TextToSpeechService.swift in Sources */,
 				C5962217290051F700B98B1B /* WordSlotCollectionViewCell.swift in Sources */,
 				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
 				C542E7C129080A250001ADD5 /* ArrangeWordViewModel.swift in Sources */,
-				DC3F64F829113B2B00D5152E /* MultipleChoicePart.swift in Sources */,
 				C5336BD628F8665000AC24A9 /* UIImageView+Ext.swift in Sources */,
 				A993D81E28EB17300052DC92 /* UIFont+Ext.swift in Sources */,
 				C5D9828D28F7C5FD00E89F60 /* WordImitation.swift in Sources */,
@@ -722,9 +745,9 @@
 				C5D9829328F7C93200E89F60 /* MultipleChoice.swift in Sources */,
 				DC3F64F62911332E00D5152E /* UILabel+Ext.swift in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
-				A9B1761C28FD2408005F2FC1 /* CloudKitHelper.swift in Sources */,
 				DCF95E562916660000EC9FA8 /* UINavigationController+Ext.swift in Sources */,
 				A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */,
+				DCF95E72291A80C800EC9FA8 /* AssetPart.swift in Sources */,
 				DC4B746F28F535FF00A9C640 /* NSUbiquitousKeyValueStore+Ext.swift in Sources */,
 				C5D9828B28F7BFDB00E89F60 /* Scenario.swift in Sources */,
 				C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */,
