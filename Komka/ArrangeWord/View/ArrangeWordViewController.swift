@@ -192,7 +192,7 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
                     SoundEffectService.shared.playSoundEffect(.CompletionPage)
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    self.navigationController?.pushViewController(CompletionPageViewController(), animated: true)
+//                    self.navigationController?.pushViewController(CompletionPageViewController(), animated: true)
                 }
             }
         }

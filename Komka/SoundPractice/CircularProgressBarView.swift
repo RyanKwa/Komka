@@ -11,11 +11,13 @@ class CircularProgressBarView: UIView {
     
     var currentWordBg: String?
     var currentWordImg: String?
+    var currentWordLabel: String?
     
     var duration: TimeInterval?
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, currentWordLabel: String) {
         super.init(frame: frame)
+        self.currentWordLabel = currentWordLabel
         createCircleProgressBar()
         setConstraintImage()
     }
@@ -99,7 +101,6 @@ class CircularProgressBarView: UIView {
         scenarioImg.center(inView: scenarioBG)
     }
     
-    //Animation for the progress
     func progressAnimation(progressFrom: CGFloat, progressTo: CGFloat) {
         let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
         circularProgressAnimation.fromValue = progressFrom
