@@ -16,7 +16,7 @@ class SoundPracticeViewModel {
     private let multipleChoiceVM: MultipleChoiceViewModel?
     private var assets: [ContentAsset] = []
     private var soundPracticeAssets: [ContentAsset] = []
-    private var words: [String] = []
+    private(set) var words: [String] = []
     
     var publishScenario = PublishSubject<Scenario>()
     var publishSoundPracticeAssets = PublishSubject<[ContentAsset]>()
