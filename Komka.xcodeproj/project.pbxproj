@@ -18,6 +18,7 @@
 		A9E89F11291911A1008F37CD /* SoundPracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E89F10291911A1008F37CD /* SoundPracticeViewModel.swift */; };
 		A9E89F132919509E008F37CD /* AudioStreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E89F122919509E008F37CD /* AudioStreamManager.swift */; };
 		A9E89F15291A239D008F37CD /* AudioPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E89F14291A239D008F37CD /* AudioPermission.swift */; };
+		A9E89F17291AAB6F008F37CD /* SoundAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E89F16291AAB6F008F37CD /* SoundAnalyzer.swift */; };
 		A9E9D4B829125FDB00378FA7 /* AssetStepType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */; };
 		A9E9D4B929125FDB00378FA7 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E9D4B729125FDB00378FA7 /* RecordType.swift */; };
 		C5082142290FCEAA009A645B /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5082141290FCEAA009A645B /* UIColor+Ext.swift */; };
@@ -111,6 +112,7 @@
 		A9E89F10291911A1008F37CD /* SoundPracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPracticeViewModel.swift; sourceTree = "<group>"; };
 		A9E89F122919509E008F37CD /* AudioStreamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioStreamManager.swift; sourceTree = "<group>"; };
 		A9E89F14291A239D008F37CD /* AudioPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPermission.swift; sourceTree = "<group>"; };
+		A9E89F16291AAB6F008F37CD /* SoundAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundAnalyzer.swift; sourceTree = "<group>"; };
 		A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetStepType.swift; sourceTree = "<group>"; };
 		A9E9D4B729125FDB00378FA7 /* RecordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
 		C5082141290FCEAA009A645B /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
@@ -577,6 +579,7 @@
 				DC8DFD9E2905755A00EEEB64 /* SoundEffectService.swift */,
 				A9E89F122919509E008F37CD /* AudioStreamManager.swift */,
 				A9E89F14291A239D008F37CD /* AudioPermission.swift */,
+				A9E89F16291AAB6F008F37CD /* SoundAnalyzer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -814,6 +817,7 @@
 				C5D9828728F713D400E89F60 /* MultipleChoiceViewController.swift in Sources */,
 				C53583B6291A0671001727FC /* ScenarioData.swift in Sources */,
 				C51C4C742900255200CD2184 /* ArrangeWordViewController.swift in Sources */,
+				A9E89F17291AAB6F008F37CD /* SoundAnalyzer.swift in Sources */,
 				A9E89F11291911A1008F37CD /* SoundPracticeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
