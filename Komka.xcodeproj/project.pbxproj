@@ -39,6 +39,7 @@
 		C5962217290051F700B98B1B /* WordSlotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5962216290051F700B98B1B /* WordSlotCollectionViewCell.swift */; };
 		C5A343EE2913B06F003B18B3 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A343ED2913B06F003B18B3 /* LoadingScreenViewController.swift */; };
 		C5A343F02913B27E003B18B3 /* HorizontalProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A343EF2913B27E003B18B3 /* HorizontalProgressBarView.swift */; };
+		C5BB5614291906BB0021E0B5 /* LoadingScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BB5613291906BB0021E0B5 /* LoadingScreenViewModel.swift */; };
 		C5D9828728F713D400E89F60 /* MultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9828628F713D400E89F60 /* MultipleChoiceViewController.swift */; };
 		C5D9828B28F7BFDB00E89F60 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9828A28F7BFDB00E89F60 /* Scenario.swift */; };
 		C5D9828D28F7C5FD00E89F60 /* WordImitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9828C28F7C5FD00E89F60 /* WordImitation.swift */; };
@@ -126,6 +127,7 @@
 		C5962216290051F700B98B1B /* WordSlotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSlotCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5A343ED2913B06F003B18B3 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
 		C5A343EF2913B27E003B18B3 /* HorizontalProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalProgressBarView.swift; sourceTree = "<group>"; };
+		C5BB5613291906BB0021E0B5 /* LoadingScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewModel.swift; sourceTree = "<group>"; };
 		C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Komka.entitlements; sourceTree = "<group>"; };
 		C5D9828628F713D400E89F60 /* MultipleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultipleChoiceViewController.swift; path = Komka/MultipleChoice/View/MultipleChoiceViewController.swift; sourceTree = SOURCE_ROOT; };
 		C5D9828A28F7BFDB00E89F60 /* Scenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				C5A343ED2913B06F003B18B3 /* LoadingScreenViewController.swift */,
+				C5BB5613291906BB0021E0B5 /* LoadingScreenViewModel.swift */,
 				C5A343EF2913B27E003B18B3 /* HorizontalProgressBarView.swift */,
 			);
 			path = LoadingScreen;
@@ -746,6 +749,7 @@
 				C5D9828B28F7BFDB00E89F60 /* Scenario.swift in Sources */,
 				C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */,
 				C51C4C762900256F00CD2184 /* WordCollectionViewCell.swift in Sources */,
+				C5BB5614291906BB0021E0B5 /* LoadingScreenViewModel.swift in Sources */,
 				C5082142290FCEAA009A645B /* UIColor+Ext.swift in Sources */,
 				C50821442910036D009A645B /* FetchError.swift in Sources */,
 				C5D9828728F713D400E89F60 /* MultipleChoiceViewController.swift in Sources */,
