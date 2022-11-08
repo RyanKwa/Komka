@@ -79,7 +79,7 @@ class SoundPracticeViewModel {
     func stopTextToSpeech(){
         textToSpeechService.stopSpeech()
     }
-    
+        
     func setProgressTo() -> Double{
         lazy var tempVar = 0.1
 //        audioPublisher.subscribe(onNext: { [self] confidence in

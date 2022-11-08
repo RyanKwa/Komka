@@ -583,9 +583,9 @@
 				DCA64B2A28FFED91004D9D69 /* CKHelper.swift */,
 				DC8DFD9E2905755A00EEEB64 /* SoundEffectService.swift */,
 				C53583B5291A0671001727FC /* ScenarioData.swift */,
+				A9E89F16291AAB6F008F37CD /* SoundAnalyzer.swift */,
 				A9E89F122919509E008F37CD /* AudioStreamManager.swift */,
 				A9E89F14291A239D008F37CD /* AudioPermission.swift */,
-				A9E89F16291AAB6F008F37CD /* SoundAnalyzer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
