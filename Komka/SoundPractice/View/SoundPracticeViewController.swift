@@ -60,7 +60,6 @@ class SoundPracticeViewController: ViewController {
     }
     
     func setUpCircularProgressBarView() {
-        circularProgressBarView.duration = 1
         circularProgressBarView.progressAnimation(progressFrom: soundPracticeVM.progressFrom, progressTo: soundPracticeVM.progressTo)
     }
     
@@ -80,6 +79,8 @@ class SoundPracticeViewController: ViewController {
         circularProgressBarView.anchor(top: instructionLbl.bottomAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/30, width: ScreenSizeConfiguration.SCREEN_WIDTH/1.5, height: ScreenSizeConfiguration.SCREEN_HEIGHT/1.2)
         
         audioBtn.anchor(top: circularProgressBarView.topAnchor, right: view.rightAnchor, paddingRight: 230)
+        
+        nextBtn.anchor(bottom: view.bottomAnchor, right: view.rightAnchor, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/10, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/10)
     }
 
     private func addSubViews(){
@@ -88,6 +89,7 @@ class SoundPracticeViewController: ViewController {
         view.addSubview(instructionLbl)
         view.addSubview(circularProgressBarView)
         view.addSubview(audioBtn)
+        view.addSubview(nextBtn)
     }
         
     func moveToNextPage(){
