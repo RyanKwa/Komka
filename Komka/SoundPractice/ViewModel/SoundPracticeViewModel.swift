@@ -70,10 +70,10 @@ class SoundPracticeViewModel {
     
     var progressPublisher = BehaviorSubject(value: 0.0)
     var audioPublisher = PublishSubject<Double>()
-        
-    lazy var result = Double()
     
     var disposeBag = DisposeBag()
+    
+    lazy var result = Double()
     
     func setProgressTo() -> Double{
         lazy var tempVar = 0.1
