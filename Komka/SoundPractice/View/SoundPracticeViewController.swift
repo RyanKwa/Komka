@@ -74,7 +74,7 @@ class SoundPracticeViewController: UIViewController {
 
     private func addSubViews(){
         view.addSubview(backgroundImg)
-        view.addSubview(backBtn)        
+        view.addSubview(backBtn)
         soundPracticeVM.publishSoundPracticeAssets.subscribe(onNext: { _ in
             DispatchQueue.main.async { [self] in
                 wordText = soundPracticeVM.getSoundPracticeWord(wordCounter: soundPracticeVM.queueWordCounter)

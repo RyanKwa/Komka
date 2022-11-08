@@ -95,7 +95,7 @@ class SoundPracticeViewModel {
     
     var progressPublisher = BehaviorSubject(value: 0.0)
     var audioPublisher = PublishSubject<Double>()
-        
+    
     lazy var result = Double()
     
     func setProgressTo() -> Double{
