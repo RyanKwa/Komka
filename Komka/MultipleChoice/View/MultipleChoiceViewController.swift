@@ -10,14 +10,12 @@ import CloudKit
 import RxSwift
 
 class MultipleChoiceViewController: UIViewController {
-    
 
     var selectedScenarioId: CKRecord.ID?
     
     lazy private var multipleChoiceVM: MultipleChoiceViewModel = MultipleChoiceViewModel(scenarioRecordId: selectedScenarioId ?? CKRecord.ID(recordName: RecordType.Scenario.rawValue))
     private var arrangeWordVM = ArrangeWordViewModel()
     private var loadingScreenVM = LoadingScreenViewModel()
-    private var multipleChoiceVM: MultipleChoiceViewModel
     private var multipleChoice: MultipleChoice?
     
     private var scenarioCoverImage, multipleChoiceCharacterImage: UIImage?
