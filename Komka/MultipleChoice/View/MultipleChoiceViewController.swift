@@ -10,10 +10,12 @@ import CloudKit
 import RxSwift
 
 class MultipleChoiceViewController: UIViewController {
-    
+
     var selectedScenarioId: CKRecord.ID?
     
     lazy private var multipleChoiceVM: MultipleChoiceViewModel = MultipleChoiceViewModel(scenarioRecordId: selectedScenarioId ?? CKRecord.ID(recordName: RecordType.Scenario.rawValue))
+    private var arrangeWordVM = ArrangeWordViewModel()
+    private var loadingScreenVM = LoadingScreenViewModel()
     private var multipleChoice: MultipleChoice?
     
     private var scenarioCoverImage, multipleChoiceCharacterImage: UIImage?
@@ -22,6 +24,8 @@ class MultipleChoiceViewController: UIViewController {
     
     private var timer: Timer?
     private var timerCounter = 2
+    
+    private let disposeBag = DisposeBag()
     
     private lazy var backBtn: UIButton = {
         let button = UIView.createImageIconBtn(imgTitle: "BackBtn")
@@ -77,8 +81,19 @@ class MultipleChoiceViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         configureSubView()
+        showLoadingScreen()
     }
-    
+    private func showLoadingScreen(){
+        
+        loadingScreenVM.isLoading.subscribe(onNext: { [weak self] isLoading in
+            if isLoading {
+                let loadingScreenVC = LoadingScreenViewController()
+                loadingScreenVC.scenarioRecordId = self?.selectedScenarioId
+                self?.navigationController?.pushViewController(loadingScreenVC, animated: false)
+            }
+        }).disposed(by: disposeBag)
+        
+    }
     private func configureSubView(){
         view.addSubview(backgroundImage)
         view.addSubview(backBtn)

@@ -16,9 +16,8 @@ class ScenarioDAO{
     
     var scenariosPublisher = PublishSubject<[Scenario]>()
 
-    func fetchScenarioByID(scenarioID: String, completion: @escaping (Scenario?, FetchError?) -> Void) {
-        let recordID = CKRecord.ID(recordName: scenarioID)
-        let predicate = NSPredicate(format: "recordID = %@", recordID)
+    func fetchScenarioByID(scenarioID: CKRecord.ID, completion: @escaping (Scenario?, FetchError?) -> Void) {
+        let predicate = NSPredicate(format: "recordID = %@", scenarioID)
         let query = CKQuery(recordType: RecordType.Scenario.rawValue, predicate: predicate)
         let queryOperation = CKQueryOperation(query: query)
         var fetchedScenario: Scenario? = nil
