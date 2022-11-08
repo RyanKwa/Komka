@@ -14,7 +14,6 @@ class MultipleChoiceViewController: UIViewController {
     var selectedScenarioId: CKRecord.ID?
     
     lazy private var multipleChoiceVM: MultipleChoiceViewModel = MultipleChoiceViewModel(scenarioRecordId: selectedScenarioId ?? CKRecord.ID(recordName: RecordType.Scenario.rawValue))
-    private var arrangeWordVM = ArrangeWordViewModel()
     private var loadingScreenVM = LoadingScreenViewModel()
     private var multipleChoice: MultipleChoice?
     
