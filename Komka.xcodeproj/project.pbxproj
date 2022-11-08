@@ -586,6 +586,7 @@
 				A9E89F16291AAB6F008F37CD /* SoundAnalyzer.swift */,
 				A9E89F122919509E008F37CD /* AudioStreamManager.swift */,
 				A9E89F14291A239D008F37CD /* AudioPermission.swift */,
+				A9E89F16291AAB6F008F37CD /* SoundAnalyzer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
