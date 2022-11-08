@@ -9,5 +9,6 @@ enum AssetStepType: String {
     case Cover
     case MultipleChoice
     case FullSentence
+    case SoundPractice
     case ArrangeWord
 }
