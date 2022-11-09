@@ -116,6 +116,7 @@ class SoundPracticeViewController: UIViewController {
         soundPracticeVM.getSoundPracticeAssets()
         
         setUpSoundPracticeData()
+        
         nextBtn.isHidden = true
 
         setUpCircularProgressBarView()
