@@ -11,7 +11,7 @@ class CircularProgressBarView: UIView {
     private var scenarioCoverImage, soundPracticeCharacterImage: UIImage?
     private var wordText: String = ""
     
-    var duration: TimeInterval?
+    var duration: TimeInterval = 5
     
     init(frame: CGRect, wordText: String, scenarioCoverImage: UIImage, soundPracticeCharacterImage: UIImage) {
         super.init(frame: frame)
@@ -52,7 +52,7 @@ class CircularProgressBarView: UIView {
         circleShape.path = circlePath.cgPath
         circleShape.fillColor = UIColor.clear.cgColor
         circleShape.lineWidth = 50
-        circleShape.strokeEnd = 100
+        circleShape.strokeEnd = 1.0
         circleShape.strokeColor = UIColor.lightGray.cgColor
         scenarioBG.layer.mask = circleShape
         setLayerPosition(shape: circleShape)
@@ -110,7 +110,7 @@ class CircularProgressBarView: UIView {
         let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
         circularProgressAnimation.fromValue = progressFrom
         circularProgressAnimation.toValue = progressTo
-        circularProgressAnimation.duration = duration ?? 0
+        circularProgressAnimation.duration = duration
         circularProgressAnimation.fillMode = .forwards
         circularProgressAnimation.isRemovedOnCompletion = false
 

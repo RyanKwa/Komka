@@ -93,7 +93,7 @@ class SoundPracticeViewController: ViewController {
     }
         
     func moveToNextPage(){
-        DispatchQueue.main.asyncAfter(deadline: .now() + (circularProgressBarView.duration ?? 0)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + (circularProgressBarView.duration)) {
             if(self.soundPracticeVM.progressTo == 1) {
                 if(self.soundPracticeVM.queueWordCounter == self.soundPracticeVM.words.count){
                     self.nextBtn.isHidden = false
