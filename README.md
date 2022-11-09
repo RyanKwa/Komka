@@ -1,3 +1,6 @@
+- [x] Completed To Do
+- [ ] Uncompleted To Do
+
 To Do: 
 - [ ] masukkin logo
 - [ ] btn audio kurang naik
