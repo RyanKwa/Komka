@@ -2,15 +2,15 @@
 - [ ] Uncompleted To Do
 
 To Do: 
-- [ ] masukkin logo -> Mina
+- [ ] masukkin logo -> Kwa
 - [ ] btn audio kurang naik -> Mina
 - [ ] halaman full sentences gada instruction -> Mina
-- [ ] back btn arrange word frik -> Mina
+- [ ] back btn arrange word frik -> Kwa
 - [x] tts untuk arrange word dibuat string
 - [x] tts untuk full sentences dibuat string
 - [x] buat ext utk convert array of string ke string
 - [ ] fix bug untuk NSMutableAttributedString -> Mina
-- [ ] fetch all scenario cover pake gender (Choose Scenario) -> Mina
+- [ ] fetch all scenario cover pake gender (Choose Scenario) -> Kwa
 - [x] audio completion di completion page aja (yg di arrange word di hapus) -> Mina
 - [x] ubah dispatch async jdi + 1.5 -> Mina
 - [x] content mode scenarioImg utk full sentence & arrange word dibuat .scaleAspectFill -> Mina
