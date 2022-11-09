@@ -187,10 +187,7 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
                 self?.showResultBorder(slotCell: selectedSlot, wordCell: currentSelectedWordCell, withResult: isWordPlacementCorrect)
             })
             if totalCorrectWord == correctSentencesInOrder.count {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    SoundEffectService.shared.playSoundEffect(.CompletionPage)
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     self.navigationController?.pushViewController(CompletionPageViewController(), animated: true)
                 }
             }
