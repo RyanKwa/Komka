@@ -5,47 +5,24 @@
 //  Created by Ryan Vieri Kwa on 25/10/22.
 //
 
-import CloudKit
 import Foundation
 import CloudKit
-import RxSwift
 
 class ArrangeWordViewModel {
-    private let scenarioDAO = ScenarioDAO()
-    private var scenarioRecordId: CKRecord.ID
+    private let scenarioData = ScenarioData.instance
     
-    private let multipleChoiceVM: MultipleChoiceViewModel?
-    private var assets: [ContentAsset] = []
     private var arrangeWordAssets: [ContentAsset] = []
+    private var sentence: [String] = []
     
-    var scenarios = PublishSubject<[Scenario]>()
-    var scenario = PublishSubject<Scenario>()
-    var sentences = PublishSubject<[String]>()
-    var publishArrangeWordAssets = PublishSubject<[ContentAsset]>()
-    let disposeBag = DisposeBag()
-
-    init(scenarioRecordId: CKRecord.ID) {
-        self.scenarioRecordId = scenarioRecordId
-        multipleChoiceVM = MultipleChoiceViewModel(scenarioRecordId: scenarioRecordId)
+    func getArrangeWordAssets() {
+        let assets = scenarioData.getAssetsData() ?? []
+        let filteredArrangeWordAssets = assets.filter { $0.step == AssetStepType.ArrangeWord.rawValue || $0.step == AssetStepType.Cover.rawValue }
+        arrangeWordAssets = filteredArrangeWordAssets
     }
     
-    func getAllAsset() {
-        multipleChoiceVM?.publishAssets.subscribe(onNext: { publishAssets in
-            self.assets = publishAssets
-            self.filterArrangeWordAssets()
-        })
-        .disposed(by: disposeBag)
-    }
-    
-    private func filterArrangeWordAssets() {
-        for asset in assets {
-            if asset.step == AssetStepType.ArrangeWord.rawValue || asset.step == AssetStepType.Cover.rawValue {
-                arrangeWordAssets.append(asset)
-            }
-        }
-        
-        self.publishArrangeWordAssets.onNext(self.arrangeWordAssets)
-        self.publishArrangeWordAssets.onCompleted()
+    func getSentencesFromScenario() -> [String] {
+        sentence = scenarioData.getScenarioData()?.sentence ?? []
+        return sentence
     }
     
     func getArrangeWordAssetPart(_ arrangeWordPart: AssetPart) -> CKAsset? {
@@ -53,19 +30,6 @@ class ArrangeWordViewModel {
         let image: CKAsset? = filteredAsset.first?.image
         
         return image
-    }
-    
-    func getSentencesFromScenario(scenarioRecordId: CKRecord.ID){
-        scenarioDAO.fetchScenarioByID(scenarioRecordId: scenarioRecordId) { [weak self] scenario, error in
-            if let error = error {
-                self?.sentences.onError(error)
-                return
-            }
-            else if let scenario = scenario {
-                self?.sentences.onNext(scenario.sentence)
-                self?.sentences.onCompleted()
-            }
-        }
     }
 
     func evaluateWordPlacement(selectedWord: String, placementIndex: Int, sentences: [String]) -> Bool {
