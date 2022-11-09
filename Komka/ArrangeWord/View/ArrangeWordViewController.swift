@@ -127,7 +127,7 @@ class ArrangeWordViewController: ViewController {
     @objc
     private func backBtnTapped(_ sender: UIButton) {
         SoundEffectService.shared.playSoundEffect(.Bubble)
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: false)
     }
     
     private func createCollectionView(name: CollectionViewIdentifier) -> UICollectionView {
@@ -190,7 +190,7 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
             })
             if totalCorrectWord == correctSentencesInOrder.count {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    self.navigationController?.pushViewController(CompletionPageViewController(), animated: true)
+                    self.navigationController?.pushViewController(CompletionPageViewController(), animated: false)
                 }
             }
         }
