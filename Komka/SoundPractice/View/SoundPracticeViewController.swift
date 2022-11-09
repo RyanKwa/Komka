@@ -63,7 +63,6 @@ class SoundPracticeViewController: UIViewController {
     }
     
     func setUpCircularProgressBarView() {
-        circularProgressBarView.duration = 1
         circularProgressBarView.progressAnimation(progressFrom: soundPracticeVM.progressFrom, progressTo: soundPracticeVM.progressTo)
     }
     
@@ -85,6 +84,7 @@ class SoundPracticeViewController: UIViewController {
                 view.addSubview(instructionLbl)
                 view.addSubview(circularProgressBarView)
                 view.addSubview(audioBtn)
+                view.addSubview(nextBtn)
                 
                 instructionLbl.centerX(inView: view, topAnchor: view.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/17)
                 
@@ -101,7 +101,7 @@ class SoundPracticeViewController: UIViewController {
     }
         
     func moveToNextPage(){
-        DispatchQueue.main.asyncAfter(deadline: .now() + (circularProgressBarView.duration ?? 0)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + (circularProgressBarView.duration)) {
             if(self.soundPracticeVM.progressTo == 1) {
                 if(self.soundPracticeVM.queueWordCounter == self.soundPracticeVM.words.count){
                     self.nextBtn.isHidden = false

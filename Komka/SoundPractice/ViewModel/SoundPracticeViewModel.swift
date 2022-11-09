@@ -21,6 +21,17 @@ class SoundPracticeViewModel {
     var publishScenario = PublishSubject<Scenario>()
     var publishSoundPracticeAssets = PublishSubject<[ContentAsset]>()
     let disposeBag = DisposeBag()
+
+    lazy var queueWordCounter: Int = 1
+    private (set) lazy var progressFrom = 0.0
+    private (set) lazy var progressTo = 1.0
+    
+    var audioStreamManager = AudioStreamManager()
+    
+    var progressPublisher = BehaviorSubject(value: 0.0)
+    var audioPublisher = PublishSubject<Double>()
+    
+    lazy var result = Double()
     
     init(scenarioRecordId: CKRecord.ID) {
         self.scenarioRecordId = scenarioRecordId
@@ -61,6 +72,11 @@ class SoundPracticeViewModel {
     }
     
     func getSoundPracticeWord(wordCounter: Int) -> String {
+        print(wordCounter)
+        if (wordCounter < 1 || wordCounter > words.count) {
+            return "ERROR: Index out of range"
+        }
+        
         let word = words[wordCounter-1]
         return word
     }
@@ -86,17 +102,6 @@ class SoundPracticeViewModel {
         TextToSpeechService.shared.stopSpeech()
         TextToSpeechService.shared.startSpeech(queue)
     }
-    
-    lazy var queueWordCounter: Int = 1
-    private (set) lazy var progressFrom = setProgressFrom()
-    private (set) lazy var progressTo = setProgressTo()
-    
-    var audioStreamManager = AudioStreamManager()
-    
-    var progressPublisher = BehaviorSubject(value: 0.0)
-    var audioPublisher = PublishSubject<Double>()
-    
-    lazy var result = Double()
     
     func setProgressTo() -> Double{
         lazy var tempVar = 0.1
