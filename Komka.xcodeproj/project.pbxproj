@@ -77,6 +77,7 @@
 		DCF95E70291A80A200EC9FA8 /* FullSentencesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF95E6F291A80A200EC9FA8 /* FullSentencesViewModel.swift */; };
 		DCF95E72291A80C800EC9FA8 /* AssetPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF95E71291A80C800EC9FA8 /* AssetPart.swift */; };
 		DCF95E75291A8C9F00EC9FA8 /* SoundPracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF95E74291A8C9F00EC9FA8 /* SoundPracticeViewModel.swift */; };
+		DCF95E77291B591E00EC9FA8 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF95E76291B591E00EC9FA8 /* String+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +169,7 @@
 		DCF95E6F291A80A200EC9FA8 /* FullSentencesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullSentencesViewModel.swift; sourceTree = "<group>"; };
 		DCF95E71291A80C800EC9FA8 /* AssetPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPart.swift; sourceTree = "<group>"; };
 		DCF95E74291A8C9F00EC9FA8 /* SoundPracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPracticeViewModel.swift; sourceTree = "<group>"; };
+		DCF95E76291B591E00EC9FA8 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +238,7 @@
 				C5082141290FCEAA009A645B /* UIColor+Ext.swift */,
 				DC3F64F52911332E00D5152E /* UILabel+Ext.swift */,
 				DCF95E552916660000EC9FA8 /* UINavigationController+Ext.swift */,
+				DCF95E76291B591E00EC9FA8 /* String+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -555,11 +558,11 @@
 		DCED8F4628F87B33009F31E3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				C53583B5291A0671001727FC /* ScenarioData.swift */,
 				A9E9D4BA29125FE300378FA7 /* CloudKit */,
 				DC85A19328F73E2B00E457F0 /* TextToSpeechService.swift */,
 				DCA64B2A28FFED91004D9D69 /* CKHelper.swift */,
 				DC8DFD9E2905755A00EEEB64 /* SoundEffectService.swift */,
+				C53583B5291A0671001727FC /* ScenarioData.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				DC3F64FA29113B7200D5152E /* Choices.swift in Sources */,
 				DC8DFD9F2905755A00EEEB64 /* SoundEffectService.swift in Sources */,
 				C50B590B28E587B6001D42E5 /* ViewController.swift in Sources */,
+				DCF95E77291B591E00EC9FA8 /* String+Ext.swift in Sources */,
 				DC4B746D28F5359700A9C640 /* AutoLayout.swift in Sources */,
 				A9B1761E28FD3667005F2FC1 /* UIImage+Ext.swift in Sources */,
 				DC4B746828F5355700A9C640 /* ScreenSizeConfiguration.swift in Sources */,

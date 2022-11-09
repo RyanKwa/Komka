@@ -64,11 +64,13 @@ class CompletionPageViewController: UIViewController {
     
     @objc
     private func homeBtnTapped() {
+        SoundEffectService.shared.playSoundEffect(.Bubble)
         navigationController?.popToViewController(ChooseScenarioController.self)
     }
     
     @objc
     private func retryBtnTapped() {
+        SoundEffectService.shared.playSoundEffect(.Bubble)
         navigationController?.popToViewController(MultipleChoiceViewController.self)
     }
     
