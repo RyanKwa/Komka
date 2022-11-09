@@ -7,60 +7,28 @@
 
 import UIKit
 import CloudKit
-import RxSwift
 
 class SoundPracticeViewModel {
-    private let scenarioDAO: ScenarioDAO = ScenarioDAO()
-    private var scenarioRecordId: CKRecord.ID
+    private let scenarioData = ScenarioData.instance
     
-    private let multipleChoiceVM: MultipleChoiceViewModel?
-    private var assets: [ContentAsset] = []
     private var soundPracticeAssets: [ContentAsset] = []
     private var words: [String] = []
     
-    var publishScenario = PublishSubject<Scenario>()
-    var publishSoundPracticeAssets = PublishSubject<[ContentAsset]>()
-    let disposeBag = DisposeBag()
-    
-    init(scenarioRecordId: CKRecord.ID) {
-        self.scenarioRecordId = scenarioRecordId
-        multipleChoiceVM = MultipleChoiceViewModel(scenarioRecordId: scenarioRecordId)
-    }
-    
     func getScenario() {
-        scenarioDAO.fetchScenarioByID(scenarioRecordId: scenarioRecordId) { [weak self] fetchedScenario, error in
-            if let error = error {
-                print(error)
-                return
-            }
-            else if let fetchedScenario = fetchedScenario {
-                self?.words = fetchedScenario.sentence
-                self?.publishScenario.onNext(fetchedScenario)
-                self?.publishScenario.onCompleted()
-            }
-        }
+        words = scenarioData.getScenarioData()?.sentence ?? []
     }
     
     func getSoundPracticeAssets(){
-        multipleChoiceVM?.publishAssets.subscribe(onNext: { publishAssets in
-            self.assets = publishAssets
-            self.filterSoundPracticeAssets()
-        })
-        .disposed(by: disposeBag)
-    }
-    
-    private func filterSoundPracticeAssets() {
-        for asset in assets {
-            if asset.step == AssetStepType.SoundPractice.rawValue || asset.step == AssetStepType.Cover.rawValue {
-                soundPracticeAssets.append(asset)
-            }
-        }
-        
-        self.publishSoundPracticeAssets.onNext(self.soundPracticeAssets)
-        self.publishSoundPracticeAssets.onCompleted()
+        let assets = scenarioData.getAssetsData() ?? []
+        let filteredSoundPracticeAssets = assets.filter { $0.step == AssetStepType.SoundPractice.rawValue || $0.step == AssetStepType.Cover.rawValue }
+        soundPracticeAssets = filteredSoundPracticeAssets
     }
     
     func getSoundPracticeWord(wordCounter: Int) -> String {
+        if (wordCounter < 1 || wordCounter > words.count) {
+            return "ERROR: Index out of range"
+        }
+        
         let word = words[wordCounter-1]
         return word
     }
@@ -79,11 +47,17 @@ class SoundPracticeViewModel {
         return image
     }
     
-    func playTextToSpeech(wordCounter: Int){
+    func playTextToSpeech(wordCounter: Int) -> String? {
+        if (wordCounter < 1 || wordCounter > words.count) {
+            return "ERROR: Index out of range"
+        }
+        
         let word = words[wordCounter-1]
         let queue: [String] = [word]
 
         TextToSpeechService.shared.stopSpeech()
         TextToSpeechService.shared.startSpeech(queue)
+        
+        return ""
     }
 }

@@ -9,10 +9,7 @@ import UIKit
 import CloudKit
 
 class SoundPracticeViewController: UIViewController {
-    
-    var selectedScenarioId: CKRecord.ID?
-    
-    lazy private var soundPracticeVM: SoundPracticeViewModel = SoundPracticeViewModel(scenarioRecordId: selectedScenarioId ?? CKRecord.ID(recordName: RecordType.Scenario.rawValue))
+    private var soundPracticeVM = SoundPracticeViewModel()
     private var scenarioCoverImage, soundPracticeCharacterImage: UIImage?
     private var wordText: String = ""
     
@@ -25,7 +22,7 @@ class SoundPracticeViewController: UIViewController {
     private lazy var progressTo = 1.0
     
     private lazy var circularProgressBarView = CircularProgressBarView(frame: .zero, wordText: wordText, scenarioCoverImage: scenarioCoverImage ?? UIImage(), soundPracticeCharacterImage: soundPracticeCharacterImage ?? UIImage())
-
+    
     private lazy var backgroundImg = UIView.createImageView(imageName: "bg")
     private lazy var instructionLbl = UIView.createLabel(text: "Coba ikuti cara baca di bawah ini", fontSize: 40)
     
@@ -48,7 +45,6 @@ class SoundPracticeViewController: UIViewController {
         navigationController?.popViewController(animated: false)
     }
     
-    
     @objc func audioBtnTapped(_ sender: UIButton) {
         soundPracticeVM.playTextToSpeech(wordCounter: queueWordCounter)
     }
@@ -58,35 +54,30 @@ class SoundPracticeViewController: UIViewController {
         circularProgressBarView.progressAnimation(progressFrom: progressFrom, progressTo: progressTo)
     }
     
+    private func setUpSoundPracticeData(){
+        wordText = soundPracticeVM.getSoundPracticeWord(wordCounter: queueWordCounter)
+        scenarioCoverImage = UIImage.changeImageFromURL(baseImage: soundPracticeVM.getSoundPracticeAssetPart(wordText: AssetStepType.Cover.rawValue, soundPracticePart: .scenarioCover))
+        soundPracticeCharacterImage = UIImage.changeImageFromURL(baseImage: soundPracticeVM.getSoundPracticeAssetPart(wordText: wordText, soundPracticePart: .soundPracticeCharacter))
+        circularProgressBarView = CircularProgressBarView(frame: .zero, wordText: wordText, scenarioCoverImage: scenarioCoverImage ?? UIImage(), soundPracticeCharacterImage: soundPracticeCharacterImage ?? UIImage())
+    }
+    
     private func setUpConstraint(){
         backgroundImg.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         backBtn.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/25, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/30)
+        instructionLbl.centerX(inView: view, topAnchor: view.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/17)
+        
+        circularProgressBarView.centerX(inView: view)
+        circularProgressBarView.anchor(top: instructionLbl.bottomAnchor, right: audioBtn.leftAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/20, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/20, width: ScreenSizeConfiguration.SCREEN_WIDTH/2, height: ScreenSizeConfiguration.SCREEN_HEIGHT/1.5)
+        
+        audioBtn.anchor(top: instructionLbl.bottomAnchor, left: circularProgressBarView.rightAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/17, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/20)
     }
 
     private func addSubViews(){
         view.addSubview(backgroundImg)
         view.addSubview(backBtn)
-        
-        soundPracticeVM.publishSoundPracticeAssets.subscribe(onNext: { _ in
-            DispatchQueue.main.async { [self] in
-                wordText = soundPracticeVM.getSoundPracticeWord(wordCounter: queueWordCounter)
-                scenarioCoverImage = UIImage.changeImageFromURL(baseImage: soundPracticeVM.getSoundPracticeAssetPart(wordText: AssetStepType.Cover.rawValue, soundPracticePart: .scenarioCover))
-                soundPracticeCharacterImage = UIImage.changeImageFromURL(baseImage: soundPracticeVM.getSoundPracticeAssetPart(wordText: wordText, soundPracticePart: .soundPracticeCharacter))
-                circularProgressBarView = CircularProgressBarView(frame: .zero, wordText: wordText, scenarioCoverImage: scenarioCoverImage ?? UIImage(), soundPracticeCharacterImage: soundPracticeCharacterImage ?? UIImage())
-                
-                view.addSubview(instructionLbl)
-                view.addSubview(circularProgressBarView)
-                view.addSubview(audioBtn)
-                
-                instructionLbl.centerX(inView: view, topAnchor: view.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/17)
-                
-                circularProgressBarView.centerX(inView: view)
-                circularProgressBarView.anchor(top: instructionLbl.bottomAnchor, right: audioBtn.leftAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/20, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/20, width: ScreenSizeConfiguration.SCREEN_WIDTH/2, height: ScreenSizeConfiguration.SCREEN_HEIGHT/1.5)
-                
-                audioBtn.anchor(top: instructionLbl.bottomAnchor, left: circularProgressBarView.rightAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/17, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/20)
-            }
-        })
-        .disposed(by: soundPracticeVM.disposeBag)
+        view.addSubview(instructionLbl)
+        view.addSubview(circularProgressBarView)
+        view.addSubview(audioBtn)
     }
         
     func moveToNextPage(){
@@ -94,15 +85,12 @@ class SoundPracticeViewController: UIViewController {
             if(self.progressTo == 1) {
                 if(self.queueWordCounter == self.queue.count){
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                        let stepViewController = ArrangeWordViewController()
-                        stepViewController.selectedScenarioId = self.selectedScenarioId
-                        self.navigationController?.pushViewController(stepViewController, animated: false)
+                        self.navigationController?.pushViewController(ArrangeWordViewController(), animated: false)
                     }
                 }
                 else {
                     let vc = SoundPracticeViewController()
                     vc.queueWordCounter += 1
-                    vc.selectedScenarioId = self.selectedScenarioId
                     self.navigationController?.pushViewController(vc, animated: false)
                 }
             }
@@ -112,9 +100,13 @@ class SoundPracticeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
+        
         soundPracticeVM.getScenario()
         soundPracticeVM.getSoundPracticeAssets()
+        
+        setUpSoundPracticeData()
         setUpCircularProgressBarView()
+        
         addSubViews()
         setUpConstraint()
         moveToNextPage()
