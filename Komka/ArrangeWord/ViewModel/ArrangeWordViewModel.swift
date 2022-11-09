@@ -6,25 +6,30 @@
 //
 
 import Foundation
-import RxSwift
+import CloudKit
+
 class ArrangeWordViewModel {
-    private let scenarioDAO = ScenarioDAO()
-    var scenarios = PublishSubject<[Scenario]>()
-    var scenario = PublishSubject<Scenario>()
-    var sentences = PublishSubject<[String]>()
-
-    func getSentencesFromScenario(scenarioID: String){
-
-        scenarioDAO.fetchScenarioByID(scenarioID: scenarioID) { [weak self] scenario, error in
-            if let error = error {
-                self?.sentences.onError(error)
-                return
-            }
-            else if let scenario = scenario {
-                self?.sentences.onNext(scenario.sentence)
-                self?.sentences.onCompleted()
-            }
-        }
+    private let scenarioData = ScenarioData.instance
+    
+    private var arrangeWordAssets: [ContentAsset] = []
+    private var sentence: [String] = []
+    
+    func getArrangeWordAssets() {
+        let assets = scenarioData.getAssetsData() ?? []
+        let filteredArrangeWordAssets = assets.filter { $0.step == AssetStepType.ArrangeWord.rawValue || $0.step == AssetStepType.Cover.rawValue }
+        arrangeWordAssets = filteredArrangeWordAssets
+    }
+    
+    func getSentencesFromScenario() -> [String] {
+        sentence = scenarioData.getScenarioData()?.sentence ?? []
+        return sentence
+    }
+    
+    func getArrangeWordAssetPart(_ arrangeWordPart: AssetPart) -> CKAsset? {
+        let filteredAsset = arrangeWordAssets.filter { $0.part == arrangeWordPart.rawValue }
+        let image: CKAsset? = filteredAsset.first?.image
+        
+        return image
     }
 
     func evaluateWordPlacement(selectedWord: String, placementIndex: Int, sentences: [String]) -> Bool {

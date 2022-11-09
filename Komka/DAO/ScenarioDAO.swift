@@ -16,9 +16,8 @@ class ScenarioDAO{
     
     var scenariosPublisher = PublishSubject<[Scenario]>()
 
-    func fetchScenarioByID(scenarioID: String, completion: @escaping (Scenario?, FetchError?) -> Void) {
-        let recordID = CKRecord.ID(recordName: scenarioID)
-        let predicate = NSPredicate(format: "recordID = %@", recordID)
+    func fetchScenarioByID(scenarioRecordId: CKRecord.ID, completion: @escaping (Scenario?, FetchError?) -> Void) {
+        let predicate = NSPredicate(format: "recordID = %@", scenarioRecordId)
         let query = CKQuery(recordType: RecordType.Scenario.rawValue, predicate: predicate)
         let queryOperation = CKQueryOperation(query: query)
         var fetchedScenario: Scenario? = nil
@@ -35,11 +34,14 @@ class ScenarioDAO{
                     completion(nil, FetchError.missingData(recordType: RecordType.Scenario))
                     return
                 }
+                
                 fetchedScenario = Scenario(id: record.recordID, title: title, isCompleted: isCompleted, sentence: sentence, level: level, reward: nil, multipleChoice: multipleChoice)
+                
             case .failure(_):
                 completion(nil, FetchError.failedQuery(recordType: RecordType.Scenario))
             }
         }
+        
         queryOperation.queryResultBlock = { result in
             switch result {
             case .success(_):
@@ -48,10 +50,9 @@ class ScenarioDAO{
                 completion(nil, FetchError.failedQuery(recordType: RecordType.Scenario))
             }
         }
-        self.ckHelper.publicDB.add(queryOperation)
         
+        self.ckHelper.publicDB.add(queryOperation)
     }
-    
     
     func fetchScenarioData(){
         let queryScenario = CKQuery(recordType: RecordType.Scenario.rawValue, predicate: NSPredicate(value: true))
