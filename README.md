@@ -6,10 +6,15 @@ To Do:
 - [ ] btn audio kurang naik
 - [ ] halaman full sentences gada instruction
 - [ ] back btn arrange word frik
-- [ ] tts untuk arrange word dibuat string
-- [ ] tts untuk full sentences dibuat string
-- [ ] buat ext utk convert array of string ke string
+- [x] tts untuk arrange word dibuat string
+- [x] tts untuk full sentences dibuat string
+- [x] buat ext utk convert array of string ke string
 - [ ] fix bug untuk NSMutableAttributedString
+- [ ] fetch all scenario cover pake gender (Choose Scenario)
+- [ ] audio completion di completion page aja (yg di arrange word di hapus)
+- [ ] ubah dispatch async jdi + 1.5
+- [ ] content mode scenarioImg utk full sentence & arrange word dibuat .scaleAspectFill
+- [ ] priority low: set dimension utk scenarioImg
 - [ ] priority low: instruction sejajar dgn back btn
 - [ ] priority low: gedein btn arrange word & perbaiki jarak antar btn
 - [ ] priority low: gedein circular progress bar
