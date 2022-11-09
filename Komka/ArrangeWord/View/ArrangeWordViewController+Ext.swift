@@ -52,7 +52,7 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
             })
             if totalCorrectWord == correctSentencesInOrder.count {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    self.navigationController?.pushViewController(CompletionPageViewController(), animated: true)
+                    self.navigationController?.pushViewController(CompletionPageViewController(), animated: false)
                 }
             }
         }
