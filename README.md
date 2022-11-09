@@ -15,3 +15,4 @@ To Do:
 - [ ] priority low: gedein circular progress bar
 - [ ] priority low: splash screen
 - [ ] priority low: error klo ga ke fetch
+- [x] priority low: hide status bar
