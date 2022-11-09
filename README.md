@@ -2,18 +2,18 @@
 - [ ] Uncompleted To Do
 
 To Do: 
-- [ ] masukkin logo
-- [ ] btn audio kurang naik
-- [ ] halaman full sentences gada instruction
-- [ ] back btn arrange word frik
+- [ ] masukkin logo -> Kwa
+- [ ] btn audio kurang naik -> Kwa
+- [ ] halaman full sentences gada instruction -> Mina
+- [ ] back btn arrange word frik -> Kwa
 - [x] tts untuk arrange word dibuat string
 - [x] tts untuk full sentences dibuat string
 - [x] buat ext utk convert array of string ke string
-- [ ] fix bug untuk NSMutableAttributedString
-- [ ] fetch all scenario cover pake gender (Choose Scenario)
-- [ ] audio completion di completion page aja (yg di arrange word di hapus)
-- [ ] ubah dispatch async jdi + 1.5
-- [ ] content mode scenarioImg utk full sentence & arrange word dibuat .scaleAspectFill
+- [ ] fix bug untuk NSMutableAttributedString -> Mina
+- [ ] fetch all scenario cover pake gender (Choose Scenario) -> Kwa
+- [x] audio completion di completion page aja (yg di arrange word di hapus) -> Mina
+- [x] ubah dispatch async jdi + 1.5 -> Mina
+- [x] content mode scenarioImg utk full sentence & arrange word dibuat .scaleAspectFill -> Mina
 - [ ] priority low: set dimension utk scenarioImg
 - [ ] priority low: instruction sejajar dgn back btn
 - [ ] priority low: gedein btn arrange word & perbaiki jarak antar btn
