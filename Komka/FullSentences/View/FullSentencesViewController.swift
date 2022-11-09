@@ -9,7 +9,7 @@ import UIKit
 import CloudKit
 import RxSwift
 
-class FullSentencesViewController: UIViewController {
+class FullSentencesViewController: ViewController {
     
     private var fullSentenceVM = FullSentencesViewModel()
     private var scenarioCoverImage, fullSentenceCharacterImage: UIImage?

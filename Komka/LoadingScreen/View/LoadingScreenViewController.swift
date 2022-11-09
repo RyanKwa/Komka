@@ -9,7 +9,7 @@ import CloudKit
 import UIKit
 import RxSwift
 
-class LoadingScreenViewController: UIViewController {
+class LoadingScreenViewController: ViewController {
     var scenarioRecordId: CKRecord.ID?
     
     let promptLabel = UIView.createLabel(text: "Tunggu Sebentar . . .", fontSize: 45.0)

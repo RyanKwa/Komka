@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class ChooseScenarioController: UIViewController {
+class ChooseScenarioController: ViewController {
     private lazy var backgroundImg = UIView.createImageView(imageName: "bg")
     private lazy var scenarioLabel = UIView.createLabel(text: "Pilih Skenario", fontSize: 40)
     

@@ -8,7 +8,7 @@
 import UIKit
 import SwiftConfettiView
 
-class CompletionPageViewController: UIViewController {
+class CompletionPageViewController: ViewController {
 
     lazy private var backgroundImg = UIView.createImageView(imageName: "bg")
     lazy private var rewardImg = UIView.createImageView(imageName: "Piala")

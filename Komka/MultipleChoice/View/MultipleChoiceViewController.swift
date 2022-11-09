@@ -9,7 +9,7 @@ import UIKit
 import CloudKit
 import RxSwift
 
-class MultipleChoiceViewController: UIViewController {
+class MultipleChoiceViewController: ViewController {
 
     var selectedScenarioId: CKRecord.ID?
     

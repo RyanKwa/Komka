@@ -8,7 +8,7 @@
 import UIKit
 import CloudKit
 
-class SoundPracticeViewController: UIViewController {
+class SoundPracticeViewController: ViewController {
     private var soundPracticeVM = SoundPracticeViewModel()
     private var scenarioCoverImage, soundPracticeCharacterImage: UIImage?
     private var wordText: String = ""

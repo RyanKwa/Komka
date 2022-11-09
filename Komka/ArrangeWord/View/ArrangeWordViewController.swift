@@ -10,7 +10,7 @@ import CloudKit
 import RxCocoa
 import RxSwift
 
-class ArrangeWordViewController: UIViewController {
+class ArrangeWordViewController: ViewController {
     private enum CollectionViewIdentifier {
         case wordSlotCollectionView
         case wordCollectionView
