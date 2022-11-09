@@ -16,8 +16,7 @@ class ArrangeWordViewController: UIViewController {
         case wordCollectionView
     }
     
-    var selectedScenarioId: CKRecord.ID?
-    lazy private var arrangeWordVM = ArrangeWordViewModel(scenarioRecordId: selectedScenarioId ?? CKRecord.ID(recordName: RecordType.Scenario.rawValue))
+    private var arrangeWordVM = ArrangeWordViewModel()
     
     private let disposeBag = DisposeBag()
     private var correctSentencesInOrder = [String]()
@@ -57,53 +56,37 @@ class ArrangeWordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        arrangeWordVM.getAllAsset()
-        arrangeWordVM.getSentencesFromScenario(scenarioRecordId: selectedScenarioId ?? CKRecord.ID(recordName: RecordType.Scenario.rawValue))
-
-        arrangeWordVM.sentences.subscribe(onNext: { [weak self] sentence in
-            DispatchQueue.main.async {
-                self?.correctSentencesInOrder = sentence
-                self?.wordChoices = self?.correctSentencesInOrder.shuffled() ?? []
-                self?.wordCollectionView.reloadData()
-                self?.wordSlotCollectionView.reloadData()
-            }
-        }, onError: { error in
-            let errorMessage = error as? FetchError
-            print("Error: \(errorMessage?.localizedDescription)")
-        }, onCompleted: {
-            
-        })
-        .disposed(by: disposeBag)
+        arrangeWordVM.getArrangeWordAssets()
+        setUpArrangeWordData()
         subViewConfiguration()
-    }
-
-    func subViewConfiguration() {
-        view.addSubview(backgroundImg)
-        view.addSubview(backBtn)
-        backgroundImg.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
-        backBtn.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/25, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/30)
-        
-        arrangeWordVM.publishArrangeWordAssets.subscribe(onNext: { _ in
-            DispatchQueue.main.async { [self] in
-                scenarioCoverImage = UIImage.changeImageFromURL(baseImage: arrangeWordVM.getArrangeWordAssetPart(.scenarioCover))
-                arrangeWordCharacterImage = UIImage.changeImageFromURL(baseImage: arrangeWordVM.getArrangeWordAssetPart(.arrangeWordCharacter))
-                
-                backgroundImg.addSubview(scenarioCoverImg)
-                scenarioCoverImg.addSubview(scenarioImg)
-                backgroundImg.addSubview(promptLabel)
-                view.addSubview(audioBtn)
-                
-                view.addSubview(wordSlotCollectionView)
-                view.addSubview(wordCollectionView)
-                
-                collectionViewConfiguration()
-                setConstraint()
-            }
-        })
-        .disposed(by: disposeBag)
+        collectionViewConfiguration()
+        setConstraint()
+        setupCollectionView()
     }
     
-    func collectionViewConfiguration(){
+    private func setUpArrangeWordData() {
+        scenarioCoverImage = UIImage.changeImageFromURL(baseImage: arrangeWordVM.getArrangeWordAssetPart(.scenarioCover))
+        arrangeWordCharacterImage = UIImage.changeImageFromURL(baseImage: arrangeWordVM.getArrangeWordAssetPart(.arrangeWordCharacter))
+        correctSentencesInOrder = arrangeWordVM.getSentencesFromScenario()
+        wordChoices = correctSentencesInOrder.shuffled()
+        wordCollectionView.reloadData()
+        wordSlotCollectionView.reloadData()
+    }
+
+    private func subViewConfiguration() {
+        view.addSubview(backgroundImg)
+        view.addSubview(backBtn)
+        
+        backgroundImg.addSubview(scenarioCoverImg)
+        scenarioCoverImg.addSubview(scenarioImg)
+        backgroundImg.addSubview(promptLabel)
+        view.addSubview(audioBtn)
+
+        view.addSubview(wordSlotCollectionView)
+        view.addSubview(wordCollectionView)
+    }
+    
+    private func collectionViewConfiguration(){
         wordSlotCollectionView.backgroundColor = .clear
         wordCollectionView.backgroundColor = .clear
         wordCollectionView.delegate = self
@@ -113,15 +96,17 @@ class ArrangeWordViewController: UIViewController {
         wordSlotCollectionView.dataSource = self
         
     }
-    func setConstraint() {
+    
+    private func setConstraint() {
+        backgroundImg.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+        backBtn.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/25, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/30)
+        
         scenarioCoverImg.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/2.2)
         scenarioImg.anchor(top: scenarioCoverImg.topAnchor, left: scenarioCoverImg.leftAnchor, bottom: scenarioCoverImg.bottomAnchor, right: scenarioCoverImg.rightAnchor,paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/10,paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/3, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/3)
         audioBtn.anchor(top: scenarioCoverImg.topAnchor, left: scenarioImg.rightAnchor, bottom: scenarioCoverImg.bottomAnchor, right: scenarioCoverImg.rightAnchor, paddingTop: (ScreenSizeConfiguration.SCREEN_HEIGHT/2.2), paddingLeft: -20, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/5)
         
         promptLabel.anchor(top:scenarioCoverImg.topAnchor, left: backBtn.rightAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/25)
         promptLabel.centerX(inView: view)
-        
-        setupCollectionView()
     }
     
     private func setupCollectionView() {
@@ -132,8 +117,9 @@ class ArrangeWordViewController: UIViewController {
     }
     @objc
     private func audioBtnTapped(_ sender: UIButton) {
+        let ttsSentence = String.convertArrayToString(array: correctSentencesInOrder)
         TextToSpeechService.shared.stopSpeech()
-        TextToSpeechService.shared.startSpeech(correctSentencesInOrder)
+        TextToSpeechService.shared.startSpeech([ttsSentence])
     }
     
     @objc

@@ -10,54 +10,21 @@ import CloudKit
 import RxSwift
 
 class FullSentencesViewModel {
-    private let scenarioDAO: ScenarioDAO = ScenarioDAO()
-    private var scenarioRecordId: CKRecord.ID
+    private let scenarioData = ScenarioData.instance
     
-    private let multipleChoiceVM: MultipleChoiceViewModel?
-    private var assets: [ContentAsset] = []
     private var fullSentenceAssets: [ContentAsset] = []
     private var scenario: Scenario?
+    private var words: [String] = []
     
-    var publishFullSentenceAssets = PublishSubject<[ContentAsset]>()
-    var publishFullSentence = PublishSubject<Scenario>()
-    let disposeBag = DisposeBag()
-    
-    init(scenarioRecordId: CKRecord.ID) {
-        self.scenarioRecordId = scenarioRecordId
-        multipleChoiceVM = MultipleChoiceViewModel(scenarioRecordId: scenarioRecordId)
-    }
-    
-    func getScenario() {
-        scenarioDAO.fetchScenarioByID(scenarioRecordId: scenarioRecordId) { [weak self] fetchedScenario, error in
-            if let error = error {
-                self?.publishFullSentence.onError(error)
-                return
-            }
-            else if let fetchedScenario = fetchedScenario {
-                self?.scenario = fetchedScenario
-                self?.publishFullSentence.onNext(fetchedScenario)
-                self?.publishFullSentence.onCompleted()
-            }
-        }
+    func getScenarioSentence() {
+        scenario = scenarioData.getScenarioData()
+        words = scenario?.sentence ?? []
     }
     
     func getFullSentenceAssets(){
-        multipleChoiceVM?.publishAssets.subscribe(onNext: { publishAssets in
-            self.assets = publishAssets
-            self.filterFullSentenceAssets()
-        })
-        .disposed(by: disposeBag)
-    }
-    
-    private func filterFullSentenceAssets() {
-        for asset in assets {
-            if asset.step == AssetStepType.FullSentence.rawValue || asset.step == AssetStepType.Cover.rawValue {
-                fullSentenceAssets.append(asset)
-            }
-        }
-        
-        self.publishFullSentenceAssets.onNext(self.fullSentenceAssets)
-        self.publishFullSentenceAssets.onCompleted()
+        let assets = scenarioData.getAssetsData() ?? []
+        let filteredFullSentenceAssets = assets.filter { $0.step == AssetStepType.FullSentence.rawValue || $0.step == AssetStepType.Cover.rawValue }
+        fullSentenceAssets = filteredFullSentenceAssets
     }
     
     func getFullSentenceAssetPart(_ fullSentencePart: AssetPart) -> CKAsset? {
@@ -68,18 +35,12 @@ class FullSentencesViewModel {
     }
     
     func getSentence() -> String {
-        let words = scenario?.sentence ?? []
-        var sentence = ""
-        
-        for word in words {
-            sentence += word + " "
-        }
-        
-        return sentence
+        return String.convertArrayToString(array: words)
     }
     
     func playTextToSpeech(){
-        let queue: [String] = scenario?.sentence ?? []
+        let sentence = getSentence()
+        let queue: [String] = [sentence]
         
         TextToSpeechService.shared.stopSpeech()
         TextToSpeechService.shared.startSpeech(queue)

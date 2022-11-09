@@ -11,9 +11,7 @@ import RxSwift
 
 class FullSentencesViewController: UIViewController {
     
-    var selectedScenarioId: CKRecord.ID?
-    
-    lazy private var fullSentenceVM: FullSentencesViewModel = FullSentencesViewModel(scenarioRecordId: selectedScenarioId ?? CKRecord.ID(recordName: RecordType.Scenario.rawValue))
+    private var fullSentenceVM = FullSentencesViewModel()
     private var scenarioCoverImage, fullSentenceCharacterImage: UIImage?
     private var fullSentenceText: String?
     
@@ -51,43 +49,39 @@ class FullSentencesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fullSentenceVM.getScenario()
+        navigationController?.isNavigationBarHidden = true
+        fullSentenceVM.getScenarioSentence()
         fullSentenceVM.getFullSentenceAssets()
-        
+        setUpFullSentenceData()
         setupView()
+        setupConstraint()
+    }
+    
+    private func setUpFullSentenceData(){
+        scenarioCoverImage = UIImage.changeImageFromURL(baseImage: fullSentenceVM.getFullSentenceAssetPart(.scenarioCover))
+        fullSentenceCharacterImage = UIImage.changeImageFromURL(baseImage: fullSentenceVM.getFullSentenceAssetPart(.fullSentenceCharacter))
+        fullSentenceText = fullSentenceVM.getSentence()
     }
     
     private func setupView() {
         view.addSubview(backgroundImg)
-        view.addSubview(backBtn)
-        backgroundImg.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
-        backBtn.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/25, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/30)
+        backgroundImg.addSubview(scenarioCoverImg)
+        scenarioCoverImg.addSubview(scenarioImg)
         
-        Observable.combineLatest(fullSentenceVM.publishFullSentenceAssets, fullSentenceVM.publishFullSentence, resultSelector: { assets, scenario in
-            DispatchQueue.main.async { [self] in
-                scenarioCoverImage = UIImage.changeImageFromURL(baseImage: fullSentenceVM.getFullSentenceAssetPart(.scenarioCover))
-                fullSentenceCharacterImage = UIImage.changeImageFromURL(baseImage: fullSentenceVM.getFullSentenceAssetPart(.fullSentenceCharacter))
-                fullSentenceText = fullSentenceVM.getSentence()
-                
-                view.addSubview(audioBtn)
-                backgroundImg.addSubview(scenarioCoverImg)
-                scenarioCoverImg.addSubview(scenarioImg)
-                backgroundImg.addSubview(fullSentenceLbl)
-                view.addSubview(startBtn)
-                
-                setupConstraint()
-            }
-        })
-        .observe(on: MainScheduler.instance)
-        .subscribe()
-        .disposed(by: fullSentenceVM.disposeBag)
+        view.addSubview(audioBtn)
+        view.addSubview(backBtn)
+
+        backgroundImg.addSubview(fullSentenceLbl)
+        view.addSubview(startBtn)
     }
     
     private func setupConstraint(){
+        backgroundImg.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         scenarioCoverImg.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/2.2)
         scenarioImg.anchor(top: scenarioCoverImg.topAnchor, left: scenarioCoverImg.leftAnchor, bottom: scenarioCoverImg.bottomAnchor, right: scenarioCoverImg.rightAnchor,paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/10,paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/3, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/3)
         
         audioBtn.anchor(top: scenarioCoverImg.topAnchor, left: scenarioImg.rightAnchor, bottom: scenarioCoverImg.bottomAnchor, right: scenarioCoverImg.rightAnchor, paddingTop: (ScreenSizeConfiguration.SCREEN_HEIGHT/2.2), paddingLeft: -20, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/5)
+        backBtn.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/25, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/30)
         
         fullSentenceLbl.anchor(top:scenarioCoverImg.bottomAnchor, bottom: view.bottomAnchor, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/3.5)
         fullSentenceLbl.centerX(inView: view)
@@ -111,8 +105,6 @@ class FullSentencesViewController: UIViewController {
     @objc
     private func startBtnTapped(_ sender: UIButton) {
         SoundEffectService.shared.playSoundEffect(.Bubble)
-        let stepViewController = SoundPracticeViewController()
-        stepViewController.selectedScenarioId = selectedScenarioId
-        self.navigationController?.pushViewController(stepViewController, animated: false)
+        self.navigationController?.pushViewController(SoundPracticeViewController(), animated: false)
     }
 }
