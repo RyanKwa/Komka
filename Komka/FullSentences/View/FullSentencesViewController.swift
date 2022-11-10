@@ -105,12 +105,14 @@ class FullSentencesViewController: ViewController {
     
     @objc
     private func backBtnTapped(_ sender: UIButton) {
+        TextToSpeechService.shared.stopSpeech()
         SoundEffectService.shared.playSoundEffect(.Bubble)
         navigationController?.popViewController(animated: false)
     }
     
     @objc
     private func startBtnTapped(_ sender: UIButton) {
+        TextToSpeechService.shared.stopSpeech()
         SoundEffectService.shared.playSoundEffect(.Bubble)
         self.navigationController?.pushViewController(SoundPracticeViewController(), animated: false)
     }
