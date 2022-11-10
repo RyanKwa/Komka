@@ -61,7 +61,7 @@ class ChooseScenarioController: ViewController {
         scenarioLabel.anchor(top: backgroundImg.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/18)
         scenarioLabel.centerX(inView: backgroundImg)
     
-        collectionView.anchor(left: backgroundImg.leftAnchor, bottom: backgroundImg.bottomAnchor, right: backgroundImg.rightAnchor, paddingLeft: 40, paddingBottom: 40, paddingRight: 40, height: ScreenSizeConfiguration.SCREEN_HEIGHT/1.6)
+        scenarioCollectionView.anchor(left: backgroundImg.leftAnchor, bottom: backgroundImg.bottomAnchor, right: backgroundImg.rightAnchor, paddingLeft: 40, paddingBottom: 40, paddingRight: 40, height: ScreenSizeConfiguration.SCREEN_HEIGHT/1.6)
     }
 }
 
