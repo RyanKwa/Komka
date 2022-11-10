@@ -108,7 +108,7 @@ class ArrangeWordViewController: ViewController {
         audioBtn.anchor(left: scenarioImg.rightAnchor, bottom: scenarioCoverImg.bottomAnchor, right: scenarioCoverImg.rightAnchor, paddingLeft: -20, paddingBottom: 10, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/5)
         
         backBtn.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/25, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/30)
-        promptLabel.anchor(top:scenarioCoverImg.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/25)
+        promptLabel.anchor(top:scenarioCoverImg.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/18)
         promptLabel.centerX(inView: view)
     }
     
