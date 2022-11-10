@@ -3,21 +3,21 @@
 
 To Do: 
 - [x] masukkin logo -> Kwa
-- [ ] btn audio kurang naik -> Mina
-- [ ] halaman full sentences gada instruction -> Mina
+- [x] btn audio kurang naik -> Mina
+- [x] halaman full sentences gada instruction -> Mina
 - [x] back btn arrange word frik -> Kwa
 - [x] tts untuk arrange word dibuat string
 - [x] tts untuk full sentences dibuat string
 - [x] buat ext utk convert array of string ke string
-- [ ] fix bug untuk NSMutableAttributedString -> Mina
+- [x] fix bug untuk NSMutableAttributedString -> Mina
 - [x] fetch all scenario cover pake gender (Choose Scenario) -> Kwa
 - [x] audio completion di completion page aja (yg di arrange word di hapus) -> Mina
 - [x] ubah dispatch async jdi + 1.5 -> Mina
 - [x] content mode scenarioImg utk full sentence & arrange word dibuat .scaleAspectFill -> Mina
-- [ ] priority low: set dimension utk scenarioImg
+- [x] priority low: set dimension utk scenarioImg -> Mina
 - [ ] priority low: instruction sejajar dgn back btn
 - [ ] priority low: gedein btn arrange word & perbaiki jarak antar btn
 - [ ] priority low: gedein circular progress bar
 - [ ] priority low: splash screen
 - [ ] priority low: error klo ga ke fetch
-- [x] priority low: hide status bar
+- [x] priority low: hide status bar -> Kwa

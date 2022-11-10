@@ -38,13 +38,18 @@ class CompletionPageViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupSubView()
+        setupConstraint()
+        setupCompletionSoundEffects()
+    }
+    
+    private func setupSubView() {
         view.addSubview(backgroundImg)
         view.addSubview(confettiView)
         view.addSubview(rewardImg)
         view.addSubview(rectView)
         view.addSubview(horizontalStackView)
-        
-        setupConstraint()
     }
     
     private func setupConstraint() {
@@ -60,6 +65,10 @@ class CompletionPageViewController: ViewController {
         homeBtn.setDimensions(width: btnWidth, height: btnHeight)
         retryBtn.setDimensions(width: btnWidth, height: btnHeight)
         horizontalStackView.center(inView: rectView)
+    }
+    
+    private func setupCompletionSoundEffects() {
+        SoundEffectService.shared.playSoundEffect(.CompletionPage)
     }
     
     @objc

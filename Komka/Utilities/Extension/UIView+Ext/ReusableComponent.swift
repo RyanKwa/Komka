@@ -34,13 +34,12 @@ extension UIView {
         return button
     }
     
-    // TODO: fix bugs for NSMutableAttributedStrings
     static func createLabel(text: String,
                             fontSize: CGFloat,
                             textColor: UIColor? = UIColor.mainTextColor) -> UILabel {
         let label = UILabel()
         label.text = text
-//        label.addCharacterSpacing(text: text)
+        label.addCharacterSpacing(text: text)
         label.font = UIFont.balooFont(size: fontSize)
         label.textColor = textColor
 

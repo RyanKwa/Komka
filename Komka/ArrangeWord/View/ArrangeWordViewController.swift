@@ -96,14 +96,16 @@ class ArrangeWordViewController: ViewController {
         
         wordSlotCollectionView.delegate = self
         wordSlotCollectionView.dataSource = self
-        
     }
     
     private func setConstraint() {
         backgroundImg.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         scenarioCoverImg.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/2.2)
-        scenarioImg.anchor(top: scenarioCoverImg.topAnchor, left: scenarioCoverImg.leftAnchor, bottom: scenarioCoverImg.bottomAnchor, right: scenarioCoverImg.rightAnchor,paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/10,paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/3, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/3)
-        audioBtn.anchor(top: scenarioCoverImg.topAnchor, left: scenarioImg.rightAnchor, bottom: scenarioCoverImg.bottomAnchor, right: scenarioCoverImg.rightAnchor, paddingTop: (ScreenSizeConfiguration.SCREEN_HEIGHT/2.2), paddingLeft: -20, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/5)
+        scenarioImg.anchor(bottom: scenarioCoverImg.bottomAnchor)
+        scenarioImg.centerX(inView: scenarioCoverImg)
+        scenarioImg.setDimensions(width: ScreenSizeConfiguration.SCREEN_WIDTH/2.99, height: ScreenSizeConfiguration.SCREEN_HEIGHT/2.51)
+        
+        audioBtn.anchor(left: scenarioImg.rightAnchor, bottom: scenarioCoverImg.bottomAnchor, right: scenarioCoverImg.rightAnchor, paddingLeft: -20, paddingBottom: 10, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/5)
         
         backBtn.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/25, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/30)
         promptLabel.anchor(top:scenarioCoverImg.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/25)
@@ -126,7 +128,7 @@ class ArrangeWordViewController: ViewController {
     @objc
     private func backBtnTapped(_ sender: UIButton) {
         SoundEffectService.shared.playSoundEffect(.Bubble)
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: false)
     }
     
     private func createCollectionView(name: CollectionViewIdentifier) -> UICollectionView {
@@ -144,5 +146,3 @@ class ArrangeWordViewController: ViewController {
         return collectionView
     }
 }
-
-
