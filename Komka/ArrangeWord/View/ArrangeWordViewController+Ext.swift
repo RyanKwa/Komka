@@ -27,6 +27,7 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
                 return UICollectionViewCell()
             }
             wordCell.wordTitle.text = wordChoices[indexPath.row]
+            wordCell.wordTitle.addCharacterSpacing()
             wordCell.wordImage.image = UIImage(named: "ArrangeWord_Idle")
             return wordCell
         }

@@ -16,7 +16,7 @@ class ScenarioCell: UICollectionViewCell {
     lazy var scenarioImg = UIView.createImageView(imageName: "Scenario Img")
     lazy var scenarioLabel = UIView.createLabel(text: "Scenario Name", fontSize: 30)
     
-    private lazy var stackViewScenario = UIView.createStackView(arrangedSubviews: [scenarioImg, scenarioLabel], axis: .vertical, spacing: 5)
+    private lazy var stackViewScenario = UIView.createStackView(arrangedSubviews: [scenarioImg, scenarioLabel], axis: .vertical, spacing: 25)
     
     private func setConstraint(){
         stackViewScenario.anchor(top: contentView.topAnchor)
@@ -24,7 +24,8 @@ class ScenarioCell: UICollectionViewCell {
         stackViewScenario.anchor(right: contentView.rightAnchor)
         stackViewScenario.anchor(bottom: contentView.bottomAnchor)
         
-        scenarioLabel.anchor(bottom: stackViewScenario.bottomAnchor)
+        scenarioLabel.centerX(inView: contentView)
+        scenarioLabel.anchor(bottom: contentView.bottomAnchor, paddingBottom: contentView.frame.height/13)
     }
     
     private func ovalShadow() {
@@ -44,7 +45,7 @@ class ScenarioCell: UICollectionViewCell {
         scenarioLabel.textAlignment = .center
 
         contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 20
+        contentView.layer.cornerRadius = 40
         contentView.layer.masksToBounds = true
         
         layer.shadowColor = UIColor.black.cgColor
