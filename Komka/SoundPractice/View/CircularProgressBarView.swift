@@ -52,7 +52,7 @@ class CircularProgressBarView: UIView {
     func createCircleShape(circlePath: UIBezierPath){
         circleShape.path = circlePath.cgPath
         circleShape.fillColor = UIColor.clear.cgColor
-        circleShape.lineWidth = 40
+        circleShape.lineWidth = 50
         circleShape.strokeEnd = 100
         circleShape.strokeColor = UIColor.lightGray.cgColor
         scenarioBG.layer.mask = circleShape
@@ -62,7 +62,7 @@ class CircularProgressBarView: UIView {
     func createProgressLayer(circlePath: UIBezierPath){
         progressLayer.path = circlePath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
-        progressLayer.lineWidth = 40.0
+        progressLayer.lineWidth = 50.0
         progressLayer.lineCap = .round
         progressLayer.strokeEnd = 0
         progressLayer.strokeColor = UIColor.orange.cgColor
@@ -72,14 +72,14 @@ class CircularProgressBarView: UIView {
     func createMask(circlePath: UIBezierPath){
         maskLayer.path = circlePath.cgPath
         maskLayer.fillColor = UIColor.black.cgColor
-        maskLayer.lineWidth = 40
+        maskLayer.lineWidth = 50
         maskLayer.strokeColor = UIColor.lightGray.cgColor
         scenarioBG.layer.mask = maskLayer
         setLayerPosition(shape: maskLayer)
     }
 
     func createCircleProgressBar(){
-        let circlePath = UIBezierPath(arcCenter: center, radius: ScreenSizeConfiguration.SCREEN_WIDTH/5, startAngle: startPoint, endAngle: endPoint, clockwise: true)
+        let circlePath = UIBezierPath(arcCenter: center, radius: ScreenSizeConfiguration.SCREEN_WIDTH/4.2, startAngle: startPoint, endAngle: endPoint, clockwise: true)
                 
         createCircleShape(circlePath: circlePath)
         createProgressLayer(circlePath: circlePath)
@@ -93,18 +93,17 @@ class CircularProgressBarView: UIView {
     }
     
     func setLayerPosition(shape: CAShapeLayer){
-        shape.position = CGPoint(x: (scenarioBG.frame.midX - scenarioBG.frame.midX/2), y: (scenarioBG.frame.midY - scenarioBG.frame.midY/3))
+        shape.position = CGPoint(x: (scenarioBG.frame.midX - scenarioBG.frame.midX/3), y: (scenarioBG.frame.midY - scenarioBG.frame.midY/4.1))
     }
     
     func setConstraintImage(){
-        scenarioBG.setDimensions(width: ScreenSizeConfiguration.SCREEN_WIDTH/2, height: ScreenSizeConfiguration.SCREEN_HEIGHT/1.5)
+        scenarioBG.setDimensions(width: ScreenSizeConfiguration.SCREEN_WIDTH/1.5, height: ScreenSizeConfiguration.SCREEN_HEIGHT/1.2)
         scenarioBG.center(inView: self)
         
-        scenarioImg.setDimensions(width: scenarioBG.frame.width/3, height: scenarioBG.frame.height/3)
-        scenarioImg.anchor(top: scenarioBG.topAnchor, paddingTop: scenarioBG.frame.width/10.7)
+        scenarioImg.anchor(top: scenarioBG.topAnchor, paddingTop: scenarioBG.frame.width/10, width: ScreenSizeConfiguration.SCREEN_WIDTH/3.7, height: ScreenSizeConfiguration.SCREEN_HEIGHT/2.61)
         scenarioImg.centerX(inView: scenarioBG)
         
-        wordLbl.anchor(top: scenarioImg.bottomAnchor, paddingTop: scenarioBG.frame.width/74)
+        wordLbl.anchor(top: scenarioImg.bottomAnchor, paddingTop: scenarioBG.frame.width/70)
         wordLbl.centerX(inView: scenarioBG)
     }
     
