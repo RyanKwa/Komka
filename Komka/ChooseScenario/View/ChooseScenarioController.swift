@@ -61,13 +61,13 @@ class ChooseScenarioController: ViewController {
         scenarioLabel.anchor(top: backgroundImg.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/18)
         scenarioLabel.centerX(inView: backgroundImg)
     
-        scenarioCollectionView.anchor(left: backgroundImg.leftAnchor, bottom: backgroundImg.bottomAnchor, right: backgroundImg.rightAnchor, paddingLeft: 40, paddingBottom: 40, paddingRight: 40, height: ScreenSizeConfiguration.SCREEN_HEIGHT/1.6)
+        scenarioCollectionView.anchor(top: scenarioLabel.bottomAnchor, left: backgroundImg.leftAnchor, bottom: backgroundImg.bottomAnchor, right: backgroundImg.rightAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/19, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/50, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/7, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/50)
     }
 }
 
 extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: ScreenSizeConfiguration.SCREEN_WIDTH/2.5, height: ScreenSizeConfiguration.SCREEN_HEIGHT/2.1)
+        return CGSize(width: ScreenSizeConfiguration.SCREEN_WIDTH/2.5, height: ScreenSizeConfiguration.SCREEN_HEIGHT/2)
     }
     
     //Spacing between section atau cell
