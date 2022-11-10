@@ -23,7 +23,7 @@ class FullSentencesViewController: ViewController {
         image.addWhiteOverlay()
         return image
     }()
-    lazy private var scenarioImg = UIView.createImageView(image: fullSentenceCharacterImage ?? UIImage(), contentMode: .scaleAspectFit, clipsToBound: true)
+    lazy private var scenarioImg = UIView.createImageView(image: fullSentenceCharacterImage ?? UIImage(), contentMode: .scaleAspectFill, clipsToBound: true)
     
     lazy private var fullSentenceLbl = UIView.createLabel(text: fullSentenceText ?? "", fontSize: 40)
     

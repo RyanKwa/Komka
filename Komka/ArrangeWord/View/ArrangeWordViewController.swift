@@ -32,7 +32,7 @@ class ArrangeWordViewController: ViewController {
         
         return image
     }()
-    lazy private var scenarioImg = UIView.createImageView(image: arrangeWordCharacterImage ?? UIImage(), contentMode: .scaleAspectFit,clipsToBound: true)
+    lazy private var scenarioImg = UIView.createImageView(image: arrangeWordCharacterImage ?? UIImage(), contentMode: .scaleAspectFill, clipsToBound: true)
     
     lazy private var promptLabel = UIView.createLabel(text: "Susunlah kata dengan urutan yang benar", fontSize: 40)
         
