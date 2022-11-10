@@ -127,6 +127,7 @@ class ArrangeWordViewController: ViewController {
     
     @objc
     private func backBtnTapped(_ sender: UIButton) {
+        TextToSpeechService.shared.stopSpeech()
         SoundEffectService.shared.playSoundEffect(.Bubble)
         self.navigationController?.popViewController(animated: false)
     }
