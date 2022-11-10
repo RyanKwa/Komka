@@ -23,7 +23,7 @@ class FullSentencesViewController: ViewController {
         image.addWhiteOverlay()
         return image
     }()
-    lazy private var scenarioImg = UIView.createImageView(image: fullSentenceCharacterImage ?? UIImage(), contentMode: .scaleAspectFit, clipsToBound: true)
+    lazy private var scenarioImg = UIView.createImageView(image: fullSentenceCharacterImage ?? UIImage(), contentMode: .scaleAspectFill, clipsToBound: true)
     
     lazy private var fullSentenceLbl = UIView.createLabel(text: fullSentenceText ?? "", fontSize: 40)
     
@@ -87,7 +87,7 @@ class FullSentencesViewController: ViewController {
         scenarioImg.centerX(inView: scenarioCoverImg)
         scenarioImg.setDimensions(width: ScreenSizeConfiguration.SCREEN_WIDTH/2.99, height: ScreenSizeConfiguration.SCREEN_HEIGHT/2.51)
         
-        audioBtn.anchor(left: scenarioImg.rightAnchor, bottom: scenarioCoverImg.bottomAnchor, right: scenarioCoverImg.rightAnchor, paddingLeft: -20, paddingBottom: 10, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/5)
+        audioBtn.anchor(left: scenarioImg.rightAnchor, bottom: scenarioCoverImg.bottomAnchor, right: scenarioCoverImg.rightAnchor, paddingLeft: -20, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/100, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/5)
         backBtn.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/25, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/30)
         
         fullSentenceLbl.anchor(top:scenarioCoverImg.bottomAnchor, bottom: view.bottomAnchor, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/3.5)

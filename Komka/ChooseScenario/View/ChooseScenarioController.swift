@@ -58,11 +58,10 @@ class ChooseScenarioController: ViewController {
     }
         
     func setupAutoLayout() {
-        scenarioLabel.anchor(top: backgroundImg.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/10)
+        scenarioLabel.anchor(top: backgroundImg.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/18)
         scenarioLabel.centerX(inView: backgroundImg)
     
-        scenarioCollectionView.anchor(top: scenarioLabel.bottomAnchor, left: backgroundImg.leftAnchor, bottom: backgroundImg.bottomAnchor, right: backgroundImg.rightAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/19, paddingLeft: 40, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/13, paddingRight: 40)
-
+        collectionView.anchor(left: backgroundImg.leftAnchor, bottom: backgroundImg.bottomAnchor, right: backgroundImg.rightAnchor, paddingLeft: 40, paddingBottom: 40, paddingRight: 40, height: ScreenSizeConfiguration.SCREEN_HEIGHT/1.6)
     }
 }
 
