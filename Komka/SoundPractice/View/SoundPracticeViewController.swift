@@ -41,7 +41,7 @@ class SoundPracticeViewController: ViewController {
     }()
     
     @objc func backBtnTapped(_ sender: UIButton) {
-        TextToSpeechService.shared.stopSpeech()
+        soundPracticeVM.stopTextToSpeech()
         SoundEffectService.shared.playSoundEffect(.Bubble)
         navigationController?.popViewController(animated: false)
     }
