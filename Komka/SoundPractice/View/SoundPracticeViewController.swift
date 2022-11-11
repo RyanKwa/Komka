@@ -45,7 +45,7 @@ class SoundPracticeViewController: ViewController {
     }()
     
     @objc func nextBtnTapped(_ sender: UIButton) {
-        TextToSpeechService.shared.stopSpeech()
+        soundPracticeVM.stopTextToSpeech()
         let stepViewController = ArrangeWordViewController()
         self.navigationController?.pushViewController(stepViewController, animated: false)
     }
@@ -110,7 +110,6 @@ class SoundPracticeViewController: ViewController {
         }).disposed(by: soundPracticeVM.disposeBag)
     }
     
-    
     private func updateProgress(){
         soundPracticeVM.calculateProgress()
         
@@ -122,16 +121,20 @@ class SoundPracticeViewController: ViewController {
     
     private func permissionDenied(){
         let alert = UIAlertController(title: "Izinkan Komka untuk akses mikrofon", message: "Aktifkan mikrofon untuk menggunakan fitur palatihan suara", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Buka settings", style: .default, handler: { action in
+        
+        alert.addAction(UIAlertAction(title: "Buka pengaturan", style: .default, handler: { action in
             UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
         }))
+        
         alert.addAction(UIAlertAction(title: "Batalkan", style: .cancel, handler: { action in
             self.navigationController?.popViewController(animated: false)
         }))
+        
         present(alert, animated: true, completion: nil)
     }
     
     private func permissionGranted(){
+        updateProgress()
         soundPracticeVM.setSoundAnalyzer()
         soundPracticeVM.startSoundPractice()
     }
@@ -165,10 +168,9 @@ class SoundPracticeViewController: ViewController {
         soundPracticeVM.getScenario()
         soundPracticeVM.getSoundPracticeAssets()
         
-        micPermission()
         setUpSoundPracticeData()
-        
-        updateProgress()
+
+        micPermission()
         
         nextBtn.isHidden = true
         

@@ -37,7 +37,6 @@ class AudioStreamManager {
         
         soundAnalyzer = SNAudioStreamAnalyzer(format: micInputFormat)
         
-        
         prepareSoundClassifier()
     }
     
