@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A942016C291DE947007634DE /* SoundPracticeModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A942016B291DE947007634DE /* SoundPracticeModel.mlmodel */; };
 		A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */; };
 		A979929629066E5C00CDD27C /* ScenarioDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979929529066E5C00CDD27C /* ScenarioDAO.swift */; };
 		A993D81828EB16640052DC92 /* Baloo2-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */; };
@@ -17,7 +18,6 @@
 		A9B1762328FDA25C005F2FC1 /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */; };
 		A9E89F11291911A1008F37CD /* SoundPracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E89F10291911A1008F37CD /* SoundPracticeViewModel.swift */; };
 		A9E89F132919509E008F37CD /* AudioStreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E89F122919509E008F37CD /* AudioStreamManager.swift */; };
-		A9E89F15291A239D008F37CD /* AudioPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E89F14291A239D008F37CD /* AudioPermission.swift */; };
 		A9E89F17291AAB6F008F37CD /* SoundAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E89F16291AAB6F008F37CD /* SoundAnalyzer.swift */; };
 		A9E9D4B829125FDB00378FA7 /* AssetStepType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */; };
 		A9E9D4B929125FDB00378FA7 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E9D4B729125FDB00378FA7 /* RecordType.swift */; };
@@ -103,6 +103,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A942016B291DE947007634DE /* SoundPracticeModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SoundPracticeModel.mlmodel; sourceTree = "<group>"; };
 		A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioViewModel.swift; sourceTree = "<group>"; };
 		A979929529066E5C00CDD27C /* ScenarioDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioDAO.swift; sourceTree = "<group>"; };
 		A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Baloo2-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -113,7 +114,6 @@
 		A9B1762228FDA25C005F2FC1 /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
 		A9E89F10291911A1008F37CD /* SoundPracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPracticeViewModel.swift; sourceTree = "<group>"; };
 		A9E89F122919509E008F37CD /* AudioStreamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioStreamManager.swift; sourceTree = "<group>"; };
-		A9E89F14291A239D008F37CD /* AudioPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPermission.swift; sourceTree = "<group>"; };
 		A9E89F16291AAB6F008F37CD /* SoundAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundAnalyzer.swift; sourceTree = "<group>"; };
 		A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetStepType.swift; sourceTree = "<group>"; };
 		A9E9D4B729125FDB00378FA7 /* RecordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
@@ -211,6 +211,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A942016D291E0CCD007634DE /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				C5D9828E28F7C7F500E89F60 /* Level.swift */,
+				C5D9828A28F7BFDB00E89F60 /* Scenario.swift */,
+				C5D9829228F7C93200E89F60 /* MultipleChoice.swift */,
+				C5D9829028F7C8F200E89F60 /* Reward.swift */,
+				C5D9829628F7C98200E89F60 /* ContentAsset.swift */,
+			);
+			path = CloudKit;
+			sourceTree = "<group>";
+		};
+		A942016E291E0CD9007634DE /* SoundPractice */ = {
+			isa = PBXGroup;
+			children = (
+				A942016B291DE947007634DE /* SoundPracticeModel.mlmodel */,
+			);
+			path = SoundPractice;
+			sourceTree = "<group>";
+		};
 		A96B643528F5BC1B00E23BB2 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,9 +308,37 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		A9E89F18291B760F008F37CD /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				A9E89F1A291B7690008F37CD /* SoundEffect */,
+				A9E89F19291B7665008F37CD /* AudioStream */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		A9E89F19291B7665008F37CD /* AudioStream */ = {
+			isa = PBXGroup;
+			children = (
+				A9E89F122919509E008F37CD /* AudioStreamManager.swift */,
+				A9E89F16291AAB6F008F37CD /* SoundAnalyzer.swift */,
+			);
+			path = AudioStream;
+			sourceTree = "<group>";
+		};
+		A9E89F1A291B7690008F37CD /* SoundEffect */ = {
+			isa = PBXGroup;
+			children = (
+				DC85A19328F73E2B00E457F0 /* TextToSpeechService.swift */,
+				DC8DFD9E2905755A00EEEB64 /* SoundEffectService.swift */,
+			);
+			path = SoundEffect;
+			sourceTree = "<group>";
+		};
 		A9E9D4BA29125FE300378FA7 /* CloudKit */ = {
 			isa = PBXGroup;
 			children = (
+				DCA64B2A28FFED91004D9D69 /* CKHelper.swift */,
 				C50821432910036D009A645B /* FetchError.swift */,
 				A9E9D4B629125FDA00378FA7 /* AssetStepType.swift */,
 				DC3F64F929113B7200D5152E /* Choices.swift */,
@@ -442,11 +490,8 @@
 		C5D9828928F7BDAE00E89F60 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C5D9828E28F7C7F500E89F60 /* Level.swift */,
-				C5D9828A28F7BFDB00E89F60 /* Scenario.swift */,
-				C5D9829228F7C93200E89F60 /* MultipleChoice.swift */,
-				C5D9829028F7C8F200E89F60 /* Reward.swift */,
-				C5D9829628F7C98200E89F60 /* ContentAsset.swift */,
+				A942016E291E0CD9007634DE /* SoundPractice */,
+				A942016D291E0CCD007634DE /* CloudKit */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -533,6 +578,7 @@
 		DC8DFDA229064D0E00EEEB64 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
+				C53583B5291A0671001727FC /* ScenarioData.swift */,
 				A979929529066E5C00CDD27C /* ScenarioDAO.swift */,
 				DC8DFDA52906A6E000EEEB64 /* ContentAssetDAO.swift */,
 				DC8DFDA72906A9E900EEEB64 /* MultipleChoiceDAO.swift */,
@@ -578,15 +624,8 @@
 		DCED8F4628F87B33009F31E3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A9E89F18291B760F008F37CD /* Audio */,
 				A9E9D4BA29125FE300378FA7 /* CloudKit */,
-				DC85A19328F73E2B00E457F0 /* TextToSpeechService.swift */,
-				DCA64B2A28FFED91004D9D69 /* CKHelper.swift */,
-				DC8DFD9E2905755A00EEEB64 /* SoundEffectService.swift */,
-				C53583B5291A0671001727FC /* ScenarioData.swift */,
-				A9E89F16291AAB6F008F37CD /* SoundAnalyzer.swift */,
-				A9E89F122919509E008F37CD /* AudioStreamManager.swift */,
-				A9E89F14291A239D008F37CD /* AudioPermission.swift */,
-				A9E89F16291AAB6F008F37CD /* SoundAnalyzer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -796,6 +835,7 @@
 				A9B1761E28FD3667005F2FC1 /* UIImage+Ext.swift in Sources */,
 				DC4B746828F5355700A9C640 /* ScreenSizeConfiguration.swift in Sources */,
 				DC8DFDA62906A6E000EEEB64 /* ContentAssetDAO.swift in Sources */,
+				A942016C291DE947007634DE /* SoundPracticeModel.mlmodel in Sources */,
 				DC4B746528F5351D00A9C640 /* ChooseGenderViewModel.swift in Sources */,
 				A9E89F132919509E008F37CD /* AudioStreamManager.swift in Sources */,
 				DCED8F4128F85BF8009F31E3 /* UIImageView+Ext.swift in Sources */,
@@ -821,7 +861,6 @@
 				C50B590928E587B6001D42E5 /* SceneDelegate.swift in Sources */,
 				C51C4C762900256F00CD2184 /* WordCollectionViewCell.swift in Sources */,
 				C5082142290FCEAA009A645B /* UIColor+Ext.swift in Sources */,
-				A9E89F15291A239D008F37CD /* AudioPermission.swift in Sources */,
 				C50821442910036D009A645B /* FetchError.swift in Sources */,
 				C5D9828728F713D400E89F60 /* MultipleChoiceViewController.swift in Sources */,
 				C53583B6291A0671001727FC /* ScenarioData.swift in Sources */,
