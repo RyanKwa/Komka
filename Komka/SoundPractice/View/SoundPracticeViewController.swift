@@ -7,19 +7,19 @@
 
 import UIKit
 import CloudKit
+import RxSwift
+import AVFoundation
 
 class SoundPracticeViewController: UIViewController {
     private var soundPracticeVM = SoundPracticeViewModel()
-
+    
     private var scenarioCoverImage, soundPracticeCharacterImage: UIImage?
     private var wordText: String = ""
-    
-    private var audioPermission = AudioPermission()
-    
+        
     private lazy var circularProgressBarView = CircularProgressBarView(frame: .zero, wordText: wordText, scenarioCoverImage: scenarioCoverImage ?? UIImage(), soundPracticeCharacterImage: soundPracticeCharacterImage ?? UIImage())
     
     private lazy var backgroundImg = UIView.createImageView(imageName: "bg")
-    private lazy var instructionLbl = UIView.createLabel(text: "Coba ikuti cara baca di bawah ini", fontSize: 40)
+    private lazy var instructionLbl = UIView.createLabel(text: "Ulangi kata dibawah ini", fontSize: 40)
     
     private lazy var nextBtn: UIButton = {
         let button = Button(style: .active, title: "Lanjut")
@@ -45,6 +45,7 @@ class SoundPracticeViewController: UIViewController {
     }()
     
     @objc func nextBtnTapped(_ sender: UIButton) {
+        TextToSpeechService.shared.stopSpeech()
         let stepViewController = ArrangeWordViewController()
         self.navigationController?.pushViewController(stepViewController, animated: false)
     }
@@ -55,11 +56,12 @@ class SoundPracticeViewController: UIViewController {
     }
     
     @objc func audioBtnTapped(_ sender: UIButton) {
+        soundPracticeVM.stopSoundPractice()
         soundPracticeVM.playTextToSpeech(wordCounter: soundPracticeVM.queueWordCounter)
     }
     
     func setUpCircularProgressBarView() {
-        circularProgressBarView.progressAnimation(progressFrom: soundPracticeVM.progressFrom, progressTo: soundPracticeVM.progressTo)
+        circularProgressBarView.progressAnimation(progressFrom: soundPracticeVM.currentProgress, progressTo: soundPracticeVM.progressTo, duration: soundPracticeVM.duration)
     }
     
     private func setUpSoundPracticeData(){
@@ -81,7 +83,7 @@ class SoundPracticeViewController: UIViewController {
         
         nextBtn.anchor(bottom: view.bottomAnchor, right: view.rightAnchor, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/10, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/10)
     }
-
+    
     private func addSubViews(){
         view.addSubview(backgroundImg)
         view.addSubview(backBtn)
@@ -90,35 +92,85 @@ class SoundPracticeViewController: UIViewController {
         view.addSubview(audioBtn)
         view.addSubview(nextBtn)
     }
-        
-    func moveToNextPage(){
-        DispatchQueue.main.asyncAfter(deadline: .now() + (circularProgressBarView.duration)) {
-            if(self.soundPracticeVM.progressTo == 1) {
-                if(self.soundPracticeVM.queueWordCounter == self.soundPracticeVM.words.count){
-                    self.nextBtn.isHidden = false
-                }
-                else {
-                    let vc = SoundPracticeViewController()
-                    self.soundPracticeVM.queueWordCounter += 1
-                    vc.soundPracticeVM.queueWordCounter = self.soundPracticeVM.queueWordCounter
-                    self.navigationController?.pushViewController(vc, animated: false)
-                }
+    
+    private func moveToNextPage(){
+        soundPracticeVM.progressPublisher.observe(on: MainScheduler.instance).subscribe(onCompleted:  { [self] in
+            if(soundPracticeVM.queueWordCounter == soundPracticeVM.words.count){
+                soundPracticeVM.stopSoundPractice()
+                nextBtn.isHidden = false
             }
+            else {
+                let vc = SoundPracticeViewController()
+                soundPracticeVM.queueWordCounter += 1
+                vc.soundPracticeVM.queueWordCounter = soundPracticeVM.queueWordCounter
+                soundPracticeVM.stopSoundPractice()
+                navigationController?.pushViewController(vc, animated: false)
+            }
+        }).disposed(by: soundPracticeVM.disposeBag)
+    }
+    
+    
+    private func updateProgress(){
+        soundPracticeVM.calculateProgress()
+        
+        soundPracticeVM.confidenceResultPublisher.observe(on: MainScheduler.instance).subscribe { [self] progress in
+            soundPracticeVM.setProgress(progress)
+            circularProgressBarView.progressAnimation(progressFrom: soundPracticeVM.currentProgress, progressTo: soundPracticeVM.progressTo, duration: soundPracticeVM.duration)
+        }.disposed(by: soundPracticeVM.disposeBag)
+    }
+    
+    private func permissionDenied(){
+        let alert = UIAlertController(title: "Izinkan Komka untuk akses mikrofon", message: "Aktifkan mikrofon untuk menggunakan fitur palatihan suara", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Buka settings", style: .default, handler: { action in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }))
+        alert.addAction(UIAlertAction(title: "Batalkan", style: .cancel, handler: { action in
+            self.navigationController?.popViewController(animated: false)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func permissionGranted(){
+        soundPracticeVM.setSoundAnalyzer()
+        soundPracticeVM.startSoundPractice()
+    }
+    
+    private func micPermission(){
+        switch AVAudioSession.sharedInstance().recordPermission {
+        case .granted:
+            permissionGranted()
+        case .denied:
+            permissionDenied()
+        case .undetermined:
+            AVAudioSession.sharedInstance().requestRecordPermission({ granted in
+                DispatchQueue.main.async { [self] in
+                    if granted {
+                        permissionGranted()
+                    }
+                    else {
+                        permissionDenied()
+                    }
+                }
+            })
+        @unknown default:
+            print("Unknown case")
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        audioPermission.requestPermission()
         navigationController?.isNavigationBarHidden = true
         
         soundPracticeVM.getScenario()
         soundPracticeVM.getSoundPracticeAssets()
         
+        micPermission()
         setUpSoundPracticeData()
         
+        updateProgress()
+        
         nextBtn.isHidden = true
-
+        
         setUpCircularProgressBarView()
         
         addSubViews()

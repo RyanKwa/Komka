@@ -20,18 +20,26 @@ class SoundPracticeViewModel {
     let disposeBag = DisposeBag()
 
     lazy var queueWordCounter: Int = 1
-    private (set) lazy var progressFrom = 0.0
-    private (set) lazy var progressTo = 1.0
+    lazy var currentProgress = 0.0
+    lazy var progressTo = 0.0
+    lazy var duration: TimeInterval = 0.25
     
     var audioStreamManager = AudioStreamManager()
+    var soundAnalyzer = SoundAnalyzer()
     
+    var confidenceResultPublisher = PublishSubject<Double>()
     var progressPublisher = BehaviorSubject(value: 0.0)
-    var audioPublisher = PublishSubject<Double>()
+    var confidencePublisher = PublishSubject<Double>()
     
-    lazy var result = Double()
+    lazy var confidenceResult = Double()
     
     func getScenario() {
         words = scenarioData.getScenarioData()?.sentence ?? []
+    }
+    
+    func setSoundAnalyzer(){
+        soundAnalyzer.currentWord = words[queueWordCounter-1]
+        print(soundAnalyzer.currentWord)
     }
     
     func getSoundPracticeAssets(){
@@ -42,7 +50,7 @@ class SoundPracticeViewModel {
     
     func getSoundPracticeWord(wordCounter: Int) -> String {
         if (wordCounter < 1 || wordCounter > words.count) {
-            return "ERROR: Index out of range"
+            return "Words Not Found"
         }
         
         let word = words[wordCounter-1]
@@ -77,91 +85,49 @@ class SoundPracticeViewModel {
         return ""
     }
     
-    lazy var queueWordCounter: Int = 1
-    private (set) lazy var progressFrom = setProgressFrom()
-    private (set) lazy var progressTo = setProgressTo()
-    
-    var audioStreamManager = AudioStreamManager()
-    
-    var progressPublisher = BehaviorSubject(value: 0.0)
-    var audioPublisher = PublishSubject<Double>()
-    
-    var disposeBag = DisposeBag()
-    
-    lazy var result = Double()
-    
-    func setProgressTo() -> Double{
-        lazy var tempVar = 0.1
-//        audioPublisher.subscribe(onNext: { [self] confidence in
-            result = (tempVar * 35.0)/100.0
+    func calculateProgress(){
+        confidencePublisher.subscribe(onNext: { [self] confidence in
+            confidenceResult = (confidence * 35.0)/100.0
             
-            if result <= 0.0 {
-                result = 0.0
+            if confidenceResult <= 0.0 {
+                confidenceResult = 0.0
             }
-            else if result < 0.15 {
-                result = 0.15
+            else if confidenceResult < 0.15 {
+                confidenceResult = 0.05
             }
-//        }).disposed(by: disposeBag)
-
-        progressPublisher.onNext(result)
-        return result
-    }
-    
-    func setProgressFrom() -> Double{
-        progressPublisher.subscribe(onNext: { [self] result in
-            progressFrom = result
-            print(progressFrom)
+            else {
+                confidenceResult = 0.15
+            }
             
+            confidenceResultPublisher.onNext(confidenceResult)
         }).disposed(by: disposeBag)
-        
-        return progressFrom
     }
+    
+    func setProgress(_ progress: Double){
+        if (progressTo < 1.0){
+            progressTo += progress
+    
+            progressPublisher.onNext(progressTo)
+        }
+        if (progressTo >= 1.0){
+            progressPublisher.onCompleted()
+        }
+        
+        progressPublisher.subscribe { [self] progressResult in
+            DispatchQueue.main.asyncAfter(deadline: .now() + duration) { [self] in
+                currentProgress = progressResult
+            }
+        }.disposed(by: disposeBag)
+    }
+    
     
     func startSoundPractice(){
+        audioStreamManager.addResultObservation(with: soundAnalyzer)
         audioStreamManager.startLiveAudio()
         
-        //logic dmn, bakal kirim confidence terus menerus (mgkin bisa via publisher, utk trigger si setProgressTo)?
-        var confidence = 0.2
-        audioPublisher.onNext(confidence)
-    }
-    
-    func stopSoundPractice(){
-        audioStreamManager.stopLiveAudio()
-    }
-    
-    func setProgressTo() -> Double{
-        lazy var tempVar = 0.1
-//        audioPublisher.subscribe(onNext: { [self] confidence in
-            result = (tempVar * 35.0)/100.0
-            
-            if result <= 0.0 {
-                result = 0.0
-            }
-            else if result < 0.15 {
-                result = 0.15
-            }
-//        }).disposed(by: disposeBag)
-
-        progressPublisher.onNext(result)
-        return result
-    }
-    
-    func setProgressFrom() -> Double{
-        progressPublisher.subscribe(onNext: { [self] result in
-            progressFrom = result
-            print(progressFrom)
-            
-        }).disposed(by: disposeBag)
-        
-        return progressFrom
-    }
-    
-    func startSoundPractice(){
-        audioStreamManager.startLiveAudio()
-        
-        //logic dmn, bakal kirim confidence terus menerus (mgkin bisa via publisher, utk trigger si setProgressTo)?
-        var confidence = 0.2
-        audioPublisher.onNext(confidence)
+        soundAnalyzer.confidencePublisher.subscribe { [self] confidence in
+            confidencePublisher.onNext(confidence)
+        }.disposed(by: disposeBag)
     }
     
     func stopSoundPractice(){
