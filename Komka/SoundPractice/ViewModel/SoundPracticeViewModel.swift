@@ -16,6 +16,10 @@ class SoundPracticeViewModel {
     private var soundPracticeAssets: [ContentAsset] = []
     private(set) var words: [String] = []
     
+    var publishScenario = PublishSubject<Scenario>()
+    var publishSoundPracticeAssets = PublishSubject<[ContentAsset]>()
+    let disposeBag = DisposeBag()
+
     lazy var queueWordCounter: Int = 1
     lazy var currentProgress = 0.0
     lazy var progressTo = 0.0
