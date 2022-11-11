@@ -120,14 +120,12 @@ class ArrangeWordViewController: ViewController {
     }
     @objc
     private func audioBtnTapped(_ sender: UIButton) {
-        let ttsSentence = String.convertArrayToString(array: correctSentencesInOrder)
-        TextToSpeechService.shared.stopSpeech()
-        TextToSpeechService.shared.startSpeech([ttsSentence])
+        arrangeWordVM.playTextToSpeech()
     }
     
     @objc
     private func backBtnTapped(_ sender: UIButton) {
-        TextToSpeechService.shared.stopSpeech()
+        arrangeWordVM.stopTextToSpeech()
         SoundEffectService.shared.playSoundEffect(.Bubble)
         self.navigationController?.popViewController(animated: false)
     }

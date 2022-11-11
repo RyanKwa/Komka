@@ -11,6 +11,7 @@ import RxSwift
 
 class FullSentencesViewModel {
     private let scenarioData = ScenarioData.instance
+    private let textToSpeechService = TextToSpeechService()
     
     private var fullSentenceAssets: [ContentAsset] = []
     private var scenario: Scenario?
@@ -42,8 +43,12 @@ class FullSentencesViewModel {
         let sentence = getSentence()
         let queue: [String] = [sentence]
         
-        TextToSpeechService.shared.stopSpeech()
-        TextToSpeechService.shared.startSpeech(queue)
+        textToSpeechService.stopSpeech()
+        textToSpeechService.startSpeech(queue)
+    }
+    
+    func stopTextToSpeech(){
+        textToSpeechService.stopSpeech()
     }
 }
 

@@ -142,7 +142,7 @@ class MultipleChoiceViewController: ViewController {
     
     @objc
     private func backBtnTapped(_ sender: UIButton) {
-        TextToSpeechService.shared.stopSpeech()
+        multipleChoiceVM.stopTextToSpeech()
         SoundEffectService.shared.playSoundEffect(.Bubble)
         self.navigationController?.popViewController(animated: false)
     }
@@ -166,7 +166,7 @@ class MultipleChoiceViewController: ViewController {
     }
     
     private func updateChoiceState(choice: UIImageView, isCorrectAnswer: Bool) {
-        TextToSpeechService.shared.stopSpeech()
+        multipleChoiceVM.stopTextToSpeech()
         
         if isCorrectAnswer {
             SoundEffectService.shared.playSoundEffect(.Correct)
@@ -180,7 +180,6 @@ class MultipleChoiceViewController: ViewController {
             timerCounter -= 1
             if timerCounter <= 0 {
                 if isCorrectAnswer {
-                    TextToSpeechService.shared.stopSpeech()
                     self.navigationController?.pushViewController(FullSentencesViewController(), animated: false)
                 }
                 

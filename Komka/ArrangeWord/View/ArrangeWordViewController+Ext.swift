@@ -53,7 +53,7 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
             })
             if totalCorrectWord == correctSentencesInOrder.count {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    TextToSpeechService.shared.stopSpeech()
+                    self.arrangeWordVM.stopTextToSpeech()
                     self.navigationController?.pushViewController(CompletionPageViewController(), animated: false)
                 }
             }

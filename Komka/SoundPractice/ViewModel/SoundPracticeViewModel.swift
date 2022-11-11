@@ -10,6 +10,7 @@ import CloudKit
 
 class SoundPracticeViewModel {
     private let scenarioData = ScenarioData.instance
+    private let textToSpeechService = TextToSpeechService()
     
     private var soundPracticeAssets: [ContentAsset] = []
     private var words: [String] = []
@@ -55,9 +56,13 @@ class SoundPracticeViewModel {
         let word = words[wordCounter-1]
         let queue: [String] = [word]
 
-        TextToSpeechService.shared.stopSpeech()
-        TextToSpeechService.shared.startSpeech(queue)
+        textToSpeechService.stopSpeech()
+        textToSpeechService.startSpeech(queue)
         
         return ""
+    }
+    
+    func stopTextToSpeech(){
+        textToSpeechService.stopSpeech()
     }
 }
