@@ -21,6 +21,10 @@ extension UIColor {
     static let maleTextColor = UIColor(red: 77/256, green: 114/256, blue: 166/256, alpha: 1.00)
     static let femaleTextColor = UIColor(red: 171/256, green: 100/256, blue: 99/256, alpha: 1.00)
     
+    // Sound Practice - Circular Progress Bar
+    static let grayCircularBar = UIColor(red: 224/256, green: 224/256, blue: 224/256, alpha: 1.00)
+    static let orangeCircularProgress = UIColor(red: 237/256, green: 149/256, blue: 13/256, alpha: 1.00)
+    
     // Confetti
     static let yellowConfetti = UIColor(red: 255/256, green: 184/256, blue: 0/256, alpha: 1.00)
     static let orangeConfetti = UIColor(red: 255/256, green: 122/256, blue: 0/256, alpha: 1.00)

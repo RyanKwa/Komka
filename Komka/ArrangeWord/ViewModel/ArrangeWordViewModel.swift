@@ -10,6 +10,7 @@ import CloudKit
 
 class ArrangeWordViewModel {
     private let scenarioData = ScenarioData.instance
+    private let textToSpeechService = TextToSpeechService()
     
     private var arrangeWordAssets: [ContentAsset] = []
     private var sentence: [String] = []
@@ -40,5 +41,17 @@ class ArrangeWordViewModel {
             return true
         }
         return false
+    }
+    
+    func playTextToSpeech(){
+        let sentence = String.convertArrayToString(array: sentence)
+        let queue: [String] = [sentence]
+        
+        textToSpeechService.stopSpeech()
+        textToSpeechService.startSpeech(queue)
+    }
+    
+    func stopTextToSpeech(){
+        textToSpeechService.stopSpeech()
     }
 }

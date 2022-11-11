@@ -8,10 +8,7 @@
 import Foundation
 import AVFoundation
 
-class TextToSpeechService {
-    
-    static let shared = TextToSpeechService()
-    
+class TextToSpeechService {    
     let speechSynthesizer = AVSpeechSynthesizer()
     
     func startSpeech(_ queue: [String]){

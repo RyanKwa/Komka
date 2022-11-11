@@ -8,7 +8,7 @@
 import UIKit
 import CloudKit
 
-class SoundPracticeViewController: UIViewController {
+class SoundPracticeViewController: ViewController {
     private var soundPracticeVM = SoundPracticeViewModel()
     private var scenarioCoverImage, soundPracticeCharacterImage: UIImage?
     private var wordText: String = ""
@@ -41,6 +41,7 @@ class SoundPracticeViewController: UIViewController {
     }()
     
     @objc func backBtnTapped(_ sender: UIButton) {
+        soundPracticeVM.stopTextToSpeech()
         SoundEffectService.shared.playSoundEffect(.Bubble)
         navigationController?.popViewController(animated: false)
     }
@@ -64,12 +65,12 @@ class SoundPracticeViewController: UIViewController {
     private func setUpConstraint(){
         backgroundImg.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         backBtn.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/25, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/30)
-        instructionLbl.centerX(inView: view, topAnchor: view.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/17)
-        
+        instructionLbl.centerX(inView: view, topAnchor: view.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/18)
+
         circularProgressBarView.centerX(inView: view)
-        circularProgressBarView.anchor(top: instructionLbl.bottomAnchor, right: audioBtn.leftAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/20, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/20, width: ScreenSizeConfiguration.SCREEN_WIDTH/2, height: ScreenSizeConfiguration.SCREEN_HEIGHT/1.5)
+        circularProgressBarView.anchor(top: instructionLbl.bottomAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/30, width: ScreenSizeConfiguration.SCREEN_WIDTH/1.5, height: ScreenSizeConfiguration.SCREEN_HEIGHT/1.2)
         
-        audioBtn.anchor(top: instructionLbl.bottomAnchor, left: circularProgressBarView.rightAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/17, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/20)
+        audioBtn.anchor(top: circularProgressBarView.topAnchor, right: view.rightAnchor, paddingRight: 230)
     }
 
     private func addSubViews(){

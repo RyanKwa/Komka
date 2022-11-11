@@ -9,19 +9,21 @@ import UIKit
 import CloudKit
 import RxSwift
 
-class FullSentencesViewController: UIViewController {
+class FullSentencesViewController: ViewController {
     
     private var fullSentenceVM = FullSentencesViewModel()
     private var scenarioCoverImage, fullSentenceCharacterImage: UIImage?
     private var fullSentenceText: String?
     
     lazy private var backgroundImg = UIView.createImageView(imageName: "bg")
+    lazy private var instructionLbl = UIView.createLabel(text: "Mari mulai belajar kata dibawah ini", fontSize: 40)
+    
     lazy private var scenarioCoverImg: UIImageView = {
         let image = UIView.createImageView(image: scenarioCoverImage ?? UIImage(), contentMode: .scaleAspectFill, clipsToBound: true)
         image.addWhiteOverlay()
         return image
     }()
-    lazy private var scenarioImg = UIView.createImageView(image: fullSentenceCharacterImage ?? UIImage(), contentMode: .scaleAspectFit,clipsToBound: true)
+    lazy private var scenarioImg = UIView.createImageView(image: fullSentenceCharacterImage ?? UIImage(), contentMode: .scaleAspectFill, clipsToBound: true)
     
     lazy private var fullSentenceLbl = UIView.createLabel(text: fullSentenceText ?? "", fontSize: 40)
     
@@ -66,6 +68,7 @@ class FullSentencesViewController: UIViewController {
     private func setupView() {
         view.addSubview(backgroundImg)
         backgroundImg.addSubview(scenarioCoverImg)
+        scenarioCoverImg.addSubview(instructionLbl)
         scenarioCoverImg.addSubview(scenarioImg)
         
         view.addSubview(audioBtn)
@@ -78,9 +81,13 @@ class FullSentencesViewController: UIViewController {
     private func setupConstraint(){
         backgroundImg.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         scenarioCoverImg.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/2.2)
-        scenarioImg.anchor(top: scenarioCoverImg.topAnchor, left: scenarioCoverImg.leftAnchor, bottom: scenarioCoverImg.bottomAnchor, right: scenarioCoverImg.rightAnchor,paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/10,paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/3, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/3)
+        instructionLbl.centerX(inView: view, topAnchor: view.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/18)
         
-        audioBtn.anchor(top: scenarioCoverImg.topAnchor, left: scenarioImg.rightAnchor, bottom: scenarioCoverImg.bottomAnchor, right: scenarioCoverImg.rightAnchor, paddingTop: (ScreenSizeConfiguration.SCREEN_HEIGHT/2.2), paddingLeft: -20, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/5)
+        scenarioImg.anchor(bottom: scenarioCoverImg.bottomAnchor)
+        scenarioImg.centerX(inView: scenarioCoverImg)
+        scenarioImg.setDimensions(width: ScreenSizeConfiguration.SCREEN_WIDTH/2.99, height: ScreenSizeConfiguration.SCREEN_HEIGHT/2.51)
+        
+        audioBtn.anchor(left: scenarioImg.rightAnchor, bottom: scenarioCoverImg.bottomAnchor, right: scenarioCoverImg.rightAnchor, paddingLeft: -20, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/100, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/5)
         backBtn.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/25, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/30)
         
         fullSentenceLbl.anchor(top:scenarioCoverImg.bottomAnchor, bottom: view.bottomAnchor, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/3.5)
@@ -98,12 +105,14 @@ class FullSentencesViewController: UIViewController {
     
     @objc
     private func backBtnTapped(_ sender: UIButton) {
+        fullSentenceVM.stopTextToSpeech()
         SoundEffectService.shared.playSoundEffect(.Bubble)
         navigationController?.popViewController(animated: false)
     }
     
     @objc
     private func startBtnTapped(_ sender: UIButton) {
+        fullSentenceVM.stopTextToSpeech()
         SoundEffectService.shared.playSoundEffect(.Bubble)
         self.navigationController?.pushViewController(SoundPracticeViewController(), animated: false)
     }

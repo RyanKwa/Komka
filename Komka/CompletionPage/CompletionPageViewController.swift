@@ -8,7 +8,7 @@
 import UIKit
 import SwiftConfettiView
 
-class CompletionPageViewController: UIViewController {
+class CompletionPageViewController: ViewController {
 
     lazy private var backgroundImg = UIView.createImageView(imageName: "bg")
     lazy private var rewardImg = UIView.createImageView(imageName: "Piala")
@@ -38,13 +38,18 @@ class CompletionPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupSubView()
+        setupConstraint()
+        setupCompletionSoundEffects()
+    }
+    
+    private func setupSubView() {
         view.addSubview(backgroundImg)
         view.addSubview(confettiView)
         view.addSubview(rewardImg)
         view.addSubview(rectView)
         view.addSubview(horizontalStackView)
-        
-        setupConstraint()
     }
     
     private func setupConstraint() {
@@ -60,6 +65,10 @@ class CompletionPageViewController: UIViewController {
         homeBtn.setDimensions(width: btnWidth, height: btnHeight)
         retryBtn.setDimensions(width: btnWidth, height: btnHeight)
         horizontalStackView.center(inView: rectView)
+    }
+    
+    private func setupCompletionSoundEffects() {
+        SoundEffectService.shared.playSoundEffect(.CompletionPage)
     }
     
     @objc

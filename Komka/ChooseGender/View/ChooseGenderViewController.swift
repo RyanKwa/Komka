@@ -39,9 +39,8 @@ class ChooseGenderViewController: UIViewController {
     
     @objc func btnTapped(_ sender: UIButton) {
         guard let gender = sender.titleLabel?.text else { return }
-        
         chooseGenderVM.addGenderToKeyValueStore(gender: gender)
-        
+        SoundEffectService.shared.playSoundEffect(.Bubble)
         navigationController?.pushViewController(ChooseScenarioController(), animated: false)
     }
     
@@ -58,17 +57,9 @@ class ChooseGenderViewController: UIViewController {
     }
     
     private func setupConstraint(){
-
         let genderBtnSize = ScreenSizeConfiguration.SCREEN_WIDTH/8+6
-        
-        // constraint for maleBtn
         maleGenderBtn.setDimensions(width: genderBtnSize, height: genderBtnSize)
-        
-        // constraint for femaleBtn
         femaleGenderBtn.setDimensions(width: genderBtnSize, height: genderBtnSize)
-        
-        // constraint for genderTitleStackView
         genderTitleStackView.center(inView: view)
     }
-
 }

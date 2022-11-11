@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 extension UILabel {
-    func addCharacterSpacing(text: String) {
-        let string = NSMutableAttributedString(string: text)
+    func addCharacterSpacing() {
+        let string = NSMutableAttributedString(string: self.text ?? "Text")
         string.addAttribute(NSAttributedString.Key.kern, value: 1.5, range: NSRange(location: 0, length: string.length - 1))
         attributedText = string
     }

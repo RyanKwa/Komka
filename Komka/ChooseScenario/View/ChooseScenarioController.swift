@@ -8,13 +8,13 @@
 import UIKit
 import RxSwift
 
-class ChooseScenarioController: UIViewController {
+class ChooseScenarioController: ViewController {
     private lazy var backgroundImg = UIView.createImageView(imageName: "bg")
     private lazy var scenarioLabel = UIView.createLabel(text: "Pilih Skenario", fontSize: 40)
     
-    private var vm = ChooseScenarioViewModel()
+    private var chooseScenarioVM = ChooseScenarioViewModel()
     
-    private lazy var collectionView: UICollectionView = {
+    private lazy var scenarioCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
@@ -27,30 +27,31 @@ class ChooseScenarioController: UIViewController {
     }()
     
     private func setCollectionView(){
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = UIColor.clear
-        collectionView.clipsToBounds = false
+        scenarioCollectionView.delegate = self
+        scenarioCollectionView.dataSource = self
+        scenarioCollectionView.backgroundColor = UIColor.clear
+        scenarioCollectionView.clipsToBounds = false
+        scenarioCollectionView.showsHorizontalScrollIndicator = false
     }
     
     private func addSubView(){
         view.addSubview(backgroundImg)
         backgroundImg.addSubview(scenarioLabel)
-        view.addSubview(collectionView)
+        view.addSubview(scenarioCollectionView)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         
-        vm.fetchScenario()
+        chooseScenarioVM.fetchScenario()
 
-        Observable.combineLatest(vm.scenariosPublisher, vm.assetsPublisher)
+        Observable.combineLatest(chooseScenarioVM.scenariosPublisher, chooseScenarioVM.assetsPublisher)
             .observe(on: MainScheduler.instance)
             .subscribe(onCompleted: {
-                self.collectionView.reloadData()
+                self.scenarioCollectionView.reloadData()
             })
-            .disposed(by: vm.bag)
+            .disposed(by: chooseScenarioVM.bag)
 
         addSubView()
         setCollectionView()
@@ -58,17 +59,16 @@ class ChooseScenarioController: UIViewController {
     }
         
     func setupAutoLayout() {
-        scenarioLabel.anchor(top: backgroundImg.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/10)
+        scenarioLabel.anchor(top: backgroundImg.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/18)
         scenarioLabel.centerX(inView: backgroundImg)
     
-        collectionView.anchor(left: backgroundImg.leftAnchor, bottom: backgroundImg.bottomAnchor, right: backgroundImg.rightAnchor, paddingLeft: 40, paddingBottom: 40, paddingRight: 40, height: ScreenSizeConfiguration.SCREEN_HEIGHT/1.6)
-
+        scenarioCollectionView.anchor(top: scenarioLabel.bottomAnchor, left: backgroundImg.leftAnchor, bottom: backgroundImg.bottomAnchor, right: backgroundImg.rightAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/19, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/50, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/7, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/50)
     }
 }
 
 extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/3, height: collectionView.frame.height/2)
+        return CGSize(width: ScreenSizeConfiguration.SCREEN_WIDTH/2.5, height: ScreenSizeConfiguration.SCREEN_HEIGHT/2)
     }
     
     //Spacing between section atau cell
@@ -78,16 +78,17 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return vm.scenarios.count
+        return chooseScenarioVM.scenarios.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard
             let scenarioCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScenarioCell.identifier, for: indexPath) as? ScenarioCell,
-            let scenarioImage = vm.assets[indexPath.row].image
+            let scenarioImage = chooseScenarioVM.assets[indexPath.row].image
         else { return UICollectionViewCell() }
-        let scenarioTitle = vm.scenarios[indexPath.row].title
+        let scenarioTitle = chooseScenarioVM.scenarios[indexPath.row].title
         scenarioCell.scenarioLabel.text = scenarioTitle
+        scenarioCell.scenarioLabel.addCharacterSpacing()
         scenarioCell.scenarioImg.image = UIImage.changeImageFromURL(baseImage: scenarioImage)
         
         return scenarioCell
@@ -95,7 +96,7 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let stepViewController = MultipleChoiceViewController()
-        stepViewController.selectedScenarioId = vm.scenarios[indexPath.row].id
+        stepViewController.selectedScenarioId = chooseScenarioVM.scenarios[indexPath.row].id
         self.navigationController?.pushViewController(stepViewController, animated: false)
     }
 
