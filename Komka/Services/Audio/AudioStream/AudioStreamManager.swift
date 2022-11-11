@@ -15,7 +15,8 @@ class AudioStreamManager {
     private var micInputFormat: AVAudioFormat?
     
     private var soundAnalyzer: SNAudioStreamAnalyzer?
-    
+    private var soundClassifierRequest: SNClassifySoundRequest?
+
     init(){
         audioEngine = AVAudioEngine()
         inputBus = AVAudioNodeBus(0)
@@ -36,6 +37,8 @@ class AudioStreamManager {
         
         soundAnalyzer = SNAudioStreamAnalyzer(format: micInputFormat)
         
+        
+        prepareSoundClassifier()
     }
     
     private func prepareAudioEngine(){
@@ -50,7 +53,7 @@ class AudioStreamManager {
             print("ERROR: \(error.localizedDescription)")
         }
     }
-
+    
     func startLiveAudio(){
         guard let audioEngine = audioEngine else {
             print("ERROR: AudioEngine Unavailable")
@@ -73,7 +76,7 @@ class AudioStreamManager {
             }
         }
     }
-
+    
     func stopLiveAudio(){
         guard let audioEngine = audioEngine else {
             print("ERROR: AudioEngine Unavailable")
@@ -84,6 +87,36 @@ class AudioStreamManager {
             return
         }
         audioEngine.inputNode.removeTap(onBus: inputBus)
+    }
+    
+    private func prepareSoundClassifier(){
+        let config = MLModelConfiguration()
+        let soundClassifier = try? SoundPracticeModel(configuration: config)
+        
+        guard let soundClassifier = soundClassifier else{
+            print("ERROR: Model doesn't Exist")
+            return
+        }
+        soundClassifierRequest = try? SNClassifySoundRequest(mlModel: soundClassifier.model)
+    }
+    
+    func addResultObservation(with observer: SNResultsObserving) {
+        guard let soundClassifierRequest = soundClassifierRequest else {
+            print("ERROR: Sound Classification Request unavailable")
+            return
+        }
+        guard let soundAnalyzer = soundAnalyzer else {
+            print("ERROR: Sound Analyzer unavailable")
+            return
+        }
+        
+        do {
+            try soundAnalyzer.add(soundClassifierRequest, withObserver: observer)
+        }
+        catch {
+            print("ERROR: observer for the sound classification results: \(error.localizedDescription)")
+        }
+        
     }
 }
 
