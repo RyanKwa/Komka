@@ -10,6 +10,7 @@ import CloudKit
 
 class MultipleChoiceViewModel {
     private let scenarioData = ScenarioData.instance
+    private let textToSpeechService = TextToSpeechService()
 
     private var multipleChoice: MultipleChoice?
     private var multipleChoiceAssets: [ContentAsset] = []
@@ -54,7 +55,11 @@ class MultipleChoiceViewModel {
         
         let queue: [String] = [imageCaption, question, leftChoice, conjunction, rightChoice]
         
-        TextToSpeechService.shared.stopSpeech()
-        TextToSpeechService.shared.startSpeech(queue)
+        textToSpeechService.stopSpeech()
+        textToSpeechService.startSpeech(queue)
+    }
+    
+    func stopTextToSpeech(){
+        textToSpeechService.stopSpeech()
     }
 }

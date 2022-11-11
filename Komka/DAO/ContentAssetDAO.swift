@@ -21,9 +21,13 @@ class ContentAssetDAO {
     
     func fetchCoverAssets(){
         let step = AssetStepType.Cover.rawValue
-        let assetPredicate = NSPredicate(format: "step == %@", step)
+        let gender = NSUbiquitousKeyValueStore.default.hasChooseGender
         
-        let queryAsset = CKQuery(recordType: RecordType.Asset.rawValue, predicate: assetPredicate)
+        let assetPredicate = NSPredicate(format: "step == %@", step)
+        let genderPredicate = NSPredicate(format: "gender == %@", gender)
+        
+        let fetchPredicate = NSCompoundPredicate(type: .and, subpredicates: [assetPredicate, genderPredicate])
+        let queryAsset = CKQuery(recordType: RecordType.Asset.rawValue, predicate: fetchPredicate)
         queryAsset.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         let queryOperationAsset = CKQueryOperation(query: queryAsset)
         
