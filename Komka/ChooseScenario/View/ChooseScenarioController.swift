@@ -31,6 +31,7 @@ class ChooseScenarioController: ViewController {
         scenarioCollectionView.dataSource = self
         scenarioCollectionView.backgroundColor = UIColor.clear
         scenarioCollectionView.clipsToBounds = false
+        scenarioCollectionView.showsHorizontalScrollIndicator = false
     }
     
     private func addSubView(){
