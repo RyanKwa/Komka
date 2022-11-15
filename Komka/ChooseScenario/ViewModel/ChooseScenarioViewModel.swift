@@ -30,9 +30,21 @@ class ChooseScenarioViewModel {
         scenarioPerLevel = filteredLevel
     }
     
+    let isCompleted = 2
+    lazy var nextLevelPointsNeeded = 0
+
     func fetchScenario(){
         scenarioDAO.fetchScenarioData()
         contentAssetDAO.fetchCoverAssets()
+        
+//        NSUbiquitousKeyValueStore.default.removeObject(forKey: NSUbiquitousKeyValueStore.KeyValueStore.isCompleted.rawValue)
+                
+//        if isCompleted == 0 {
+//            nextLevelPointsNeeded = 3
+//        }
+//        else if isCompleted == 3 {
+//            nextLevelPointsNeeded = 6
+//        }
         
         scenarioDAO.scenariosPublisher.subscribe(onCompleted: {
             self.scenarios = self.scenarioDAO.scenarios
@@ -48,4 +60,5 @@ class ChooseScenarioViewModel {
             self.assetsPublisher.onCompleted()
         }).disposed(by: bag)
     }
+    
 }

@@ -8,8 +8,9 @@
 import Foundation
 
 extension NSUbiquitousKeyValueStore {
-    private enum KeyValueStore: String {
+    enum KeyValueStore: String {
         case hasChooseGender
+        case isCompleted
     }
     
     var hasChooseGender: String {
@@ -22,4 +23,16 @@ extension NSUbiquitousKeyValueStore {
             synchronize()
         }
     }
+    
+    var isCompleted: Int {
+        get {
+            return Int(longLong(forKey: KeyValueStore.isCompleted.rawValue))
+        }
+
+        set {
+            set(newValue, forKey: KeyValueStore.isCompleted.rawValue)
+            synchronize()
+        }
+    }
 }
+

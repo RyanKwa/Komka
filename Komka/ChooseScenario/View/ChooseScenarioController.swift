@@ -53,7 +53,7 @@ class ChooseScenarioController: ViewController {
     }()
     
     private var chooseScenarioVM = ChooseScenarioViewModel()
-    
+        
     private lazy var scenarioCollectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
@@ -159,6 +159,10 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
         scenarioCell.scenarioLabel.addCharacterSpacing()
         scenarioCell.scenarioImg.image = UIImage.changeImageFromURL(baseImage: scenarioImage)
         
+        if(chooseScenarioVM.isCompleted < chooseScenarioVM.nextLevelPointsNeeded) {
+            scenarioCell.addLockOverlay()
+        }
+        
         return scenarioCell
     }
     
@@ -166,8 +170,15 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
         let stepViewController = MultipleChoiceViewController()
         stepViewController.selectedScenarioId = chooseScenarioVM.scenarioPerLevel[indexPath.row].id
         self.navigationController?.pushViewController(stepViewController, animated: false)
+        if(chooseScenarioVM.isCompleted < chooseScenarioVM.nextLevelPointsNeeded) {
+            
+        }
+        else{
+            let stepViewController = MultipleChoiceViewController()
+            stepViewController.selectedScenarioId = chooseScenarioVM.scenarios[indexPath.row].id
+            self.navigationController?.pushViewController(stepViewController, animated: false)
+        }
     }
-    
 }
 
 
