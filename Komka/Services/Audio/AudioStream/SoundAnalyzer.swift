@@ -27,6 +27,7 @@ class SoundAnalyzer: NSObject, ObservableObject, SNResultsObserving {
         }
         
         DispatchQueue.main.async {
+            print("\(highestResult.identifier): \(self.confidence)")
             if(self.currentWord == highestResult.identifier){
                 self.confidence = highestResult.confidence
                 self.confidencePublisher.onNext(self.confidence ?? 0)
