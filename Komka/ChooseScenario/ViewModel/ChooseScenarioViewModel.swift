@@ -30,6 +30,9 @@ class ChooseScenarioViewModel {
         scenarioPerLevel = filteredLevel
     }
     
+    let isCompleted = 2
+    lazy var nextLevelPointsNeeded = 0
+
     func fetchScenario(){
         scenarioDAO.fetchScenarioData()
         contentAssetDAO.fetchCoverAssets()
@@ -58,4 +61,5 @@ class ChooseScenarioViewModel {
             self.assetsPublisher.onCompleted()
         }).disposed(by: bag)
     }
+    
 }
