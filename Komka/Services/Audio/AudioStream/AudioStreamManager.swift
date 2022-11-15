@@ -17,14 +17,7 @@ class AudioStreamManager {
     private var soundClassifierRequest: SNClassifySoundRequest?
     
     init(){
-        stopAudioSession()
-        do {
-            let audioSession = AVAudioSession.sharedInstance()
-            try audioSession.setCategory(.record, mode: .default)
-            try audioSession.setActive(true)
-        } catch {
-            stopAudioSession()
-        }
+
     }
     
     func stopAudioSession() {
@@ -46,6 +39,16 @@ class AudioStreamManager {
     }
     
     func startLiveRecord(){
+        stopLiveRecord()
+        stopAudioSession()
+        do {
+            let audioSession = AVAudioSession.sharedInstance()
+            try audioSession.setCategory(.record, options: .mixWithOthers)
+            try audioSession.setActive(true)
+        } catch {
+            stopAudioSession()
+            print("ERROR: Stop Live record")
+        }
         do{
             let newAudioEngine = AVAudioEngine()
             audioEngine = newAudioEngine
@@ -75,6 +78,7 @@ class AudioStreamManager {
             return
         }
         audioEngine.inputNode.removeTap(onBus: 0)
+        stopAudioSession()
     }
     
     private func prepareSoundClassifier(){

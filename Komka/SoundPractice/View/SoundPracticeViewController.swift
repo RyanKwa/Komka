@@ -46,6 +46,7 @@ class SoundPracticeViewController: ViewController {
     
     @objc func nextBtnTapped(_ sender: UIButton) {
         soundPracticeVM.stopTextToSpeech()
+        soundPracticeVM.stopSoundPractice()
         let stepViewController = ArrangeWordViewController()
         self.navigationController?.pushViewController(stepViewController, animated: false)
     }
@@ -57,8 +58,10 @@ class SoundPracticeViewController: ViewController {
     }
     
     @objc func audioBtnTapped(_ sender: UIButton) {
-        soundPracticeVM.stopSoundPractice()
         soundPracticeVM.playTextToSpeech(wordCounter: soundPracticeVM.queueWordCounter)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.soundPracticeVM.startSoundPractice()
+        }
     }
     
     func setUpCircularProgressBarView() {

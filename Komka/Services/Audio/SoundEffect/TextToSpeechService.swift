@@ -12,7 +12,17 @@ class TextToSpeechService {
     let speechSynthesizer = AVSpeechSynthesizer()
     
     func startSpeech(_ queue: [String]){
-        
+        let audioSession = AVAudioSession.sharedInstance()
+        try? audioSession.setActive(false)
+        do {
+            try audioSession.setCategory(.playback)
+            try audioSession.setActive(true)
+        } catch {
+            let audioSession = AVAudioSession.sharedInstance()
+            try? audioSession.setActive(false)
+            print("Error: Text to speech")
+        }
+
         var utterance: AVSpeechUtterance
         
         for text in queue {
