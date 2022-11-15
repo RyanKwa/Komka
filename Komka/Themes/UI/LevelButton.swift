@@ -2,9 +2,10 @@
 //  LevelButton.swift
 //  Komka
 //
-//  Created by Shaqina Yasmin on 13/10/22.
+//  Created by Minawati on 13/10/22.
 //
 
+import Foundation
 import UIKit
 
 struct LevelButtonVM{
@@ -27,5 +28,6 @@ class LevelButton: UIButton {
         self.setTitle(viewModel.title, for: .normal)
         setBackgroundImage(UIImage(named: viewModel.image), for: .normal)
         titleLabel?.font = UIFont(name: "Baloo2-ExtraBold", size: viewModel.size)
+
     }
 }

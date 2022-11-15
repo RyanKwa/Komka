@@ -8,7 +8,15 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    var hideStatusBar: Bool = true {
+        didSet {
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    override var prefersStatusBarHidden: Bool {
+           return hideStatusBar
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
