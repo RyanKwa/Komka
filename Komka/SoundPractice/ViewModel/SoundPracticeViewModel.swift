@@ -5,6 +5,7 @@
 //  Created by Minawati on 08/11/22.
 //
 
+import AVFoundation
 import UIKit
 import CloudKit
 import RxSwift
@@ -116,10 +117,10 @@ class SoundPracticeViewModel {
             }
         }.disposed(by: disposeBag)
     }
-    
+
     func startSoundPractice(){
+        audioStreamManager.startLiveRecord()
         audioStreamManager.addResultObservation(with: soundAnalyzer)
-        audioStreamManager.startLiveAudio()
         
         soundAnalyzer.confidencePublisher.subscribe { [self] confidence in
             confidencePublisher.onNext(confidence)
@@ -127,7 +128,7 @@ class SoundPracticeViewModel {
     }
     
     func stopSoundPractice(){
-        audioStreamManager.stopLiveAudio()
+        audioStreamManager.stopLiveRecord()
     }
     
     func stopTextToSpeech(){
