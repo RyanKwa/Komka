@@ -21,6 +21,18 @@ class SoundEffectService {
     var player: AVAudioPlayer = AVAudioPlayer()
     
     func playSoundEffect(_ soundEffect: SoundEffect){
+        let audioSession = AVAudioSession.sharedInstance()
+        try? audioSession.setActive(false)
+        do {
+            let audioSession = AVAudioSession.sharedInstance()
+            try audioSession.setCategory(.playback)
+            try audioSession.setActive(true)
+        } catch {
+            let audioSession = AVAudioSession.sharedInstance()
+            try? audioSession.setActive(false)
+            print("Error: Sound Effect")
+        }
+
         guard let url = Bundle.main.url(forResource: soundEffect.rawValue, withExtension: "mp3") else { return }
         
         do {
