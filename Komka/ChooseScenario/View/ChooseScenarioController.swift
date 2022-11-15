@@ -46,7 +46,6 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
     }()
     
     private var chooseScenarioVM = ChooseScenarioViewModel()
-    private var completionVM = CompletionPageViewModel()
     
     private lazy var scenarioCollectionView: UICollectionView = {
         
