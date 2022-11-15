@@ -14,6 +14,7 @@ class CompletionPageViewController: ViewController {
     lazy private var rewardImg = UIView.createImageView(imageName: "Piala")
     lazy private var confettiView = createConfettiView()
     lazy private var rectView = setRectView()
+    private var completionPageVM = CompletionPageViewModel()
     
     lazy private var homeBtn: UIButton = {
         let button = UIView.createImageIconBtn(title: "Beranda", imgTitle: "BerandaBtn")
@@ -39,6 +40,8 @@ class CompletionPageViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        completionPageVM.updateIsCompletedToKeyValueStore()
+        
         setupSubView()
         setupConstraint()
         setupCompletionSoundEffects()

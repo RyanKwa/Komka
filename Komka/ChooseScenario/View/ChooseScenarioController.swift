@@ -46,7 +46,7 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
     }()
     
     private var chooseScenarioVM = ChooseScenarioViewModel()
-    
+        
     private lazy var scenarioCollectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
@@ -181,15 +181,26 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
         scenarioCell.scenarioLabel.addCharacterSpacing()
         scenarioCell.scenarioImg.image = UIImage.changeImageFromURL(baseImage: scenarioImage)
         
+        if(chooseScenarioVM.isCompleted < chooseScenarioVM.nextLevelPointsNeeded) {
+            scenarioCell.addLockOverlay()
+        }
+        
         return scenarioCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let multipleChoiceVC = MultipleChoiceViewController()
-        multipleChoiceVC.selectedScenarioId = chooseScenarioVM.scenarioPerLevel[indexPath.row].id
-        self.navigationController?.pushViewController(multipleChoiceVC, animated: false)
+        let stepViewController = MultipleChoiceViewController()
+        stepViewController.selectedScenarioId = chooseScenarioVM.scenarioPerLevel[indexPath.row].id
+        self.navigationController?.pushViewController(stepViewController, animated: false)
+        if(chooseScenarioVM.isCompleted < chooseScenarioVM.nextLevelPointsNeeded) {
+            
+        }
+        else{
+            let stepViewController = MultipleChoiceViewController()
+            stepViewController.selectedScenarioId = chooseScenarioVM.scenarios[indexPath.row].id
+            self.navigationController?.pushViewController(stepViewController, animated: false)
+        }
     }
-    
 }
 
 

@@ -11,6 +11,7 @@
 		067FCE7F292507CD00341E1E /* LevelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FCE7E292507CD00341E1E /* LevelController.swift */; };
 		06ADD66929263BEF0070E45A /* LevelScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ADD66829263BEF0070E45A /* LevelScenario.swift */; };
 		A942016C291DE947007634DE /* SoundPracticeModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A942016B291DE947007634DE /* SoundPracticeModel.mlmodel */; };
+		A942017229225070007634DE /* CompletionPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942017129225070007634DE /* CompletionPageViewModel.swift */; };
 		A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */; };
 		A979929629066E5C00CDD27C /* ScenarioDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979929529066E5C00CDD27C /* ScenarioDAO.swift */; };
 		A993D81828EB16640052DC92 /* Baloo2-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */; };
@@ -112,6 +113,7 @@
 		067FCE7E292507CD00341E1E /* LevelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelController.swift; sourceTree = "<group>"; };
 		06ADD66829263BEF0070E45A /* LevelScenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelScenario.swift; sourceTree = "<group>"; };
 		A942016B291DE947007634DE /* SoundPracticeModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SoundPracticeModel.mlmodel; sourceTree = "<group>"; };
+		A942017129225070007634DE /* CompletionPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionPageViewModel.swift; sourceTree = "<group>"; };
 		A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioViewModel.swift; sourceTree = "<group>"; };
 		A979929529066E5C00CDD27C /* ScenarioDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioDAO.swift; sourceTree = "<group>"; };
 		A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Baloo2-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -246,6 +248,22 @@
 				A942016B291DE947007634DE /* SoundPracticeModel.mlmodel */,
 			);
 			path = SoundPractice;
+			sourceTree = "<group>";
+		};
+		A942017329225DA8007634DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DCF95E5329165E1900EC9FA8 /* CompletionPageViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A942017429225DB0007634DE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A942017129225070007634DE /* CompletionPageViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A96B643528F5BC1B00E23BB2 /* ViewModel */ = {
@@ -672,7 +690,8 @@
 		DCF95E5229165DC400EC9FA8 /* CompletionPage */ = {
 			isa = PBXGroup;
 			children = (
-				DCF95E5329165E1900EC9FA8 /* CompletionPageViewController.swift */,
+				A942017429225DB0007634DE /* ViewModel */,
+				A942017329225DA8007634DE /* View */,
 			);
 			path = CompletionPage;
 			sourceTree = "<group>";
@@ -885,6 +904,7 @@
 				06ADD66929263BEF0070E45A /* LevelScenario.swift in Sources */,
 				C50B591128E587B6001D42E5 /* Komka.xcdatamodeld in Sources */,
 				C53583BC291A9E3E001727FC /* LoadingScreenViewController.swift in Sources */,
+				A942017229225070007634DE /* CompletionPageViewModel.swift in Sources */,
 				DCED8F4528F865C2009F31E3 /* SoundPracticeViewController.swift in Sources */,
 				C5D9828F28F7C7F500E89F60 /* Level.swift in Sources */,
 				C5D9829728F7C98200E89F60 /* ContentAsset.swift in Sources */,
