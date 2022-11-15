@@ -11,33 +11,25 @@ import SoundAnalysis
 
 class AudioStreamManager {
     private var audioEngine: AVAudioEngine?
-    private var inputBus: AVAudioNodeBus?
     private var micInputFormat: AVAudioFormat?
     
     private var soundAnalyzer: SNAudioStreamAnalyzer?
     private var soundClassifierRequest: SNClassifySoundRequest?
-
+    
     init(){
-        audioEngine = AVAudioEngine()
-        inputBus = AVAudioNodeBus(0)
-        
-        guard let inputBus = inputBus else {
-            print("ERROR: Input bus unavailable")
-            return
+        stopAudioSession()
+        do {
+            let audioSession = AVAudioSession.sharedInstance()
+            try audioSession.setCategory(.record, mode: .default)
+            try audioSession.setActive(true)
+        } catch {
+            stopAudioSession()
         }
-        
-        micInputFormat = audioEngine?.inputNode.inputFormat(forBus: inputBus)
-        
-        guard let micInputFormat = micInputFormat else {
-            print("ERROR: Mic input format unavailable")
-            return
-        }
-        
-        prepareAudioEngine()
-        
-        soundAnalyzer = SNAudioStreamAnalyzer(format: micInputFormat)
-        
-        prepareSoundClassifier()
+    }
+    
+    func stopAudioSession() {
+        let audioSession = AVAudioSession.sharedInstance()
+        try? audioSession.setActive(false)
     }
     
     private func prepareAudioEngine(){
@@ -53,39 +45,36 @@ class AudioStreamManager {
         }
     }
     
-    func startLiveAudio(){
-        guard let audioEngine = audioEngine else {
-            print("ERROR: AudioEngine Unavailable")
-            return
-        }
-        guard let inputBus = inputBus else {
-            print("ERROR: Input bus unavailable")
-            return
-        }
-        guard let micInputFormat = micInputFormat else {
-            print("ERROR: Mic input format unavailable")
-            return
-        }
-        
-        audioEngine.inputNode.removeTap(onBus: inputBus)
-        audioEngine.inputNode.installTap(onBus: inputBus, bufferSize: 1024, format: micInputFormat) {
-            [unowned self] (buffer, time) in
-            DispatchQueue.global(qos: .userInitiated).async {
-                self.soundAnalyzer?.analyze(buffer, atAudioFramePosition: time.sampleTime)
+    func startLiveRecord(){
+        do{
+            let newAudioEngine = AVAudioEngine()
+            audioEngine = newAudioEngine
+            let busIndex = AVAudioNodeBus(0)
+            let audioFormat = newAudioEngine.inputNode.inputFormat(forBus: busIndex)
+            let newSoundAnalyzer = SNAudioStreamAnalyzer(format: audioFormat)
+            soundAnalyzer = newSoundAnalyzer
+            
+            newAudioEngine.inputNode.removeTap(onBus: busIndex)
+            newAudioEngine.inputNode.installTap(onBus: busIndex, bufferSize: 1024, format: audioFormat) {
+                (buffer, time) in
+                DispatchQueue.main.async {
+                    newSoundAnalyzer.analyze(buffer, atAudioFramePosition: time.sampleTime)
+                }
             }
+            try newAudioEngine.start()
+            prepareSoundClassifier()
+        }
+        catch {
+           print("ERROR: \(error)")
         }
     }
     
-    func stopLiveAudio(){
+    func stopLiveRecord(){
         guard let audioEngine = audioEngine else {
             print("ERROR: AudioEngine Unavailable")
             return
         }
-        guard let inputBus = inputBus else {
-            print("ERROR: Input bus unavailable")
-            return
-        }
-        audioEngine.inputNode.removeTap(onBus: inputBus)
+        audioEngine.inputNode.removeTap(onBus: 0)
     }
     
     private func prepareSoundClassifier(){
@@ -118,4 +107,3 @@ class AudioStreamManager {
         
     }
 }
-
