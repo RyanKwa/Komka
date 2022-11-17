@@ -16,12 +16,19 @@ class ChooseScenarioViewModel {
 
     var scenarios: [Scenario] = []
     var assets: [ContentAsset] = []
-        
+    var scenarioPerLevel: [Scenario] = []
+    
+    var level: String?
+    
     var scenariosPublisher = PublishSubject<[Scenario]>()
     var assetsPublisher = PublishSubject<[ContentAsset]>()
     
     var bag = DisposeBag()
-
+    
+    func levelByScenario(level: String){
+        let filteredLevel = scenarios.filter { $0.levelScenario == level }
+        scenarioPerLevel = filteredLevel
+    }
     
     func fetchScenario(){
         scenarioDAO.fetchScenarioData()

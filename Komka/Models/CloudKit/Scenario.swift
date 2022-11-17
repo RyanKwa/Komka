@@ -13,7 +13,8 @@ struct Scenario {
     let title: String
     let isCompleted: Bool
     let sentence: [String]
-    let level: CKRecord.Reference
+//    let level: CKRecord.Reference
     let reward: Reward?
     let multipleChoice: CKRecord.Reference
+    let levelScenario: String
 }
