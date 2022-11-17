@@ -41,6 +41,7 @@ class ScenarioCell: UICollectionViewCell {
         scenarioLabel.textAlignment = .center
 
         contentView.backgroundColor = .white
+
         contentView.layer.cornerRadius = 40
         contentView.layer.masksToBounds = true
         

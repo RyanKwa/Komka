@@ -28,7 +28,6 @@ class LevelButton: UIButton {
         self.setTitle(viewModel.title, for: .normal)
         setBackgroundImage(UIImage(named: viewModel.image), for: .normal)
         titleLabel?.font = UIFont(name: "Baloo2-ExtraBold", size: viewModel.size)
-        
-        
+
     }
 }

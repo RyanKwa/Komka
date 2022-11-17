@@ -11,5 +11,5 @@ import Foundation
 struct Level {
     let id: CKRecord.ID
     let title: String
-    let scenarios: [Scenario]
+    let scenarios: [Scenario] //Ubah jadi 
 }
