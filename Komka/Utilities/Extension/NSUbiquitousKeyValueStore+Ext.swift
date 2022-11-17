@@ -10,7 +10,7 @@ import Foundation
 extension NSUbiquitousKeyValueStore {
     enum KeyValueStore: String {
         case hasChooseGender
-        case isCompleted
+        case completedScenario
     }
     
     var hasChooseGender: String {
@@ -24,13 +24,13 @@ extension NSUbiquitousKeyValueStore {
         }
     }
     
-    var isCompleted: Int {
+    var completedScenario: [String] {
         get {
-            return Int(longLong(forKey: KeyValueStore.isCompleted.rawValue))
+            return array(forKey: KeyValueStore.completedScenario.rawValue) as? [String] ?? []
         }
 
-        set {
-            set(newValue, forKey: KeyValueStore.isCompleted.rawValue)
+        set{
+            set(newValue, forKey: KeyValueStore.completedScenario.rawValue)
             synchronize()
         }
     }

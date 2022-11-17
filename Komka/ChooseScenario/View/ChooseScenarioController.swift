@@ -13,13 +13,13 @@ class ChooseScenarioController: ViewController {
     private lazy var scenarioLabel = UIView.createLabel(text: "Pilih Skenario", fontSize: 45)
     
     
-//    private lazy var mudahButton: UIButton = {
-//        let button = LevelButton()
-//        button.configure(with: LevelButtonVM(title: "Mudah", image: "ChooseScenario_LevelIdle", size: 30))
-//        button.addTarget(self, action: #selector(levelBtnTapped), for: .touchUpInside)
-//        
-//        return button
-
+    //    private lazy var mudahButton: UIButton = {
+    //        let button = LevelButton()
+    //        button.configure(with: LevelButtonVM(title: "Mudah", image: "ChooseScenario_LevelIdle", size: 30))
+    //        button.addTarget(self, action: #selector(levelBtnTapped), for: .touchUpInside)
+    //
+    //        return button
+    
     private var mudahButton: UIButton = {
         let button = LevelController()
         button.configure(with: buttonVM(title: "Mudah", size: 30))
@@ -30,14 +30,14 @@ class ChooseScenarioController: ViewController {
     private var sedangButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(levelBtnTapped), for: .touchUpInside)
-
+        
         return button
     }()
     
     private var susahButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(levelBtnTapped), for: .touchUpInside)
-
+        
         return button
     }()
     
@@ -53,7 +53,8 @@ class ChooseScenarioController: ViewController {
     }()
     
     private var chooseScenarioVM = ChooseScenarioViewModel()
-        
+    private var completionVM = CompletionPageViewModel()
+    
     private lazy var scenarioCollectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
@@ -92,6 +93,7 @@ class ChooseScenarioController: ViewController {
         
         
         chooseScenarioVM.fetchScenario()
+        chooseScenarioVM.setUnlock()
         
         Observable.combineLatest(chooseScenarioVM.scenariosPublisher, chooseScenarioVM.assetsPublisher)
             .observe(on: MainScheduler.instance)
@@ -105,6 +107,7 @@ class ChooseScenarioController: ViewController {
         setCollectionView()
         setupAutoLayout()
     }
+    
     func setupAutoLayout() {
         scenarioLabel.anchor(top: backgroundImg.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/15)
         scenarioLabel.centerX(inView: backgroundImg)
@@ -131,7 +134,6 @@ class ChooseScenarioController: ViewController {
         default:
             break
         }
-        
     }
 }
 
@@ -159,10 +161,18 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
         scenarioCell.scenarioLabel.addCharacterSpacing()
         scenarioCell.scenarioImg.image = UIImage.changeImageFromURL(baseImage: scenarioImage)
         
-        if(chooseScenarioVM.isCompleted < chooseScenarioVM.nextLevelPointsNeeded) {
-            scenarioCell.addLockOverlay()
-        }
+        chooseScenarioVM.unlockPublisher.subscribe { [self] _ in
+            if(chooseScenarioVM.isCompleted ?? 0 < chooseScenarioVM.nextLevelPoint ?? 0) {
+                scenarioCell.addLockOverlay()
+            }
+        }.disposed(by: chooseScenarioVM.bag)
         
+        //        completionVM.completionPublisher.subscribe { [self] nextLevelPointsNeeded in
+        //            if(completionVM.isCompleted < nextLevelPointsNeeded) {
+        //                scenarioCell.addLockOverlay()
+        //            }
+        //        }.disposed(by: completionVM.disposeBag)
+        //
         return scenarioCell
     }
     
@@ -170,15 +180,25 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
         let stepViewController = MultipleChoiceViewController()
         stepViewController.selectedScenarioId = chooseScenarioVM.scenarioPerLevel[indexPath.row].id
         self.navigationController?.pushViewController(stepViewController, animated: false)
-        if(chooseScenarioVM.isCompleted < chooseScenarioVM.nextLevelPointsNeeded) {
-            
-        }
-        else{
-            let stepViewController = MultipleChoiceViewController()
-            stepViewController.selectedScenarioId = chooseScenarioVM.scenarios[indexPath.row].id
-            self.navigationController?.pushViewController(stepViewController, animated: false)
-        }
+        
+        chooseScenarioVM.unlockPublisher.subscribe { [self] _ in
+            if(chooseScenarioVM.isCompleted ?? 0 >= chooseScenarioVM.nextLevelPoint ?? 0) {
+                let stepViewController = MultipleChoiceViewController()
+                stepViewController.selectedScenarioId = chooseScenarioVM.scenarios[indexPath.row].id
+                self.navigationController?.pushViewController(stepViewController, animated: false)
+            }
+        }.disposed(by: chooseScenarioVM.bag)
+        
+        //        completionVM.completionPublisher.subscribe { [self] nextLevelPointsNeeded in
+        //            if(completionVM.isCompleted < nextLevelPointsNeeded) {
+        //
+        //            }
+        //            else{
+        //                let stepViewController = MultipleChoiceViewController()
+        //                stepViewController.selectedScenarioId = chooseScenarioVM.scenarios[indexPath.row].id
+        //                self.navigationController?.pushViewController(stepViewController, animated: false)
+        //            }
+        //        }.disposed(by: completionVM.disposeBag)
     }
 }
-
 
