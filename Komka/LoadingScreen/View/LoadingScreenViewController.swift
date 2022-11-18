@@ -9,19 +9,23 @@ import CloudKit
 import UIKit
 import RxSwift
 
-class LoadingScreenViewController: ViewController {
+class LoadingScreenViewController: ViewController, ErrorViewDelegate {
+    
     var scenarioRecordId: CKRecord.ID?
     
     let promptLabel = UIView.createLabel(text: "Tunggu Sebentar . . .", fontSize: 45.0)
     let backgroundImage = UIView.createImageView(imageName: "bg")
     var horizontalProgressBar = HorizontalProgressBarView(frame: CGRect(x: 0, y: 0, width: ScreenSizeConfiguration.SCREEN_WIDTH/1.45, height: ScreenSizeConfiguration.SCREEN_HEIGHT/15))
     
-    let loadingScreenVM = LoadingScreenViewModel()
+    var loadingScreenVM: LoadingScreenViewModel?
 
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         view.backgroundColor = .white
         navigationController?.isNavigationBarHidden = true
 
@@ -29,6 +33,11 @@ class LoadingScreenViewController: ViewController {
             print("Scenario nil")
             return
         }
+        loadingScreenVM = LoadingScreenViewModel()
+        guard let loadingScreenVM = loadingScreenVM else {
+            return
+        }
+
         horizontalProgressBar.backgroundColor = .clear
         
         view.addSubview(backgroundImage)
@@ -37,31 +46,42 @@ class LoadingScreenViewController: ViewController {
         
         setProgressBarConstraint()
         setPromptLabelConstraint()
+
         updateProgress(scenarioID: scenarioRecordId)
     }
     
     private func updateProgress(scenarioID: CKRecord.ID) {
         let progressBarWidth = horizontalProgressBar.layer.bounds.size.width
-        
+        guard let loadingScreenVM = loadingScreenVM else {
+            return
+        }
         loadingScreenVM.fetchRecordScenario(scenarioID: scenarioID)
         loadingScreenVM.totalFetchCompleted.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] totalFetchCompleted in
-            
-            if totalFetchCompleted > 0 {
-                self?.loadingScreenVM.incrementProgress(by: progressBarWidth/3)
+            guard let loadingScreenVM = self?.loadingScreenVM else {
+                return
             }
-            if totalFetchCompleted == self?.loadingScreenVM.totalFetchTask {
-                self?.loadingScreenVM.finishLoadingProgress()
-                self?.horizontalProgressBar.progressAnimation(initialValue: self?.loadingScreenVM.currentProgress ?? 0.0, finalValue: progressBarWidth, duration: 2)
+            if totalFetchCompleted > 0 && totalFetchCompleted < loadingScreenVM.totalFetchTask{
+                loadingScreenVM.incrementProgress(by: progressBarWidth/3)
+            }
+            if totalFetchCompleted == loadingScreenVM.totalFetchTask {
+                loadingScreenVM.finishLoadingProgress()
+                self?.horizontalProgressBar.progressAnimation(initialValue: loadingScreenVM.currentProgress ?? 0.0, finalValue:  ScreenSizeConfiguration.SCREEN_WIDTH/1.45, duration: 1)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self?.navigationController?.popViewController(animated: false)
                 }
             }
 
             else {
-                self?.horizontalProgressBar.progressAnimation(initialValue: self?.loadingScreenVM.currentProgress ?? 0.0, finalValue: self?.loadingScreenVM.currentProgress ?? 0.0 + progressBarWidth/3, duration: 2)
+                self?.horizontalProgressBar.progressAnimation(initialValue: loadingScreenVM.currentProgress ?? 0.0, finalValue: loadingScreenVM.currentProgress ?? 0.0 + progressBarWidth/3, duration: 1)
             }
-        }, onError: { error in
+        }, onError: { [weak self] error in
             if let fetchError = error as? FetchError {
+                let errorView = ErrorViewController()
+                errorView.delegate = self
+                errorView.errorDescription = fetchError.localizedDescription
+                errorView.errorTitleMessage = fetchError.errorTitle
+                errorView.errorGuidance = fetchError.errorGuidance
+                self?.navigationController?.pushViewController(errorView, animated: false)
                 print(fetchError.localizedDescription)
             }
             
@@ -77,4 +97,13 @@ class LoadingScreenViewController: ViewController {
         promptLabel.anchor(top: backgroundImage.topAnchor, bottom: horizontalProgressBar.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/3)
     }
     
+    //Delegate
+    func closeBtnTapped() {
+        self.navigationController?.popToViewController(ChooseScenarioController.self)
+    }
+    
+    func cobaLagiBtnTapped() {
+        self.navigationController?.popToViewController(LoadingScreenViewController.self)
+    }
+
 }
