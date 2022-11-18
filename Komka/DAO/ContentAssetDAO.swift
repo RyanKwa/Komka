@@ -76,7 +76,7 @@ class ContentAssetDAO {
         
         let queryAsset = CKQuery(recordType: RecordType.Asset.rawValue, predicate: assetPredicate)
         let queryOperationAsset = CKQueryOperation(query: queryAsset)
-
+        queryOperationAsset.qualityOfService = .userInitiated
         queryOperationAsset.recordMatchedBlock = { (returnedRecordID, returnedAsset) in
             switch returnedAsset {
             case .success(let record):
