@@ -56,6 +56,9 @@
 		C5D9829128F7C8F200E89F60 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829028F7C8F200E89F60 /* Reward.swift */; };
 		C5D9829328F7C93200E89F60 /* MultipleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829228F7C93200E89F60 /* MultipleChoice.swift */; };
 		C5D9829728F7C98200E89F60 /* ContentAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9829628F7C98200E89F60 /* ContentAsset.swift */; };
+		DC2453D629226FDF000B6C8C /* Komka.png in Resources */ = {isa = PBXBuildFile; fileRef = DC2453D529226FDF000B6C8C /* Komka.png */; };
+		DC2453E029229156000B6C8C /* Potads.png in Resources */ = {isa = PBXBuildFile; fileRef = DC2453DF29229156000B6C8C /* Potads.png */; };
+		DC2453E2292291C3000B6C8C /* SplashScreenBg.png in Resources */ = {isa = PBXBuildFile; fileRef = DC2453E1292291C3000B6C8C /* SplashScreenBg.png */; };
 		DC3F64F62911332E00D5152E /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F64F52911332E00D5152E /* UILabel+Ext.swift */; };
 		DC3F64FA29113B7200D5152E /* Choices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F64F929113B7200D5152E /* Choices.swift */; };
 		DC4B746128F534CF00A9C640 /* ChooseGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B746028F534CF00A9C640 /* ChooseGenderViewController.swift */; };
@@ -156,6 +159,9 @@
 		C5D9829028F7C8F200E89F60 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
 		C5D9829228F7C93200E89F60 /* MultipleChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoice.swift; sourceTree = "<group>"; };
 		C5D9829628F7C98200E89F60 /* ContentAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAsset.swift; sourceTree = "<group>"; };
+		DC2453D529226FDF000B6C8C /* Komka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Komka.png; sourceTree = "<group>"; };
+		DC2453DF29229156000B6C8C /* Potads.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Potads.png; sourceTree = "<group>"; };
+		DC2453E1292291C3000B6C8C /* SplashScreenBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreenBg.png; sourceTree = "<group>"; };
 		DC3F64F52911332E00D5152E /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		DC3F64F929113B7200D5152E /* Choices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Choices.swift; sourceTree = "<group>"; };
 		DC4B746028F534CF00A9C640 /* ChooseGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewController.swift; sourceTree = "<group>"; };
@@ -389,9 +395,9 @@
 			children = (
 				DC8DFDA229064D0E00EEEB64 /* DAO */,
 				DCED8F4628F87B33009F31E3 /* Services */,
-				DC8DFD952905749000EEEB64 /* SoundEffects */,
 				C5D9828928F7BDAE00E89F60 /* Models */,
 				C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */,
+				DC2453E3292291E0000B6C8C /* Media */,
 				C5A343EC2913B051003B18B3 /* LoadingScreen */,
 				C51C4C722900253300CD2184 /* ArrangeWord */,
 				DC4B745F28F5345700A9C640 /* ChooseGender */,
@@ -508,6 +514,25 @@
 				A942016D291E0CCD007634DE /* CloudKit */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DC2453E3292291E0000B6C8C /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				DC8DFD952905749000EEEB64 /* SoundEffects */,
+				DC2453E4292291E8000B6C8C /* SplashScreenAssets */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		DC2453E4292291E8000B6C8C /* SplashScreenAssets */ = {
+			isa = PBXGroup;
+			children = (
+				DC2453E1292291C3000B6C8C /* SplashScreenBg.png */,
+				DC2453D529226FDF000B6C8C /* Komka.png */,
+				DC2453DF29229156000B6C8C /* Potads.png */,
+			);
+			path = SplashScreenAssets;
 			sourceTree = "<group>";
 		};
 		DC4B745F28F5345700A9C640 /* ChooseGender */ = {
@@ -789,8 +814,11 @@
 				A993D81828EB16640052DC92 /* Baloo2-VariableFont_wght.ttf in Resources */,
 				C50B591628E587B7001D42E5 /* LaunchScreen.storyboard in Resources */,
 				DC8DFDA12905921900EEEB64 /* CompletionPage.mp3 in Resources */,
+				DC2453E2292291C3000B6C8C /* SplashScreenBg.png in Resources */,
 				DC8DFD9D290574B300EEEB64 /* Incorrect.mp3 in Resources */,
 				C50B591328E587B7001D42E5 /* Assets.xcassets in Resources */,
+				DC2453D629226FDF000B6C8C /* Komka.png in Resources */,
+				DC2453E029229156000B6C8C /* Potads.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
