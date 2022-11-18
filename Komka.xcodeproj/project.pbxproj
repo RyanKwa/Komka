@@ -47,6 +47,7 @@
 		C542E7BD29080A130001ADD5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C542E7BC29080A130001ADD5 /* RxCocoa */; };
 		C542E7BF29080A130001ADD5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C542E7BE29080A130001ADD5 /* RxSwift */; };
 		C542E7C129080A250001ADD5 /* ArrangeWordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542E7C029080A250001ADD5 /* ArrangeWordViewModel.swift */; };
+		C54855452925119B0094B76E /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54855442925119B0094B76E /* ErrorViewController.swift */; };
 		C5962217290051F700B98B1B /* WordSlotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5962216290051F700B98B1B /* WordSlotCollectionViewCell.swift */; };
 		C5C1A51B291BDEB300DB2C82 /* ArrangeWordViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1A51A291BDEB300DB2C82 /* ArrangeWordViewController+Ext.swift */; };
 		C5D9828728F713D400E89F60 /* MultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D9828628F713D400E89F60 /* MultipleChoiceViewController.swift */; };
@@ -145,6 +146,7 @@
 		C53583BA291A9E3E001727FC /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
 		C53583BD291A9E49001727FC /* LoadingScreenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewModel.swift; sourceTree = "<group>"; };
 		C542E7C029080A250001ADD5 /* ArrangeWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangeWordViewModel.swift; sourceTree = "<group>"; };
+		C54855442925119B0094B76E /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		C5962216290051F700B98B1B /* WordSlotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSlotCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5C1A51A291BDEB300DB2C82 /* ArrangeWordViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArrangeWordViewController+Ext.swift"; sourceTree = "<group>"; };
 		C5C61EBB28EDD010009BF7D0 /* Komka.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Komka.entitlements; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 		C50B590528E587B6001D42E5 /* Komka */ = {
 			isa = PBXGroup;
 			children = (
+				C54855432925117C0094B76E /* ErrorHandling */,
 				DC8DFDA229064D0E00EEEB64 /* DAO */,
 				DCED8F4628F87B33009F31E3 /* Services */,
 				DC8DFD952905749000EEEB64 /* SoundEffects */,
@@ -471,6 +474,14 @@
 				C53583BD291A9E49001727FC /* LoadingScreenViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C54855432925117C0094B76E /* ErrorHandling */ = {
+			isa = PBXGroup;
+			children = (
+				C54855442925119B0094B76E /* ErrorViewController.swift */,
+			);
+			path = ErrorHandling;
 			sourceTree = "<group>";
 		};
 		C5A343EC2913B051003B18B3 /* LoadingScreen */ = {
@@ -855,6 +866,7 @@
 				C53583BE291A9E49001727FC /* LoadingScreenViewModel.swift in Sources */,
 				060A504D2923A12C004752C7 /* LevelButton.swift in Sources */,
 				C5D9829328F7C93200E89F60 /* MultipleChoice.swift in Sources */,
+				C54855452925119B0094B76E /* ErrorViewController.swift in Sources */,
 				DC3F64F62911332E00D5152E /* UILabel+Ext.swift in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
 				DCF95E562916660000EC9FA8 /* UINavigationController+Ext.swift in Sources */,
@@ -1059,13 +1071,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -1094,13 +1106,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.macro.Komka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
