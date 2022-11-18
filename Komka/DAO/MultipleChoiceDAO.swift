@@ -27,8 +27,8 @@ class MultipleChoiceDAO {
         let scenarioPredicate = NSPredicate(format: "recordID == %@", scenarioRecordId)
         let queryScenario = CKQuery(recordType: RecordType.Scenario.rawValue, predicate: scenarioPredicate)
         let queryOperationScenario = CKQueryOperation(query: queryScenario)
+        queryOperationScenario.qualityOfService = .userInitiated
         queryOperationScenario.desiredKeys = ["title", "isCompleted", "sentence", "level", "multipleChoice"]
-        
         queryOperationScenario.recordMatchedBlock = { (returnedRecordID, returnedScenario) in
             switch returnedScenario {
             case .success(let record):

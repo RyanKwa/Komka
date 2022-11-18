@@ -8,7 +8,8 @@
 import UIKit
 import RxSwift
 
-class ChooseScenarioController: ViewController {
+class ChooseScenarioController: ViewController, ErrorViewDelegate {
+
     private lazy var backgroundImg = UIView.createImageView(imageName: "bg")
     private lazy var scenarioLabel = UIView.createLabel(text: "Pilih Skenario", fontSize: 45)
     
@@ -95,8 +96,9 @@ class ChooseScenarioController: ViewController {
         
         Observable.combineLatest(chooseScenarioVM.scenariosPublisher, chooseScenarioVM.assetsPublisher)
             .observe(on: MainScheduler.instance)
-            .subscribe(onCompleted: {
-                self.chooseScenarioVM.levelByScenario(level: LevelScenario.mudah.rawValue)
+            .subscribe( onError: { [weak self] error in
+                print(error.localizedDescription)
+            }, onCompleted: {
                 self.scenarioCollectionView.reloadData()
             })
             .disposed(by: chooseScenarioVM.bag)
@@ -133,6 +135,17 @@ class ChooseScenarioController: ViewController {
         }
         
     }
+
+    //MARK: apply logic when error is ready
+    func closeBtnTapped() {
+        print("Close btn Scenario")
+    }
+
+    //MARK: apply logic when error is ready
+    func cobaLagiBtnTapped() {
+        print("Coba lagi Scenario")
+    }
+
 }
 
 extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource{
