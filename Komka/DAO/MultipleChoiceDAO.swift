@@ -36,14 +36,15 @@ class MultipleChoiceDAO {
                     let scenarioTitle = record["title"] as? String,
                     let scenarioStatus = record["isCompleted"] as? Bool,
                     let scenarioSentence = record["sentence"] as? [String],
-                    let scenarioLevel = record["level"] as? CKRecord.Reference,
-                    let multipleChoice = record["multipleChoice"] as? CKRecord.Reference
+//                    let scenarioLevel = record["level"] as? CKRecord.Reference,
+                    let multipleChoice = record["multipleChoice"] as? CKRecord.Reference,
+                    let levelScenario = record["levelScenario"] as? String
                 else {
                     completion(nil, FetchError.missingData(recordType: RecordType.Scenario))
                     return
                 }
                 
-                self.scenario = Scenario(id: returnedRecordID, title: scenarioTitle, isCompleted: scenarioStatus, sentence: scenarioSentence, level: scenarioLevel, reward: nil, multipleChoice: multipleChoice)
+                self.scenario = Scenario(id: returnedRecordID, title: scenarioTitle, isCompleted: scenarioStatus, sentence: scenarioSentence, reward: nil, multipleChoice: multipleChoice, levelScenario: levelScenario)
                 
                 if let reference = record.value(forKey: "multipleChoice") as? CKRecord.Reference {
                     let predicate = NSPredicate(format: "recordID == %@", reference)

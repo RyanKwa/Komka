@@ -37,7 +37,7 @@ class Button: UIButton {
     private func handleStyleButton() {
         switch style {
         case .active:
-            setBackgroundImage(UIImage(named: "ChooseScenario_LevelActive.svv"), for: .normal)
+            setBackgroundImage(UIImage(named: "ChooseScenario_LevelActive.svg"), for: .normal)
             
         case .idle:
             setBackgroundImage(UIImage(named: "ChooseScenario_LevelIdle.svg"), for: .normal)

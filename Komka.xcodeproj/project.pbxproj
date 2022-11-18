@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060A504D2923A12C004752C7 /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A504C2923A12C004752C7 /* LevelButton.swift */; };
+		067FCE7F292507CD00341E1E /* LevelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FCE7E292507CD00341E1E /* LevelController.swift */; };
+		06ADD66929263BEF0070E45A /* LevelScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ADD66829263BEF0070E45A /* LevelScenario.swift */; };
 		A942016C291DE947007634DE /* SoundPracticeModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A942016B291DE947007634DE /* SoundPracticeModel.mlmodel */; };
 		A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */; };
 		A979929629066E5C00CDD27C /* ScenarioDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979929529066E5C00CDD27C /* ScenarioDAO.swift */; };
@@ -73,7 +76,6 @@
 		DC8DFDA82906A9E900EEEB64 /* MultipleChoiceDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFDA72906A9E900EEEB64 /* MultipleChoiceDAO.swift */; };
 		DCA64B2928FFE8CD004D9D69 /* MultipleChoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA64B2828FFE8CD004D9D69 /* MultipleChoiceViewModel.swift */; };
 		DCA64B2B28FFED91004D9D69 /* CKHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA64B2A28FFED91004D9D69 /* CKHelper.swift */; };
-		DCED8F3F28F80C91009F31E3 /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCED8F3E28F80C91009F31E3 /* LevelButton.swift */; };
 		DCED8F4128F85BF8009F31E3 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCED8F4028F85BF8009F31E3 /* UIImageView+Ext.swift */; };
 		DCED8F4528F865C2009F31E3 /* SoundPracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCED8F4428F865C2009F31E3 /* SoundPracticeViewController.swift */; };
 		DCF95E5429165E1900EC9FA8 /* CompletionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF95E5329165E1900EC9FA8 /* CompletionPageViewController.swift */; };
@@ -103,6 +105,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		060A504C2923A12C004752C7 /* LevelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelButton.swift; sourceTree = "<group>"; };
+		067FCE7E292507CD00341E1E /* LevelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelController.swift; sourceTree = "<group>"; };
+		06ADD66829263BEF0070E45A /* LevelScenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelScenario.swift; sourceTree = "<group>"; };
 		A942016B291DE947007634DE /* SoundPracticeModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SoundPracticeModel.mlmodel; sourceTree = "<group>"; };
 		A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioViewModel.swift; sourceTree = "<group>"; };
 		A979929529066E5C00CDD27C /* ScenarioDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioDAO.swift; sourceTree = "<group>"; };
@@ -171,7 +176,6 @@
 		DC8DFDA72906A9E900EEEB64 /* MultipleChoiceDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceDAO.swift; sourceTree = "<group>"; };
 		DCA64B2828FFE8CD004D9D69 /* MultipleChoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewModel.swift; sourceTree = "<group>"; };
 		DCA64B2A28FFED91004D9D69 /* CKHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKHelper.swift; sourceTree = "<group>"; };
-		DCED8F3E28F80C91009F31E3 /* LevelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelButton.swift; sourceTree = "<group>"; };
 		DCED8F4028F85BF8009F31E3 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		DCED8F4428F865C2009F31E3 /* SoundPracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPracticeViewController.swift; sourceTree = "<group>"; };
 		DCF95E5329165E1900EC9FA8 /* CompletionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionPageViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +215,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		060A504B2923A02F004752C7 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		A942016D291E0CCD007634DE /* CloudKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +298,7 @@
 			children = (
 				A993D82728EC7C870052DC92 /* ScenarioCell.swift */,
 				A993D82328EC68990052DC92 /* ChooseScenarioController.swift */,
+				067FCE7E292507CD00341E1E /* LevelController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -344,6 +356,7 @@
 				DC3F64F929113B7200D5152E /* Choices.swift */,
 				A9E9D4B729125FDB00378FA7 /* RecordType.swift */,
 				C53583B3291A0462001727FC /* Asset.swift */,
+				06ADD66829263BEF0070E45A /* LevelScenario.swift */,
 				DCF95E71291A80C800EC9FA8 /* AssetPart.swift */,
 			);
 			path = CloudKit;
@@ -357,6 +370,7 @@
 				C50B592928E587B7001D42E5 /* KomkaUITests */,
 				C50B590428E587B6001D42E5 /* Products */,
 				C52AC78029098079007EB788 /* Frameworks */,
+				060A504B2923A02F004752C7 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -542,7 +556,7 @@
 			isa = PBXGroup;
 			children = (
 				DC4B747228F53A5200A9C640 /* Button.swift */,
-				DCED8F3E28F80C91009F31E3 /* LevelButton.swift */,
+				060A504C2923A12C004752C7 /* LevelButton.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -801,6 +815,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
 				DC4B746B28F5358500A9C640 /* ReusableComponent.swift in Sources */,
 				DC4B746128F534CF00A9C640 /* ChooseGenderViewController.swift in Sources */,
 				A993D82428EC68990052DC92 /* ChooseScenarioController.swift in Sources */,
@@ -810,7 +825,6 @@
 				A9E9D4B829125FDB00378FA7 /* AssetStepType.swift in Sources */,
 				A993D82828EC7C870052DC92 /* ScenarioCell.swift in Sources */,
 				DCF95E70291A80A200EC9FA8 /* FullSentencesViewModel.swift in Sources */,
-				DCED8F3F28F80C91009F31E3 /* LevelButton.swift in Sources */,
 				DCF95E5429165E1900EC9FA8 /* CompletionPageViewController.swift in Sources */,
 				DCF95E75291A8C9F00EC9FA8 /* SoundPracticeViewModel.swift in Sources */,
 				C5336BD628F8665000AC24A9 /* UIImageView+Ext.swift in Sources */,
@@ -840,6 +854,7 @@
 				A9E89F132919509E008F37CD /* AudioStreamManager.swift in Sources */,
 				DCED8F4128F85BF8009F31E3 /* UIImageView+Ext.swift in Sources */,
 				DC4B747428F53A5200A9C640 /* Button.swift in Sources */,
+				06ADD66929263BEF0070E45A /* LevelScenario.swift in Sources */,
 				C50B591128E587B6001D42E5 /* Komka.xcdatamodeld in Sources */,
 				C53583BC291A9E3E001727FC /* LoadingScreenViewController.swift in Sources */,
 				DCED8F4528F865C2009F31E3 /* SoundPracticeViewController.swift in Sources */,
@@ -849,6 +864,7 @@
 				C5D9829128F7C8F200E89F60 /* Reward.swift in Sources */,
 				DC8DFDA82906A9E900EEEB64 /* MultipleChoiceDAO.swift in Sources */,
 				C53583BE291A9E49001727FC /* LoadingScreenViewModel.swift in Sources */,
+				060A504D2923A12C004752C7 /* LevelButton.swift in Sources */,
 				C5D9829328F7C93200E89F60 /* MultipleChoice.swift in Sources */,
 				DC3F64F62911332E00D5152E /* UILabel+Ext.swift in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
@@ -863,6 +879,7 @@
 				C5082142290FCEAA009A645B /* UIColor+Ext.swift in Sources */,
 				C50821442910036D009A645B /* FetchError.swift in Sources */,
 				C5D9828728F713D400E89F60 /* MultipleChoiceViewController.swift in Sources */,
+				067FCE7F292507CD00341E1E /* LevelController.swift in Sources */,
 				C53583B6291A0671001727FC /* ScenarioData.swift in Sources */,
 				C51C4C742900255200CD2184 /* ArrangeWordViewController.swift in Sources */,
 				A9E89F17291AAB6F008F37CD /* SoundAnalyzer.swift in Sources */,
