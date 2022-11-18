@@ -146,15 +146,6 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
         print("Coba lagi Scenario")
     }
 
-    //MARK: apply logic when error is ready
-    func closeBtnTapped() {
-        print("Close btn Scenario")
-    }
-
-    //MARK: apply logic when error is ready
-    func cobaLagiBtnTapped() {
-        print("Coba lagi Scenario")
-    }
 }
 
 extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource{
