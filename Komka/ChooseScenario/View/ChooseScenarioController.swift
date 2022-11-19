@@ -99,6 +99,7 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
             .subscribe( onError: { [weak self] error in
                 print(error.localizedDescription)
             }, onCompleted: {
+                self.chooseScenarioVM.levelByScenario(level: LevelScenario.mudah.rawValue)
                 self.scenarioCollectionView.reloadData()
             })
             .disposed(by: chooseScenarioVM.bag)
