@@ -55,6 +55,7 @@ class ErrorViewController: ViewController {
     private var alertViewHeight = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
         alertViewWidth = alertView.bounds.size.width
         alertViewHeight = alertView.bounds.size.height
         setupSubview()

@@ -34,14 +34,24 @@ class ChooseScenarioViewModel {
         scenarioDAO.fetchScenarioData()
         contentAssetDAO.fetchCoverAssets()
         
-        scenarioDAO.scenariosPublisher.subscribe(onCompleted: {
+        scenarioDAO.scenariosPublisher.subscribe(
+            onError: { [weak self] error in
+                self?.scenariosPublisher.onError(error)
+                print(error.localizedDescription)
+            },
+            onCompleted: {
             self.scenarios = self.scenarioDAO.scenarios
 
             self.scenariosPublisher.onNext(self.scenarios)
             self.scenariosPublisher.onCompleted()
         }).disposed(by: bag)
         
-        contentAssetDAO.publishAssets.subscribe(onCompleted: {
+        contentAssetDAO.publishAssets.subscribe(
+            onError: { [weak self] error in
+                self?.scenariosPublisher.onError(error)
+                print(error.localizedDescription)
+            },
+            onCompleted: {
             self.assets = self.contentAssetDAO.assets
 
             self.assetsPublisher.onNext(self.assets)
