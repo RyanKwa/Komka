@@ -21,7 +21,7 @@ class ScenarioDAO{
         let query = CKQuery(recordType: RecordType.Scenario.rawValue, predicate: predicate)
         let queryOperation = CKQueryOperation(query: query)
         var fetchedScenario: Scenario? = nil
-        
+        queryOperation.qualityOfService = .userInitiated
         queryOperation.recordMatchedBlock = { returnedRecordID, returnedResult in
             switch returnedResult {
             case .success(let record):
@@ -59,7 +59,7 @@ class ScenarioDAO{
         let queryScenario = CKQuery(recordType: RecordType.Scenario.rawValue, predicate: NSPredicate(value: true))
         queryScenario.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         let queryOperationScenario = CKQueryOperation(query: queryScenario)
-        
+        queryOperationScenario.qualityOfService = .userInitiated
         queryOperationScenario.recordMatchedBlock = { (returnedRecordID, returnedScenario) in
             switch returnedScenario{
             case .success(let record):
