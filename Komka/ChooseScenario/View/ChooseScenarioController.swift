@@ -203,13 +203,13 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard chooseScenarioVM.scenarios.count > 0 && chooseScenarioVM.assets.count > 0 else {
+        guard !chooseScenarioVM.scenarios.isEmpty && !chooseScenarioVM.filteredCoverAssets.isEmpty else {
             collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "default")
             return collectionView.dequeueReusableCell(withReuseIdentifier: "default", for: indexPath)
         }
         guard
             let scenarioCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScenarioCell.identifier, for: indexPath) as? ScenarioCell,
-            let scenarioImage = chooseScenarioVM.assets[indexPath.row].image
+            let scenarioImage = chooseScenarioVM.filteredCoverAssets[indexPath.row].image
         else {
             collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "default")
             return collectionView.dequeueReusableCell(withReuseIdentifier: "default", for: indexPath)

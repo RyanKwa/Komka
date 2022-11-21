@@ -16,6 +16,7 @@ class ChooseScenarioViewModel {
 
     var scenarios: [Scenario] = []
     var assets: [ContentAsset] = []
+    var filteredCoverAssets: [ContentAsset] = []
     var scenarioPerLevel: [Scenario] = []
     
     var level: String?
@@ -58,10 +59,22 @@ class ChooseScenarioViewModel {
             },
             onCompleted: {
             self.assets = self.contentAssetDAO.assets
-
-            self.assetsPublisher.onNext(self.assets)
+            self.filterScenarioCoverAsset()
+                
+            self.assetsPublisher.onNext(self.filteredCoverAssets)
             self.assetsPublisher.onCompleted()
         }).disposed(by: bag)
+    }
+    
+    private func filterScenarioCoverAsset() {
+        var uniqueAssetTitle = Set<String>()
+
+        for asset in assets {
+            if !uniqueAssetTitle.contains(asset.title) {
+                filteredCoverAssets.append(asset)
+                uniqueAssetTitle.insert(asset.title)
+            }
+        }
     }
     
     func updateCompletedScenarioValue() -> Int {
