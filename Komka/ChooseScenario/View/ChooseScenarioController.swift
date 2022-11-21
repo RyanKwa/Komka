@@ -69,11 +69,51 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
         scenarioCollectionView.showsHorizontalScrollIndicator = false
     }
     
+    private func createToast(level: String){
+        let toastLabel = UILabel.createLabel(text: "Selamat! Level \(level.capitalized) sudah terbuka", fontSize: 25)
+        toastLabel.backgroundColor = .white.withAlphaComponent(1)
+        toastLabel.textAlignment = .center
+        toastLabel.layer.cornerRadius = 10
+        toastLabel.clipsToBounds = true
+        
+        view.addSubview(toastLabel)
+        toastLabel.centerX(inView: view)
+        toastLabel.anchor(top: levelStackView.bottomAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/50)
+        toastLabel.setDimensions(width: ScreenSizeConfiguration.SCREEN_WIDTH/2.3, height: 45)
+        
+        UIView.animate(withDuration: 5.0, delay: 0.5, options: .curveEaseIn) {
+            toastLabel.alpha = 0.0
+        } completion: { isCompleted in
+            toastLabel.removeFromSuperview()
+        }
+    }
+    
+    private func showToast(){
+        Observable.combineLatest(chooseScenarioVM.scenariosPublisher, chooseScenarioVM.assetsPublisher)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onCompleted: { [self] in
+                if(chooseScenarioVM.isCompleted == chooseScenarioVM.scenarioPerLevel.count) {
+                    createToast(level: LevelScenario.sedang.rawValue)
+                }
+                else if (chooseScenarioVM.isCompleted == (chooseScenarioVM.scenarioPerLevel.count * 2)) {
+                    createToast(level: LevelScenario.sulit.rawValue)
+                }
+            })
+            .disposed(by: chooseScenarioVM.bag)
+    }
+    
     private func addSubView(){
         view.addSubview(backgroundImg)
         backgroundImg.addSubview(scenarioLabel)
         view.addSubview(scenarioCollectionView)
         view.addSubview(levelStackView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        
+        chooseScenarioVM.isCompleted = chooseScenarioVM.updateCompletedScenarioValue()
+        showToast()
     }
     
     override func viewDidLoad() {
@@ -84,15 +124,7 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
         levelController.buttonsArray = [mudahButton, sedangButton, susahButton]
         levelController.defaultButton = mudahButton
         
-        addSubView()
-        setCollectionView()
-        setupAutoLayout()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        chooseScenarioVM = ChooseScenarioViewModel()
         chooseScenarioVM.fetchScenario()
-        chooseScenarioVM.setUnlock()
         
         Observable.combineLatest(chooseScenarioVM.scenariosPublisher, chooseScenarioVM.assetsPublisher)
             .observe(on: MainScheduler())
@@ -111,7 +143,10 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
                 self.scenarioCollectionView.reloadData()
             })
             .disposed(by: chooseScenarioVM.bag)
-
+        
+        addSubView()
+        setCollectionView()
+        setupAutoLayout()
     }
     
     func setupAutoLayout() {
@@ -130,16 +165,14 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
         switch sender{
         case mudahButton:
             self.chooseScenarioVM.levelByScenario(level: LevelScenario.mudah.rawValue)
-            self.scenarioCollectionView.reloadData()
         case sedangButton:
             self.chooseScenarioVM.levelByScenario(level: LevelScenario.sedang.rawValue)
-            self.scenarioCollectionView.reloadData()
         case susahButton:
             self.chooseScenarioVM.levelByScenario(level: LevelScenario.sulit.rawValue)
-            self.scenarioCollectionView.reloadData()
         default:
             break
         }
+        self.scenarioCollectionView.reloadData()
     }
 
     func closeBtnTapped() {
@@ -157,7 +190,6 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
         return CGSize(width: ScreenSizeConfiguration.SCREEN_WIDTH/2.7, height: ScreenSizeConfiguration.SCREEN_HEIGHT/2.2)
     }
     
-    //Spacing between section atau cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt: Int) -> CGFloat {
         return 36
     }
@@ -183,44 +215,49 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
         scenarioCell.scenarioLabel.addCharacterSpacing()
         scenarioCell.scenarioImg.image = UIImage.changeImageFromURL(baseImage: scenarioImage)
         
-        chooseScenarioVM.unlockPublisher.subscribe { [self] _ in
-            if(chooseScenarioVM.isCompleted ?? 0 < chooseScenarioVM.nextLevelPoint ?? 0) {
-                scenarioCell.addLockOverlay()
-            }
-        }.disposed(by: chooseScenarioVM.bag)
+        let scenarioLevel = chooseScenarioVM.scenarioPerLevel[indexPath.row].levelScenario
         
-        //        completionVM.completionPublisher.subscribe { [self] nextLevelPointsNeeded in
-        //            if(completionVM.isCompleted < nextLevelPointsNeeded) {
-        //                scenarioCell.addLockOverlay()
-        //            }
-        //        }.disposed(by: completionVM.disposeBag)
-        //
+        if (chooseScenarioVM.isCompleted ?? 0 < chooseScenarioVM.scenarioPerLevel.count) {
+            if(scenarioLevel == LevelScenario.sedang.rawValue || scenarioLevel == LevelScenario.sulit.rawValue) {
+                scenarioCell.addLockOverlay(isHidden: false)
+            }
+            else {
+                scenarioCell.addLockOverlay(isHidden: true)
+            }
+        }
+        else if (chooseScenarioVM.isCompleted ?? 0 < (chooseScenarioVM.scenarioPerLevel.count * 2)) {
+            if(scenarioLevel == LevelScenario.sulit.rawValue) {
+                scenarioCell.addLockOverlay(isHidden: false)
+            }
+            else {
+                scenarioCell.addLockOverlay(isHidden: true)
+            }
+        }
         return scenarioCell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func moveToNextPage(didSelectItemAt indexPath: IndexPath){
         let stepViewController = MultipleChoiceViewController()
         stepViewController.selectedScenarioId = chooseScenarioVM.scenarioPerLevel[indexPath.row].id
         self.navigationController?.pushViewController(stepViewController, animated: false)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let scenarioLevel = chooseScenarioVM.scenarioPerLevel[indexPath.row].levelScenario
         
-        chooseScenarioVM.unlockPublisher.subscribe { [self] _ in
-            if(chooseScenarioVM.isCompleted ?? 0 >= chooseScenarioVM.nextLevelPoint ?? 0) {
-                let stepViewController = MultipleChoiceViewController()
-                stepViewController.selectedScenarioId = chooseScenarioVM.scenarios[indexPath.row].id
-                self.navigationController?.pushViewController(stepViewController, animated: false)
+        if(chooseScenarioVM.isCompleted ?? 0 < chooseScenarioVM.scenarioPerLevel.count) {
+            if(scenarioLevel == LevelScenario.mudah.rawValue){
+                moveToNextPage(didSelectItemAt: indexPath)
             }
-        }.disposed(by: chooseScenarioVM.bag)
-        
-        //        completionVM.completionPublisher.subscribe { [self] nextLevelPointsNeeded in
-        //            if(completionVM.isCompleted < nextLevelPointsNeeded) {
-        //
-        //            }
-        //            else{
-        //                let stepViewController = MultipleChoiceViewController()
-        //                stepViewController.selectedScenarioId = chooseScenarioVM.scenarios[indexPath.row].id
-        //                self.navigationController?.pushViewController(stepViewController, animated: false)
-        //            }
-        //        }.disposed(by: completionVM.disposeBag)
+        }
+        else if (chooseScenarioVM.isCompleted ?? 0 < (chooseScenarioVM.scenarioPerLevel.count * 2)) {
+            if(scenarioLevel == LevelScenario.mudah.rawValue || scenarioLevel == LevelScenario.sedang.rawValue){
+                moveToNextPage(didSelectItemAt: indexPath)
+            }
+        }
+        else {
+            moveToNextPage(didSelectItemAt: indexPath)
+        }
     }
 }
 
