@@ -39,7 +39,7 @@ class MultipleChoiceDAO {
                     let multipleChoice = record["multipleChoice"] as? CKRecord.Reference,
                     let levelScenario = record["levelScenario"] as? String
                 else {
-                    completion(nil, FetchError.missingData(recordType: RecordType.Scenario))
+                    completion(nil, FetchError.missingData(recordType: RecordType.MultipleChoice))
                     return
                 }
                 
@@ -84,7 +84,7 @@ class MultipleChoiceDAO {
                 }
                 
             case .failure(_):
-                completion(nil, FetchError.failedQuery(recordType: RecordType.Scenario))
+                completion(nil, FetchError.failedQuery(recordType: RecordType.MultipleChoice))
             }
         }
         

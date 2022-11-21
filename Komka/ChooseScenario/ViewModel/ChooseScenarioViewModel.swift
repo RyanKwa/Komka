@@ -25,18 +25,15 @@ class ChooseScenarioViewModel {
     var unlockPublisher = PublishSubject<Int>()
     
     var bag = DisposeBag()
-        
-    
-//    let isCompleted = NSUbiquitousKeyValueStore.default.completedScenario.count
+
+    var completionPageVM = CompletionPageViewModel()
     
     func levelByScenario(level: String){
         let filteredLevel = scenarios.filter { $0.levelScenario == level }
         scenarioPerLevel = filteredLevel
     }
 
-    var completionVM = CompletionPageViewModel()
     var isCompleted: Int?
-    var nextLevelPoint: Int?
 
     func fetchScenario(){
         scenarioDAO.fetchScenarioData()
@@ -67,12 +64,7 @@ class ChooseScenarioViewModel {
         }).disposed(by: bag)
     }
     
-    func setUnlock(){
-        completionVM.completionPublisher.subscribe { [self] _ in
-            isCompleted = completionVM.isCompleted
-            nextLevelPoint = completionVM.nextLevelPointsNeeded
-            
-            unlockPublisher.onNext(isCompleted ?? 0)
-        }.disposed(by: completionVM.disposeBag)
+    func updateCompletedScenarioValue() -> Int {
+        return NSUbiquitousKeyValueStore.default.completedScenario.count
     }
 }

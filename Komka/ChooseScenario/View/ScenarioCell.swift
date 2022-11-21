@@ -53,17 +53,27 @@ class ScenarioCell: UICollectionViewCell {
         ovalShadow()
     }
     
-    func addLockOverlay(){
+    func addLockOverlay(isHidden: Bool){
         let overlay: UIView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height))
-        overlay.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        overlay.clipsToBounds = true
-        
         let lockImage = UIView.createImageView(imageName: "Lock.png")
-        
-        contentView.addSubview(overlay)
-        contentView.addSubview(lockImage)
-        
-        lockImage.center(inView: contentView)
+
+        overlay.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        overlay.clipsToBounds = true
+
+        if (!isHidden) {
+            overlay.tag = 1
+            if contentView.viewWithTag(1) == nil {
+                contentView.addSubview(overlay)
+                contentView.addSubview(lockImage)
+                lockImage.center(inView: contentView)
+            }
+        }
+        else {
+            if contentView.viewWithTag(1) != nil{
+                contentView.subviews[2].removeFromSuperview()
+                contentView.subviews[2].removeFromSuperview()
+            }
+        }
     }
     
     override init(frame: CGRect) {
