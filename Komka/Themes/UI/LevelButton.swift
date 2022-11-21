@@ -16,6 +16,8 @@ struct LevelButtonVM{
 
 class LevelButton: UIButton {
     
+    var buttonsArray: [UIButton]!  
+    
     override init(frame: CGRect){
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -30,4 +32,6 @@ class LevelButton: UIButton {
         titleLabel?.font = UIFont(name: "Baloo2-ExtraBold", size: viewModel.size)
 
     }
+    
+    
 }

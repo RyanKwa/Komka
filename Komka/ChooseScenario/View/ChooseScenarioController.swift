@@ -13,28 +13,26 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
     private lazy var backgroundImg = UIView.createImageView(imageName: "bg")
     private lazy var scenarioLabel = UIView.createLabel(text: "Pilih Skenario", fontSize: 45)
 
+
     private var mudahButton: UIButton = {
-        let button = LevelController()
-        button.configure(with: buttonVM(title: "Mudah", size: 30))
+        let button = Button(style: .active, title: "Mudah")
         button.addTarget(self, action: #selector(levelBtnTapped), for: .touchUpInside)
+        
         return button
     }()
-    
+
     private var sedangButton: UIButton = {
-        let button = UIButton()
+        let button = Button(style: .idle, title: "Sedang")
         button.addTarget(self, action: #selector(levelBtnTapped), for: .touchUpInside)
-        
         return button
     }()
-    
+
     private var susahButton: UIButton = {
-        let button = UIButton()
+        let button = Button(style: .idle, title: "Susah")
         button.addTarget(self, action: #selector(levelBtnTapped), for: .touchUpInside)
-        
         return button
     }()
     
-    private let levelController = LevelController()
     
     private lazy var levelStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [mudahButton, sedangButton, susahButton])
@@ -118,9 +116,7 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-        
-        levelController.buttonsArray = [mudahButton, sedangButton, susahButton]
-        levelController.defaultButton = mudahButton
+        mudahButton.isSelected = true
         
         chooseScenarioVM.fetchScenario()
         
@@ -154,12 +150,21 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
         levelStackView.anchor(top: scenarioLabel.bottomAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/25, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/20)
         levelStackView.centerX(inView: backgroundImg)
         
+
+        
         scenarioCollectionView.anchor(top: levelStackView.bottomAnchor, left: backgroundImg.leftAnchor, bottom: backgroundImg.bottomAnchor, right: backgroundImg.rightAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/20, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/50, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/7, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/50)
     }
     
     @objc func levelBtnTapped(_ sender: UIButton){
-        levelController.buttonArrayUpdated(buttonSelected: sender)
+        let buttonArray = [mudahButton, sedangButton, susahButton]
+        for buttons in buttonArray{
+             if let button = buttons as? UIButton {
+                 button.isSelected = false
+             }
+         }
+        sender.isSelected = true
         
+ 
         switch sender{
         case mudahButton:
             self.chooseScenarioVM.levelByScenario(level: LevelScenario.mudah.rawValue)
@@ -171,6 +176,7 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
             break
         }
         self.scenarioCollectionView.reloadData()
+
     }
 
     func closeBtnTapped() {

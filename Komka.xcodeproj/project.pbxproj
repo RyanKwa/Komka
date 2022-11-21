@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		060A504D2923A12C004752C7 /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A504C2923A12C004752C7 /* LevelButton.swift */; };
 		067FCE7F292507CD00341E1E /* LevelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FCE7E292507CD00341E1E /* LevelController.swift */; };
+		068E8F17292BCF4500A7AAFB /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068E8F16292BCF4500A7AAFB /* Button.swift */; };
 		06ADD66929263BEF0070E45A /* LevelScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ADD66829263BEF0070E45A /* LevelScenario.swift */; };
 		A92ECC39292BBB8400126DE3 /* SoundPracticeModel_Rev.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A92ECC38292BBB8400126DE3 /* SoundPracticeModel_Rev.mlmodel */; };
 		A942017229225070007634DE /* CompletionPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942017129225070007634DE /* CompletionPageViewModel.swift */; };
@@ -106,6 +107,7 @@
 /* Begin PBXFileReference section */
 		060A504C2923A12C004752C7 /* LevelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelButton.swift; sourceTree = "<group>"; };
 		067FCE7E292507CD00341E1E /* LevelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelController.swift; sourceTree = "<group>"; };
+		068E8F16292BCF4500A7AAFB /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		06ADD66829263BEF0070E45A /* LevelScenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelScenario.swift; sourceTree = "<group>"; };
 		A92ECC38292BBB8400126DE3 /* SoundPracticeModel_Rev.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SoundPracticeModel_Rev.mlmodel; sourceTree = "<group>"; };
 		A942017129225070007634DE /* CompletionPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionPageViewModel.swift; sourceTree = "<group>"; };
@@ -586,6 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				060A504C2923A12C004752C7 /* LevelButton.swift */,
+				068E8F16292BCF4500A7AAFB /* Button.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 				06ADD66929263BEF0070E45A /* LevelScenario.swift in Sources */,
 				C50B591128E587B6001D42E5 /* Komka.xcdatamodeld in Sources */,
 				C53583BC291A9E3E001727FC /* LoadingScreenViewController.swift in Sources */,
+				068E8F17292BCF4500A7AAFB /* Button.swift in Sources */,
 				A942017229225070007634DE /* CompletionPageViewModel.swift in Sources */,
 				DCED8F4528F865C2009F31E3 /* SoundPracticeViewController.swift in Sources */,
 				C5D9829728F7C98200E89F60 /* ContentAsset.swift in Sources */,
