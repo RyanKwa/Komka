@@ -22,9 +22,8 @@ class SoundPracticeViewController: ViewController {
     private lazy var instructionLbl = UIView.createLabel(text: "Ulangi kata dibawah ini", fontSize: 40)
     
     private lazy var nextBtn: UIButton = {
-        let button = Button(style: .active, title: "Lanjut")
-        button.setBackgroundImage(UIImage(named: "LanjutMulaiBtn"), for: .normal)
-        
+        let button = LevelButton()
+        button.configure(with: LevelButtonVM(title: "Lanjut", image: "LanjutMulaiBtn", size: 30))
         button.addTarget(self, action: #selector(nextBtnTapped), for: .touchUpInside)
         
         return button
@@ -70,7 +69,7 @@ class SoundPracticeViewController: ViewController {
     
     private func setUpSoundPracticeData(){
         wordText = soundPracticeVM.getSoundPracticeWord(wordCounter: soundPracticeVM.queueWordCounter)
-        scenarioCoverImage = UIImage.changeImageFromURL(baseImage: soundPracticeVM.getSoundPracticeAssetPart(wordText: AssetStepType.Cover.rawValue, soundPracticePart: .scenarioCover))
+        scenarioCoverImage = UIImage.changeImageFromURL(baseImage: soundPracticeVM.getSoundPracticeAssetPart(wordText: Asset.Step.Cover.rawValue, soundPracticePart: .scenarioCover))
         soundPracticeCharacterImage = UIImage.changeImageFromURL(baseImage: soundPracticeVM.getSoundPracticeAssetPart(wordText: wordText, soundPracticePart: .soundPracticeCharacter))
         circularProgressBarView = CircularProgressBarView(frame: .zero, wordText: wordText, scenarioCoverImage: scenarioCoverImage ?? UIImage(), soundPracticeCharacterImage: soundPracticeCharacterImage ?? UIImage())
     }

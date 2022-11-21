@@ -97,7 +97,6 @@ class LoadingScreenViewController: ViewController, ErrorViewDelegate {
         promptLabel.anchor(top: backgroundImage.topAnchor, bottom: horizontalProgressBar.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/3)
     }
     
-    //Delegate
     func closeBtnTapped() {
         self.navigationController?.popToViewController(ChooseScenarioController.self)
     }

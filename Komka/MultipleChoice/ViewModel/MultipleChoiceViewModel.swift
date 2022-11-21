@@ -18,7 +18,7 @@ class MultipleChoiceViewModel {
     
     func getMultipleChoiceAssets() {
         let assets = scenarioData.getAssetsData() ?? []
-        let filteredMultipleChoiceAsset = assets.filter { $0.step == AssetStepType.MultipleChoice.rawValue || $0.step == AssetStepType.Cover.rawValue }
+        let filteredMultipleChoiceAsset = assets.filter { $0.step == Asset.Step.MultipleChoice.rawValue || $0.step == Asset.Step.Cover.rawValue }
         multipleChoiceAssets = filteredMultipleChoiceAsset
     }
     
@@ -29,7 +29,7 @@ class MultipleChoiceViewModel {
         correctAnswer = multipleChoice?.answer
     }
     
-    func getMultipleChoiceAssetPart(_ multipleChoicePart: AssetPart) -> CKAsset? {
+    func getMultipleChoiceAssetPart(_ multipleChoicePart: Asset.Part) -> CKAsset? {
         let filteredAsset = multipleChoiceAssets.filter { $0.part == multipleChoicePart.rawValue }
         let image: CKAsset? = filteredAsset.first?.image
         
