@@ -20,7 +20,7 @@ class ContentAssetDAO {
     }
     
     func fetchCoverAssets(){
-        let step = AssetStepType.Cover.rawValue
+        let step = Asset.Step.Cover.rawValue
         let gender = NSUbiquitousKeyValueStore.default.hasChooseGender
         
         let assetPredicate = NSPredicate(format: "step == %@", step)

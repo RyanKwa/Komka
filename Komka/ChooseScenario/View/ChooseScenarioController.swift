@@ -79,7 +79,6 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         
-        //For level button array
         levelController.buttonsArray = [mudahButton, sedangButton, susahButton]
         levelController.defaultButton = mudahButton
         

@@ -42,7 +42,7 @@ class SoundPracticeViewModel {
     
     func getSoundPracticeAssets(){
         let assets = scenarioData.getAssetsData() ?? []
-        let filteredSoundPracticeAssets = assets.filter { $0.step == AssetStepType.SoundPractice.rawValue || $0.step == AssetStepType.Cover.rawValue }
+        let filteredSoundPracticeAssets = assets.filter { $0.step == Asset.Step.SoundPractice.rawValue || $0.step == Asset.Step.Cover.rawValue }
         soundPracticeAssets = filteredSoundPracticeAssets
     }
     
@@ -55,10 +55,10 @@ class SoundPracticeViewModel {
         return word
     }
     
-    func getSoundPracticeAssetPart(wordText: String, soundPracticePart: AssetPart) -> CKAsset? {
+    func getSoundPracticeAssetPart(wordText: String, soundPracticePart: Asset.Part) -> CKAsset? {
         var filteredAsset: [ContentAsset]
         
-        if wordText == AssetStepType.Cover.rawValue {
+        if wordText == Asset.Step.Cover.rawValue {
             filteredAsset = soundPracticeAssets.filter { $0.part == soundPracticePart.rawValue }
         } else {
             filteredAsset = soundPracticeAssets.filter { $0.part == soundPracticePart.rawValue && $0.title.lowercased() == wordText.lowercased() }

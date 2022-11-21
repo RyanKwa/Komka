@@ -17,7 +17,7 @@ class ArrangeWordViewModel {
     
     func getArrangeWordAssets() {
         let assets = scenarioData.getAssetsData() ?? []
-        let filteredArrangeWordAssets = assets.filter { $0.step == AssetStepType.ArrangeWord.rawValue || $0.step == AssetStepType.Cover.rawValue }
+        let filteredArrangeWordAssets = assets.filter { $0.step == Asset.Step.ArrangeWord.rawValue || $0.step == Asset.Step.Cover.rawValue }
         arrangeWordAssets = filteredArrangeWordAssets
     }
     
@@ -26,7 +26,7 @@ class ArrangeWordViewModel {
         return sentence
     }
     
-    func getArrangeWordAssetPart(_ arrangeWordPart: AssetPart) -> CKAsset? {
+    func getArrangeWordAssetPart(_ arrangeWordPart: Asset.Part) -> CKAsset? {
         let filteredAsset = arrangeWordAssets.filter { $0.part == arrangeWordPart.rawValue }
         let image: CKAsset? = filteredAsset.first?.image
         

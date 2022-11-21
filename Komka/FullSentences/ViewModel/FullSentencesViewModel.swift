@@ -24,11 +24,11 @@ class FullSentencesViewModel {
     
     func getFullSentenceAssets(){
         let assets = scenarioData.getAssetsData() ?? []
-        let filteredFullSentenceAssets = assets.filter { $0.step == AssetStepType.FullSentence.rawValue || $0.step == AssetStepType.Cover.rawValue }
+        let filteredFullSentenceAssets = assets.filter { $0.step == Asset.Step.FullSentence.rawValue || $0.step == Asset.Step.Cover.rawValue }
         fullSentenceAssets = filteredFullSentenceAssets
     }
     
-    func getFullSentenceAssetPart(_ fullSentencePart: AssetPart) -> CKAsset? {
+    func getFullSentenceAssetPart(_ fullSentencePart: Asset.Part) -> CKAsset? {
         let filteredAsset = fullSentenceAssets.filter { $0.part == fullSentencePart.rawValue }
         let image: CKAsset? = filteredAsset.first?.image
         
