@@ -67,7 +67,15 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
     }
     
     private func createToast(level: String){
-        let toastLabel = UILabel.createLabel(text: "Selamat! Level \(level.capitalized) sudah terbuka", fontSize: 25)
+        let unlockImage = NSTextAttachment()
+        unlockImage.image = UIImage(systemName: "lock.open.fill")
+        
+        let labelString = NSMutableAttributedString(string: "Selamat! Level \(level.capitalized) sudah terbuka ")
+        labelString.append(NSAttributedString(attachment: unlockImage))
+
+        let toastLabel = UILabel()
+        toastLabel.font = UIFont.balooFont(size: 25)
+        toastLabel.attributedText = labelString
         toastLabel.backgroundColor = .white.withAlphaComponent(1)
         toastLabel.textAlignment = .center
         toastLabel.layer.cornerRadius = 10
