@@ -12,14 +12,6 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
 
     private lazy var backgroundImg = UIView.createImageView(imageName: "bg")
     private lazy var scenarioLabel = UIView.createLabel(text: "Pilih Skenario", fontSize: 45)
-    
-    
-//    private lazy var mudahButton: UIButton = {
-//        let button = LevelButton()
-//        button.configure(with: LevelButtonVM(title: "Mudah", image: "ChooseScenario_LevelIdle", size: 30))
-//        button.addTarget(self, action: #selector(levelBtnTapped), for: .touchUpInside)
-//        
-//        return button
 
     private var mudahButton: UIButton = {
         let button = LevelController()
@@ -91,21 +83,33 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
         levelController.buttonsArray = [mudahButton, sedangButton, susahButton]
         levelController.defaultButton = mudahButton
         
-        
-        chooseScenarioVM.fetchScenario()
-        
-        Observable.combineLatest(chooseScenarioVM.scenariosPublisher, chooseScenarioVM.assetsPublisher)
-            .observe(on: MainScheduler.instance)
-            .subscribe( onError: { [weak self] error in
-                print(error.localizedDescription)
-            }, onCompleted: {
-                self.scenarioCollectionView.reloadData()
-            })
-            .disposed(by: chooseScenarioVM.bag)
-        
         addSubView()
         setCollectionView()
         setupAutoLayout()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        chooseScenarioVM = ChooseScenarioViewModel()
+        chooseScenarioVM.fetchScenario()
+        
+        Observable.combineLatest(chooseScenarioVM.scenariosPublisher, chooseScenarioVM.assetsPublisher)
+            .observe(on: MainScheduler())
+            .subscribe(onError: { [weak self] error in
+                if let fetchError = error as? FetchError {
+                    let errorView = ErrorViewController()
+                    errorView.delegate = self
+                    errorView.errorDescription = fetchError.localizedDescription
+                    errorView.errorTitleMessage = fetchError.errorTitle
+                    errorView.errorGuidance = fetchError.errorGuidance
+                    print(error.localizedDescription)
+                    self?.navigationController?.pushViewController(errorView, animated: false)
+                }
+            }, onCompleted: {
+                self.chooseScenarioVM.levelByScenario(level: LevelScenario.mudah.rawValue)
+                self.scenarioCollectionView.reloadData()
+            })
+            .disposed(by: chooseScenarioVM.bag)
+
     }
     func setupAutoLayout() {
         scenarioLabel.anchor(top: backgroundImg.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/15)
@@ -136,14 +140,12 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
         
     }
 
-    //MARK: apply logic when error is ready
     func closeBtnTapped() {
-        print("Close btn Scenario")
+        self.navigationController?.popToViewController(ChooseScenarioController.self)
     }
 
-    //MARK: apply logic when error is ready
     func cobaLagiBtnTapped() {
-        print("Coba lagi Scenario")
+        self.navigationController?.popToViewController(ChooseScenarioController.self)
     }
 
 }
@@ -163,10 +165,17 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard chooseScenarioVM.scenarios.count > 0 && chooseScenarioVM.assets.count > 0 else {
+            collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "default")
+            return collectionView.dequeueReusableCell(withReuseIdentifier: "default", for: indexPath)
+        }
         guard
             let scenarioCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScenarioCell.identifier, for: indexPath) as? ScenarioCell,
             let scenarioImage = chooseScenarioVM.assets[indexPath.row].image
-        else { return UICollectionViewCell() }
+        else {
+            collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "default")
+            return collectionView.dequeueReusableCell(withReuseIdentifier: "default", for: indexPath)
+        }
         let scenarioTitle = chooseScenarioVM.scenarioPerLevel[indexPath.row].title
         scenarioCell.scenarioLabel.text = scenarioTitle
         scenarioCell.scenarioLabel.addCharacterSpacing()
@@ -176,9 +185,9 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let stepViewController = MultipleChoiceViewController()
-        stepViewController.selectedScenarioId = chooseScenarioVM.scenarioPerLevel[indexPath.row].id
-        self.navigationController?.pushViewController(stepViewController, animated: false)
+        let multipleChoiceVC = MultipleChoiceViewController()
+        multipleChoiceVC.selectedScenarioId = chooseScenarioVM.scenarioPerLevel[indexPath.row].id
+        self.navigationController?.pushViewController(multipleChoiceVC, animated: false)
     }
     
 }
