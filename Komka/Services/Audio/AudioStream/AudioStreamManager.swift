@@ -83,7 +83,7 @@ class AudioStreamManager {
     
     private func prepareSoundClassifier(){
         let config = MLModelConfiguration()
-        let soundClassifier = try? SoundPracticeModel(configuration: config)
+        let soundClassifier = try? SoundPracticeModel_Rev(configuration: config)
         
         guard let soundClassifier = soundClassifier else{
             print("ERROR: Model doesn't Exist")
