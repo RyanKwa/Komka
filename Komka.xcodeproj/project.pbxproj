@@ -11,6 +11,7 @@
 		067FCE7F292507CD00341E1E /* LevelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FCE7E292507CD00341E1E /* LevelController.swift */; };
 		06ADD66929263BEF0070E45A /* LevelScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ADD66829263BEF0070E45A /* LevelScenario.swift */; };
 		A942016C291DE947007634DE /* SoundPracticeModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A942016B291DE947007634DE /* SoundPracticeModel.mlmodel */; };
+		A92ECC37292B83FB00126DE3 /* SoundPracticeModel_Rev.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A92ECC36292B83FB00126DE3 /* SoundPracticeModel_Rev.mlmodel */; };
 		A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */; };
 		A979929629066E5C00CDD27C /* ScenarioDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979929529066E5C00CDD27C /* ScenarioDAO.swift */; };
 		A993D81828EB16640052DC92 /* Baloo2-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */; };
@@ -112,6 +113,7 @@
 		067FCE7E292507CD00341E1E /* LevelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelController.swift; sourceTree = "<group>"; };
 		06ADD66829263BEF0070E45A /* LevelScenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelScenario.swift; sourceTree = "<group>"; };
 		A942016B291DE947007634DE /* SoundPracticeModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SoundPracticeModel.mlmodel; sourceTree = "<group>"; };
+		A92ECC36292B83FB00126DE3 /* SoundPracticeModel_Rev.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SoundPracticeModel_Rev.mlmodel; sourceTree = "<group>"; };
 		A96B643628F5BC9800E23BB2 /* ChooseScenarioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScenarioViewModel.swift; sourceTree = "<group>"; };
 		A979929529066E5C00CDD27C /* ScenarioDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioDAO.swift; sourceTree = "<group>"; };
 		A993D81728EB16640052DC92 /* Baloo2-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Baloo2-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -243,7 +245,7 @@
 		A942016E291E0CD9007634DE /* SoundPractice */ = {
 			isa = PBXGroup;
 			children = (
-				A942016B291DE947007634DE /* SoundPracticeModel.mlmodel */,
+				A92ECC36292B83FB00126DE3 /* SoundPracticeModel_Rev.mlmodel */,
 			);
 			path = SoundPractice;
 			sourceTree = "<group>";
@@ -877,7 +879,6 @@
 				A9B1761E28FD3667005F2FC1 /* UIImage+Ext.swift in Sources */,
 				DC4B746828F5355700A9C640 /* ScreenSizeConfiguration.swift in Sources */,
 				DC8DFDA62906A6E000EEEB64 /* ContentAssetDAO.swift in Sources */,
-				A942016C291DE947007634DE /* SoundPracticeModel.mlmodel in Sources */,
 				DC4B746528F5351D00A9C640 /* ChooseGenderViewModel.swift in Sources */,
 				A9E89F132919509E008F37CD /* AudioStreamManager.swift in Sources */,
 				DCED8F4128F85BF8009F31E3 /* UIImageView+Ext.swift in Sources */,
@@ -897,6 +898,7 @@
 				C54855452925119B0094B76E /* ErrorViewController.swift in Sources */,
 				DC3F64F62911332E00D5152E /* UILabel+Ext.swift in Sources */,
 				C50B590728E587B6001D42E5 /* AppDelegate.swift in Sources */,
+				A92ECC37292B83FB00126DE3 /* SoundPracticeModel_Rev.mlmodel in Sources */,
 				DCF95E562916660000EC9FA8 /* UINavigationController+Ext.swift in Sources */,
 				A96B643728F5BC9800E23BB2 /* ChooseScenarioViewModel.swift in Sources */,
 				DCF95E72291A80C800EC9FA8 /* AssetPart.swift in Sources */,
