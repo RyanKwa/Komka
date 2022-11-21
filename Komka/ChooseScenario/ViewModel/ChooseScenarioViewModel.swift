@@ -22,7 +22,6 @@ class ChooseScenarioViewModel {
     
     var scenariosPublisher = PublishSubject<[Scenario]>()
     var assetsPublisher = PublishSubject<[ContentAsset]>()
-    var unlockPublisher = PublishSubject<Int>()
     
     var bag = DisposeBag()
 
