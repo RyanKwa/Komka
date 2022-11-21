@@ -13,7 +13,9 @@ struct buttonVM{
 }
 
 class LevelController: UIButton {
-    var buttonsArray: [UIButton]!  {
+    var buttonsArray: [UIButton] = [] {
+        // MARK: didSet is called immediately after the new value is stored.
+        // MARK: Set button property after the new value is assigned
         didSet {
             for button in buttonsArray {
                 button.setImage(UIImage(named: "ChooseScenario_LevelIdle"), for: .normal)
@@ -22,13 +24,17 @@ class LevelController: UIButton {
             }
         }
     }
+    
     var selectedButton: UIButton?
+    
+    // MARK: set default selected button a.k.a mudah
     var defaultButton: UIButton = UIButton() {
         didSet {
             buttonArrayUpdated(buttonSelected: self.defaultButton)
         }
     }
     
+    // MARK: update selected button
     func buttonArrayUpdated(buttonSelected: UIButton) {
         for button in buttonsArray {
             if button == buttonSelected {
@@ -40,11 +46,9 @@ class LevelController: UIButton {
         }
     }
     
+    //MARK: set button configuration
     func configure(with viewModel: buttonVM) {
         self.setTitle(viewModel.title, for: .normal)
         titleLabel?.font = UIFont(name: "Baloo2-ExtraBold", size: viewModel.size)
-
     }
-    
-    
 }
