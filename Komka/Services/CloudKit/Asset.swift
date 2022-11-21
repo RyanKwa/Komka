@@ -12,6 +12,7 @@ struct Asset {
         case Cover
         case MultipleChoice
         case FullSentence
+        case SoundPractice
         case ArrangeWord
     }
     enum Part: String, CaseIterable {

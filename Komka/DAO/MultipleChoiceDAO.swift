@@ -28,7 +28,7 @@ class MultipleChoiceDAO {
         let queryScenario = CKQuery(recordType: RecordType.Scenario.rawValue, predicate: scenarioPredicate)
         let queryOperationScenario = CKQueryOperation(query: queryScenario)
         queryOperationScenario.qualityOfService = .userInitiated
-        queryOperationScenario.desiredKeys = ["title", "isCompleted", "sentence", "multipleChoice", "levelScenario"]
+
         queryOperationScenario.recordMatchedBlock = { (returnedRecordID, returnedScenario) in
             switch returnedScenario {
             case .success(let record):
@@ -36,11 +36,10 @@ class MultipleChoiceDAO {
                     let scenarioTitle = record["title"] as? String,
                     let scenarioStatus = record["isCompleted"] as? Bool,
                     let scenarioSentence = record["sentence"] as? [String],
-//                    let scenarioLevel = record["level"] as? CKRecord.Reference,
                     let multipleChoice = record["multipleChoice"] as? CKRecord.Reference,
                     let levelScenario = record["levelScenario"] as? String
                 else {
-                    completion(nil, FetchError.missingData(recordType: RecordType.Scenario))
+                    completion(nil, FetchError.missingData(recordType: RecordType.MultipleChoice))
                     return
                 }
                 
@@ -85,7 +84,7 @@ class MultipleChoiceDAO {
                 }
                 
             case .failure(_):
-                completion(nil, FetchError.failedQuery(recordType: RecordType.Scenario))
+                completion(nil, FetchError.failedQuery(recordType: RecordType.MultipleChoice))
             }
         }
         
