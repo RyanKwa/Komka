@@ -32,6 +32,10 @@ class SoundPracticeViewModel {
 
     lazy var confidenceResult = Double()
     
+    static var willPop = true
+    var isFirstWord = true
+    var isLastWord = false
+        
     func getScenario() {
         words = scenarioData.getScenarioData()?.sentence ?? []
     }

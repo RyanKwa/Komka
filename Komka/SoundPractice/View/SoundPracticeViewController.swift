@@ -49,6 +49,8 @@ class SoundPracticeViewController: ViewController {
         if(soundPracticeVM.queueWordCounter == soundPracticeVM.words.count){
             soundPracticeVM.stopTextToSpeech()
             soundPracticeVM.stopSoundPractice()
+            soundPracticeVM.isLastWord = true
+
             let stepViewController = ArrangeWordViewController()
             self.navigationController?.pushViewController(stepViewController, animated: false)
         }
@@ -57,6 +59,8 @@ class SoundPracticeViewController: ViewController {
             soundPracticeVM.queueWordCounter += 1
             vc.soundPracticeVM.queueWordCounter = soundPracticeVM.queueWordCounter
             soundPracticeVM.stopSoundPractice()
+            
+            vc.soundPracticeVM.isFirstWord = false
             navigationController?.pushViewController(vc, animated: false)
         }
     }
@@ -162,6 +166,42 @@ class SoundPracticeViewController: ViewController {
             })
         @unknown default:
             print("Unknown case")
+        }
+    }
+    
+    func reset(){
+        soundPracticeVM = SoundPracticeViewModel()
+        
+        soundPracticeVM.getScenario()
+        soundPracticeVM.getSoundPracticeAssets()
+        
+        setUpSoundPracticeData()
+        
+        micPermission()
+        
+        nextBtn.isHidden = true
+        
+        setUpCircularProgressBarView()
+        
+        addSubViews()
+        setUpConstraint()
+        showNextBtn()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if (soundPracticeVM.isFirstWord && SoundPracticeViewModel.willPop) {
+            SoundPracticeViewModel.willPop = false
+            reset()
+        }
+        else if (!soundPracticeVM.isFirstWord && soundPracticeVM.isLastWord) {
+            SoundPracticeViewModel.willPop = true
+        }
+        
+        if SoundPracticeViewModel.willPop {
+            self.navigationController?.popViewController(animated: false)
+            return
         }
     }
     
