@@ -13,28 +13,26 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
     private lazy var backgroundImg = UIView.createImageView(imageName: "bg")
     private lazy var scenarioLabel = UIView.createLabel(text: "Pilih Skenario", fontSize: 45)
 
+
     private var mudahButton: UIButton = {
-        let button = LevelController()
-        button.configure(with: buttonVM(title: "Mudah", size: 30))
+        let button = Button(style: .active, title: "Mudah")
         button.addTarget(self, action: #selector(levelBtnTapped), for: .touchUpInside)
+        
         return button
     }()
-    
+
     private var sedangButton: UIButton = {
-        let button = UIButton()
+        let button = Button(style: .idle, title: "Sedang")
         button.addTarget(self, action: #selector(levelBtnTapped), for: .touchUpInside)
-        
         return button
     }()
-    
+
     private var susahButton: UIButton = {
-        let button = UIButton()
+        let button = Button(style: .idle, title: "Sulit")
         button.addTarget(self, action: #selector(levelBtnTapped), for: .touchUpInside)
-        
         return button
     }()
     
-    private let levelController = LevelController()
     
     private lazy var levelStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [mudahButton, sedangButton, susahButton])
@@ -69,7 +67,15 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
     }
     
     private func createToast(level: String){
-        let toastLabel = UILabel.createLabel(text: "Selamat! Level \(level.capitalized) sudah terbuka", fontSize: 25)
+        let unlockImage = NSTextAttachment()
+        unlockImage.image = UIImage(systemName: "lock.open.fill")
+        
+        let labelString = NSMutableAttributedString(string: "Selamat! Level \(level.capitalized) sudah terbuka ")
+        labelString.append(NSAttributedString(attachment: unlockImage))
+
+        let toastLabel = UILabel()
+        toastLabel.font = UIFont.balooFont(size: 25)
+        toastLabel.attributedText = labelString
         toastLabel.backgroundColor = .white.withAlphaComponent(1)
         toastLabel.textAlignment = .center
         toastLabel.layer.cornerRadius = 10
@@ -118,9 +124,7 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-        
-        levelController.buttonsArray = [mudahButton, sedangButton, susahButton]
-        levelController.defaultButton = mudahButton
+        mudahButton.isSelected = true
         
         chooseScenarioVM.fetchScenario()
         
@@ -154,12 +158,22 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
         levelStackView.anchor(top: scenarioLabel.bottomAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/25, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/20)
         levelStackView.centerX(inView: backgroundImg)
         
+
+        
         scenarioCollectionView.anchor(top: levelStackView.bottomAnchor, left: backgroundImg.leftAnchor, bottom: backgroundImg.bottomAnchor, right: backgroundImg.rightAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/20, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/50, paddingBottom: ScreenSizeConfiguration.SCREEN_HEIGHT/7, paddingRight: ScreenSizeConfiguration.SCREEN_WIDTH/50)
     }
     
     @objc func levelBtnTapped(_ sender: UIButton){
-        levelController.buttonArrayUpdated(buttonSelected: sender)
+        let buttonArray = [mudahButton, sedangButton, susahButton]
+        for buttons in buttonArray{
+             if let button = buttons as? UIButton {
+                 button.isSelected = false
+             }
+         }
         
+        sender.isSelected = true
+        SoundEffectService.shared.playSoundEffect(.Bubble)
+ 
         switch sender{
         case mudahButton:
             self.chooseScenarioVM.levelByScenario(level: LevelScenario.mudah.rawValue)
@@ -171,6 +185,7 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
             break
         }
         self.scenarioCollectionView.reloadData()
+
     }
 
     func closeBtnTapped() {
@@ -197,13 +212,13 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard chooseScenarioVM.scenarios.count > 0 && chooseScenarioVM.assets.count > 0 else {
+        guard !chooseScenarioVM.scenarios.isEmpty && !chooseScenarioVM.filteredCoverAssets.isEmpty else {
             collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "default")
             return collectionView.dequeueReusableCell(withReuseIdentifier: "default", for: indexPath)
         }
         guard
             let scenarioCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScenarioCell.identifier, for: indexPath) as? ScenarioCell,
-            let scenarioImage = chooseScenarioVM.assets[indexPath.row].image
+            let scenarioImage = chooseScenarioVM.filteredCoverAssets[indexPath.row].image
         else {
             collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "default")
             return collectionView.dequeueReusableCell(withReuseIdentifier: "default", for: indexPath)

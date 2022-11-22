@@ -15,11 +15,11 @@ class SoundPracticeViewController: ViewController {
     
     private var scenarioCoverImage, soundPracticeCharacterImage: UIImage?
     private var wordText: String = ""
-        
+    
     private lazy var circularProgressBarView = CircularProgressBarView(frame: .zero, wordText: wordText, scenarioCoverImage: scenarioCoverImage ?? UIImage(), soundPracticeCharacterImage: soundPracticeCharacterImage ?? UIImage())
     
     private lazy var backgroundImg = UIView.createImageView(imageName: "bg")
-    private lazy var instructionLbl = UIView.createLabel(text: "Ulangi kata dibawah ini", fontSize: 40)
+    private lazy var instructionLbl = UIView.createLabel(text: "Coba ikuti cara baca di bawah ini", fontSize: 40)
     
     private lazy var nextBtn: UIButton = {
         let button = LevelButton()
@@ -44,10 +44,25 @@ class SoundPracticeViewController: ViewController {
     }()
     
     @objc func nextBtnTapped(_ sender: UIButton) {
-        soundPracticeVM.stopTextToSpeech()
-        soundPracticeVM.stopSoundPractice()
-        let stepViewController = ArrangeWordViewController()
-        self.navigationController?.pushViewController(stepViewController, animated: false)
+        SoundEffectService.shared.playSoundEffect(.Bubble)
+        
+        if(soundPracticeVM.queueWordCounter == soundPracticeVM.words.count){
+            soundPracticeVM.stopTextToSpeech()
+            soundPracticeVM.stopSoundPractice()
+            soundPracticeVM.isLastWord = true
+
+            let stepViewController = ArrangeWordViewController()
+            self.navigationController?.pushViewController(stepViewController, animated: false)
+        }
+        else {
+            let vc = SoundPracticeViewController()
+            soundPracticeVM.queueWordCounter += 1
+            vc.soundPracticeVM.queueWordCounter = soundPracticeVM.queueWordCounter
+            soundPracticeVM.stopSoundPractice()
+            
+            vc.soundPracticeVM.isFirstWord = false
+            navigationController?.pushViewController(vc, animated: false)
+        }
     }
     
     @objc func backBtnTapped(_ sender: UIButton) {
@@ -78,7 +93,7 @@ class SoundPracticeViewController: ViewController {
         backgroundImg.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         backBtn.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/25, paddingLeft: ScreenSizeConfiguration.SCREEN_WIDTH/30)
         instructionLbl.centerX(inView: view, topAnchor: view.topAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/18)
-
+        
         circularProgressBarView.centerX(inView: view)
         circularProgressBarView.anchor(top: instructionLbl.bottomAnchor, paddingTop: ScreenSizeConfiguration.SCREEN_HEIGHT/30, width: ScreenSizeConfiguration.SCREEN_WIDTH/1.5, height: ScreenSizeConfiguration.SCREEN_HEIGHT/1.2)
         
@@ -96,21 +111,12 @@ class SoundPracticeViewController: ViewController {
         view.addSubview(nextBtn)
     }
     
-    private func moveToNextPage(){
+    private func showNextBtn(){
         soundPracticeVM.progressPublisher.observe(on: MainScheduler.instance).subscribe(onCompleted:  { [self] in
-            if(soundPracticeVM.queueWordCounter == soundPracticeVM.words.count){
-                soundPracticeVM.stopSoundPractice()
-                nextBtn.isHidden = false
-            }
-            else {
-                let vc = SoundPracticeViewController()
-                soundPracticeVM.queueWordCounter += 1
-                vc.soundPracticeVM.queueWordCounter = soundPracticeVM.queueWordCounter
-                soundPracticeVM.stopSoundPractice()
-                navigationController?.pushViewController(vc, animated: false)
-            }
+            nextBtn.isHidden = false
         }).disposed(by: soundPracticeVM.disposeBag)
     }
+    
     
     private func updateProgress(){
         soundPracticeVM.calculateProgress()
@@ -163,15 +169,14 @@ class SoundPracticeViewController: ViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = true
+    func reset(){
+        soundPracticeVM = SoundPracticeViewModel()
         
         soundPracticeVM.getScenario()
         soundPracticeVM.getSoundPracticeAssets()
         
         setUpSoundPracticeData()
-
+        
         micPermission()
         
         nextBtn.isHidden = true
@@ -180,6 +185,43 @@ class SoundPracticeViewController: ViewController {
         
         addSubViews()
         setUpConstraint()
-        moveToNextPage()
+        showNextBtn()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if (soundPracticeVM.isFirstWord && SoundPracticeViewModel.willPop) {
+            SoundPracticeViewModel.willPop = false
+            reset()
+        }
+        else if (!soundPracticeVM.isFirstWord && soundPracticeVM.isLastWord) {
+            SoundPracticeViewModel.willPop = true
+        }
+        
+        if SoundPracticeViewModel.willPop {
+            self.navigationController?.popViewController(animated: false)
+            return
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.isNavigationBarHidden = true
+        
+        soundPracticeVM.getScenario()
+        soundPracticeVM.getSoundPracticeAssets()
+        
+        setUpSoundPracticeData()
+        
+        micPermission()
+        
+        nextBtn.isHidden = true
+        
+        setUpCircularProgressBarView()
+        
+        addSubViews()
+        setUpConstraint()
+        showNextBtn()
     }
 }

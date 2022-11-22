@@ -7,10 +7,7 @@
 
 import UIKit
 
-struct buttonVM{
-    let title: String
-    let size: CGFloat
-}
+
 
 class LevelController: UIButton {
     var buttonsArray: [UIButton] = [] {
@@ -44,11 +41,5 @@ class LevelController: UIButton {
                 button.isSelected = false
             }
         }
-    }
-    
-    //MARK: set button configuration
-    func configure(with viewModel: buttonVM) {
-        self.setTitle(viewModel.title, for: .normal)
-        titleLabel?.font = UIFont(name: "Baloo2-ExtraBold", size: viewModel.size)
     }
 }

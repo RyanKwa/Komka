@@ -123,7 +123,7 @@ extension ArrangeWordViewController: UICollectionViewDelegate, UICollectionViewD
     
     private func setCellBorderColor(cell: WordSlotCollectionViewCell, color: UIColor) {
         cell.answerImage.layer.borderColor  = color.cgColor
-        cell.answerImage.layer.cornerRadius = 26
+        cell.answerImage.layer.cornerRadius = 30
     }
     
     //MARK: Align Center collection view cell

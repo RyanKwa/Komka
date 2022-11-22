@@ -13,7 +13,7 @@ class WordCollectionViewCell: UICollectionViewCell {
         case idle
     }
     static let identifier = "wordCollectionViewCell"
-    var wordTitle: UILabel = UIView.createLabel(text: "Text", fontSize: 30, textColor: .white)
+    var wordTitle: UILabel = UIView.createLabel(text: "Text", fontSize: 28, textColor: .white)
     var wordImage: UIImageView = UIView.createImageView(imageName: "ArrangeWord_Idle")
     var state: State = .idle
     override init(frame: CGRect) {
