@@ -28,7 +28,7 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
     }()
 
     private var susahButton: UIButton = {
-        let button = Button(style: .idle, title: "Susah")
+        let button = Button(style: .idle, title: "Sulit")
         button.addTarget(self, action: #selector(levelBtnTapped), for: .touchUpInside)
         return button
     }()
@@ -170,8 +170,9 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
                  button.isSelected = false
              }
          }
-        sender.isSelected = true
         
+        sender.isSelected = true
+        SoundEffectService.shared.playSoundEffect(.Bubble)
  
         switch sender{
         case mudahButton:
@@ -211,13 +212,13 @@ extension ChooseScenarioController: UICollectionViewDelegateFlowLayout, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard chooseScenarioVM.scenarios.count > 0 && chooseScenarioVM.assets.count > 0 else {
+        guard !chooseScenarioVM.scenarios.isEmpty && !chooseScenarioVM.filteredCoverAssets.isEmpty else {
             collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "default")
             return collectionView.dequeueReusableCell(withReuseIdentifier: "default", for: indexPath)
         }
         guard
             let scenarioCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScenarioCell.identifier, for: indexPath) as? ScenarioCell,
-            let scenarioImage = chooseScenarioVM.assets[indexPath.row].image
+            let scenarioImage = chooseScenarioVM.filteredCoverAssets[indexPath.row].image
         else {
             collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "default")
             return collectionView.dequeueReusableCell(withReuseIdentifier: "default", for: indexPath)

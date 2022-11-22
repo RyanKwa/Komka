@@ -9,7 +9,7 @@ import UIKit
 
 class WordSlotCollectionViewCell: UICollectionViewCell {
     static let identifier = "wordSlotCollectionViewCell"
-    var wordTitle: UILabel = UIView.createLabel(text: "Text", fontSize: 30, textColor: .white)
+    var wordTitle: UILabel = UIView.createLabel(text: "Text", fontSize: 28, textColor: .white)
     var slotImage: UIImageView = UIView.createImageView(imageName: "WordSlot")
     var answerImage: UIImageView = UIView.createImageView(imageName: "ArrangeWord_Active")
     override init(frame: CGRect) {
