@@ -28,7 +28,7 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
     }()
 
     private var susahButton: UIButton = {
-        let button = Button(style: .idle, title: "Susah")
+        let button = Button(style: .idle, title: "Sulit")
         button.addTarget(self, action: #selector(levelBtnTapped), for: .touchUpInside)
         return button
     }()
@@ -162,8 +162,9 @@ class ChooseScenarioController: ViewController, ErrorViewDelegate {
                  button.isSelected = false
              }
          }
-        sender.isSelected = true
         
+        sender.isSelected = true
+        SoundEffectService.shared.playSoundEffect(.Bubble)
  
         switch sender{
         case mudahButton:

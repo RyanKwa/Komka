@@ -44,6 +44,8 @@ class SoundPracticeViewController: ViewController {
     }()
     
     @objc func nextBtnTapped(_ sender: UIButton) {
+        SoundEffectService.shared.playSoundEffect(.Bubble)
+        
         if(soundPracticeVM.queueWordCounter == soundPracticeVM.words.count){
             soundPracticeVM.stopTextToSpeech()
             soundPracticeVM.stopSoundPractice()
